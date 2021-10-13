@@ -4,6 +4,6 @@ export default function Home() {
   return (
     <div>
      
-the beginning    </div>
+the beginning of BNB    </div>
   )
 }
