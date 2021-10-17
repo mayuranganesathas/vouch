@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { ButtonVouch, ButtonVouchProps } from "./buttonVouch";
+import { ButtonVouch, ButtonVouchProps } from "../components/buttonVouch";
 
 export default {
   title: "UI/ButtonVouch",
