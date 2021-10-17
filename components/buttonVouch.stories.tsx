@@ -20,6 +20,7 @@ const Template: Story<ButtonVouchProps> = (args) => <ButtonVouch {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  backgroundColour: "blue",
+  backgroundColour: "white",
   label: "Button",
+  disabled: false,
 };
