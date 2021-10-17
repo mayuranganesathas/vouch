@@ -1,6 +1,6 @@
 import React from "react";
 export interface ButtonVouchProps {
-  backgroundColour?: "blue" | "white";
+  backgroundColour?: "VouchGreen" | "white";
 
   textColour?: string;
   label: string;
@@ -15,8 +15,8 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
 }) => {
   let backgroundStyles;
   switch (backgroundColour) {
-    case "blue":
-      backgroundStyles = "bg-blue-400";
+    case "VouchGreen":
+      backgroundStyles = "bg-VouchGreen";
       break;
 
     case "white":

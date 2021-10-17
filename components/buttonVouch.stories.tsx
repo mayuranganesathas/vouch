@@ -10,7 +10,7 @@ export default {
     backgroundColour: {
       control: {
         type: "radio",
-        options: ["blue", "white"],
+        options: ["VouchGreen", "white"],
       },
     },
   },
@@ -20,7 +20,7 @@ const Template: Story<ButtonVouchProps> = (args) => <ButtonVouch {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  backgroundColour: "white",
+  backgroundColour: "VouchGreen",
   label: "Button",
   disabled: false,
 };
