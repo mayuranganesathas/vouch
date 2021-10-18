@@ -24,6 +24,7 @@ export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
         {dropDownArray &&
           dropDownArray
             .filter((v, i, a) => a.indexOf(v) === i)
+            .filter((ele) => ele != "")
             .map((ele) => <option value={ele}> {ele} </option>)}
       </select>
     </form>
