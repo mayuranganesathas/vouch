@@ -1,27 +1,27 @@
 import React from "react";
 
 export interface SearchFilterDashProps {
-  filterList: string;
-  backgroundColour: "VouchGreen" | "White";
+  filterLabel: string;
+  backgroundColour: "VouchGreen" | "white";
 }
 
-export const SearchFilterDash: React.FC<SearchFilterDashProps> = (
-  filterList,
-  backgroundColour
-) => {
+export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
+  filterLabel,
+  backgroundColour,
+}) => {
   let backgroundStyles;
   switch (backgroundColour) {
     case "VouchGreen":
-      backgroundStyles = "bg-VouchGreen";
+      backgroundStyles = "bg-VouchGreen border-2 border-gray-400 px-8";
       break;
-    case "White":
-      backgroundStyles = "bg-white";
+    case "white":
+      backgroundStyles = "bg-gray-50 border-2 border-gray-400 px-8";
       break;
   }
   return (
-    <form className={backgroundStyles}>
-      <label>Filter Referred Canddiates by:</label>
-      <select>
+    <form>
+      <label className={"text-sm pr-4"}>{filterLabel}</label>
+      <select className={backgroundStyles}>
         <option>Engineering</option>
         <option>Product</option>
         <option>Sales</option>

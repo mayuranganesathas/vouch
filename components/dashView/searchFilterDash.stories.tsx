@@ -22,6 +22,6 @@ const Template: Story<SearchFilterDashProps> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  backgroundColour: "VouchGreen",
-  label: "World Back Hello",
+  backgroundColour: "white",
+  filterLabel: "Filter Candidates by:",
 };
