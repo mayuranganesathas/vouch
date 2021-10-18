@@ -25,6 +25,7 @@ const Template: Story<HrCompanyProfileProps> = (args) => (
 export const Primary = Template.bind({});
 Primary.args = {
   userHrCompanyImage: "/images/google-logo.png",
-  userHrCompanyName: "Google HQ",
-  userHrCompanyIndustry: "Tech - SAAS",
+  userHrCompanyName: "Google Mountain View",
+  userHrCompanyIndustry: "Tech - SaaS",
+  userHrCompanyWebsite: "www.google.com",
 };

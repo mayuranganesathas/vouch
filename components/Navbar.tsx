@@ -6,6 +6,7 @@ const navBarTest = {
   userHrCompanyName: "Google HQ",
   userHrCompanyImage: "./public/images/nolanTester",
   userCompanyIndustry: "Tech - SAAS",
+  userHrCompanyWebsite: "www.google.com",
 };
 
 const NavBar = (navBarTest) => {
@@ -16,6 +17,7 @@ const NavBar = (navBarTest) => {
         userHrCompanyName={navBarTest.userHrCompanyName}
         userHrCompanyImage={navBarTest.userHrCompanyImage}
         userHrCompanyIndustry={navBarTest.userHrCompanyIndustry}
+        userHrCompanyWebsite={navBarTest.userHRCompanyWebsite}
       />
     </div>
   );

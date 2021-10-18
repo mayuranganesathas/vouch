@@ -4,26 +4,35 @@ export interface HrCompanyProfileProps {
   userHrCompanyImage: string;
   userHrCompanyName: string;
   userHrCompanyIndustry: string;
+  userHrCompanyWebsite: string;
 }
 const HrCompanyProfile = ({
   userHrCompanyImage,
   userHrCompanyName,
   userHrCompanyIndustry,
+  userHrCompanyWebsite,
 }: HrCompanyProfileProps) => {
   return (
-    <div className="grid grid-cols-2 w-2/12 auto-cols-min">
-      <div className="w-1/2">
-        <img src={userHrCompanyImage} className="" />
+    <div className="flex py-2">
+      <div className=" px-4">
+        <img src={userHrCompanyImage} className="" width="100" height="50" />
       </div>
-      <div className="flex-nowrap">
-        <div className="">{userHrCompanyName}</div>
+
+      <div className="flex-nowrap py-1 ">
+        <a href={userHrCompanyWebsite} className=" flex-nowrap text-md py-4">
+          {" "}
+          {userHrCompanyName}
+        </a>
         <div className="flex">
-          <img src="icons/industry.png" className="h-1/12 w-3/12" />
-          <div className=""> {userHrCompanyIndustry}</div>
+          <img src="icons/industry.png" className="w-4 h-4 " />
+          <span className="text-xs text-gray-500 flex-nowrap py-0.5 px-0.5">
+            {" "}
+            {userHrCompanyIndustry}
+          </span>
         </div>
       </div>
     </div>
   );
 };
-// grid, 2 columns, flex in column 2
+// merge main
 export default HrCompanyProfile;
