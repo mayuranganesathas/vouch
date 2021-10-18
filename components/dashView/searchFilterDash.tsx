@@ -22,7 +22,9 @@ export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
     <form>
       <select className={backgroundStyles}>
         {dropDownArray &&
-          dropDownArray.map((ele) => <option value={ele}> {ele} </option>)}
+          dropDownArray
+            .filter((v, i, a) => a.indexOf(v) === i)
+            .map((ele) => <option value={ele}> {ele} </option>)}
       </select>
     </form>
   );
