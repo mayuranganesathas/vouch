@@ -14,6 +14,7 @@ export default {
       },
     },
   },
+  s,
 } as Meta;
 
 const Template: Story<SearchFilterDashProps> = (args) => (
@@ -24,4 +25,5 @@ export const Primary = Template.bind({});
 Primary.args = {
   backgroundColour: "white",
   filterLabel: "Filter Candidates by:",
+  dropDownArray: [0, 1, 2, 3, 2],
 };

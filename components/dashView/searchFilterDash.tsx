@@ -3,11 +3,13 @@ import React from "react";
 export interface SearchFilterDashProps {
   filterLabel: string;
   backgroundColour: "VouchGreen" | "white";
+  dropDownArray: number[];
 }
 
 export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
   filterLabel,
   backgroundColour,
+  dropDownArray,
 }) => {
   let backgroundStyles;
   switch (backgroundColour) {
@@ -22,9 +24,10 @@ export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
     <form>
       <label className={"text-sm pr-4"}>{filterLabel}</label>
       <select className={backgroundStyles}>
-        <option>Engineering</option>
-        <option>Product</option>
-        <option>Sales</option>
+        {dropDownArray &&
+          dropDownArray.map((ele) => {
+            <option> {ele} </option>;
+          })}
       </select>
     </form>
   );
