@@ -2,7 +2,7 @@ import React from "react";
 
 export interface SearchFilterDashProps {
   backgroundColour: "VouchGreen" | "white";
-  dropDownArray: string[];
+  dropDownArray: any[];
 }
 
 export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
