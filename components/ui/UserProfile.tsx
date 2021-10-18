@@ -12,7 +12,7 @@ const UserProfile = ({
   userHrPosition,
 }: UserProfileProps) => {
   return (
-    <div className="flex">
+    <div className="flex py-2 px-4 ">
       <div className=" py-1 flex-wrap">
         <div className="text-xs text-gray-500 py-0.5 px-0.5">
           {" "}
