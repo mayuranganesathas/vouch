@@ -16,4 +16,5 @@ export const Primary = Template.bind({});
 Primary.args = {
   totalCandidateIcon: "/images/candidates.png",
   candidateCount: [1, 2, 3, 4, 5],
+  lastCandidateCount: "3",
 };
