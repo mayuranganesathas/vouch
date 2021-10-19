@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import NavBar from "../NavBar";
+import NavBar from "../Navbar";
 
 export default {
   title: "NAVBAR/NavBar",
