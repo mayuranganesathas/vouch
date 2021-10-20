@@ -15,24 +15,19 @@ export const CandidateCount: React.FC<CandidateCountProps> = ({
     <div className={"grid grid-cols-13 w-64"}>
       <div className={"col-start-1 col-span-2"}>
         <img
+          className={"justify-center"}
           src="./images/candidates.png"
-          className=""
           width="50"
           height="50"
         />
       </div>
-      <div className={"flex items-center col-start-3 text-xl font-bold "}>
-        {candidateCount.length}
+      <div className={"flex items-center font-bold col-start-3 text-xl"}>
+        <div className={""}>{candidateCount.length} Candidates</div>
       </div>
-
-      <div className={"flex items-center font-bold col-start-4"}>
-        Candidates
-      </div>
-      <div className={"col-start-5 text-red-400 text-sm pt-1"}>
+      <div className={"col-start-5 items-start text-red-400 text-sm pt-1"}>
         {" "}
-        ({candidateCount.length - lastCandidateCount}
+        ({candidateCount.length - lastCandidateCount} New)
       </div>
-      <div className={"col-start-6 text-red-400 text-sm pt-1"}>New)</div>
     </div>
   );
 };
