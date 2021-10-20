@@ -12,42 +12,37 @@ export const CandidateCount: React.FC<CandidateCountProps> = ({
   lastCandidateCount,
 }) => {
   return (
-    <div className={""}>
-      <div className={"row-start-1 row-span-1 w-48"}>
-        <div className={"grid grid-cols-6 font-bold text-red-400 text-base"}>
-          <div className={"flex justify-center items-center"}>
-            {" "}
-            {candidateCount.length - lastCandidateCount}
-          </div>
-          <div> New</div>
-        </div>{" "}
+    <div className={"grid grid-cols-13 w-64"}>
+      <div className={"col-start-1 col-span-2"}>
+        <img
+          src="./images/candidates.png"
+          className=""
+          width="50"
+          height="50"
+        />
       </div>
-      <div className={"row-start-2 row-span-1 w-48"}>
-        <div className={"grid grid-cols-6 w-48 grid-rows-2"}>
-          <div
-            className={
-              "flex items-center justify-center col-start-1 col-span-2"
-            }
-          >
-            <img src={totalCandidateIcon} className="" width="50" height="50" />
-          </div>
-          <div
-            className={
-              "flex items-center justify-center col-start-3 col-span-1 text-3xl"
-            }
-          >
-            {candidateCount.length}
-          </div>
+      <div className={"flex items-center col-start-3 text-xl font-bold "}>
+        {candidateCount.length}
+      </div>
 
-          <div
-            className={
-              "flex items-center justify-center text-2-xl font-bold col-start-4 col-span-3"
-            }
-          >
-            Candidates
-          </div>
-        </div>
+      <div className={"flex items-center font-bold col-start-4"}>
+        Candidates
       </div>
+      <div className={"col-start-5 text-red-400 text-sm pt-1"}>
+        {" "}
+        ({candidateCount.length - lastCandidateCount}
+      </div>
+      <div className={"col-start-6 text-red-400 text-sm pt-1"}>New)</div>
     </div>
   );
 };
+
+/*<div className={"flex items-center"}>
+        <div className={"grid grid-cols-10 font-bold text-red-400 text-sm"}>
+          <div className={"flex justify-self-end col-start-11"}>
+            {" "}
+            ({candidateCount.length - lastCandidateCount}
+          </div>
+          <div className={"col-start-13 px-2"}> New)</div>
+        </div>{" "}
+      </div>*/
