@@ -5,7 +5,7 @@ import HrCompanyProfile, {
 } from "../ui/HrCompanyProfile";
 
 export default {
-  title: "NAVBAR/HRCompanyProfile",
+  title: "DashBoard/HRCompanyProfile",
   component: HrCompanyProfile,
   argTypes: {
     backgroundColor: {

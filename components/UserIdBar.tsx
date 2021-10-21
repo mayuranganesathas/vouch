@@ -1,9 +1,8 @@
 import React from "react";
 import UserProfile from "./ui/UserProfile";
 import HrCompanyProfile from "./ui/HrCompanyProfile";
-import next from "next";
 
-const navBarTest = {
+const UserIdBarTest = {
   userHrCompanyName: "Google HQ",
   userHrCompanyImage: "/images/Google-logo.png",
   userHrCompanyIndustry: "Tech - SAAS",
@@ -13,22 +12,22 @@ const navBarTest = {
   userHrPosition: "HR Lead",
 };
 
-const NavBar = () => {
+const UserIdBar = () => {
   return (
     <div className="flex px-2 justify-between">
       <HrCompanyProfile
-        userHrCompanyName={navBarTest.userHrCompanyName}
-        userHrCompanyImage={navBarTest.userHrCompanyImage}
-        userHrCompanyIndustry={navBarTest.userHrCompanyIndustry}
-        userHrCompanyWebsite={navBarTest.userHrCompanyWebsite}
+        userHrCompanyName={UserIdBarTest.userHrCompanyName}
+        userHrCompanyImage={UserIdBarTest.userHrCompanyImage}
+        userHrCompanyIndustry={UserIdBarTest.userHrCompanyIndustry}
+        userHrCompanyWebsite={UserIdBarTest.userHrCompanyWebsite}
       />
       <UserProfile
-        userHrImg={navBarTest.userHrImg}
-        userHrName={navBarTest.userHrName}
-        userHrPosition={navBarTest.userHrPosition}
+        userHrImg={UserIdBarTest.userHrImg}
+        userHrName={UserIdBarTest.userHrName}
+        userHrPosition={UserIdBarTest.userHrPosition}
       />
     </div>
   );
 };
 
-export default NavBar;
+export default UserIdBar;

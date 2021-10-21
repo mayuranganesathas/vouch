@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import UserProfile, { UserProfileProps } from "../ui/UserProfile";
 
 export default {
-  title: "NAVBAR/UserProfile",
+  title: "Dashboard/UserProfile",
   component: UserProfile,
   argTypes: {
     backgroundColor: {
