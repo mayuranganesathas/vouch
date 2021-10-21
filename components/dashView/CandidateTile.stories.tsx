@@ -1,7 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { CandidateTile, CandidateTileProps } from "./CandidateTile";
-import { Primary } from "../stories/UserProfile.stories";
 
 export default {
   title: "Dashboard/CandidateTile",
@@ -13,5 +12,17 @@ const Template: Story<CandidateTileProps> = (args) => (
   <CandidateTile {...args} />
 );
 
-export const Primar = Template.bind({});
-Primary.args = {};
+export const Primary = Template.bind({});
+Primary.args = {
+  userID: 123,
+  positionTitle: "Senior Back End Dev",
+  salaryRange: "120K-140k $/year",
+  jobLocation: "Remote",
+  companyLogo: "./images/Google-logo.png",
+  numEmployees: "5000+",
+  companyName: "Google Ltd.",
+  stageInterview: "Offer Stage",
+  pastPosition1: "Director of Eng.",
+  pastIndustry1: "Tech",
+  standOutSkill1: "Great Communication",
+};
