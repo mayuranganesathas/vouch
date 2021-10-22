@@ -13,6 +13,7 @@ const Template: Story<CompTooltipProps> = (args) => <CompTooltip {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   companyName: "Google Yeah",
+  numEmployees: 5000,
   companyLocation: "Mountain View | California",
-  userHrCompanyWebsite: "wwww.google.com",
+  userHrCompanyWebsite: "www.google.com",
 };
