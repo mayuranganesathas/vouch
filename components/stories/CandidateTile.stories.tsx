@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import { CandidateTile, CandidateTileProps } from "./CandidateTile";
+import { CandidateTile, CandidateTileProps } from "../dashView/CandidateTile";
 
 export default {
   title: "Dashboard/CandidateTile",
