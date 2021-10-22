@@ -2,17 +2,20 @@ import React from "react";
 export interface ButtonEmailProps {
   backgroundColour: "white";
   disabled?: boolean;
+  onClick?: () => void;
 }
 
 export const ButtonEmail: React.FC<ButtonEmailProps> = ({
   backgroundColour,
   disabled,
+  onClick,
 }) => {
   return (
     <button
+      onClick={onClick}
       disabled={disabled}
       type="button"
-      className={`border border-gray-300 rounded px-4 py-1 w-14
+      className={`border border-gray-300 rounded px-4 py-1 w-16
       ${disabled ? "bg-gray-400 opacity-25" : backgroundColour}
 
       ${disabled ? "cursor-default" : "cursor-pointer"}
