@@ -1,14 +1,14 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import NavBar from "../Navbar";
+import UserIdBar from "../UserIdBar";
 
 export default {
-  title: "NAVBAR/NavBar",
-  component: NavBar,
+  title: "Dashboard/UserIdBar",
+  component: UserIdBar,
   argTypes: {},
 } as Meta;
 
-const Template = (args) => <NavBar {...args} />;
+const Template = (args) => <UserIdBar {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};

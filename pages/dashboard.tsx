@@ -1,10 +1,10 @@
 import React from "react";
-import NavBar from "../components/NavBar";
+import UserIdBar from "../components/UserIdBar";
 
 const DashBoard = () => {
   return (
     <div>
-      <NavBar />
+      <UserIdBar />
     </div>
   );
 };
