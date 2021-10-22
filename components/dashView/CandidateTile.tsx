@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { ButtonLinkedin } from "./ButtonLinkedin";
 import { ButtonEmail } from "./ButtonEmail";
+import { CompTooltip } from "./CompTooltip";
 
 export interface CandidateTileProps {
   starStatus: boolean;
@@ -35,6 +36,9 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const buttonEmail = () => {
     console.log("test1");
   };
+
+  const [isShown, setIsShown] = useState(false);
+
   return (
     <div>
       <div
@@ -64,30 +68,35 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <div className={"pt-2 text-gray-500 text-xs"}> {jobLocation}</div>
           </div>
         </div>
-        <div className={"grid-start-5 grid-end-7 pt-4"}>
-          <div className={"grid grid-cols-2"}>
-            <div className={"flex justify-center items-center"}>
-              {" "}
-              <img src={companyLogo} width="70" height="auto" />
-            </div>
-            <div className={""}>
-              <div className={"flex justify-center items-center text-lg"}>
-                {numEmployees}
+        <div
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+        >
+          <div className={"grid-start-5 grid-end-7 pt-4"}>
+            <div className={"grid grid-cols-2"}>
+              <div className={"flex justify-center items-center"}>
+                {" "}
+                <img src={companyLogo} width="70" height="auto" />
+              </div>
+              <div className={""}>
+                <div className={"flex justify-center items-center text-lg"}>
+                  {numEmployees}
+                </div>
+                <div
+                  className={
+                    "text-gray-500 text-xs flex justify-center items-center"
+                  }
+                >
+                  Headcount
+                </div>
               </div>
               <div
                 className={
-                  "text-gray-500 text-xs flex justify-center items-center"
+                  "col-span-2 flex justify-center items-center pt-1 text-gray-500"
                 }
               >
-                Headcount
+                {companyName}
               </div>
-            </div>
-            <div
-              className={
-                "col-span-2 flex justify-center items-center pt-1 text-gray-500"
-              }
-            >
-              {companyName}
             </div>
           </div>
         </div>
@@ -120,6 +129,18 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             {" "}
             <ButtonEmail backgroundColour="white" onClick={buttonEmail} />
           </div>
+        </div>
+      </div>
+      <div className={"grid grid-cols-14"}>
+        <div className={"col-start-2"}>
+          {isShown && (
+            <CompTooltip
+              companyName="Google"
+              companyLocation="None of your business"
+              numEmployees="1234"
+              userHrCompanyWebsite="www.google.com"
+            />
+          )}
         </div>
       </div>
     </div>
