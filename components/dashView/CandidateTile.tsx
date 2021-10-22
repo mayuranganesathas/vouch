@@ -102,7 +102,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           {" "}
           {standOutSkill1}
         </div>
-        <div className={"grid-start-14 "}>
+        <div className={"grid-start-14 flext justify-center items-center py-1"}>
           <div className={""}>
             {" "}
             <ButtonLinkedin backgroundColour="white" />

@@ -12,7 +12,7 @@ export const ButtonEmail: React.FC<ButtonEmailProps> = ({
     <button
       disabled={disabled}
       type="button"
-      className={`bg-gradient-to-b px-8 py-2 text-red border border-gray-300 w-40 h-auto rounded
+      className={`border border-gray-300 rounded px-4 py-1 w-14
       ${disabled ? "bg-gray-400 opacity-25" : backgroundColour}
 
       ${disabled ? "cursor-default" : "cursor-pointer"}
@@ -22,7 +22,7 @@ export const ButtonEmail: React.FC<ButtonEmailProps> = ({
         src="./images/email.png"
         width="auto"
         height="auto"
-        className={"flex justify-center items-center px-8"}
+        className={"flex justify-center items-center"}
       />
     </button>
   );

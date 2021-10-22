@@ -12,14 +12,14 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
     <button
       disabled={disabled}
       type="button"
-      className={`bg-gradient-to-b px-8 py-2 text-red border border-gray-300 w-40 h-auto rounded
+      className={`border border-gray-300 w-14 py-0.5 rounded
       ${disabled ? "bg-gray-400 opacity-25" : backgroundColour}
       ${disabled ? "cursor-default" : "cursor-pointer"}
       `}
     >
       <img
         src="./images/linkedin.png"
-        className={"flex justify-center items-center px-4"}
+        className={"flex justify-center items-center p-1"}
       />
     </button>
   );
