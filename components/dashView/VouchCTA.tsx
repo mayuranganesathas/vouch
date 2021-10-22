@@ -21,7 +21,7 @@ const VouchCTA = ({ numberReferred, numberThanks }: VouchCTAProps) => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-xl shadow-lg w-7/12">
+    <div className="bg-gray-100 rounded-xl shadow-lg w-5/12">
       <div className="flex p-4 gap-8">
         <div className="text-center text-md ">
           <div>Number of People you've referred:</div>
