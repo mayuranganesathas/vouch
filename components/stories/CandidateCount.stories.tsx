@@ -1,6 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import { CandidateCount, CandidateCountProps } from "./CandidateCount";
+import {
+  CandidateCount,
+  CandidateCountProps,
+} from "../dashView/CandidateCount";
 
 export default {
   title: "UI/CandidateCount",
