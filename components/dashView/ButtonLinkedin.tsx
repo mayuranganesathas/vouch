@@ -6,7 +6,7 @@ export interface ButtonLinkedinProps {
 
 export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
   backgroundColour,
-  disabled,
+  disabled = false,
 }) => {
   return (
     <button
@@ -19,7 +19,7 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
     >
       <img
         src="./images/linkedin.png"
-        className={"flex justify-center items-center"}
+        className={"flex justify-center items-center px-4"}
       />
     </button>
   );

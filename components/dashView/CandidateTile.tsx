@@ -1,4 +1,6 @@
 import React from "react";
+import { ButtonLinkedin } from "./ButtonLinkedin";
+import { ButtonEmail } from "./ButtonEmail";
 
 export interface CandidateTileProps {
   starStatus: boolean;
@@ -101,8 +103,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           {standOutSkill1}
         </div>
         <div className={"grid-start-14 "}>
-          <div> [Linked]</div>
-          <div> [email]</div>
+          <div className={""}>
+            {" "}
+            <ButtonLinkedin backgroundColour="white" />
+          </div>
+          <div>
+            {" "}
+            <ButtonEmail backgroundColour="white" />
+          </div>
         </div>
       </div>
     </div>

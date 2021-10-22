@@ -20,7 +20,9 @@ export const ButtonEmail: React.FC<ButtonEmailProps> = ({
     >
       <img
         src="./images/email.png"
-        className={"flex justify-center items-center p-3"}
+        width="auto"
+        height="auto"
+        className={"flex justify-center items-center px-8"}
       />
     </button>
   );
