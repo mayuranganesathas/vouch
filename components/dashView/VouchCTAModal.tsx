@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import { BeakerIcon, XIcon } from "@heroicons/react/solid";
+import { XIcon } from "@heroicons/react/solid";
 import { ButtonVouch } from "../buttonVouch";
 import { SearchFilterDash } from "./searchFilterDash";
+import StandOutSkill from "../ui/StandOutSkill";
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
 export interface VouchCTAModalProps {
@@ -11,16 +12,19 @@ export interface VouchCTAModalProps {
 }
 
 const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "75%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-    },
-  };
+  //   const customStyles = {
+  //     content: {
+  //       top: "50%",
+  //       left: "75%",
+  //       right: "auto",
+  //       bottom: "auto",
+  //       marginRight: "-50%",
+  //       transform: "translate(-80%, -50%)",
+  //     },
+  //     overlay: {
+  //       outerWidth: 200,
+  //     },
+  //   };
 
   const [formVaildation, setFormValidation] = useState(false);
   const [email, setEmail] = useState("");
@@ -35,7 +39,13 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   const [standOutSkill4, setStandOutSkill4] = useState("");
   const [standOutSkill5, setStandOutSkill5] = useState("");
 
-  const dropDownArray = ["test1", "test2", "test3", "test4", "test5"];
+  const dropDownArray = [
+    "test1231231",
+    "test2123123",
+    "test31223123",
+    "test4123123",
+    "test512312231",
+  ];
   //replace with DB Call
   const emailChecker = () => {
     //toDO Form validation, check email input to see if it includes .com / or .ca or .in etc.
@@ -52,13 +62,19 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
+        className=" w-min h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto h-min absolute right-0"
+        //     overlayClassName="Overlay
+        // bg-gray-100"
         contentLabel="Test Name"
+        aria={{
+          labelledby: "heading",
+          describedby: "full_description",
+        }}
       >
-        <div>
-          <div className="flex justify-end gap-x-96">
+        <div className="	">
+          <div className="flex justify-between gap-x-40  py-1 ">
             <div>
-              <div className="py-2">Referred Candidate Email</div>
+              <div className="py-2 ">Referred Candidate Email</div>
               <div>
                 <input
                   className="border-2 w-60 rounded-lg"
@@ -75,19 +91,19 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
               onClick={closeModal}
             />
           </div>
-          <div className="py-4">
-            <hr className="text-red-500 p-4 h-8 justify-items-end" />
+          <div className="py-2">
+            <hr className="text-red-500 justify-items-end" />
           </div>
 
           <div className="py-4">
-            <div className="text-bold">Position Details</div>
+            <div className="text-bold text-md">Position Details</div>
             <div className="text-gray-400 text-xs">
               For the role they just interviewed for
             </div>
           </div>
           <div>
             <div className="flex-norwap">
-              <div className="py-2 text-sm">Position Title</div>
+              <div className="py-1 text-xs">Position Title</div>
               <SearchFilterDash
                 value={positionTitle}
                 backgroundColour="white"
@@ -100,7 +116,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
             </div>
             <div className="py-4 flex gap-8">
               <div>
-                <div className="text-sm py-0.5">Stage Of Interview:</div>{" "}
+                <div className="text-xs py-0.5">Stage Of Interview:</div>{" "}
                 <SearchFilterDash
                   value={interviewStage}
                   backgroundColour="white"
@@ -112,7 +128,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                 />
               </div>
               <div>
-                <div className="text-sm py-0.5">Position Level:</div>{" "}
+                <div className="text-xs py-0.5">Position Level:</div>{" "}
                 <SearchFilterDash
                   value={positionLevel}
                   backgroundColour="white"
@@ -124,7 +140,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                 />
               </div>
               <div>
-                <div className="text-sm py-0.5">Salary Range:</div>{" "}
+                <div className="text-xs py-0.5">Salary Range:</div>{" "}
                 <SearchFilterDash
                   value={salaryRange}
                   backgroundColour="white"
@@ -138,10 +154,10 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
             </div>
           </div>
           <div className="py-4">
-            <div className="text-sm py-1">Link to job Posting</div>{" "}
+            <div className="text-xs py-1">Link to job Posting</div>{" "}
             <input
               placeholder=" Job Posting"
-              className="border-2 w-60 rounded-lg"
+              className="border-2 w-60 rounded-lg text-sm h-5"
               value={jobPostingLink}
               onChange={(e) => setJobPostingLink(e.target.value)}
             />
@@ -152,81 +168,31 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
               Select the top skill that impressed you the most about this
               Candidate{" "}
             </div>
-            <div className="flex flex-wrap justify-center gap-x-8  gap-y-6 py-6">
-              <label
-                className={
-                  " flex text-gray-400   border-2 rounded-full w-36  gap-x-0.5"
-                }
-              >
-                <input
-                  type="radio"
-                  value={dropDownArray[0]}
-                  className={"m-1.5"}
-                  name="standout"
-                  onChange={(e) => setStandOutSkill1(e.target.value)}
-                />
-                <div className="gap-x-1"> {dropDownArray[0]}</div>
-              </label>
-              <label
-                className={
-                  " flex text-gray-400   border-2 rounded-full w-36  gap-x-0.5"
-                }
-              >
-                {" "}
-                <input
-                  type="radio"
-                  value={dropDownArray[1]}
-                  className={"m-1.5"}
-                  name="standout"
-                  onChange={(e) => setStandOutSkill2(e.target.value)}
-                />
-                {dropDownArray[1]}
-              </label>
-              <label
-                className={
-                  " flex text-gray-400   border-2 rounded-full w-36  gap-x-0.5"
-                }
-              >
-                {" "}
-                <input
-                  type="radio"
-                  value={dropDownArray[2]}
-                  className={"m-1.5"}
-                  name="standout"
-                  onChange={(e) => setStandOutSkill3(e.target.value)}
-                />
-                {dropDownArray[2]}
-              </label>
-              <label
-                className={
-                  " flex  text-gray-400 border-2 rounded-full w-36  gap-x-0.5"
-                }
-              >
-                {" "}
-                <input
-                  type="radio"
-                  value={dropDownArray[3]}
-                  className={"m-1.5"}
-                  name="standout"
-                  onChange={(e) => setStandOutSkill4(e.target.value)}
-                />
-                {dropDownArray[3]}
-              </label>
-              <label
-                className={
-                  " flex  text-gray-400  border-2 rounded-full w-36 gap-x-0.5"
-                }
-              >
-                {" "}
-                <input
-                  type="radio"
-                  value={dropDownArray[4]}
-                  className={"m-1.5"}
-                  name="standout"
-                  onChange={(e) => setStandOutSkill5(e.target.value)}
-                />
-                {dropDownArray[4]}
-              </label>
+            <div className="flex flex-wrap justify-center gap-x-4  gap-y-4 py-6">
+              <StandOutSkill
+                value={dropDownArray[0]}
+                onChange={(e) => setStandOutSkill1(e.target.value)}
+              />
+
+              <StandOutSkill
+                value={dropDownArray[1]}
+                onChange={(e) => setStandOutSkill2(e.target.value)}
+              />
+
+              <StandOutSkill
+                value={dropDownArray[2]}
+                onChange={(e) => setStandOutSkill3(e.target.value)}
+              />
+
+              <StandOutSkill
+                value={dropDownArray[3]}
+                onChange={(e) => setStandOutSkill4(e.target.value)}
+              />
+
+              <StandOutSkill
+                value={dropDownArray[4]}
+                onChange={(e) => setStandOutSkill5(e.target.value)}
+              />
             </div>
           </div>
           <div className="py-1 justify-items-end">
@@ -238,7 +204,21 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
               label="Refer Candidate!"
               disabled={formVaildation ? false : true}
             />
-            {/* {setFormValidation( check forms ? true: false)} */}
+            {/* {setFormValidation(
+              email.length > 0 &&
+                positionTitle.length > 0 &&
+                interviewStage.length > 0 &&
+                positionLevel.length > 0 &&
+                salaryRange.length > 0 &&
+                jobPostingLink.length > 0 &&
+                (standOutSkill2.length > 0 ||
+                  standOutSkill3.length > 0 ||
+                  standOutSkill4.length > 0 ||
+                  standOutSkill5.length > 0 ||
+                  standOutSkill1.length > 0)
+                ? true
+                : false
+            )} */}
           </div>
         </div>
       </Modal>{" "}

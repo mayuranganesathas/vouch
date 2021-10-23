@@ -18,10 +18,10 @@ export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
   let backgroundStyles;
   switch (backgroundColour) {
     case "VouchGreen":
-      backgroundStyles = "bg-VouchGreen border-1 border-gray-200 px-8";
+      backgroundStyles = "bg-VouchGreen border-1 border-gray-200 px-1 ";
       break;
     case "white":
-      backgroundStyles = "bg-white border-2 border-gray-200 px-8";
+      backgroundStyles = "bg-white border-2 border-gray-200 px-1";
       break;
   }
   let buttonWidth;
@@ -33,13 +33,13 @@ export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
       buttonWidth = "w-60";
       break;
     case "wide-sm":
-      buttonWidth = "w-40";
+      buttonWidth = "w-36";
       break;
   }
   return (
     <form>
       <select
-        className={`${backgroundStyles} ${buttonWidth} rounded-md `}
+        className={`${backgroundStyles} ${buttonWidth} rounded-md text-xs w-min text-gray-500 `}
         name="Select From List"
         id="Select From List"
         value={value}

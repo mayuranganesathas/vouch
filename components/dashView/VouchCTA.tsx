@@ -8,7 +8,6 @@ export interface VouchCTAProps {
   numberReferred: number;
   numberThanks: number;
 }
-// brb washroom
 const VouchCTA = ({ numberReferred, numberThanks }: VouchCTAProps) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
