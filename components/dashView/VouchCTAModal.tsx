@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { XIcon } from "@heroicons/react/solid";
-import { ButtonVouch } from "../buttonVouch";
-import { SearchFilterDash } from "./searchFilterDash";
+import { ButtonVouch } from "../ui/ButtonVouch";
+import { SearchFilterDash } from "../ui/searchFilterDash";
 import StandOutSkill from "../ui/StandOutSkill";
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons

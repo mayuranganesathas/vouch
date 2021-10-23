@@ -1,5 +1,4 @@
 import React from "react";
-import { ButtonVouch } from "../buttonVouch";
 import Modal from "react-modal";
 
 export interface StandOutSkillProps {
