@@ -52,7 +52,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                 <img src="./images/profile.png" width="30" height="30" />
               </div>
               <div className={"text-xs flex justify-center items-center12"}>
-                <p className={"w-20"}>{userID}</p>
+                <p className={""}>{userID}</p>
               </div>
             </div>
           </div>
