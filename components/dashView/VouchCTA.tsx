@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonVouch } from "../buttonVouch";
+import { ButtonVouch } from "../ui/ButtonVouch";
 import Modal from "react-modal";
 import { useState } from "react";
 import VouchCTAModal from "./VouchCTAModal";

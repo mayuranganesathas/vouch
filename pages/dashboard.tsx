@@ -1,7 +1,7 @@
 import React from "react";
 import VouchCTA from "../components/dashView/VouchCTA";
 import StandOutSkill from "../components/ui/StandOutSkill";
-import UserIdBar from "../components/UserIdBar";
+import UserIdBar from "../components/dashView/UserIdBar";
 
 const dbData = {
   numbersReferred: 3,
