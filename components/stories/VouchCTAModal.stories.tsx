@@ -13,4 +13,6 @@ const Template: Story<VouchCTAModalProps> = (args) => (
 );
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  modalIsOpen: true,
+};
