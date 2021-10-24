@@ -2,6 +2,8 @@ import React from "react";
 import UserIdBar from "../components/UserIdBar";
 import WelcomeComp from "../components/dashView/WelcomeComp";
 import VouchCTA from "../components/dashView/VouchCTA";
+import { CandidateCount } from "../components/dashView/CandidateCount";
+import { SearchFilterDash } from "../components/dashView/SearchFilterDash";
 
 const dashBoardTest = {
   newCandidateNumber: 14,
@@ -9,6 +11,10 @@ const dashBoardTest = {
   moveToCandidate: () => {},
   numberReferred: 10,
   numberThanks: 4,
+  candidateCount: [10],
+  lastCandidateCount: 5,
+  backgroundColour: "white",
+  dropDownArray: ["A, B, C"],
 };
 
 const DashBoard = () => {
@@ -31,6 +37,20 @@ const DashBoard = () => {
           <VouchCTA
             numberReferred={dashBoardTest.numberReferred}
             numberThanks={dashBoardTest.numberThanks}
+          />
+        </div>
+      </div>
+      <div className={"grid grids-col-2"}>
+        <div className={"pl-20"}>
+          <CandidateCount
+            candidateCount={dashBoardTest.candidateCount}
+            lastCandidateCount={dashBoardTest.lastCandidateCount}
+          />
+        </div>
+        <div>
+          <SearchFilterDash
+            backgroundColour={dashBoardTest.backgroundColour}
+            dropDownArray={dashBoardTest.dropDownArray}
           />
         </div>
       </div>
