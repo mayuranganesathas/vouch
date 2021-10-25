@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonLinkedin } from "./ButtonLinkedin";
 import { ButtonEmail } from "./ButtonEmail";
 import { CompTooltip } from "./CompTooltip";
+import ReactTooltip from "react-tooltip";
 
 export interface CandidateTileProps {
   starStatus: boolean;
@@ -68,11 +69,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <div className={"pt-2 text-gray-500 text-xs"}> {jobLocation}</div>
           </div>
         </div>
-        <div
-          onMouseEnter={() => setIsShown(true)}
-          onMouseLeave={() => setIsShown(false)}
-        >
-          <div className={"grid-start-5 grid-end-7 pt-4"}>
+        <div data-for="CompToolTip" data-tip>
+          <CompTooltip
+            companyName="Google"
+            companyLocation="None of your business"
+            numEmployees="1234"
+            userHrCompanyWebsite="www.google.com"
+          />
+          <div className={"grid-start-5 grid-end-7 pt-4 z-20"}>
             <div className={"grid grid-cols-2"}>
               <div className={"flex justify-center items-center"}>
                 {" "}
@@ -132,16 +136,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         </div>
       </div>
       <div className={"grid grid-cols-14"}>
-        <div className={"col-start-2"}>
-          {isShown && (
-            <CompTooltip
-              companyName="Google"
-              companyLocation="None of your business"
-              numEmployees="1234"
-              userHrCompanyWebsite="www.google.com"
-            />
-          )}
-        </div>
+        <div className={"col-start-2"}></div>
       </div>
     </div>
   );

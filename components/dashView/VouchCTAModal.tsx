@@ -12,20 +12,6 @@ export interface VouchCTAModalProps {
 }
 
 const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
-  //   const customStyles = {
-  //     content: {
-  //       top: "50%",
-  //       left: "75%",
-  //       right: "auto",
-  //       bottom: "auto",
-  //       marginRight: "-50%",
-  //       transform: "translate(-80%, -50%)",
-  //     },
-  //     overlay: {
-  //       outerWidth: 200,
-  //     },
-  //   };
-
   const [formVaildation, setFormValidation] = useState(false);
   const [email, setEmail] = useState("");
   const [positionTitle, setPositionTitle] = useState("");
@@ -63,8 +49,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         className=" w-min h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto h-min absolute right-0"
-        //     overlayClassName="Overlay
-        // bg-gray-100"
         contentLabel="Test Name"
         aria={{
           labelledby: "heading",
@@ -204,21 +188,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
               label="Refer Candidate!"
               disabled={formVaildation ? false : true}
             />
-            {/* {setFormValidation(
-              email.length > 0 &&
-                positionTitle.length > 0 &&
-                interviewStage.length > 0 &&
-                positionLevel.length > 0 &&
-                salaryRange.length > 0 &&
-                jobPostingLink.length > 0 &&
-                (standOutSkill2.length > 0 ||
-                  standOutSkill3.length > 0 ||
-                  standOutSkill4.length > 0 ||
-                  standOutSkill5.length > 0 ||
-                  standOutSkill1.length > 0)
-                ? true
-                : false
-            )} */}
+            {/* TODO FORM VALIDATION */}
           </div>
         </div>
       </Modal>{" "}
