@@ -7,7 +7,7 @@ import {
 
 export default {
   title: "CandidateOnBoarding/CandidateOnTwo",
-  cinoibebt: CandidateOnTwo,
+  component: CandidateOnTwo,
   argTypes: {},
 } as Meta;
 
