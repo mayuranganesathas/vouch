@@ -15,16 +15,6 @@ export const CandidateOnThree: React.FC<CandidateOnThreeProps> = ({}) => {
           managers may reach out to advance you into upcoming interview rounds.
         </div>
         <div className={"pb-4 border-b border-gray-200 "}></div>
-        <div className={"flex items-center justify-center pt-4 pb-8"}>
-          <ButtonVouch
-            backgroundColour={"VouchGreen"}
-            buttonType={"rounded"}
-            textColour={"white"}
-            label={"Back to HomePage"}
-            disabled={false}
-            onClick={nextState}
-          />
-        </div>
       </div>
     </div>
   );

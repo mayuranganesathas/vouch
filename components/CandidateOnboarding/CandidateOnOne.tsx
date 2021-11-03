@@ -14,16 +14,6 @@ export const CandidateOnOne: React.FC<CandidateOnOneProps> = ({}) => {
           let the HR Managers learn a little more about you.
         </div>
         <div className={"pb-4 border-b border-gray-200 "}></div>
-        <div className={"flex items-center justify-center pt-4 pb-8"}>
-          <ButtonVouch
-            backgroundColour={"VouchGreen"}
-            buttonType={"rounded"}
-            textColour={"white"}
-            label={"Yes, Sign me up!"}
-            disabled={false}
-            onClick={nextState}
-          />
-        </div>
       </div>
     </div>
   );

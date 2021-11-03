@@ -115,16 +115,6 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({}) => {
         <input
           className={"border border-gray-300 rounded-xl w-full h-20 pb-4"}
         ></input>
-        <div className={"flex items-center justify-center pt-4 pb-8"}>
-          <ButtonVouch
-            backgroundColour={"VouchGreen"}
-            buttonType={"rounded"}
-            textColour={"white"}
-            label={"Yes, Sign me up!"}
-            disabled={false}
-            onClick={nextState}
-          />
-        </div>
       </div>
     </div>
   );
