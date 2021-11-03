@@ -4,9 +4,8 @@ import { ButtonVouch } from "../ui/ButtonVouch";
 export interface CandidateOnOneProps {}
 
 export const CandidateOnOne: React.FC<CandidateOnOneProps> = ({}) => {
-  const nextState = () => {};
   return (
-    <div>
+    <div className={"flex justify-center items-center"}>
       <div className={"px-8 shadow-lg rounded-xl w-3/5 h-auto bg-white"}>
         <div className={"pt-8"}>Welcome to a Network of Premium Candidates</div>
         <div className={"pt-2 text-xs"}>

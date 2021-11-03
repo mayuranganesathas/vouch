@@ -5,11 +5,9 @@ import { SearchFilterDash } from "../ui/searchFilterDash";
 export interface CandidateOnTwoProps {}
 
 export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({}) => {
-  const nextState = () => {};
-  const setPosition1 = () => {};
   return (
-    <div>
-      <div className={"px-8 shadow-lg rounded-xl w-3/5 h-auto bg-white"}>
+    <div className={"flex justify-center items-center"}>
+      <div className={"px-8 pb-10 shadow-lg rounded-xl w-3/5 h-auto bg-white"}>
         <div className={"pt-8"}>Tell companies a little bit about yourself</div>
         <div className={"pt-2 text-xs"}>
           A few details to help standout in our qualified pool of referrals

@@ -37,22 +37,19 @@ export default function CandidateOn(props) {
   };
 
   return (
-    <div className={"bg-white w-full h-full"}>
-      <div className={"bg-gray-100 w-full h-full px-8"}>
-        <div className={"flex flex-wrap content-center"}>
-          <div className={"grid grid-cols-1 h-full"}>
-            <div>{getComponent(stage)}</div>
+    <div className={"bg-white w-full h-screen"}>
+      <div className={"grid grid-cols-12 h-screen"}>
+        <div className={"col-start-1 col-end-2"}></div>
+        <div
+          className={
+            "col-start-2 col-end-12 bg-gray-100 flex items-center justify-center"
+          }
+        >
+          <div>
+            {getComponent(stage)}
 
-            <div>
+            <div className={"flex justify-center items-center gap-4 pt-4"}>
               {" "}
-              <ButtonVouch
-                backgroundColour={"VouchGreen"}
-                buttonType={"rounded"}
-                textColour={"white"}
-                label={"Yes, Sign me up!"}
-                disabled={false}
-                onClick={nextStage}
-              />
               <ButtonVouch
                 backgroundColour={"VouchGreen"}
                 buttonType={"rounded"}
@@ -61,9 +58,18 @@ export default function CandidateOn(props) {
                 disabled={false}
                 onClick={previousStage}
               />
+              <ButtonVouch
+                backgroundColour={"VouchGreen"}
+                buttonType={"rounded"}
+                textColour={"white"}
+                label={"Yes, Sign me up!"}
+                disabled={false}
+                onClick={nextStage}
+              />
             </div>
           </div>
         </div>
+        <div className={"col-start-12 col-end-13"}></div>
       </div>
     </div>
   );
