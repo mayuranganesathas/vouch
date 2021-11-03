@@ -21,36 +21,36 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({}) => {
               dropDownArray={["Job1", "Job2", "Job3"]}
               value={"create a prop for this"}
               onChange={(e) => e.target.value}
-              width={"wide-lg"}
+              width={"wide-sm"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={["Job1", "Job2", "Job3"]}
               value={"create a prop for this"}
               onChange={(e) => e.target.value}
-              width={"wide-lg"}
+              width={"wide-sm"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={["Job1", "Job2", "Job3"]}
               value={"create a prop for this"}
               onChange={(e) => e.target.value}
-              width={"wide-lg"}
+              width={"wide-sm"}
             />
           </div>
           <div>
             {" "}
             <div className={"text-sm"}>Company Website</div>
             <input
-              className={"border border-gray-300 text-xs"}
+              className={"border border-gray-300 text-xs rounded px-4"}
               placeholder="Enter Company URL"
             ></input>
             <input
-              className={"border border-gray-300 text-xs"}
+              className={"border border-gray-300 text-xs rounded px-4"}
               placeholder="Enter Company URL"
             ></input>
             <input
-              className={"border border-gray-300 text-xs"}
+              className={"border border-gray-300 text-xs rounded px-4"}
               placeholder="Enter Company URL"
             ></input>
           </div>
