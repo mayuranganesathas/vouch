@@ -21,6 +21,8 @@ export interface CandidateOnTwoProps {
   setIndustry2: (industry2: string) => void;
   industry3: string;
   setIndustry3: (industry3: string) => void;
+  jobArray: any[];
+  setJobArray: (jobArray: any[]) => void;
 }
 
 export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
@@ -42,6 +44,8 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   setIndustry2,
   industry3,
   setIndustry3,
+  jobArray,
+  setJobArray,
 }) => {
   return (
     <div className={"flex justify-center items-center"}>
@@ -56,9 +60,12 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             <div className={"text-sm"}> Position Title:</div>
             <SearchFilterDash
               backgroundColour={"white"}
-              dropDownArray={["Job1", "Job2", "Job3"]}
+              dropDownArray={jobArray}
               value={setJob1}
-              onChange={(e) => e.target.value}
+              onChange={(e) => {
+                const newJob1 = e.target.value;
+                setJob1(newJob1);
+              }}
               width={"wide-sm"}
             />
             <SearchFilterDash
