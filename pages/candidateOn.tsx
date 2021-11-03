@@ -13,6 +13,15 @@ export default function CandidateOn(props) {
   }
 
   const [stage, setStage] = useState(STAGE.CandidateOnOne);
+  const [job1, setJob1] = useState("");
+  const [job2, setJob2] = useState("");
+  const [job3, setJob3] = useState("");
+  const [year1, setYear1] = useState("");
+  const [year2, setYear2] = useState("");
+  const [year3, setYear3] = useState("");
+  const [industry1, setIndustry1] = useState("");
+  const [industry2, setIndustry2] = useState("");
+  const [industry3, setIndustry3] = useState("");
 
   const previousStage = () => {
     if (stage > STAGE.CandidateOnOne) {
@@ -30,7 +39,28 @@ export default function CandidateOn(props) {
     if (stage == STAGE.CandidateOnOne) {
       return <CandidateOnOne />;
     } else if (stage == STAGE.CandidateOnTwo) {
-      return <CandidateOnTwo />;
+      return (
+        <CandidateOnTwo
+          job1={job1}
+          setJob1={setJob1}
+          job2={job2}
+          setJob2={setJob2}
+          job3={job3}
+          setJob3={setJob3}
+          year1={year1}
+          setYear1={setYear1}
+          year2={year2}
+          setYear2={setYear2}
+          year3={year3}
+          setYear3={setYear3}
+          industry1={industry1}
+          setIndustry1={setIndustry1}
+          industry2={industry2}
+          setIndustry2={setIndustry2}
+          industry3={industry3}
+          setIndustry3={setIndustry3}
+        />
+      );
     } else if (stage == STAGE.CandidateOnThree) {
       return <CandidateOnThree />;
     }
