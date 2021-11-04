@@ -23,6 +23,19 @@ export default function CandidateOn(props) {
   const [industry2, setIndustry2] = useState("");
   const [industry3, setIndustry3] = useState("");
   const [jobArray, setJobArray] = useState(["jobA", "jobB", "jobC"]);
+  const [yearArray, setYearArray] = useState([
+    "10+",
+    "5-9",
+    "3-5",
+    "1-2",
+    "0-1",
+  ]);
+  const [industryArray, setIndustryArray] = useState([
+    "Finance",
+    "Gaming",
+    "SaaS",
+    "Space",
+  ]);
 
   const previousStage = () => {
     if (stage > STAGE.CandidateOnOne) {
@@ -62,6 +75,10 @@ export default function CandidateOn(props) {
           setIndustry3={setIndustry3}
           jobArray={jobArray}
           setJobArray={setJobArray}
+          yearArray={yearArray}
+          setYearArray={setYearArray}
+          industryArray={industryArray}
+          setIndustryArray={setIndustryArray}
         />
       );
     } else if (stage == STAGE.CandidateOnThree) {

@@ -23,6 +23,10 @@ export interface CandidateOnTwoProps {
   setIndustry3: (industry3: string) => void;
   jobArray: any[];
   setJobArray: (jobArray: any[]) => void;
+  yearArray: any[];
+  setYearArray: (yearArray: any[]) => void;
+  industryArray: any[];
+  setIndustryArray: (industryArray: any) => void;
 }
 
 export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
@@ -46,6 +50,10 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   setIndustry3,
   jobArray,
   setJobArray,
+  yearArray,
+  setYearArray,
+  industryArray,
+  setIndustryArray,
 }) => {
   return (
     <div className={"flex justify-center items-center"}>
@@ -70,14 +78,14 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             />
             <SearchFilterDash
               backgroundColour={"white"}
-              dropDownArray={["Job1", "Job2", "Job3"]}
+              dropDownArray={jobArray}
               value={setJob2}
               onChange={(e) => e.target.value}
               width={"wide-sm"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
-              dropDownArray={["Job1", "Job2", "Job3"]}
+              dropDownArray={jobArray}
               value={setJob3}
               onChange={(e) => e.target.value}
               width={"wide-sm"}
@@ -104,21 +112,21 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             <div className={"text-sm"}>Years In Role</div>
             <SearchFilterDash
               backgroundColour={"white"}
-              dropDownArray={["10+", "5-9", "3-5", "0-2"]}
+              dropDownArray={yearArray}
               value={setYear1}
               onChange={(e) => e.target.value}
               width={"wide-lg"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
-              dropDownArray={["10+", "5-9", "3-5", "0-2"]}
+              dropDownArray={yearArray}
               value={setYear2}
               onChange={(e) => e.target.value}
               width={"wide-lg"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
-              dropDownArray={["10+", "5-9", "3-5", "0-2"]}
+              dropDownArray={yearArray}
               value={setYear3}
               onChange={(e) => e.target.value}
               width={"wide-lg"}
@@ -129,21 +137,21 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             <div className={"text-sm"}>Industry</div>
             <SearchFilterDash
               backgroundColour={"white"}
-              dropDownArray={["Finance", "Gaming", "SaaS", "Space"]}
+              dropDownArray={industryArray}
               value={setIndustry1}
               onChange={(e) => e.target.value}
               width={"wide-lg"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
-              dropDownArray={["Finance", "Gaming", "SaaS", "Space"]}
+              dropDownArray={industryArray}
               value={setIndustry2}
               onChange={(e) => e.target.value}
               width={"wide-lg"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
-              dropDownArray={["Finance", "Gaming", "SaaS", "Space"]}
+              dropDownArray={industryArray}
               value={setIndustry3}
               onChange={(e) => e.target.value}
               width={"wide-lg"}
