@@ -1,13 +1,11 @@
 import React from "react";
 
 export interface CandidateCountProps {
-  totalCandidateIcon: string;
   candidateCount: any[];
   lastCandidateCount: number;
 }
 
 export const CandidateCount: React.FC<CandidateCountProps> = ({
-  totalCandidateIcon,
   candidateCount,
   lastCandidateCount,
 }) => {
