@@ -3,8 +3,9 @@ import UserIdBar from "../components/UserIdBar";
 import WelcomeComp from "../components/dashView/WelcomeComp";
 import VouchCTA from "../components/dashView/VouchCTA";
 import { CandidateCount } from "../components/dashView/CandidateCount";
-import { SearchFilterDash } from "../components/dashView/SearchFilterDash";
+import { SearchFilterDash } from "../components/dashView/searchFilterDash";
 import { CandidateTile } from "../components/dashView/CandidateTile";
+import DashCandidateTiles from "../components/dashView/DashCandidateTiles";
 
 const dashBoardTest = {
   newCandidateNumber: 14,
@@ -81,72 +82,7 @@ const DashBoard = () => {
           <div className={"grid-start-14"}></div>
         </div>
         <div className={"py-4"}>
-          <CandidateTile
-            starStatus={dashBoardTest.starStatus}
-            userID={dashBoardTest.userID}
-            positionTitle={dashBoardTest.positionTitle}
-            salaryRange={dashBoardTest.salaryRange}
-            jobLocation={dashBoardTest.jobLocation}
-            companyLogo={dashBoardTest.companyLogo}
-            numEmployees={dashBoardTest.numEmployees}
-            companyName={dashBoardTest.companyName}
-            stageInterview={dashBoardTest.stageInterview}
-            stageNumber={dashBoardTest.stageNumber}
-            pastPosition1={dashBoardTest.pastIndustry1}
-            pastIndustry1={dashBoardTest.pastIndustry1}
-            standOutSkill1={dashBoardTest.standOutSkill1}
-          />
-        </div>
-        <div className={"py-4"}>
-          <CandidateTile
-            starStatus={dashBoardTest.starStatus}
-            userID={dashBoardTest.userID}
-            positionTitle={dashBoardTest.positionTitle}
-            salaryRange={dashBoardTest.salaryRange}
-            jobLocation={dashBoardTest.jobLocation}
-            companyLogo={dashBoardTest.companyLogo}
-            numEmployees={dashBoardTest.numEmployees}
-            companyName={dashBoardTest.companyName}
-            stageInterview={dashBoardTest.stageInterview}
-            stageNumber={dashBoardTest.stageNumber}
-            pastPosition1={dashBoardTest.pastIndustry1}
-            pastIndustry1={dashBoardTest.pastIndustry1}
-            standOutSkill1={dashBoardTest.standOutSkill1}
-          />
-        </div>
-        <div className={"py-4"}>
-          <CandidateTile
-            starStatus={dashBoardTest.starStatus}
-            userID={dashBoardTest.userID}
-            positionTitle={dashBoardTest.positionTitle}
-            salaryRange={dashBoardTest.salaryRange}
-            jobLocation={dashBoardTest.jobLocation}
-            companyLogo={dashBoardTest.companyLogo}
-            numEmployees={dashBoardTest.numEmployees}
-            companyName={dashBoardTest.companyName}
-            stageInterview={dashBoardTest.stageInterview}
-            stageNumber={dashBoardTest.stageNumber}
-            pastPosition1={dashBoardTest.pastIndustry1}
-            pastIndustry1={dashBoardTest.pastIndustry1}
-            standOutSkill1={dashBoardTest.standOutSkill1}
-          />
-        </div>
-        <div className={"py-4"}>
-          <CandidateTile
-            starStatus={dashBoardTest.starStatus}
-            userID={dashBoardTest.userID}
-            positionTitle={dashBoardTest.positionTitle}
-            salaryRange={dashBoardTest.salaryRange}
-            jobLocation={dashBoardTest.jobLocation}
-            companyLogo={dashBoardTest.companyLogo}
-            numEmployees={dashBoardTest.numEmployees}
-            companyName={dashBoardTest.companyName}
-            stageInterview={dashBoardTest.stageInterview}
-            stageNumber={dashBoardTest.stageNumber}
-            pastPosition1={dashBoardTest.pastIndustry1}
-            pastIndustry1={dashBoardTest.pastIndustry1}
-            standOutSkill1={dashBoardTest.standOutSkill1}
-          />
+          <DashCandidateTiles />
         </div>
       </div>
     </div>
