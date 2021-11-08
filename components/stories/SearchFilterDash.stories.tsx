@@ -4,7 +4,7 @@ import { Story, Meta } from "@storybook/react";
 import {
   SearchFilterDash,
   SearchFilterDashProps,
-} from "../dashView/SearchFilterDash";
+} from "../ui/searchFilterDash";
 
 export default {
   title: "UI/SearchFilter",

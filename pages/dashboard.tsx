@@ -1,11 +1,12 @@
 import React from "react";
-import UserIdBar from "../components/UserIdBar";
+
 import WelcomeComp from "../components/dashView/WelcomeComp";
 import VouchCTA from "../components/dashView/VouchCTA";
 import { CandidateCount } from "../components/dashView/CandidateCount";
 import { SearchFilterDash } from "../components/dashView/searchFilterDash";
 import { CandidateTile } from "../components/dashView/CandidateTile";
 import DashCandidateTiles from "../components/dashView/DashCandidateTiles";
+import UserIdBar from "../components/dashView/UserIdBar";
 
 const dashBoardTest = {
   newCandidateNumber: 14,
@@ -32,6 +33,10 @@ const dashBoardTest = {
   standOutSkill1: "Strong Communication",
 };
 
+const dbData = {
+  numbersReferred: 3,
+  numberThanks: 2,
+};
 const DashBoard = () => {
   return (
     <div>

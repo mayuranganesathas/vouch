@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import UserIdBar from "../UserIdBar";
+import UserIdBar from "../dashView/UserIdBar";
 
 export default {
   title: "Dashboard/UserIdBar",

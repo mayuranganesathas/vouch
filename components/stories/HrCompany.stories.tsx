@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import HrCompanyProfile, {
   HrCompanyProfileProps,
-} from "../ui/HrCompanyProfile";
+} from "../dashView/HrCompanyProfile";
 
 export default {
   title: "DashBoard/HRCompanyProfile",

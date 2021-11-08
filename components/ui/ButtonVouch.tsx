@@ -61,7 +61,7 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
       type="button"
       className={`bg-gradient-to-b px-8 py-1 text-red font-bold ${buttonSize}
       ${disabled ? "bg-gray-400 opacity-25" : backgroundStyles}
-      ${disabled ? "rounded-none" : buttonStyles}
+      ${disabled ? "rounded" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}
       ${disabled ? "cursor-default" : "cursor-pointer"}
       `}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import UserProfile, { UserProfileProps } from "../ui/UserProfile";
+import UserProfile, { UserProfileProps } from "../dashView/UserProfile";
 
 export default {
   title: "Dashboard/UserProfile",

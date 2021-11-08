@@ -1,6 +1,6 @@
 import React from "react";
-import UserProfile from "./ui/UserProfile";
-import HrCompanyProfile from "./ui/HrCompanyProfile";
+import UserProfile from "./UserProfile";
+import HrCompanyProfile from "./HrCompanyProfile";
 
 const UserIdBarTest = {
   userHrCompanyName: "Google HQ",
