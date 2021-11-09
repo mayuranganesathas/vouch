@@ -3,7 +3,7 @@ import React from "react";
 import WelcomeComp from "../components/dashView/WelcomeComp";
 import VouchCTA from "../components/dashView/VouchCTA";
 import { CandidateCount } from "../components/dashView/CandidateCount";
-import { SearchFilterDash } from "../components/dashView/searchFilterDash";
+import { SearchFilterDash } from "../components/dashView/SearchFilterDash";
 import { CandidateTile } from "../components/dashView/CandidateTile";
 import DashCandidateTiles from "../components/dashView/DashCandidateTiles";
 import UserIdBar from "../components/dashView/UserIdBar";

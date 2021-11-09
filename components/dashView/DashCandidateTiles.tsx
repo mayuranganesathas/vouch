@@ -1,6 +1,10 @@
 import React from "react";
 import { CandidateTile } from "./CandidateTile";
 
+export interface DashCandidateTilesProps {
+  DashCandidateArrayData: any[];
+}
+
 const DashCandidateTilesData = {
   starStatus: false,
   userID: 1234,
@@ -17,42 +21,15 @@ const DashCandidateTilesData = {
   standOutSkill1: "Strong Communication",
 };
 
-const DashCandidateTiles = () => {
+const DashCandidateTiles = ({DashCandidateArrayData}:DashCandidateTilesProps) => {
   return (
     <div>
+      <div className={"py-4"}>{
+        {DashCandidateArrayData && DashCandidateArrayData.filter((v,i,a)=> a.indexOf(v) === i).filter((ele) => ele !="").map((ele)=><CandidateTile value={ele}> {ele}</CandidateTile>)}
+      }</div>
       <div className={"py-4"}>
-        <CandidateTile
-          starStatus={DashCandidateTilesData.starStatus}
-          userID={DashCandidateTilesData.userID}
-          positionTitle={DashCandidateTilesData.positionTitle}
-          salaryRange={DashCandidateTilesData.salaryRange}
-          jobLocation={DashCandidateTilesData.jobLocation}
-          companyLogo={DashCandidateTilesData.companyLogo}
-          numEmployees={DashCandidateTilesData.numEmployees}
-          companyName={DashCandidateTilesData.companyName}
-          stageInterview={DashCandidateTilesData.stageInterview}
-          stageNumber={DashCandidateTilesData.stageNumber}
-          pastPosition1={DashCandidateTilesData.pastIndustry1}
-          pastIndustry1={DashCandidateTilesData.pastIndustry1}
-          standOutSkill1={DashCandidateTilesData.standOutSkill1}
-        />
-      </div>
-      <div className={"py-4"}>
-        <CandidateTile
-          starStatus={DashCandidateTilesData.starStatus}
-          userID={DashCandidateTilesData.userID}
-          positionTitle={DashCandidateTilesData.positionTitle}
-          salaryRange={DashCandidateTilesData.salaryRange}
-          jobLocation={DashCandidateTilesData.jobLocation}
-          companyLogo={DashCandidateTilesData.companyLogo}
-          numEmployees={DashCandidateTilesData.numEmployees}
-          companyName={DashCandidateTilesData.companyName}
-          stageInterview={DashCandidateTilesData.stageInterview}
-          stageNumber={DashCandidateTilesData.stageNumber}
-          pastPosition1={DashCandidateTilesData.pastIndustry1}
-          pastIndustry1={DashCandidateTilesData.pastIndustry1}
-          standOutSkill1={DashCandidateTilesData.standOutSkill1}
-        />
+        
+        
       </div>
       <div className={"py-4"}>
         <CandidateTile
