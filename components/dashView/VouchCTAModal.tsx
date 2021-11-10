@@ -5,6 +5,7 @@ import { ButtonVouch } from "../ui/ButtonVouch";
 import { SearchFilterDash } from "../ui/searchFilterDash";
 import StandOutSkill from "../ui/StandOutSkill";
 import { UPSERT_VOUCH_CANDIDATE } from "../../graphql/UPSERT_VOUCHEE_FORM";
+import { ApolloClient, InMemoryCache, useMutation } from "@apollo/client";
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
 export interface VouchCTAModalProps {
@@ -28,7 +29,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   ];
   const [formVaildation, setFormValidation] = useState(false);
   //authentication passes hrID
-  const [hrId, setHrId] = useState("tester");
+  const [hrId, setHrId] = useState("1231fadfda");
   const [email, setEmail] = useState("");
   const [positionTitle, setPositionTitle] = useState(dropDownArray[0]);
   const [interviewStage, setInterviewStage] = useState(dropDownArray[0]);
@@ -41,7 +42,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   const [standOutSkill4, setStandOutSkill4] = useState("");
   const [standOutSkill5, setStandOutSkill5] = useState("");
   //TODO Form awaiting remote position
-  const [remote, setRemote] = useState("remote");
+  const [locationType, setLocationType] = useState("remote");
 
   const clearFormState = () => {
     setEmail("");
@@ -56,45 +57,53 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     setStandOutSkill4("");
     setStandOutSkill5("");
   };
-  const initializeVouchCandidate = async () => {
-    const url = "https://zerglings-1.hasura.app/v1/graphql";
-    const uniqueCandidate = "test34534";
-    const hrIdAuth = "test64356";
-    const graphqlReq = {
-      query: UPSERT_VOUCH_CANDIDATE,
-      variables: {
-        hrId: hrIdAuth,
-        jobPostingLink: jobPostingLink,
-        positionTitle: positionTitle,
-        positionLevel: positionLevel,
-        interviewStage: interviewStage,
-        salaryRange: salaryRange,
-        standOutSkill1: standOutSkill1,
-        standOutSkill2: standOutSkill2,
-        standOutSkill3: standOutSkill3,
-        standOutSkill4: standOutSkill4,
-        standOutSkill5: standOutSkill5,
-        candidateId: uniqueCandidate,
-        locationType: remote,
-      },
-    };
 
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET,
+  //replace with HR authentication
+
+  const [initializeVouchCandidate, { data, loading, error }] = useMutation(
+    UPSERT_VOUCH_CANDIDATE,
+
+    {
+      variables: {
+        hrId: "incompleteForm",
+        jobPostingLink: "incompleteField",
+        locationType: "incompleteField",
+        positionLevel: "incompleteField",
+        positionTitle: "incompleteField",
+        salaryRange: "incompleteField",
+        stageOfInterview: "incompleteField",
+        standOutSkill1: "incompleteField",
+        standOutSkill2: "incompleteField",
+        standOutSkill3: "incompleteField",
+        standOutSkill4: "incompleteField",
+        standOutSkill5: "incompleteField",
       },
-      body: JSON.stringify(graphqlReq),
-    });
-  };
+    }
+  );
 
   const emailChecker = (e) => {
     setEmail(e);
   };
 
   const submitForm = async () => {
-    await initializeVouchCandidate();
+    initializeVouchCandidate({
+      variables: {
+        hrId: hrId,
+        jobPostingLink: jobPostingLink,
+        locationType: locationType,
+        positionLevel: positionLevel,
+        positionTitle: positionTitle,
+        salaryRange: salaryRange,
+        stageOfInterview: interviewStage,
+        standOutSkill1: standOutSkill1,
+        standOutSkill2: standOutSkill2,
+        standOutSkill3: standOutSkill3,
+        standOutSkill4: standOutSkill4,
+        standOutSkill5: standOutSkill5,
+      },
+    });
+    if (loading) return "Submitting...";
+    if (error) return `Submission error! ${error.message}`;
     clearFormState();
 
     //send email to candidate
