@@ -18,6 +18,22 @@ const dashBoardTest = {
   lastCandidateCount: 5,
   dropDownArray: ["software eng", "mayu's butthole", "brian's face"],
 
+  DashCandidateArrayData: [
+    false,
+    1234,
+    "Sr.Backend Dev",
+    "110k-140k $/Yr",
+    "Toronto | Ontario",
+    "./images/Google-logo.png",
+    "5000+",
+    "Google Ltd",
+    "Final Stage",
+    "(5 of 5)",
+    "Director of Eng.",
+    "Finance",
+    "Strong Communication",
+  ],
+
   starStatus: false,
   userID: 1234,
   positionTitle: "Sr. Backend Dev",
@@ -87,7 +103,7 @@ const DashBoard = () => {
           <div className={"grid-start-14"}></div>
         </div>
         <div className={"py-4"}>
-          <DashCandidateTiles />
+          <DashCandidateTiles DashCandidateArrayData={DashCandidateArrayData} />
         </div>
       </div>
     </div>
