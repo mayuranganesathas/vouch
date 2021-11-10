@@ -4,6 +4,7 @@ import { XIcon } from "@heroicons/react/solid";
 import { ButtonVouch } from "../ui/ButtonVouch";
 import { SearchFilterDash } from "../ui/searchFilterDash";
 import StandOutSkill from "../ui/StandOutSkill";
+import { UPSERT_VOUCH_CANDIDATE } from "../../graphql/UPSERT_VOUCHEE_FORM";
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
 export interface VouchCTAModalProps {
@@ -11,34 +12,13 @@ export interface VouchCTAModalProps {
   closeModal: () => void;
 }
 
+//TODO FORM VALIDATION COMPLETION
+// SEND EMAIL
+// REMOTE POSITION QUESTION
+//PASSING HRID AUTHENTICATION
+//EMAIL INPUT VALIDATOR
+
 const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
-  //   const customStyles = {
-  //     content: {
-  //       top: "50%",
-  //       left: "75%",
-  //       right: "auto",
-  //       bottom: "auto",
-  //       marginRight: "-50%",
-  //       transform: "translate(-80%, -50%)",
-  //     },
-  //     overlay: {
-  //       outerWidth: 200,
-  //     },
-  //   };
-
-  const [formVaildation, setFormValidation] = useState(false);
-  const [email, setEmail] = useState("");
-  const [positionTitle, setPositionTitle] = useState("");
-  const [interviewStage, setInterviewStage] = useState("");
-  const [positionLevel, setPositionLevel] = useState("");
-  const [salaryRange, setSalaryRange] = useState("");
-  const [jobPostingLink, setJobPostingLink] = useState("");
-  const [standOutSkill1, setStandOutSkill1] = useState("");
-  const [standOutSkill2, setStandOutSkill2] = useState("");
-  const [standOutSkill3, setStandOutSkill3] = useState("");
-  const [standOutSkill4, setStandOutSkill4] = useState("");
-  const [standOutSkill5, setStandOutSkill5] = useState("");
-
   const dropDownArray = [
     "test1231231",
     "test2123123",
@@ -46,15 +26,80 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     "test4123123",
     "test512312231",
   ];
-  //replace with DB Call
-  const emailChecker = () => {
-    //toDO Form validation, check email input to see if it includes .com / or .ca or .in etc.
+  const [formVaildation, setFormValidation] = useState(false);
+  //authentication passes hrID
+  const [hrId, setHrId] = useState("tester");
+  const [email, setEmail] = useState("");
+  const [positionTitle, setPositionTitle] = useState(dropDownArray[0]);
+  const [interviewStage, setInterviewStage] = useState(dropDownArray[0]);
+  const [positionLevel, setPositionLevel] = useState(dropDownArray[0]);
+  const [salaryRange, setSalaryRange] = useState(dropDownArray[0]);
+  const [jobPostingLink, setJobPostingLink] = useState("");
+  const [standOutSkill1, setStandOutSkill1] = useState("");
+  const [standOutSkill2, setStandOutSkill2] = useState("");
+  const [standOutSkill3, setStandOutSkill3] = useState("");
+  const [standOutSkill4, setStandOutSkill4] = useState("");
+  const [standOutSkill5, setStandOutSkill5] = useState("");
+  //TODO Form awaiting remote position
+  const [remote, setRemote] = useState("remote");
+
+  const clearFormState = () => {
+    setEmail("");
+    setPositionTitle(dropDownArray[0]);
+    setPositionLevel(dropDownArray[0]);
+    setSalaryRange(dropDownArray[0]);
+    setInterviewStage(dropDownArray[0]);
+    setJobPostingLink("");
+    setStandOutSkill1("");
+    setStandOutSkill2("");
+    setStandOutSkill3("");
+    setStandOutSkill4("");
+    setStandOutSkill5("");
+  };
+  const initializeVouchCandidate = async () => {
+    const url = "https://zerglings-1.hasura.app/v1/graphql";
+    const uniqueCandidate = "test34534";
+    const hrIdAuth = "test64356";
+    const graphqlReq = {
+      query: UPSERT_VOUCH_CANDIDATE,
+      variables: {
+        hrId: hrIdAuth,
+        jobPostingLink: jobPostingLink,
+        positionTitle: positionTitle,
+        positionLevel: positionLevel,
+        interviewStage: interviewStage,
+        salaryRange: salaryRange,
+        standOutSkill1: standOutSkill1,
+        standOutSkill2: standOutSkill2,
+        standOutSkill3: standOutSkill3,
+        standOutSkill4: standOutSkill4,
+        standOutSkill5: standOutSkill5,
+        candidateId: uniqueCandidate,
+        locationType: remote,
+      },
+    };
+
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET,
+      },
+      body: JSON.stringify(graphqlReq),
+    });
   };
 
-  const submitForm = () => {
-    //post to db
-    //clear states to 0
+  const emailChecker = (e) => {
+    setEmail(e);
+  };
+
+  const submitForm = async () => {
+    await initializeVouchCandidate();
+    clearFormState();
+
     //send email to candidate
+    console.log("test");
+    closeModal();
   };
 
   return (
@@ -63,9 +108,8 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         className=" w-min h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto h-min absolute right-0"
-        //     overlayClassName="Overlay
-        // bg-gray-100"
         contentLabel="Test Name"
+        ariaHideApp={false}
         aria={{
           labelledby: "heading",
           describedby: "full_description",
@@ -82,7 +126,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   type="text"
                   placeholder=" Enter Candidate Email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => emailChecker(e.target.value)}
                 ></input>
               </div>
             </div>
@@ -202,23 +246,8 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
               onClick={submitForm}
               buttonType="rounded"
               label="Refer Candidate!"
-              disabled={formVaildation ? false : true}
+              disabled={false}
             />
-            {/* {setFormValidation(
-              email.length > 0 &&
-                positionTitle.length > 0 &&
-                interviewStage.length > 0 &&
-                positionLevel.length > 0 &&
-                salaryRange.length > 0 &&
-                jobPostingLink.length > 0 &&
-                (standOutSkill2.length > 0 ||
-                  standOutSkill3.length > 0 ||
-                  standOutSkill4.length > 0 ||
-                  standOutSkill5.length > 0 ||
-                  standOutSkill1.length > 0)
-                ? true
-                : false
-            )} */}
           </div>
         </div>
       </Modal>{" "}
