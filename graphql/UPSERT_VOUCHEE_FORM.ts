@@ -3,8 +3,6 @@ import { gql } from "@apollo/client";
 export const UPSERT_VOUCH_CANDIDATE = gql`
   mutation UPSERT_VOUCH_CANDIDATE(
     $hrId: String!
-    $jobPostingLink: String = ""
-    $locationType: String = ""
     $positionLevel: String = ""
     $positionTitle: String = ""
     $salaryRange: String = ""
@@ -18,8 +16,6 @@ export const UPSERT_VOUCH_CANDIDATE = gql`
     insert_hr_voucher_metadata(
       objects: {
         hrId: $hrId
-        jobPostingLink: $jobPostingLink
-        locationType: $locationType
         positionLevel: $positionLevel
         positionTitle: $positionTitle
         salaryRange: $salaryRange

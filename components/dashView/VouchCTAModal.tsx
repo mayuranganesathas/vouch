@@ -12,11 +12,14 @@ export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
 }
+//TODO
 
+// **Auth
+//PASSING HRID AUTHENTICATION
+
+//** UX */
 //TODO FORM VALIDATION COMPLETION
 // SEND EMAIL
-// REMOTE POSITION QUESTION
-//PASSING HRID AUTHENTICATION
 //EMAIL INPUT VALIDATOR
 
 const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
@@ -27,22 +30,18 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     "test4123123",
     "test512312231",
   ];
-  const [formVaildation, setFormValidation] = useState(false);
   //authentication passes hrID
-  const [hrId, setHrId] = useState("1231fadfda");
+  const [hrId, setHrId] = useState("fieldtest1");
   const [email, setEmail] = useState("");
-  const [positionTitle, setPositionTitle] = useState(dropDownArray[0]);
-  const [interviewStage, setInterviewStage] = useState(dropDownArray[0]);
-  const [positionLevel, setPositionLevel] = useState(dropDownArray[0]);
-  const [salaryRange, setSalaryRange] = useState(dropDownArray[0]);
-  const [jobPostingLink, setJobPostingLink] = useState("");
+  const [positionTitle, setPositionTitle] = useState("");
+  const [interviewStage, setInterviewStage] = useState("");
+  const [positionLevel, setPositionLevel] = useState("");
+  const [salaryRange, setSalaryRange] = useState("");
   const [standOutSkill1, setStandOutSkill1] = useState("");
   const [standOutSkill2, setStandOutSkill2] = useState("");
   const [standOutSkill3, setStandOutSkill3] = useState("");
   const [standOutSkill4, setStandOutSkill4] = useState("");
   const [standOutSkill5, setStandOutSkill5] = useState("");
-  //TODO Form awaiting remote position
-  const [locationType, setLocationType] = useState("remote");
 
   const clearFormState = () => {
     setEmail("");
@@ -50,7 +49,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     setPositionLevel(dropDownArray[0]);
     setSalaryRange(dropDownArray[0]);
     setInterviewStage(dropDownArray[0]);
-    setJobPostingLink("");
     setStandOutSkill1("");
     setStandOutSkill2("");
     setStandOutSkill3("");
@@ -66,8 +64,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     {
       variables: {
         hrId: "incompleteForm",
-        jobPostingLink: "incompleteField",
-        locationType: "incompleteField",
         positionLevel: "incompleteField",
         positionTitle: "incompleteField",
         salaryRange: "incompleteField",
@@ -89,8 +85,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     initializeVouchCandidate({
       variables: {
         hrId: hrId,
-        jobPostingLink: jobPostingLink,
-        locationType: locationType,
         positionLevel: positionLevel,
         positionTitle: positionTitle,
         salaryRange: salaryRange,
@@ -105,10 +99,19 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     if (loading) return "Submitting...";
     if (error) return `Submission error! ${error.message}`;
     clearFormState();
-
     //send email to candidate
-    console.log("test");
     closeModal();
+  };
+
+  const formValidation = () => {
+    const hrIdValidator = hrId;
+    const positionLevelValidator = positionLevel;
+    const standOutSkill1Validator = standOutSkill1;
+
+    if (hrIdValidator && positionLevelValidator && standOutSkill1Validator) {
+      return false;
+    }
+    return true;
   };
 
   return (
@@ -206,15 +209,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
               </div>
             </div>
           </div>
-          <div className="py-4">
-            <div className="text-xs py-1">Link to job Posting</div>{" "}
-            <input
-              placeholder=" Job Posting"
-              className="border-2 w-60 rounded-lg text-sm h-5"
-              value={jobPostingLink}
-              onChange={(e) => setJobPostingLink(e.target.value)}
-            />
-          </div>
+
           <div className="py-4">
             <div className="text-bold">Stand Out Skills</div>
             <div className="text-gray-400 text-xs">
@@ -255,7 +250,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
               onClick={submitForm}
               buttonType="rounded"
               label="Refer Candidate!"
-              disabled={false}
+              disabled={formValidation()}
             />
           </div>
         </div>
