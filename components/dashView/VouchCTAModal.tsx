@@ -45,10 +45,10 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
 
   const clearFormState = () => {
     setEmail("");
-    setPositionTitle(dropDownArray[0]);
-    setPositionLevel(dropDownArray[0]);
-    setSalaryRange(dropDownArray[0]);
-    setInterviewStage(dropDownArray[0]);
+    setPositionTitle("");
+    setPositionLevel("");
+    setSalaryRange("");
+    setInterviewStage("");
     setStandOutSkill1("");
     setStandOutSkill2("");
     setStandOutSkill3("");
@@ -104,11 +104,32 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   };
 
   const formValidation = () => {
-    const hrIdValidator = hrId;
+    const emailValidator = email;
     const positionLevelValidator = positionLevel;
+    const positionTitleValidator = positionTitle;
+    const salaryRangeValidator = salaryRange;
+    const stageOfInterviewValidator = interviewStage;
     const standOutSkill1Validator = standOutSkill1;
+    const standOutSkill2Validator = standOutSkill2;
 
-    if (hrIdValidator && positionLevelValidator && standOutSkill1Validator) {
+    const standOutSkill3Validator = standOutSkill3;
+
+    const standOutSkill4Validator = standOutSkill4;
+
+    const standOutSkill5Validator = standOutSkill5;
+
+    if (
+      positionLevelValidator &&
+      (standOutSkill1Validator ||
+        standOutSkill2Validator ||
+        standOutSkill3Validator ||
+        standOutSkill4Validator ||
+        standOutSkill5Validator) &&
+      emailValidator &&
+      positionTitleValidator &&
+      salaryRangeValidator &&
+      stageOfInterviewValidator
+    ) {
       return false;
     }
     return true;
