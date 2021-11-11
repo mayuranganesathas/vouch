@@ -5,7 +5,9 @@ import { ButtonVouch } from "../ui/ButtonVouch";
 import { SearchFilterDash } from "../ui/searchFilterDash";
 import StandOutSkill from "../ui/StandOutSkill";
 import { UPSERT_VOUCH_CANDIDATE } from "../../graphql/UPSERT_VOUCHEE_FORM";
-import { ApolloClient, InMemoryCache, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
+import axios from "axios";
+
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
 export interface VouchCTAModalProps {
@@ -18,7 +20,6 @@ export interface VouchCTAModalProps {
 //PASSING HRID AUTHENTICATION
 
 //** UX */
-// SEND EMAIL
 //EMAIL INPUT VALIDATOR
 
 const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
@@ -80,6 +81,25 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     setEmail(e);
   };
 
+  const sendEmail = async () => {
+    const res = await fetch("/api/vouchEmailCandidate", {
+      body: JSON.stringify({
+        email: email,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      return;
+    }
+    console.log(email);
+  };
+
   const submitForm = async () => {
     initializeVouchCandidate({
       variables: {
@@ -97,8 +117,9 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     });
     if (loading) return "Submitting...";
     if (error) return `Submission error! ${error.message}`;
+
+    sendEmail();
     clearFormState();
-    //send email to candidate
     closeModal();
   };
 
@@ -130,6 +151,8 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
       stageOfInterviewValidator
     ) {
       return false;
+    } else if (emailValidator.length <= 0) {
+      return true;
     }
     return true;
   };
