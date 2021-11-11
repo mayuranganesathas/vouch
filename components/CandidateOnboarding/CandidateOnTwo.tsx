@@ -69,10 +69,9 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={jobArray}
-              value={setJob1}
+              value={job1}
               onChange={(e) => {
-                const newJob1 = e.target.value;
-                setJob1(newJob1);
+                setJob1(e.target.value);
               }}
               width={"wide-sm"}
             />
