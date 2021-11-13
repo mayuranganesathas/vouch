@@ -78,15 +78,19 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={jobArray}
-              value={setJob2}
-              onChange={(e) => e.target.value}
+              value={job2}
+              onChange={(e) => {
+                setJob2(e.target.value);
+              }}
               width={"wide-sm"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={jobArray}
-              value={setJob3}
-              onChange={(e) => e.target.value}
+              value={job3}
+              onChange={(e) => {
+                setJob3(e.target.value);
+              }}
               width={"wide-sm"}
             />
           </div>
@@ -112,22 +116,28 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={yearArray}
-              value={setYear1}
-              onChange={(e) => e.target.value}
+              value={year1}
+              onChange={(e) => {
+                setYear1(e.target.value);
+              }}
               width={"wide-lg"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={yearArray}
-              value={setYear2}
-              onChange={(e) => e.target.value}
+              value={year2}
+              onChange={(e) => {
+                setYear2(e.target.value);
+              }}
               width={"wide-lg"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={yearArray}
-              value={setYear3}
-              onChange={(e) => e.target.value}
+              value={year3}
+              onChange={(e) => {
+                setYear3(e.target.value);
+              }}
               width={"wide-lg"}
             />
           </div>
@@ -137,22 +147,28 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={industryArray}
-              value={setIndustry1}
-              onChange={(e) => e.target.value}
+              value={industry1}
+              onChange={(e) => {
+                setIndustry1(e.target.value);
+              }}
               width={"wide-lg"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={industryArray}
-              value={setIndustry2}
-              onChange={(e) => e.target.value}
+              value={industry2}
+              onChange={(e) => {
+                setIndustry2(e.target.value);
+              }}
               width={"wide-lg"}
             />
             <SearchFilterDash
               backgroundColour={"white"}
               dropDownArray={industryArray}
-              value={setIndustry3}
-              onChange={(e) => e.target.value}
+              value={industry3}
+              onChange={(e) => {
+                setIndustry3(e.target.value);
+              }}
               width={"wide-lg"}
             />
           </div>
