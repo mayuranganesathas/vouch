@@ -103,7 +103,7 @@ const DashBoard = () => {
           <div className={"grid-start-14"}></div>
         </div>
         <div className={"py-4"}>
-          <DashCandidateTiles DashCandidateArrayData={DashCandidateArrayData} />
+          <DashCandidateTiles />
         </div>
       </div>
     </div>
