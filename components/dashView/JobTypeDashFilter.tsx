@@ -1,8 +1,7 @@
 import React from "react";
-import { SearchFilterDash } from "./searchFilterDash";
+import { SearchFilterDash } from "../ui/searchFilterDash";
 
 const JobTypeDashFilterData = {
-  backgroundColour: "white",
   dropDownArray: ["FrontEnd Dev", "BackEnd Dev", "Product Mgt", "Design"],
 };
 
@@ -18,7 +17,7 @@ const JobTypeDashFilter = ({
   return (
     <div>
       <SearchFilterDash
-        backgroundColour={JobTypeDashFilterData.backgroundColour}
+        backgroundColour="white"
         dropDownArray={JobTypeDashFilterData.dropDownArray}
         value={filterJob}
         onChange={(e) => {
