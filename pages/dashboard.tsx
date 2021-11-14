@@ -3,7 +3,9 @@ import React from "react";
 import WelcomeComp from "../components/dashView/WelcomeComp";
 import VouchCTA from "../components/dashView/VouchCTA";
 import { CandidateCount } from "../components/dashView/CandidateCount";
-import { SearchFilterDash } from "../components/dashView/SearchFilterDash";
+
+import { SearchFilterDash } from "../components/ui/searchFilterDash";
+
 import { CandidateTile } from "../components/dashView/CandidateTile";
 import DashCandidateTiles from "../components/dashView/DashCandidateTiles";
 import UserIdBar from "../components/dashView/UserIdBar";
@@ -87,7 +89,14 @@ const DashBoard = () => {
           <div className={"grid grid-cols-2"}>
             <div className={"col-star-1"}>Filter Referrals: </div>
             <div className={"col-start-2"}>
-              <SearchFilterDash dropDownArray={dashBoardTest.dropDownArray} />
+              <SearchFilterDash
+                backgroundColour="white"
+                dropDownArray={dashBoardTest.dropDownArray}
+                value="hi"
+                onChange={(e) => {
+                  e.target.value;
+                }}
+              />
             </div>
           </div>
         </div>
