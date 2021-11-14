@@ -1,14 +1,12 @@
 import React from "react";
-
+import { useState } from "react";
 import WelcomeComp from "../components/dashView/WelcomeComp";
 import VouchCTA from "../components/dashView/VouchCTA";
 import { CandidateCount } from "../components/dashView/CandidateCount";
 
-import { SearchFilterDash } from "../components/ui/searchFilterDash";
-
-import { CandidateTile } from "../components/dashView/CandidateTile";
 import DashCandidateTiles from "../components/dashView/DashCandidateTiles";
 import UserIdBar from "../components/dashView/UserIdBar";
+import JobTypeDashFilter from "../components/dashView/JobTypeDashFilter";
 
 const dashBoardTest = {
   newCandidateNumber: 14,
@@ -55,7 +53,10 @@ const dbData = {
   numbersReferred: 3,
   numberThanks: 2,
 };
+
 const DashBoard = () => {
+  const [filterJob, setFilterJob] = useState("");
+
   return (
     <div>
       <div className={"pt-4 px-20"}>
@@ -89,13 +90,9 @@ const DashBoard = () => {
           <div className={"grid grid-cols-2"}>
             <div className={"col-star-1"}>Filter Referrals: </div>
             <div className={"col-start-2"}>
-              <SearchFilterDash
-                backgroundColour="white"
-                dropDownArray={dashBoardTest.dropDownArray}
-                value="hi"
-                onChange={(e) => {
-                  e.target.value;
-                }}
+              <JobTypeDashFilter
+                filterJob={filterJob}
+                setFilterJob={setFilterJob}
               />
             </div>
           </div>
