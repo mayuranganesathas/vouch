@@ -2,8 +2,8 @@ import React from "react";
 
 export interface SearchFilterDashProps {
   backgroundColour: "VouchGreen" | "white";
-  dropDownArray: any[];
-  value: any;
+  dropDownArray: string[];
+  value: string;
   onChange: (e) => void;
   width?: "wide-md" | "wide-lg" | "wide-sm";
 }
