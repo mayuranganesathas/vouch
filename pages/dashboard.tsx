@@ -69,17 +69,7 @@ const DashBoard = (data) => {
             lastCandidateCount={dashBoardTest.lastCandidateCount}
           />
         </div>
-        <div className={"grid justify-items-end col-start-2 pr-40 py-8"}>
-          <div className={"grid grid-cols-2"}>
-            <div className={"col-star-1"}>Filter Referrals: </div>
-            <div className={"col-start-2"}>
-              <JobTypeDashFilter
-                filterJob={filterJob}
-                setFilterJob={setFilterJob}
-              />
-            </div>
-          </div>
-        </div>
+        <div className={"grid justify-items-end col-start-2 pr-40 py-8"}></div>
       </div>
       <div className={"bg-gray-50 px-20"}>
         <div className={"grid grid-cols-14 gap-4 bg-gray-200 grid-flow-col"}>
