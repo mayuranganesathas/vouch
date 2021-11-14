@@ -8,18 +8,21 @@ const JobTypeDashFilterData = {
 
 export interface JobTypeDashFilterProps {
   filterJob: string;
-  setFilterJob: (filterJob: string)=> void;
+  setFilterJob: (filterJob: string) => void;
 }
 
-const JobTypeDashFilter = () => {
+const JobTypeDashFilter = ({
+  filterJob,
+  setFilterJob,
+}: JobTypeDashFilterProps) => {
   return (
     <div>
       <SearchFilterDash
         backgroundColour={JobTypeDashFilterData.backgroundColour}
         dropDownArray={JobTypeDashFilterData.dropDownArray}
-        value="hi"
+        value={filterJob}
         onChange={(e) => {
-          e.target.value;
+          setFilterJob(e.target.value);
         }}
       />
     </div>
