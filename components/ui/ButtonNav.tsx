@@ -1,8 +1,8 @@
 import React from "react";
 export interface ButtonNavProps {
-  backgroundColour: "OnClick" | "white";
+  backgroundColour: string;
   buttonType: "rounded" | "square";
-  textColour: "black" | "VouchGreen";
+  textColour: string;
   label: string;
   disabled?: boolean;
   onClick: () => void;
@@ -64,13 +64,13 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       disabled={disabled}
       type="button"
       className={`bg-gradient-to-b text-red font-bold ${buttonSize}
-      ${disabled ? "bg-gray-100" : backgroundStyles}
+      ${disabled ? "bg-gray-100" : backgroundColour}
       ${disabled ? "square" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}
       ${disabled ? "cursor-default" : "cursor-pointer"}
       `}
     >
-      <div className={textStyles}>{label} </div>
+      <div className={textColour}>{label} </div>
     </button>
   );
 };

@@ -3,11 +3,6 @@ import UserProfile from "./UserProfile";
 import HrCompanyProfile from "./HrCompanyProfile";
 import { ButtonNav } from "../ui/ButtonNav";
 
-export interface UserIdBarProps {
-  Home: boolean;
-  setHome: (Home: boolean) => false;
-}
-
 const HomeData = {
   backgroundColour: "white",
   textColour: "black",
@@ -23,9 +18,27 @@ const UserIdBarTest = {
   userHrPosition: "HR Lead",
 };
 
-const UserIdBar = ({ Home, setHome }: UserIdBarProps) => {
+const UserIdBar = (
+  homeActive: boolean,
+  setHomeActive: (homeActive: boolean) => true,
+  favouriteActive: boolean,
+  setFavouriteActive: (favouriteActive: boolean) => true,
+  notNowActive: boolean,
+  setNotNowActive: (notNowActive: boolean) => true,
+  connectedActive: boolean,
+  setConnectedActive: (connectedActive: boolean) => true
+) => {
   const HomeActive = () => {
-    setHome(true);
+    setHomeActive(false);
+  };
+  const FavouriteActive = () => {
+    setFavouriteActive(false);
+  };
+  const NotNowActive = () => {
+    setNotNowActive(false);
+  };
+  const ConnectedActive = () => {
+    setConnectedActive(false);
   };
   return (
     <div className="grid grid-cols-14 grid-flow-col">
@@ -39,20 +52,49 @@ const UserIdBar = ({ Home, setHome }: UserIdBarProps) => {
       </div>
       <div className="grid-start-4 grid-end-5 flex items-center">
         <ButtonNav
-          backgroundColour={"OnClick"}
+          backgroundColour={`${homeActive ? "white" : "onClick"}`}
           buttonType={"square"}
-          textColour="VouchGreen"
+          textColour={`${homeActive ? "black" : "VouchGreen"}`}
           label={"Home"}
           disabled={false}
           onClick={HomeActive}
           buttonWidth={"wide"}
         />{" "}
       </div>
-      <div className="grid-start-5 grid-end-6 flex items-center">Favourite</div>
-      <div className="grid-start-6 grid-end-7 flex items-center"> Not Now</div>
-      <div className="grid-start-7 grid-end-8 flex items-center">
+      <div className="grid-start-5 grid-end-6 flex items-center">
         {" "}
-        Connected{" "}
+        <ButtonNav
+          backgroundColour={`${favouriteActive ? "white" : "onClick"}`}
+          buttonType={"square"}
+          textColour={`${favouriteActive ? "black" : "VouchGreen"}`}
+          label={"Favourite"}
+          disabled={false}
+          onClick={FavouriteActive}
+          buttonWidth={"wide"}
+        />
+      </div>
+      <div className="grid-start-6 grid-end-7 flex items-center">
+        {" "}
+        <ButtonNav
+          backgroundColour={`${notNowActive ? "white" : "onClick"}`}
+          buttonType={"square"}
+          textColour={`${notNowActive ? "black" : "VouchGreen"}`}
+          label={"Not Now"}
+          disabled={false}
+          onClick={NotNowActive}
+          buttonWidth={"wide"}
+        />
+      </div>
+      <div className="grid-start-7 grid-end-8 flex items-center">
+        <ButtonNav
+          backgroundColour={`${connectedActive ? "white" : "onClick"}`}
+          buttonType={"square"}
+          textColour={`${connectedActive ? "black" : "VouchGreen"}`}
+          label={"Connected"}
+          disabled={false}
+          onClick={ConnectedActive}
+          buttonWidth={"wide"}
+        />
       </div>
       <div className="grid-start-8 grid-end-9"></div>
       <div className="grid-start-9 grid-end-10"></div>
