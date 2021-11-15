@@ -4,6 +4,8 @@ import { CandidateOnOne } from "../components/CandidateOnboarding/CandidateOnOne
 import { CandidateOnTwo } from "../components/CandidateOnboarding/CandidateOnTwo";
 import { CandidateOnThree } from "../components/CandidateOnboarding/CandidateOnThree";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
+import { useMutation } from "@apollo/client";
+import { UPSERT_CANDIDATE_METADATA } from "../graphql/UPSERT_CANDIDATE_METADATA";
 
 export default function CandidateOn(props) {
   enum STAGE {
@@ -22,8 +24,14 @@ export default function CandidateOn(props) {
   const [industry1, setIndustry1] = useState("");
   const [industry2, setIndustry2] = useState("");
   const [industry3, setIndustry3] = useState("");
-  const [jobArray, setJobArray] = useState(["jobA", "jobB", "jobC"]);
+  const [jobArray, setJobArray] = useState([
+    "Select Job",
+    "jobA",
+    "jobB",
+    "jobC",
+  ]);
   const [yearArray, setYearArray] = useState([
+    "Select Year",
     "10+",
     "5-9",
     "3-5",
@@ -31,12 +39,85 @@ export default function CandidateOn(props) {
     "0-1",
   ]);
   const [industryArray, setIndustryArray] = useState([
+    "Select Industry",
     "Finance",
     "Gaming",
     "SaaS",
     "Space",
   ]);
 
+  const clearFormState = () => {
+    setJob1("");
+    setJob2("");
+    setJob3("");
+    setYear1("");
+    setYear2("");
+    setYear3("");
+    setIndustry1("");
+    setIndustry2("");
+    setIndustry3("");
+    setJobArray(["jobA"]);
+    setYearArray(["10+"]);
+    setIndustryArray(["Finance"]);
+  };
+
+  const [initializeCandidateMetaData, { data, loading, error }] = useMutation(
+    UPSERT_CANDIDATE_METADATA,
+
+    {
+      variables: {
+        positionTitle1: "incompleteField",
+        positionTitle2: "incompleteField",
+        positionTitle3: "incompleteField",
+        industry1: "incompleteField",
+        industry2: "incompleteField",
+        industry3: "incompleteField",
+      },
+    }
+  );
+  const formValidator = () => {
+    const job1Validator = job1;
+    const job2Validator = job2;
+    const job3Validator = job3;
+    const year1Validator = year1;
+    const year2Validator = year2;
+    const year3Validator = year3;
+    const industry1Validator = industry1;
+    const industry2Validator = industry2;
+    const industry3Validator = industry3;
+    const jobArrayValidator = jobArray;
+    const yearArrayValidator = yearArray;
+    const industryArrayValidator = industryArray;
+
+    if (
+      job1Validator &&
+      job2Validator &&
+      year1Validator &&
+      year2Validator &&
+      industry1Validator &&
+      industry2Validator
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const onSubmit = () => {
+    nextStage();
+    initializeCandidateMetaData({
+      variables: {
+        positionTitle1: job1,
+        positionTitle2: job2,
+        positionTitle3: job3,
+        industry1: industry1,
+        industry2: industry2,
+        industry3: industry3,
+      },
+    });
+    if (loading) return "Submitting...";
+    if (error) return `Submission error! ${error.message}`;
+    clearFormState();
+  };
   const previousStage = () => {
     if (stage > STAGE.CandidateOnOne) {
       setStage(stage - 1);
@@ -54,18 +135,8 @@ export default function CandidateOn(props) {
       return (
         <div>
           {" "}
-          <CandidateOnOne />
-          <div className={"flex justify-center items-center gap-4 pt-4"}>
-            {" "}
-            <ButtonVouch
-              backgroundColour={"VouchGreen"}
-              buttonType={"rounded"}
-              textColour={"white"}
-              label={"Yes, Sign me up!"}
-              disabled={false}
-              onClick={nextStage}
-            />
-          </div>
+          <CandidateOnOne onClick={nextStage} />
+          <div className={"flex justify-center items-center gap-4 pt-4"}> </div>
         </div>
       );
     } else if (stage == STAGE.CandidateOnTwo) {
@@ -96,52 +167,16 @@ export default function CandidateOn(props) {
             setYearArray={setYearArray}
             industryArray={industryArray}
             setIndustryArray={setIndustryArray}
+            previousStage={previousStage}
+            completeForm={onSubmit}
+            formValidation={formValidator}
           />
-
-          <div className={"flex justify-center items-center gap-4 pt-4"}>
-            {" "}
-            <ButtonVouch
-              backgroundColour={"VouchGreen"}
-              buttonType={"rounded"}
-              textColour={"white"}
-              label={"Previous"}
-              disabled={false}
-              onClick={previousStage}
-            />
-            <ButtonVouch
-              backgroundColour={"VouchGreen"}
-              buttonType={"rounded"}
-              textColour={"white"}
-              label={"Confirm Profile"}
-              disabled={false}
-              onClick={nextStage}
-            />
-          </div>
         </div>
       );
     } else if (stage == STAGE.CandidateOnThree) {
       return (
         <div>
           <CandidateOnThree />
-          <div className={"flex justify-center items-center gap-4 pt-4"}>
-            {" "}
-            <ButtonVouch
-              backgroundColour={"VouchGreen"}
-              buttonType={"rounded"}
-              textColour={"white"}
-              label={"Previous"}
-              disabled={false}
-              onClick={previousStage}
-            />
-            <ButtonVouch
-              backgroundColour={"VouchGreen"}
-              buttonType={"rounded"}
-              textColour={"white"}
-              label={"Yes, Sign me up!"}
-              disabled={false}
-              onClick={nextStage}
-            />
-          </div>
         </div>
       );
     }
