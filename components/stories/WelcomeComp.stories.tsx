@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import WelcomeComp, { WelcomeCompProps } from "./WelcomeComp";
+import WelcomeComp, { WelcomeCompProps } from "../dashView/WelcomeComp";
 export default {
   title: "Dashboard/WelcomeComp",
   component: WelcomeComp,
