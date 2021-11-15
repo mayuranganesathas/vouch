@@ -4,27 +4,24 @@ import { XIcon } from "@heroicons/react/solid";
 import { ButtonVouch } from "../ui/ButtonVouch";
 import { SearchFilterDash } from "../ui/searchFilterDash";
 import StandOutSkill from "../ui/StandOutSkill";
+import { UPSERT_VOUCH_CANDIDATE } from "../../graphql/UPSERT_VOUCHEE_FORM";
+import { useMutation } from "@apollo/client";
+
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
 }
+//TODO
+
+// **Auth
+//PASSING HRID AUTHENTICATION
+
+//** UX */
+//EMAIL INPUT VALIDATOR
 
 const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
-  const [formVaildation, setFormValidation] = useState(false);
-  const [email, setEmail] = useState("");
-  const [positionTitle, setPositionTitle] = useState("");
-  const [interviewStage, setInterviewStage] = useState("");
-  const [positionLevel, setPositionLevel] = useState("");
-  const [salaryRange, setSalaryRange] = useState("");
-  const [jobPostingLink, setJobPostingLink] = useState("");
-  const [standOutSkill1, setStandOutSkill1] = useState("");
-  const [standOutSkill2, setStandOutSkill2] = useState("");
-  const [standOutSkill3, setStandOutSkill3] = useState("");
-  const [standOutSkill4, setStandOutSkill4] = useState("");
-  const [standOutSkill5, setStandOutSkill5] = useState("");
-
   const dropDownArray = [
     "test1231231",
     "test2123123",
@@ -32,15 +29,131 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     "test4123123",
     "test512312231",
   ];
-  //replace with DB Call
-  const emailChecker = () => {
-    //toDO Form validation, check email input to see if it includes .com / or .ca or .in etc.
+  //authentication passes hrID
+  const [hrId, setHrId] = useState("fieldtest1");
+  const [email, setEmail] = useState("");
+  const [positionTitle, setPositionTitle] = useState("");
+  const [interviewStage, setInterviewStage] = useState("");
+  const [positionLevel, setPositionLevel] = useState("");
+  const [salaryRange, setSalaryRange] = useState("");
+  const [standOutSkill1, setStandOutSkill1] = useState("");
+  const [standOutSkill2, setStandOutSkill2] = useState("");
+  const [standOutSkill3, setStandOutSkill3] = useState("");
+  const [standOutSkill4, setStandOutSkill4] = useState("");
+  const [standOutSkill5, setStandOutSkill5] = useState("");
+
+  const clearFormState = () => {
+    setEmail("");
+    setPositionTitle("");
+    setPositionLevel("");
+    setSalaryRange("");
+    setInterviewStage("");
+    setStandOutSkill1("");
+    setStandOutSkill2("");
+    setStandOutSkill3("");
+    setStandOutSkill4("");
+    setStandOutSkill5("");
   };
 
-  const submitForm = () => {
-    //post to db
-    //clear states to 0
-    //send email to candidate
+  //replace with HR authentication
+
+  const [initializeVouchCandidate, { data, loading, error }] = useMutation(
+    UPSERT_VOUCH_CANDIDATE,
+
+    {
+      variables: {
+        hrId: "incompleteForm",
+        positionLevel: "incompleteField",
+        positionTitle: "incompleteField",
+        salaryRange: "incompleteField",
+        stageOfInterview: "incompleteField",
+        standOutSkill1: "incompleteField",
+        standOutSkill2: "incompleteField",
+        standOutSkill3: "incompleteField",
+        standOutSkill4: "incompleteField",
+        standOutSkill5: "incompleteField",
+      },
+    }
+  );
+
+  const emailChecker = (e) => {
+    setEmail(e);
+  };
+
+  const sendEmail = async () => {
+    const res = await fetch("/api/vouchEmailCandidate", {
+      body: JSON.stringify({
+        email: email,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      return;
+    }
+    console.log(email);
+  };
+
+  const submitForm = async () => {
+    initializeVouchCandidate({
+      variables: {
+        hrId: hrId,
+        positionLevel: positionLevel,
+        positionTitle: positionTitle,
+        salaryRange: salaryRange,
+        stageOfInterview: interviewStage,
+        standOutSkill1: standOutSkill1,
+        standOutSkill2: standOutSkill2,
+        standOutSkill3: standOutSkill3,
+        standOutSkill4: standOutSkill4,
+        standOutSkill5: standOutSkill5,
+      },
+    });
+    if (loading) return "Submitting...";
+    if (error) return `Submission error! ${error.message}`;
+
+    sendEmail();
+    clearFormState();
+    closeModal();
+  };
+
+  const formValidation = () => {
+    const emailValidator = email;
+    const positionLevelValidator = positionLevel;
+    const positionTitleValidator = positionTitle;
+    const salaryRangeValidator = salaryRange;
+    const stageOfInterviewValidator = interviewStage;
+    const standOutSkill1Validator = standOutSkill1;
+    const standOutSkill2Validator = standOutSkill2;
+
+    const standOutSkill3Validator = standOutSkill3;
+
+    const standOutSkill4Validator = standOutSkill4;
+
+    const standOutSkill5Validator = standOutSkill5;
+
+    if (
+      positionLevelValidator &&
+      (standOutSkill1Validator ||
+        standOutSkill2Validator ||
+        standOutSkill3Validator ||
+        standOutSkill4Validator ||
+        standOutSkill5Validator) &&
+      emailValidator &&
+      positionTitleValidator &&
+      salaryRangeValidator &&
+      stageOfInterviewValidator
+    ) {
+      return false;
+    } else if (emailValidator.length <= 0) {
+      return true;
+    }
+    return true;
   };
 
   return (
@@ -50,6 +163,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
         onRequestClose={closeModal}
         className=" w-min h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto h-min absolute right-0"
         contentLabel="Test Name"
+        ariaHideApp={false}
         aria={{
           labelledby: "heading",
           describedby: "full_description",
@@ -66,7 +180,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   type="text"
                   placeholder=" Enter Candidate Email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => emailChecker(e.target.value)}
                 ></input>
               </div>
             </div>
@@ -137,15 +251,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
               </div>
             </div>
           </div>
-          <div className="py-4">
-            <div className="text-xs py-1">Link to job Posting</div>{" "}
-            <input
-              placeholder=" Job Posting"
-              className="border-2 w-60 rounded-lg text-sm h-5"
-              value={jobPostingLink}
-              onChange={(e) => setJobPostingLink(e.target.value)}
-            />
-          </div>
+
           <div className="py-4">
             <div className="text-bold">Stand Out Skills</div>
             <div className="text-gray-400 text-xs">
@@ -186,9 +292,12 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
               onClick={submitForm}
               buttonType="rounded"
               label="Refer Candidate!"
-              disabled={formVaildation ? false : true}
+              disabled={formValidation()}
             />
+<<<<<<< HEAD
             {/* TODO FORM VALIDATION */}
+=======
+>>>>>>> b1edf21ff030c245be88474fc46d1aeab424f1ba
           </div>
         </div>
       </Modal>{" "}

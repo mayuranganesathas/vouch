@@ -5,7 +5,6 @@ import { CompTooltip } from "./CompTooltip";
 import ReactTooltip from "react-tooltip";
 
 export interface CandidateTileProps {
-  starStatus: boolean;
   userID: number;
   positionTitle: string;
   salaryRange: string;
@@ -41,7 +40,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [isShown, setIsShown] = useState(false);
 
   return (
-    <div>
+    <div className="py-0.5">
       <div
         className={
           "w-6/6 h-24 border-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-14 gap-2 grid-flow-col text-sm"
@@ -57,7 +56,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                 <img src="./images/profile.png" width="30" height="30" />
               </div>
               <div className={"text-xs flex justify-center items-center12"}>
-                <p className={"w-20"}>{userID}</p>
+                <p className={""}>{userID}</p>
               </div>
             </div>
           </div>
