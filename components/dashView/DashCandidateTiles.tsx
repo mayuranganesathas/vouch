@@ -1,6 +1,9 @@
 import React from "react";
 import { CandidateTile } from "./CandidateTile";
 
+export interface DashCandidateTilesProps {
+  data: any;
+}
 const DashCandidateTilesData = {
   starStatus: false,
   userID: 1234,
@@ -17,7 +20,7 @@ const DashCandidateTilesData = {
   standOutSkill1: "Strong Communication",
 };
 
-const DashCandidateTiles = () => {
+const DashCandidateTiles = (data) => {
   return (
     <div>
       <div className={"py-4"}>

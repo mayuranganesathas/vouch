@@ -5,7 +5,10 @@ import VouchCTA from "../components/dashView/VouchCTA";
 import { CandidateCount } from "../components/dashView/CandidateCount";
 import DashCandidateTiles from "../components/dashView/DashCandidateTiles";
 import UserIdBar from "../components/dashView/UserIdBar";
-import JobTypeDashFilter from "../components/dashView/JobTypeDashFilter";
+import { GetServerSideProps } from "next";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { QUERY_DASHBOARD_TILES } from "../graphql/QUERY_DASHBOARD_TILES";
+import { DatabaseIcon } from "@heroicons/react/solid";
 
 const dashBoardTest = {
   newCandidateNumber: 14,
@@ -36,10 +39,7 @@ const dbData = {
   numbersReferred: 3,
   numberThanks: 2,
 };
-
-const DashBoard = () => {
-  const [filterJob, setFilterJob] = useState("");
-
+const DashBoard = (data) => {
   return (
     <div>
       <div className={"pt-4 px-20"}>
@@ -69,17 +69,7 @@ const DashBoard = () => {
             lastCandidateCount={dashBoardTest.lastCandidateCount}
           />
         </div>
-        <div className={"grid justify-items-end col-start-2 pr-40 py-8"}>
-          <div className={"grid grid-cols-2"}>
-            <div className={"col-star-1"}>Filter Referrals: </div>
-            <div className={"col-start-2"}>
-              <JobTypeDashFilter
-                filterJob={filterJob}
-                setFilterJob={setFilterJob}
-              />
-            </div>
-          </div>
-        </div>
+        <div className={"grid justify-items-end col-start-2 pr-40 py-8"}></div>
       </div>
       <div className={"bg-gray-50 px-20"}>
         <div className={"grid grid-cols-14 gap-4 bg-gray-200 grid-flow-col"}>
@@ -92,11 +82,39 @@ const DashBoard = () => {
           <div className={"grid-start-14"}></div>
         </div>
         <div className={"py-4"}>
-          <DashCandidateTiles />
+          <DashCandidateTiles data={data.hr_voucher_metadata} />
         </div>
       </div>
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  const client = new ApolloClient({
+    uri: "https://zerglings-1.hasura.app/v1/graphql",
+    cache: new InMemoryCache(),
+    headers: {
+      "content-type": "application/json",
+      "x-hasura-admin-secret": process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET,
+    },
+  });
+
+  const { data } = await client.query({
+    query: QUERY_DASHBOARD_TILES,
+  });
+
+  if (!data) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: data, // will be passed to the page component as props
+  };
+}
 
 export default DashBoard;
