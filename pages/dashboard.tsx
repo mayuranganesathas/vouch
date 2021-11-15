@@ -82,7 +82,7 @@ const DashBoard = (data) => {
           <div className={"grid-start-14"}></div>
         </div>
         <div className={"py-4"}>
-          <DashCandidateTiles data={data.hr_voucher_metadata} />
+          <DashCandidateTiles vouchData={data} />
         </div>
       </div>
     </div>
