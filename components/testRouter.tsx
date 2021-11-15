@@ -10,7 +10,7 @@ const RouterList = ({}: RouterListProps) => {
     <div>
       <div className="p-8 ">
         <button
-          onClick={() => router.push("/pages")}
+          onClick={() => router.push("/dashboard")}
           className="bg-VouchGreen text-white text-center"
         >
           {" "}
