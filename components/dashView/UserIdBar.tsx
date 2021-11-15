@@ -39,7 +39,7 @@ const UserIdBar = ({ Home, setHome }: UserIdBarProps) => {
       </div>
       <div className="grid-start-4 grid-end-5 flex items-center">
         <ButtonNav
-          backgroundColour="OnClick"
+          backgroundColour={"OnClick"}
           buttonType={"square"}
           textColour="VouchGreen"
           label={"Home"}

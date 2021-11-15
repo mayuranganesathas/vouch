@@ -18,6 +18,10 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   onClick,
   buttonWidth,
 }) => {
+  onClick = () => {
+    disabled = false;
+  };
+
   let buttonSize;
 
   switch (buttonWidth) {
@@ -60,8 +64,8 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       disabled={disabled}
       type="button"
       className={`bg-gradient-to-b text-red font-bold ${buttonSize}
-      ${disabled ? "bg-gray-400 opacity-25" : backgroundStyles}
-      ${disabled ? "rounded" : buttonStyles}
+      ${disabled ? "bg-gray-100" : backgroundStyles}
+      ${disabled ? "square" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}
       ${disabled ? "cursor-default" : "cursor-pointer"}
       `}
