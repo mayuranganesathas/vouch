@@ -27,6 +27,9 @@ export interface CandidateOnTwoProps {
   setYearArray: (yearArray: any[]) => void;
   industryArray: any[];
   setIndustryArray: (industryArray: any) => void;
+  previousStage: () => void;
+  completeForm: () => void;
+  formValidation: () => boolean;
 }
 
 export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
@@ -54,6 +57,9 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   setYearArray,
   industryArray,
   setIndustryArray,
+  previousStage,
+  completeForm,
+  formValidation,
 }) => {
   return (
     <div className={"flex justify-center items-center"}>
@@ -178,9 +184,29 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
           {" "}
           Send a thank you message to thank the HR manager for referring you
         </div>
+
         <input
           className={"border border-gray-300 rounded-xl w-full h-20 pb-4"}
         ></input>
+        <div className={"flex justify-center items-center gap-4 pt-4"}>
+          {" "}
+          <ButtonVouch
+            backgroundColour={"VouchGreen"}
+            buttonType={"rounded"}
+            textColour={"white"}
+            label={"Previous"}
+            disabled={false}
+            onClick={previousStage}
+          />
+          <ButtonVouch
+            backgroundColour={"VouchGreen"}
+            buttonType={"rounded"}
+            textColour={"white"}
+            label={"Confirm Profile"}
+            disabled={formValidation() ? false : true}
+            onClick={completeForm}
+          />
+        </div>
       </div>
     </div>
   );
