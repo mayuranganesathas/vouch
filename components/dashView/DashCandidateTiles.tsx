@@ -2,95 +2,30 @@ import React from "react";
 import { CandidateTile } from "./CandidateTile";
 
 export interface DashCandidateTilesProps {
-  data: any;
+  vouchData: any;
 }
-const DashCandidateTilesData = {
-  starStatus: false,
-  userID: 1234,
-  positionTitle: "Sr. Backend Dev",
-  salaryRange: "$110k-140k $/Yr",
-  jobLocation: "Toronto | Ontario",
-  companyLogo: "./images/Google-logo.png",
-  numEmployees: "5000+",
-  companyName: "Google Ltd",
-  stageInterview: "Final Stage",
-  stageNumber: "(5 of 5)",
-  pastPosition1: "Director of Eng.",
-  pastIndustry1: "Finance",
-  standOutSkill1: "Strong Communication",
-};
 
-const DashCandidateTiles = (data) => {
+const DashCandidateTiles = (vouchData) => {
   return (
-    <div>
-      <div className={"py-4"}>
-        <CandidateTile
-          starStatus={DashCandidateTilesData.starStatus}
-          userID={DashCandidateTilesData.userID}
-          positionTitle={DashCandidateTilesData.positionTitle}
-          salaryRange={DashCandidateTilesData.salaryRange}
-          jobLocation={DashCandidateTilesData.jobLocation}
-          companyLogo={DashCandidateTilesData.companyLogo}
-          numEmployees={DashCandidateTilesData.numEmployees}
-          companyName={DashCandidateTilesData.companyName}
-          stageInterview={DashCandidateTilesData.stageInterview}
-          stageNumber={DashCandidateTilesData.stageNumber}
-          pastPosition1={DashCandidateTilesData.pastIndustry1}
-          pastIndustry1={DashCandidateTilesData.pastIndustry1}
-          standOutSkill1={DashCandidateTilesData.standOutSkill1}
-        />
-      </div>
-      <div className={"py-4"}>
-        <CandidateTile
-          starStatus={DashCandidateTilesData.starStatus}
-          userID={DashCandidateTilesData.userID}
-          positionTitle={DashCandidateTilesData.positionTitle}
-          salaryRange={DashCandidateTilesData.salaryRange}
-          jobLocation={DashCandidateTilesData.jobLocation}
-          companyLogo={DashCandidateTilesData.companyLogo}
-          numEmployees={DashCandidateTilesData.numEmployees}
-          companyName={DashCandidateTilesData.companyName}
-          stageInterview={DashCandidateTilesData.stageInterview}
-          stageNumber={DashCandidateTilesData.stageNumber}
-          pastPosition1={DashCandidateTilesData.pastIndustry1}
-          pastIndustry1={DashCandidateTilesData.pastIndustry1}
-          standOutSkill1={DashCandidateTilesData.standOutSkill1}
-        />
-      </div>
-      <div className={"py-4"}>
-        <CandidateTile
-          starStatus={DashCandidateTilesData.starStatus}
-          userID={DashCandidateTilesData.userID}
-          positionTitle={DashCandidateTilesData.positionTitle}
-          salaryRange={DashCandidateTilesData.salaryRange}
-          jobLocation={DashCandidateTilesData.jobLocation}
-          companyLogo={DashCandidateTilesData.companyLogo}
-          numEmployees={DashCandidateTilesData.numEmployees}
-          companyName={DashCandidateTilesData.companyName}
-          stageInterview={DashCandidateTilesData.stageInterview}
-          stageNumber={DashCandidateTilesData.stageNumber}
-          pastPosition1={DashCandidateTilesData.pastIndustry1}
-          pastIndustry1={DashCandidateTilesData.pastIndustry1}
-          standOutSkill1={DashCandidateTilesData.standOutSkill1}
-        />
-      </div>
-      <div className={"py-4"}>
-        <CandidateTile
-          starStatus={DashCandidateTilesData.starStatus}
-          userID={DashCandidateTilesData.userID}
-          positionTitle={DashCandidateTilesData.positionTitle}
-          salaryRange={DashCandidateTilesData.salaryRange}
-          jobLocation={DashCandidateTilesData.jobLocation}
-          companyLogo={DashCandidateTilesData.companyLogo}
-          numEmployees={DashCandidateTilesData.numEmployees}
-          companyName={DashCandidateTilesData.companyName}
-          stageInterview={DashCandidateTilesData.stageInterview}
-          stageNumber={DashCandidateTilesData.stageNumber}
-          pastPosition1={DashCandidateTilesData.pastIndustry1}
-          pastIndustry1={DashCandidateTilesData.pastIndustry1}
-          standOutSkill1={DashCandidateTilesData.standOutSkill1}
-        />
-      </div>
+    <div className="">
+      {/* {JSON.stringify(vouchData)} */}
+      {vouchData &&
+        vouchData.vouchData.hr_voucher_metadata.map((e) => (
+          <CandidateTile
+            userID={e.candidateId}
+            positionTitle={e.positionTitle}
+            salaryRange={e.salaryRange}
+            jobLocation={e.Vouchee[0].Location}
+            companyLogo={e.Company_Data[0].companyLogoAddress}
+            numEmployees={e.Company_Data[0].numberOfEmployees}
+            companyName={e.Company_Data[0].corporateName}
+            stageInterview={e.stageOfInterview}
+            stageNumber="3/5"
+            pastPosition1={e.Vouchee[0].positionTitle1}
+            pastIndustry1={e.Vouchee[0].industry1}
+            standOutSkill1={e.standOutSkill1}
+          />
+        ))}
     </div>
   );
 };

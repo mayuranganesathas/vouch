@@ -4,7 +4,6 @@ import { ButtonEmail } from "./ButtonEmail";
 import { CompTooltip } from "./CompTooltip";
 
 export interface CandidateTileProps {
-  starStatus: boolean;
   userID: number;
   positionTitle: string;
   salaryRange: string;
@@ -40,7 +39,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [isShown, setIsShown] = useState(false);
 
   return (
-    <div>
+    <div className="py-0.5">
       <div
         className={
           "w-6/6 h-24 border-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-14 gap-2 grid-flow-col text-sm"

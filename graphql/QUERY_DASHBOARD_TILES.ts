@@ -14,20 +14,32 @@ export const QUERY_DASHBOARD_TILES = gql`
       standOutSkill3
       standOutSkill4
       standOutSkill5
-    }
-    candidate_metadata {
-      Location
-      candidateId
-      companyWebsite1
-      companyWebsite2
-      companyWebsite3
-      industry1
-      industry2
-      industry3
-      linkedIn
-      positionTitle1
-      positionTitle2
-      positionTitle3
+      Vouchee {
+        Location
+        candidateId
+        companyWebsite1
+        industry1
+        industry2
+        industry3
+        companyWebsite2
+        companyWebsite3
+        linkedIn
+        positionTitle1
+        positionTitle2
+      }
+      Company_Data {
+        companyLogoAddress
+        hrId
+        numberOfEmployees
+        location
+        companyWebsite
+        corporateName
+      }
+      Candidate_Contact {
+        candidateEmail
+        candidateFirstName
+        candidateId
+      }
     }
   }
 `;
