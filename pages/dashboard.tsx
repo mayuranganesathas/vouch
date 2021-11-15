@@ -12,7 +12,7 @@ import { DatabaseIcon } from "@heroicons/react/solid";
 
 const dashBoardTest = {
   newCandidateNumber: 14,
-  userHrFirstName: "Viv",
+  userHrFirstName: "Vivian",
   moveToCandidate: () => {},
   numberReferred: 10,
   numberThanks: 4,
