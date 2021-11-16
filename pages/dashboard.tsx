@@ -33,13 +33,14 @@ const dashBoardTest = {
   pastPosition1: "Director of Eng.",
   pastIndustry1: "Finance",
   standOutSkill1: "Strong Communication",
+  userLinkedinURL: "https://ca.linkedin.com/in/mayuranganesathas",
 };
 
 const dbData = {
   numbersReferred: 3,
   numberThanks: 2,
 };
-const DashBoard = (data) => {
+const DashBoard = (data, userLinkedinURL, setUserLinkedinURL) => {
   return (
     <div>
       <div className={"pt-4 px-20"}>
@@ -82,7 +83,10 @@ const DashBoard = (data) => {
           <div className={"grid-start-14"}></div>
         </div>
         <div className={"py-4"}>
-          <DashCandidateTiles vouchData={data} />
+          <DashCandidateTiles
+            vouchData={data}
+            userLinkedinURL={userLinkedinURL}
+          />
         </div>
       </div>
     </div>

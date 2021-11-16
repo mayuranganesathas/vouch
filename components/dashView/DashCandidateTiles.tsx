@@ -3,9 +3,10 @@ import { CandidateTile } from "./CandidateTile";
 
 export interface DashCandidateTilesProps {
   vouchData: any;
+  userLinkedinURL: string;
 }
 
-const DashCandidateTiles = (vouchData) => {
+const DashCandidateTiles = (vouchData, userLinkedinURL) => {
   return (
     <div className="">
       {/* {JSON.stringify(vouchData)} */}
@@ -24,6 +25,7 @@ const DashCandidateTiles = (vouchData) => {
             pastPosition1={e.Vouchee[0].positionTitle1}
             pastIndustry1={e.Vouchee[0].industry1}
             standOutSkill1={e.standOutSkill1}
+            userLinkedinURL={userLinkedinURL}
           />
         ))}
     </div>
