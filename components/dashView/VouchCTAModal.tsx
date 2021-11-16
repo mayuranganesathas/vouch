@@ -294,10 +294,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
               label="Refer Candidate!"
               disabled={formValidation()}
             />
-<<<<<<< HEAD
-            {/* TODO FORM VALIDATION */}
-=======
->>>>>>> b1edf21ff030c245be88474fc46d1aeab424f1ba
           </div>
         </div>
       </Modal>{" "}
