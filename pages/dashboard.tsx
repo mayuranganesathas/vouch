@@ -85,7 +85,7 @@ const DashBoard = (data, userLinkedinURL, setUserLinkedinURL) => {
         <div className={"py-4"}>
           <DashCandidateTiles
             vouchData={data}
-            userLinkedinURL={userLinkedinURL}
+            userLinkedinURL={dashBoardTest.userLinkedinURL}
           />
         </div>
       </div>
