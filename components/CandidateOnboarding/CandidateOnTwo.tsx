@@ -27,6 +27,10 @@ export interface CandidateOnTwoProps {
   setYearArray: (yearArray: any[]) => void;
   industryArray: any[];
   setIndustryArray: (industryArray: any) => void;
+  remoteStatus: string;
+  setRemoteStatus: (remoteStatus: string) => void;
+  remoteArray: any[];
+  setRemoteArray: (remoteArray: any[]) => void;
   previousStage: () => void;
   completeForm: () => void;
   formValidation: () => boolean;
@@ -57,6 +61,10 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   setYearArray,
   industryArray,
   setIndustryArray,
+  remoteStatus,
+  setRemoteStatus,
+  remoteArray,
+  setRemoteArray,
   previousStage,
   completeForm,
   formValidation,
@@ -69,6 +77,54 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
           A few details to help standout in our qualified pool of referrals
         </div>
         <div className={"pb-4 border-b border-gray-200 "}></div>
+
+        <div className={"text-sm pb-2 pt-8"}>Your Profile</div>
+        <div className="grid grid-cols-4 gap-4">
+          <input
+            className={"border border-gray-300 text-xs rounded px-4"}
+            placeholder="First Name"
+          ></input>
+          <input
+            className={"border border-gray-300 text-xs rounded px-4"}
+            placeholder="Last Name"
+          ></input>
+        </div>
+        <div className={"grid grid-cols-3 gap-4"}>
+          <div className={"text-xs pb-2 pt-8"}>Email</div>
+          <div className={"text-xs pb-2 pt-8"}>LinkedIn</div>
+        </div>
+        <div className="grid grid-cols-3 gap-4 pb-8">
+          <input
+            className={"border border-gray-300 text-xs rounded px-4"}
+            placeholder="Enter your email"
+          ></input>
+          <div className={"col-span-2"}>
+            <div className={"grid grid-cols-2 gap-2"}>
+              <input
+                className={"border border-gray-300 text-xs rounded px-4"}
+                placeholder="Paste your personal LinkedIn URL"
+              ></input>
+              <img src="./images/linkedInTile.png" width="20" height="20" />
+            </div>
+          </div>
+          <div>
+            <div className={"text-xs pt-8"}> Your work preference</div>
+            <SearchFilterDash
+              backgroundColour={"white"}
+              dropDownArray={remoteArray}
+              value={remoteStatus}
+              onChange={(e) => {
+                setRemoteStatus(e.target.value);
+              }}
+              width={"wide-sm"}
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2"></div>
+
+        <div className={"pb-4 border-b border-gray-200 "}></div>
+
         <div className={"grid grid-cols-4 pt-8 pb-4 pr-4 pl-8"}>
           <div>
             <div className={"text-sm"}> Position Title:</div>
