@@ -17,6 +17,7 @@ export interface CandidateTileProps {
   pastPosition1: string;
   pastIndustry1: string;
   standOutSkill1: string;
+  linkedInUrl: string;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -32,6 +33,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   pastPosition1,
   pastIndustry1,
   standOutSkill1,
+  linkedInUrl,
 }) => {
   const buttonEmail = () => {
     console.log("test1");
@@ -119,7 +121,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"grid-start-14 flext justify-center items-center py-1"}>
           <div className={"pt-2 pl-2"}>
             {" "}
-            <ButtonLinkedin backgroundColour="white" />
+            <ButtonLinkedin
+              backgroundColour="white"
+              userLinkedinURL={linkedInUrl}
+            />
           </div>
           <div className={"pt-2 pl-2"}>
             {" "}
