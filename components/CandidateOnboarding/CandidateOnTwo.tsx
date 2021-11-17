@@ -27,8 +27,10 @@ export interface CandidateOnTwoProps {
   setYearArray: (yearArray: any[]) => void;
   industryArray: any[];
   setIndustryArray: (industryArray: any) => void;
-  remoteStatus: string;
-  setRemoteStatus: (remoteStatus: string) => void;
+  locationState: string;
+  setLocationState: (remoteStatus: string) => void;
+  locationCity: string;
+  setLocationCity: (locationCity: string) => void;
   remoteArray: any[];
   setRemoteArray: (remoteArray: any[]) => void;
   previousStage: () => void;
@@ -61,8 +63,10 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   setYearArray,
   industryArray,
   setIndustryArray,
-  remoteStatus,
-  setRemoteStatus,
+  locationState,
+  setLocationState,
+  locationCity,
+  setLocationCity,
   remoteArray,
   setRemoteArray,
   previousStage,
@@ -108,16 +112,28 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             </div>
           </div>
           <div>
-            <div className={"text-xs pt-8"}> Your work preference</div>
-            <SearchFilterDash
-              backgroundColour={"white"}
-              dropDownArray={remoteArray}
-              value={remoteStatus}
-              onChange={(e) => {
-                setRemoteStatus(e.target.value);
-              }}
-              width={"wide-sm"}
-            />
+            <div className={"text-xs pt-8"}> Location</div>
+            <div className={"grid grid-cols-3 gap-2"}>
+              <SearchFilterDash
+                backgroundColour={"white"}
+                dropDownArray={remoteArray}
+                value={locationState}
+                onChange={(e) => {
+                  setLocationState(e.target.value);
+                }}
+                width={"wide-sm"}
+              />
+
+              <SearchFilterDash
+                backgroundColour={"white"}
+                dropDownArray={remoteArray}
+                value={locationCity}
+                onChange={(e) => {
+                  setLocationCity(e.target.value);
+                }}
+                width={"wide-sm"}
+              />
+            </div>
           </div>
         </div>
 
