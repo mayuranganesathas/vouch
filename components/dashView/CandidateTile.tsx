@@ -17,7 +17,6 @@ export interface CandidateTileProps {
   pastPosition1: string;
   pastIndustry1: string;
   standOutSkill1: string;
-  userLinkedinURL: string;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -33,7 +32,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   pastPosition1,
   pastIndustry1,
   standOutSkill1,
-  userLinkedinURL,
 }) => {
   const buttonEmail = () => {
     console.log("test1");
@@ -70,41 +68,41 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <div className={"pt-2 text-gray-500 text-xs"}> {jobLocation}</div>
           </div>
         </div>
-        {/* <div data-for="CompToolTip" data-tip>
+        <div data-for="CompToolTip" data-tip>
           <CompTooltip
             companyName="Google"
             companyLocation="None of your business"
             numEmployees="1234"
             userHrCompanyWebsite="www.google.com"
-          /> */}
-        <div className={"grid-start-5 grid-end-7 pt-4 z-20"}>
-          <div className={"grid grid-cols-2"}>
-            <div className={"flex justify-center items-center"}>
-              {" "}
-              <img src={companyLogo} width="70" height="auto" />
-            </div>
-            <div className={""}>
-              <div className={"flex justify-center items-center text-lg"}>
-                {numEmployees}
+          />
+          <div className={"grid-start-5 grid-end-7 pt-4 z-20"}>
+            <div className={"grid grid-cols-2"}>
+              <div className={"flex justify-center items-center"}>
+                {" "}
+                <img src={companyLogo} width="70" height="auto" />
+              </div>
+              <div className={""}>
+                <div className={"flex justify-center items-center text-lg"}>
+                  {numEmployees}
+                </div>
+                <div
+                  className={
+                    "text-gray-500 text-xs flex justify-center items-center"
+                  }
+                >
+                  Headcount
+                </div>
               </div>
               <div
                 className={
-                  "text-gray-500 text-xs flex justify-center items-center"
+                  "col-span-2 flex justify-center items-center pt-1 text-gray-500"
                 }
               >
-                Headcount
+                {companyName}
               </div>
-            </div>
-            <div
-              className={
-                "col-span-2 flex justify-center items-center pt-1 text-gray-500"
-              }
-            >
-              {companyName}
             </div>
           </div>
         </div>
-        {/* </div> */}
         <div className={"grid-start-7 grid-end-9 pt-7"}>
           <div className={"flex justify-center"}>{stageInterview}</div>
           <div className={"text-gray-500 text-xs flex justify-center"}>
@@ -128,10 +126,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"grid-start-14 flext justify-center items-center py-1"}>
           <div className={"pt-2 pl-2"}>
             {" "}
-            <ButtonLinkedin
-              backgroundColour="white"
-              userLinkedinURL={userLinkedinURL}
-            />
+            <ButtonLinkedin backgroundColour="white" />
           </div>
           <div className={"pt-2 pl-2"}>
             {" "}
