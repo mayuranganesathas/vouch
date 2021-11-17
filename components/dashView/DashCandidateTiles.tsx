@@ -6,12 +6,15 @@ export interface DashCandidateTilesProps {
   userLinkedinURL: string;
 }
 
-const DashCandidateTiles = (vouchData, userLinkedinURL) => {
+const DashCandidateTiles = ({
+  vouchData,
+  userLinkedinURL,
+}: DashCandidateTilesProps) => {
   return (
     <div className="">
       {/* {JSON.stringify(vouchData)} */}
       {vouchData &&
-        vouchData.vouchData.hr_voucher_metadata.map((e) => (
+        vouchData.hr_voucher_metadata.map((e) => (
           <CandidateTile
             userID={e.candidateId}
             positionTitle={e.positionTitle}
