@@ -34,5 +34,3 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
     </button>
   );
 };
-
-/*test test*/
