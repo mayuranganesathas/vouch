@@ -22,7 +22,7 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
       disabled={disabled}
       onClick={openSite}
       type="button"
-      className={`border border-gray-300 w-16 h-10 rounded
+      className={`border border-gray-300 w-16 py-1 rounded
       ${disabled ? "bg-gray-400 opacity-25" : backgroundColour}
       ${disabled ? "cursor-default" : "cursor-pointer"}
       `}
