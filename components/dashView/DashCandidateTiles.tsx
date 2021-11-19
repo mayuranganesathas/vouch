@@ -28,7 +28,7 @@ const DashCandidateTiles = ({
             pastPosition1={e.Vouchee[0].positionTitle1}
             pastIndustry1={e.Vouchee[0].industry1}
             standOutSkill1={e.standOutSkill1}
-            linkedInUrl={e.Vouchee[0].linkedIn}
+            userLinkedinURL={userLinkedinURL}
           />
         ))}
     </div>
