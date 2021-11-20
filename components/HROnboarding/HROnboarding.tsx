@@ -4,9 +4,27 @@ import { SearchFilterDash } from "../ui/searchFilterDash";
 
 export interface HROnboardingProps {
   onClick: () => void;
+  industrySelect: string;
+  setIndustrySelect: (industrySelect: string) => void;
+  industryArray: any[];
+  setIndustryArray: (industryArray: any[]) => void;
+  numberOfEmployees: string;
+  setNumberOfEmployees: (numberOfEmployees: string) => void;
+  employeeArray: any[];
+  setEmployeeArray: (employeeArray: any[]) => void;
 }
 
-export const HROnboarding: React.FC<HROnboardingProps> = ({ onClick }) => {
+export const HROnboarding: React.FC<HROnboardingProps> = ({
+  onClick,
+  industrySelect,
+  setIndustrySelect,
+  industryArray,
+  setIndustryArray,
+  numberOfEmployees,
+  setNumberOfEmployees,
+  employeeArray,
+  setEmployeeArray,
+}) => {
   return (
     <div className={"flex justify-center items-center"}>
       <div className={"px-8 shadow-lg rounded-xl w-2/5 h-auto bg-white"}>
@@ -19,34 +37,59 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({ onClick }) => {
           company details where they were referred from to help you qualify the
           candidates.
         </div>
-        <div className={"grid grid-cols-2 gap-2"}></div>
-        <div className={"col-start-1 pt-4"}>
-          <div>
-            <div className={"text-sm"}> Company Name:</div>
-            <input
-              className={
-                "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
-              }
-              placeholder="Enter company name"
-            ></input>
+        <div className={"grid grid-cols-2 gap-2"}>
+          <div className={"col-start-1 pt-4"}>
+            <div>
+              <div className={"text-sm"}> Company Name:</div>
+              <input
+                className={
+                  "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
+                }
+                placeholder="Enter company name"
+              ></input>
+            </div>
+            <div className={"py-4"}>
+              <div className={"text-sm"}> Company Website:</div>
+              <input
+                className={
+                  "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
+                }
+                placeholder="Paste your company's website URL"
+              ></input>
+            </div>
+            <div>
+              <div className={"text-sm"}> Location:</div>
+              <input
+                className={
+                  "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
+                }
+                placeholder="Enter the city for your Corporate HQ"
+              ></input>
+            </div>
           </div>
-          <div className={"py-4"}>
-            <div className={"text-sm"}> Company Website:</div>
-            <input
-              className={
-                "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
-              }
-              placeholder="Paste your company's website URL"
-            ></input>
-          </div>
-          <div>
-            <div className={"text-sm"}> Location:</div>
-            <input
-              className={
-                "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
-              }
-              placeholder="Enter the city for your Corporate HQ"
-            ></input>
+          <div className={"col-start-2 pt-4"}>
+            <div>
+              <div className={"text-sm"}>Industry</div>
+              <SearchFilterDash
+                backgroundColour={"white"}
+                dropDownArray={industryArray}
+                value={industrySelect}
+                onChange={(e) => {
+                  setIndustrySelect(e.target.value);
+                }}
+              />
+            </div>
+            <div className={"py-4"}>
+              <div className={"text-sm"}>Industry</div>
+              <SearchFilterDash
+                backgroundColour={"white"}
+                dropDownArray={employeeArray}
+                value={numberOfEmployees}
+                onChange={(e) => {
+                  setNumberOfEmployees(e.target.value);
+                }}
+              />
+            </div>
           </div>
         </div>
         <div className="flex justify-center py-4">
