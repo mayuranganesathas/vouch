@@ -123,3 +123,5 @@ export async function getServerSideProps() {
 }
 
 export default DashBoard;
+
+DashBoard.auth = true;
