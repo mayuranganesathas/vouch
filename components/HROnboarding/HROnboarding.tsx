@@ -21,11 +21,33 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({ onClick }) => {
         </div>
         <div className={"grid grid-cols-2 gap-2"}></div>
         <div className={"col-start-1 pt-4"}>
-          <div className={"text-sm"}> Company Name:</div>
-          <input
-            className={"border border-gray-300 text-xs rounded px-4"}
-            placeholder="Enter company name"
-          ></input>
+          <div>
+            <div className={"text-sm"}> Company Name:</div>
+            <input
+              className={
+                "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
+              }
+              placeholder="Enter company name"
+            ></input>
+          </div>
+          <div className={"py-4"}>
+            <div className={"text-sm"}> Company Website:</div>
+            <input
+              className={
+                "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
+              }
+              placeholder="Paste your company's website URL"
+            ></input>
+          </div>
+          <div>
+            <div className={"text-sm"}> Location:</div>
+            <input
+              className={
+                "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
+              }
+              placeholder="Enter the city for your Corporate HQ"
+            ></input>
+          </div>
         </div>
         <div className="flex justify-center py-4">
           <ButtonVouch
