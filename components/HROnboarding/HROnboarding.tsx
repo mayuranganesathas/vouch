@@ -90,17 +90,43 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 }}
               />
             </div>
+            <div>
+              <div className={"text-sm pb-4"}>Upload your company's logo:</div>
+              <form action="/action_page.php" className={"text-xs"}>
+                <input type="file" id="myFile" name="filename"></input>
+              </form>
+            </div>
           </div>
         </div>
-        <div className="flex justify-center py-4">
-          <ButtonVouch
-            backgroundColour={"VouchGreen"}
-            buttonType={"rounded"}
-            textColour={"white"}
-            label={"Yes, Sign me up!"}
-            disabled={false}
-            onClick={onClick}
-          />
+        <div className={"grid grid-cols-2"}>
+          <div className={"col-start-1"}>
+            <div className={"flex content-end pt-20"}>
+              <form action="/action_page.php" className={"text-xs"}>
+                <input
+                  type="checkbox"
+                  id="USCAN"
+                  name="USCANVerified"
+                  value="true"
+                ></input>
+              </form>
+              <div className={"text-xs pl-2"}>
+                {" "}
+                We recruit for roles in Canada and USA
+              </div>
+            </div>
+          </div>
+          <div className={"col-start-2"}>
+            <div className="flex justify-center pt-14">
+              <ButtonVouch
+                backgroundColour={"VouchGreen"}
+                buttonType={"rounded"}
+                textColour={"white"}
+                label={"Submit"}
+                disabled={false}
+                onClick={onClick}
+              />
+            </div>
+          </div>
         </div>
 
         <div className={"pb-4 border-b border-gray-200 "}></div>
