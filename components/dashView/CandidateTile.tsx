@@ -3,6 +3,7 @@ import { ButtonLinkedin } from "./ButtonLinkedin";
 import { ButtonEmail } from "./ButtonEmail";
 import { CompTooltip } from "./CompTooltip";
 import ReactTooltip from "react-tooltip";
+import { ButtonConnected } from "./ButtonConnected";
 
 export interface CandidateTileProps {
   userID: number;
@@ -17,7 +18,7 @@ export interface CandidateTileProps {
   pastPosition1: string;
   pastIndustry1: string;
   standOutSkill1: string;
-  linkedInUrl: string;
+  userLinkedinURL: string;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -33,13 +34,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   pastPosition1,
   pastIndustry1,
   standOutSkill1,
-  linkedInUrl,
+  userLinkedinURL,
 }) => {
   const buttonEmail = () => {
     console.log("test1");
   };
 
   const [isShown, setIsShown] = useState(false);
+  const thumbUpClick = () => {};
 
   return (
     <div className="py-0.5">
@@ -50,8 +52,22 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       >
         <div className={"grid-start-1"}>
           <div className={"grid grid-cols-2"}>
-            <div className={"flex items-center justify-center pt-4"}>
-              <img src="./images/starUnselect.png" width="20" height="20" />
+            <div className={"grid grid-cols-2"}>
+              <div className={"flex items-center justify-center pt-4"}>
+                <img
+                  src="./images/thumbsUpBlank.png"
+                  width="20"
+                  height="20"
+                  onClick={thumbUpClick}
+                />
+              </div>
+              <div className={"flex items-center justify-center pt-4"}>
+                <img
+                  src="./images/thumbsDownBlank.png"
+                  width="20"
+                  height="20"
+                />
+              </div>
             </div>
             <div className={""}>
               <div className={"flex items-center justify-center pt-6"}>
@@ -98,6 +114,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             </div>
           </div>
         </div>
+
         <div className={"grid-start-7 grid-end-9 pt-7"}>
           <div className={"flex justify-center"}>{stageInterview}</div>
           <div className={"text-gray-500 text-xs flex justify-center"}>
@@ -118,17 +135,22 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           {" "}
           {standOutSkill1}
         </div>
-        <div className={"grid-start-14 flext justify-center items-center py-1"}>
-          <div className={"pt-2 pl-2"}>
-            {" "}
-            <ButtonLinkedin
-              backgroundColour="white"
-              userLinkedinURL={linkedInUrl}
-            />
-          </div>
-          <div className={"pt-2 pl-2"}>
-            {" "}
-            <ButtonEmail backgroundColour="white" onClick={buttonEmail} />
+        <div className={"grid-start-14 flex justify-center items-center py-1"}>
+          <div className={"grid grid-cols-2"}>
+            <div className={"pt-0.5"}>
+              {" "}
+              <ButtonLinkedin
+                backgroundColour="white"
+                userLinkedinURL={userLinkedinURL}
+              />
+            </div>
+            <div className={"pt-0.5"}>
+              {" "}
+              <ButtonEmail backgroundColour="white" onClick={buttonEmail} />
+            </div>
+            <div className={"col-span-2"}>
+              <ButtonConnected backgroundColour="white" />
+            </div>
           </div>
         </div>
       </div>
