@@ -9,6 +9,7 @@ import { GetServerSideProps } from "next";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { QUERY_DASHBOARD_TILES } from "../graphql/QUERY_DASHBOARD_TILES";
 import { DatabaseIcon } from "@heroicons/react/solid";
+import { useAuth } from "../lib/authContext";
 
 const dashBoardTest = {
   newCandidateNumber: 14,

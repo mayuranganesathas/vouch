@@ -11,9 +11,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
       <ApolloProvider client={client}>
-        <Auth>
+        {Component.auth ? (
+          <Auth>
+            <Component {...pageProps} />
+          </Auth>
+        ) : (
           <Component {...pageProps} />
-        </Auth>
+        )}
       </ApolloProvider>
     </AuthProvider>
   );
@@ -27,7 +31,7 @@ function Auth({ children }) {
 
   React.useEffect(() => {
     if (loading) return; // Do nothing while loading
-    if (!user) router.push("/signup"); // If not authenticated, force log in
+    if (!user) router.push("/register"); // If not authenticated, force log in
   }, [user, loading]);
 
   if (user) {
@@ -36,5 +40,5 @@ function Auth({ children }) {
 
   // Session is being fetched, or no user.
   // If no user, useEffect() will redirect.
-  return <div>Loading...</div>;
+  return <div>Redirecting...</div>;
 }
