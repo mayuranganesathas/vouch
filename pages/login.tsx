@@ -1,8 +1,14 @@
-import React from "react";
-import ButtonGoolgeLogin from "../components/ui/ButtonGoogleLogin";
+import { getRedirectResult } from "firebase/auth";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import ButtonGoogleLogin from "../components/ui/ButtonGoogleLogin";
+import { useAuth } from "../lib/authContext";
+import { auth } from "../lib/firebase";
+
 import background from "./images/officeHRLogin.png";
 
-export default function RegisterHRLogin(prop) {
+export interface RegisterHRLogin {}
+export default function RegisterHRLogin() {
   return (
     <div
       className={"h-screen bg-cover bg-no-repeat"}
@@ -34,7 +40,7 @@ export default function RegisterHRLogin(prop) {
         </div>
         <div className={"col-start-3 flex justify-center items-center"}>
           {" "}
-          <ButtonGoolgeLogin />
+          <ButtonGoogleLogin />
         </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { HROnboarding } from "../components/HROnboarding/HROnboarding";
-import SignInPage from "../components/signup";
 
 export default function Register(props) {
+  //CALL AUTH USER EMAIL TO PASS INTO UPSERT
+
   const [industrySelect, setIndustrySelect] = useState("");
   const [industryArray, setIndustryArray] = useState([
     "Select Industry",
@@ -23,12 +24,26 @@ export default function Register(props) {
     "500+",
   ]);
 
-  const hello = () => {};
+  useEffect(() => {
+    //  async function checkAuth() {
+    //    const result = await getRedirectResult(auth);
+    //    if (result) {
+    //      router.push("/register");
+    //    }
+    //  }
+    //  checkAuth();
+    //CHECK IF REGISTERED ACCOUNT!!!! if REGISTERED -> ROUTE TO DASHBOARD, IF NOT STAY ON REGISTER PAGE
+  }, []);
+
+  const onSubmit = () => {
+    //QUERY TO UPSERT ON SUBMIT
+    //post to BE
+    //CLEAR FORMS
+  };
   return (
     <div>
-      <SignInPage />;
       <HROnboarding
-        onClick={hello}
+        onClick={onSubmit}
         industryArray={industryArray}
         setIndustryArray={setIndustryArray}
         industrySelect={industrySelect}
