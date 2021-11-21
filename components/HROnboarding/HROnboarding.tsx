@@ -18,6 +18,17 @@ export interface HROnboardingProps {
 
   hrVoucherCompanyWebsite: string;
   setHrVoucherWebsite: (hrVoucherVoucherWebsite: string) => void;
+
+  hrLocation: string;
+  setHrLocation: (hrLocation: string) => void;
+
+  hrCompanyLogo: string;
+  setHrCompanyLogo: (hrCompanyLogo: string) => void;
+
+  checkBoxValidation: boolean;
+  setCheckBoxValidation: (checkBoxValidation: boolean) => void;
+
+  formValidation: boolean;
 }
 
 export const HROnboarding: React.FC<HROnboardingProps> = ({
@@ -34,6 +45,13 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
   setHrVoucherPosition,
   hrVoucherCompanyWebsite,
   setHrVoucherWebsite,
+  hrLocation,
+  setHrLocation,
+  hrCompanyLogo,
+  setHrCompanyLogo,
+  checkBoxValidation,
+  setCheckBoxValidation,
+  formValidation,
 }) => {
   return (
     <div className={"flex justify-center items-center"}>
@@ -56,6 +74,8 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
                 }
                 placeholder="Enter company name"
+                value={hrVoucherCompanyName}
+                onChange={(e) => setHrVoucherCompanyName(e.target.value)}
               />
             </div>
             <div className={"py-4"}>
@@ -65,7 +85,9 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
                 }
                 placeholder="Paste your company's website URL"
-              ></input>
+                value={hrVoucherCompanyWebsite}
+                onChange={(e) => setHrVoucherWebsite(e.target.value)}
+              />
             </div>
             <div>
               <div className={"text-sm"}> Location:</div>
@@ -74,7 +96,9 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
                 }
                 placeholder="Enter the city for your Corporate HQ"
-              ></input>
+                value={hrLocation}
+                onChange={(e) => setHrLocation(e.target.value)}
+              />
             </div>
           </div>
           <div className={"col-start-2 pt-4"}>
@@ -103,7 +127,13 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
             <div>
               <div className={"text-sm pb-4"}>Upload your company's logo:</div>
               <form action="/action_page.php" className={"text-xs"}>
-                <input type="file" id="myFile" name="filename"></input>
+                <input
+                  type="file"
+                  id="myFile"
+                  name="filename"
+                  value={hrCompanyLogo}
+                  onChange={(e) => setHrCompanyLogo(e.target.value)}
+                />
               </form>
             </div>
           </div>
@@ -116,9 +146,11 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   type="checkbox"
                   id="USCAN"
                   name="USCANVerified"
-                  value="true"
-                ></input>
+                  checked={checkBoxValidation}
+                  onChange={(e) => setCheckBoxValidation(e.target.checked)}
+                />
               </form>
+
               <div className={"text-xs pl-2"}>
                 {" "}
                 We recruit for roles in Canada and USA
@@ -132,7 +164,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 buttonType={"rounded"}
                 textColour={"white"}
                 label={"Submit"}
-                disabled={false}
+                disabled={formValidation ? false : true}
                 onClick={onClick}
               />
             </div>

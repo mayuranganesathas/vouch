@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { HROnboarding } from "../components/HROnboarding/HROnboarding";
 
-export default function Register(props) {
+export default function Register() {
   //CALL AUTH USER EMAIL TO PASS INTO UPSERT
 
   const [industryArray, setIndustryArray] = useState([
@@ -25,6 +25,10 @@ export default function Register(props) {
   const [hrVoucherPosition, setHrVoucherPosition] = useState("");
   const [hrVoucherCompanyName, setHrVoucherCompanyName] = useState("");
   const [hrVoucherCompanyWebsite, setHrVoucherCompanyWebsite] = useState("");
+  const [hrLocation, setHrLocation] = useState("");
+  const [hrCompanyLogo, setHrCompanyLogo] = useState("");
+  const [checkBoxValidation, setCheckBoxValidation] = useState(false);
+  const [formValidation, setFormValidation] = useState(false);
   //hrID from google
   //hrEmail from google
 
@@ -40,6 +44,7 @@ export default function Register(props) {
   }, []);
 
   const onSubmit = () => {
+    //Form Validation
     //QUERY TO UPSERT ON SUBMIT
     //post to BE
     //CLEAR FORMS
@@ -50,14 +55,21 @@ export default function Register(props) {
         onClick={onSubmit}
         industryArray={industryArray}
         setIndustryArray={setIndustryArray}
+        hrLocation={hrLocation}
+        setHrLocation={setHrLocation}
         employeeArray={employeeArray}
         setEmployeeArray={setEmployeeArray}
         hrVoucherPosition={hrVoucherPosition}
         setHrVoucherPosition={setHrVoucherPosition}
         hrVoucherCompanyName={hrVoucherCompanyName}
-        setHrVoucherCompanyName={setHrVoucherCompanyWebsite}
+        setHrVoucherCompanyName={setHrVoucherCompanyName}
         hrVoucherCompanyWebsite={hrVoucherCompanyWebsite}
         setHrVoucherWebsite={setHrVoucherCompanyWebsite}
+        hrCompanyLogo={hrCompanyLogo}
+        setHrCompanyLogo={setHrCompanyLogo}
+        setCheckBoxValidation={setCheckBoxValidation}
+        checkBoxValidation={checkBoxValidation}
+        formValidation={formValidation}
       />
       ;
     </div>

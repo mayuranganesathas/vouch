@@ -10,6 +10,11 @@ export const INSERT_HR_VOUCHER = gql`
     $position: String = ""
     $userName: String = ""
     $hrId: String = ""
+    $companyLogoAddress: String = ""
+    $companyWebsite1: String = ""
+    $corporateName: String = ""
+    $location: String = ""
+    $numberOfEmployees1: Int = 10
   ) {
     insert_hr_voucher(
       objects: {
@@ -27,6 +32,19 @@ export const INSERT_HR_VOUCHER = gql`
       returning {
         created_at
         hrId
+      }
+    }
+    insert_company_data(
+      objects: {
+        companyLogoAddress: $companyLogoAddress
+        companyWebsite: $companyWebsite1
+        corporateName: $corporateName
+        location: $location
+        numberOfEmployees: $numberOfEmployees1
+      }
+    ) {
+      returning {
+        created_at
       }
     }
   }
