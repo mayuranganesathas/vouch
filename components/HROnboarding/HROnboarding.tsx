@@ -5,11 +5,12 @@ import { SearchFilterDash } from "../ui/searchFilterDash";
 export interface HROnboardingProps {
   onClick: () => void;
 
-  industryArray: any[];
-  setIndustryArray: (industryArray: any[]) => void;
+  industryArray: string;
+  setIndustryArray: (industryArray: string) => void;
 
-  employeeArray: any[];
-  setEmployeeArray: (employeeArray: any[]) => void;
+  employeeArray: string;
+  setEmployeeArray: (employeeArray: string) => void;
+
   hrVoucherPosition: string;
   setHrVoucherPosition: (hrVoucherVoucherPosition: string) => void;
 
@@ -28,7 +29,7 @@ export interface HROnboardingProps {
   checkBoxValidation: boolean;
   setCheckBoxValidation: (checkBoxValidation: boolean) => void;
 
-  formValidation: boolean;
+  formValidation: () => boolean;
 }
 
 export const HROnboarding: React.FC<HROnboardingProps> = ({
@@ -53,6 +54,30 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
   setCheckBoxValidation,
   formValidation,
 }) => {
+  const industryArray1 = [
+    "Select Industry",
+    "Finance",
+    "Gaming",
+    "SaaS",
+    "Space",
+  ];
+
+  const hrPositionArray1 = [
+    "Select Position",
+    "Recruiter",
+    "HR Manager",
+    "Executive",
+  ];
+
+  const employeeArray1 = [
+    "Select the number of Employees",
+    "<10",
+    "10-50",
+    "50-100",
+    "100-200",
+    "200-500",
+    "500+",
+  ];
   return (
     <div className={"flex justify-center items-center"}>
       <div className={"px-8 shadow-lg rounded-xl w-2/5 h-auto bg-white"}>
@@ -78,6 +103,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 onChange={(e) => setHrVoucherCompanyName(e.target.value)}
               />
             </div>
+
             <div className={"py-4"}>
               <div className={"text-sm"}> Company Website:</div>
               <input
@@ -106,7 +132,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               <div className={"text-sm"}>Industry</div>
               <SearchFilterDash
                 backgroundColour={"white"}
-                dropDownArray={industryArray}
+                dropDownArray={industryArray1}
                 value={industryArray}
                 onChange={(e) => {
                   setIndustryArray(e.target.value);
@@ -114,18 +140,28 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               />
             </div>
             <div className={"py-4"}>
-              <div className={"text-sm"}>Industry</div>
+              <div className={"text-sm"}>Company Size</div>
               <SearchFilterDash
                 backgroundColour={"white"}
-                dropDownArray={employeeArray}
+                dropDownArray={employeeArray1}
                 value={employeeArray}
                 onChange={(e) => {
                   setEmployeeArray(e.target.value);
                 }}
               />
+              <div className={"text-sm"}>Your Position</div>
+              <SearchFilterDash
+                backgroundColour={"white"}
+                dropDownArray={hrPositionArray1}
+                value={hrVoucherPosition}
+                onChange={(e) => {
+                  setHrVoucherPosition(e.target.value);
+                }}
+              />
             </div>
+
             <div>
-              <div className={"text-sm pb-4"}>Upload your company's logo:</div>
+              {/* <div className={"text-sm pb-4"}>Upload your company's logo:</div>
               <form action="/action_page.php" className={"text-xs"}>
                 <input
                   type="file"
@@ -134,7 +170,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   value={hrCompanyLogo}
                   onChange={(e) => setHrCompanyLogo(e.target.value)}
                 />
-              </form>
+              </form> */}
             </div>
           </div>
         </div>
@@ -164,7 +200,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 buttonType={"rounded"}
                 textColour={"white"}
                 label={"Submit"}
-                disabled={formValidation ? false : true}
+                disabled={formValidation()}
                 onClick={onClick}
               />
             </div>

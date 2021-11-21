@@ -4,23 +4,9 @@ import { HROnboarding } from "../components/HROnboarding/HROnboarding";
 export default function Register() {
   //CALL AUTH USER EMAIL TO PASS INTO UPSERT
 
-  const [industryArray, setIndustryArray] = useState([
-    "Select Industry",
-    "Finance",
-    "Gaming",
-    "SaaS",
-    "Space",
-  ]);
+  const [industryArray, setIndustryArray] = useState("");
 
-  const [employeeArray, setEmployeeArray] = useState([
-    "Select the number of Employees",
-    "<10",
-    "10-50",
-    "50-100",
-    "100-200",
-    "200-500",
-    "500+",
-  ]);
+  const [employeeArray, setEmployeeArray] = useState("");
 
   const [hrVoucherPosition, setHrVoucherPosition] = useState("");
   const [hrVoucherCompanyName, setHrVoucherCompanyName] = useState("");
@@ -43,6 +29,30 @@ export default function Register() {
     //CHECK IF REGISTERED ACCOUNT!!!! if REGISTERED -> ROUTE TO DASHBOARD, IF NOT STAY ON REGISTER PAGE
   }, []);
 
+  const formValidator = () => {
+    const employeeArrayValidator = employeeArray;
+    const industryArrayValidator = industryArray;
+    const hrVoucherPositionValidator = hrVoucherPosition;
+    const hrVoucherCompanyNameValidator = hrVoucherCompanyName;
+    const hrVoucherCompanyWebsiteValidator = hrVoucherCompanyWebsite;
+    const hrLocationValidator = hrLocation;
+    //const hrCompanyLogoValidator = hrCompanyLogo;
+    const checkBoxValidationValidator = checkBoxValidation;
+
+    if (
+      employeeArrayValidator &&
+      industryArrayValidator &&
+      hrVoucherPositionValidator &&
+      hrVoucherCompanyNameValidator &&
+      hrVoucherCompanyWebsiteValidator &&
+      hrLocationValidator &&
+      // hrCompanyLogoValidator &&
+      checkBoxValidationValidator
+    ) {
+      return false;
+    }
+    return true;
+  };
   const onSubmit = () => {
     //Form Validation
     //QUERY TO UPSERT ON SUBMIT
@@ -69,7 +79,7 @@ export default function Register() {
         setHrCompanyLogo={setHrCompanyLogo}
         setCheckBoxValidation={setCheckBoxValidation}
         checkBoxValidation={checkBoxValidation}
-        formValidation={formValidation}
+        formValidation={formValidator}
       />
       ;
     </div>
