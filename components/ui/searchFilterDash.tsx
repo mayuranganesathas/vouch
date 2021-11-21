@@ -3,7 +3,7 @@ import React from "react";
 export interface SearchFilterDashProps {
   backgroundColour: "VouchGreen" | "white";
   dropDownArray: string[];
-  value: string;
+  value: any;
   onChange: (e) => void;
   width?: "wide-md" | "wide-lg" | "wide-sm";
 }

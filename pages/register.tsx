@@ -4,7 +4,6 @@ import { HROnboarding } from "../components/HROnboarding/HROnboarding";
 export default function Register(props) {
   //CALL AUTH USER EMAIL TO PASS INTO UPSERT
 
-  const [industrySelect, setIndustrySelect] = useState("");
   const [industryArray, setIndustryArray] = useState([
     "Select Industry",
     "Finance",
@@ -13,7 +12,6 @@ export default function Register(props) {
     "Space",
   ]);
 
-  const [numberOfEmployees, setNumberOfEmployees] = useState("");
   const [employeeArray, setEmployeeArray] = useState([
     "Select the number of Employees",
     "<10",
@@ -23,6 +21,12 @@ export default function Register(props) {
     "200-500",
     "500+",
   ]);
+
+  const [hrVoucherPosition, setHrVoucherPosition] = useState("");
+  const [hrVoucherCompanyName, setHrVoucherCompanyName] = useState("");
+  const [hrVoucherCompanyWebsite, setHrVoucherCompanyWebsite] = useState("");
+  //hrID from google
+  //hrEmail from google
 
   useEffect(() => {
     //  async function checkAuth() {
@@ -46,12 +50,14 @@ export default function Register(props) {
         onClick={onSubmit}
         industryArray={industryArray}
         setIndustryArray={setIndustryArray}
-        industrySelect={industrySelect}
-        setIndustrySelect={setIndustrySelect}
-        numberOfEmployees={numberOfEmployees}
-        setNumberOfEmployees={setNumberOfEmployees}
         employeeArray={employeeArray}
         setEmployeeArray={setEmployeeArray}
+        hrVoucherPosition={hrVoucherPosition}
+        setHrVoucherPosition={setHrVoucherPosition}
+        hrVoucherCompanyName={hrVoucherCompanyName}
+        setHrVoucherCompanyName={setHrVoucherCompanyWebsite}
+        hrVoucherCompanyWebsite={hrVoucherCompanyWebsite}
+        setHrVoucherWebsite={setHrVoucherCompanyWebsite}
       />
       ;
     </div>

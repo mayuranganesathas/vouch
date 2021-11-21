@@ -4,26 +4,36 @@ import { SearchFilterDash } from "../ui/searchFilterDash";
 
 export interface HROnboardingProps {
   onClick: () => void;
-  industrySelect: string;
-  setIndustrySelect: (industrySelect: string) => void;
+
   industryArray: any[];
   setIndustryArray: (industryArray: any[]) => void;
-  numberOfEmployees: string;
-  setNumberOfEmployees: (numberOfEmployees: string) => void;
+
   employeeArray: any[];
   setEmployeeArray: (employeeArray: any[]) => void;
+  hrVoucherPosition: string;
+  setHrVoucherPosition: (hrVoucherVoucherPosition: string) => void;
+
+  hrVoucherCompanyName: string;
+  setHrVoucherCompanyName: (hrVoucherCompanyName: string) => void;
+
+  hrVoucherCompanyWebsite: string;
+  setHrVoucherWebsite: (hrVoucherVoucherWebsite: string) => void;
 }
 
 export const HROnboarding: React.FC<HROnboardingProps> = ({
   onClick,
-  industrySelect,
-  setIndustrySelect,
+
   industryArray,
   setIndustryArray,
-  numberOfEmployees,
-  setNumberOfEmployees,
+
   employeeArray,
   setEmployeeArray,
+  hrVoucherCompanyName,
+  setHrVoucherCompanyName,
+  hrVoucherPosition,
+  setHrVoucherPosition,
+  hrVoucherCompanyWebsite,
+  setHrVoucherWebsite,
 }) => {
   return (
     <div className={"flex justify-center items-center"}>
@@ -46,7 +56,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
                 }
                 placeholder="Enter company name"
-              ></input>
+              />
             </div>
             <div className={"py-4"}>
               <div className={"text-sm"}> Company Website:</div>
@@ -73,9 +83,9 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               <SearchFilterDash
                 backgroundColour={"white"}
                 dropDownArray={industryArray}
-                value={industrySelect}
+                value={industryArray}
                 onChange={(e) => {
-                  setIndustrySelect(e.target.value);
+                  setIndustryArray(e.target.value);
                 }}
               />
             </div>
@@ -84,9 +94,9 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               <SearchFilterDash
                 backgroundColour={"white"}
                 dropDownArray={employeeArray}
-                value={numberOfEmployees}
+                value={employeeArray}
                 onChange={(e) => {
-                  setNumberOfEmployees(e.target.value);
+                  setEmployeeArray(e.target.value);
                 }}
               />
             </div>
