@@ -1,8 +1,12 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
+import { getRedirectResult } from "firebase/auth";
+import router from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import { HROnboarding } from "../components/HROnboarding/HROnboarding";
 import { INSERT_HR_VOUCHER } from "../graphql/INSERT_HR_VOUCHER";
+import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import { useAuth } from "../lib/authContext";
+import { auth } from "../lib/firebase";
 
 export default function Register() {
   const { user } = useAuth();
@@ -41,14 +45,21 @@ export default function Register() {
   );
 
   useEffect(() => {
-    //  async function checkAuth() {
-    //    const result = await getRedirectResult(auth);
-    //    if (result) {
-    //      router.push("/register");
-    //    }
-    //  }
-    //  checkAuth();
+    // async function checkAuth() {
+    //   const result = await getRedirectResult(auth);
+    //   if (result) {
+    //     router.push("/dashboard");
+    //   }
+    // }
+    // checkAuth();
     //CHECK IF REGISTERED ACCOUNT!!!! if REGISTERED -> ROUTE TO DASHBOARD, IF NOT STAY ON REGISTER PAGE
+    // const checkIfRegistered = () => {
+    //   const { loading, error, data } = useQuery(QUERY_HRID, {
+    //     variables: { hrId: user.uuid },
+    //   });
+    //   if (loading) return null;
+    //   if (error) return `Error! ${error}`;
+    // };
   }, []);
 
   const formValidator = () => {
@@ -113,6 +124,8 @@ export default function Register() {
     if (error) return `Submission error! ${error.message}`; //post to BE
 
     clearForms();
+
+    router.push("/dashboard");
   };
   return (
     <div>
