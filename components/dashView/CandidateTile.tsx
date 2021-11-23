@@ -36,12 +36,20 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   standOutSkill1,
   userLinkedinURL,
 }) => {
+  const [thumbUpCheck, thumbUpSetCheck] = useState(false);
+  const [thumbDownCheck, thumbDownSetCheck] = useState(false);
+
   const buttonEmail = () => {
     console.log("test1");
   };
 
-  const [isShown, setIsShown] = useState(false);
-  const thumbUpClick = () => {};
+  const thumbUpClick = () => {
+    thumbUpSetCheck((prevCheck) => !prevCheck);
+  };
+
+  const thumbDownClick = () => {
+    thumbDownSetCheck((prevCheck) => !prevCheck);
+  };
 
   return (
     <div className="py-0.5">
@@ -55,7 +63,11 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <div className={"grid grid-cols-2"}>
               <div className={"flex items-center justify-center pt-4"}>
                 <img
-                  src="./images/thumbsUpBlank.png"
+                  src={
+                    thumbUpCheck
+                      ? "./images/thumbsUpSelected.png"
+                      : "./images/thumbsUpBlank.png"
+                  }
                   width="20"
                   height="20"
                   onClick={thumbUpClick}
@@ -63,9 +75,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               </div>
               <div className={"flex items-center justify-center pt-4"}>
                 <img
-                  src="./images/thumbsDownBlank.png"
+                  src={
+                    thumbDownCheck
+                      ? "./images/thumbsDownSelected.png"
+                      : "./images/thumbsDownBlank.png"
+                  }
                   width="20"
                   height="20"
+                  onClick={thumbDownClick}
                 />
               </div>
             </div>
