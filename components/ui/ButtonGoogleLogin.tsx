@@ -1,6 +1,25 @@
-import React from "react";
+import { getRedirectResult } from "firebase/auth";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import { useAuth } from "../../lib/authContext";
+import { auth } from "../../lib/firebase";
 
-const ButtonGoolgeLogin = () => {
+export interface ButtonGoogleLoginProps {}
+
+const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
+  const { signIn } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    async function checkAuth() {
+      const result = await getRedirectResult(auth);
+      if (result) {
+        router.push("/register");
+      }
+    }
+    checkAuth();
+  }, []);
+
   return (
     <div>
       <button
@@ -8,6 +27,7 @@ const ButtonGoolgeLogin = () => {
           "rounded bg-blue-500 border-white border-1 w-auto h-auto py-1"
         }
         type="button"
+        onClick={signIn}
       >
         <div className={"grid grid-cols-5"}>
           <div className={"col-start-1 col-span-1"}>
@@ -32,4 +52,4 @@ const ButtonGoolgeLogin = () => {
   );
 };
 
-export default ButtonGoolgeLogin;
+export default ButtonGoogleLogin;
