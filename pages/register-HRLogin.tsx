@@ -5,7 +5,9 @@ import background from "./images/officeHRLogin.png";
 
 export default function RegisterHRLogin(prop) {
   const onClickHomePage = () => {
-    window.open("www.svrobotics.ca");
+    window.open(
+      "https://www.wix.com/feedback-ng/feedback/8cb3ccbe-2f71-4eaa-ac32-3474ed90b853"
+    );
   };
   return (
     <div
