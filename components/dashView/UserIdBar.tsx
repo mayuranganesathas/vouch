@@ -1,6 +1,7 @@
 import React from "react";
 import UserProfile from "./UserProfile";
 import HrCompanyProfile from "./HrCompanyProfile";
+import { useAuth } from "../../lib/authContext";
 
 const UserIdBarTest = {
   userHrCompanyName: "Google HQ",
@@ -13,6 +14,8 @@ const UserIdBarTest = {
 };
 
 const UserIdBar = () => {
+  const { user } = useAuth();
+
   return (
     <div className="flex px-2 justify-between">
       <HrCompanyProfile
@@ -22,8 +25,8 @@ const UserIdBar = () => {
         userHrCompanyWebsite={UserIdBarTest.userHrCompanyWebsite}
       />
       <UserProfile
-        userHrImg={UserIdBarTest.userHrImg}
-        userHrName={UserIdBarTest.userHrName}
+        userHrImg={user.photoURL}
+        userHrName={user.displayName}
         userHrPosition={UserIdBarTest.userHrPosition}
       />
     </div>
