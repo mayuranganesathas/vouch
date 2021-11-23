@@ -19,6 +19,7 @@ export interface CandidateTileProps {
   pastIndustry1: string;
   standOutSkill1: string;
   userLinkedinURL: string;
+  userEmailAction: string;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -35,6 +36,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   pastIndustry1,
   standOutSkill1,
   userLinkedinURL,
+  userEmailAction,
 }) => {
   const buttonEmail = () => {
     console.log("test1");
@@ -146,7 +148,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             </div>
             <div className={"pt-0.5"}>
               {" "}
-              <ButtonEmail backgroundColour="white" onClick={buttonEmail} />
+              <ButtonEmail
+                backgroundColour="white"
+                userEmailAction={userEmailAction}
+              />
             </div>
             <div className={"col-span-2"}>
               <ButtonConnected backgroundColour="white" />
