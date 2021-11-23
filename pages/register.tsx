@@ -124,6 +124,8 @@ export default function Register() {
     if (error) return `Submission error! ${error.message}`; //post to BE
 
     clearForms();
+
+    router.push("/dashboard");
   };
   return (
     <div>
