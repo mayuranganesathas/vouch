@@ -1,8 +1,11 @@
+import { useMutation } from "@apollo/client";
 import React, { useEffect, useRef, useState } from "react";
 import { HROnboarding } from "../components/HROnboarding/HROnboarding";
+import { INSERT_HR_VOUCHER } from "../graphql/INSERT_HR_VOUCHER";
+import { useAuth } from "../lib/authContext";
 
 export default function Register() {
-  //CALL AUTH USER EMAIL TO PASS INTO UPSERT
+  const { user } = useAuth();
 
   const [industryArray, setIndustryArray] = useState("");
 
@@ -14,9 +17,28 @@ export default function Register() {
   const [hrLocation, setHrLocation] = useState("");
   const [hrCompanyLogo, setHrCompanyLogo] = useState("");
   const [checkBoxValidation, setCheckBoxValidation] = useState(false);
-  const [formValidation, setFormValidation] = useState(false);
-  //hrID from google
-  //hrEmail from google
+
+  const [initializeCandidateMetaData, { data, loading, error }] = useMutation(
+    INSERT_HR_VOUCHER,
+
+    {
+      variables: {
+        companyName: "incompleteField",
+        companyWebsite: "incompleteField",
+        hrEmail: "incompleteField",
+        industry: "incompleteField",
+        numberOfEmployees: "incompleteField",
+        position: "incompleteField",
+        userName: "incompleteField",
+        hrId: "incompleteField",
+        companyLogoAddress: "incompleteField",
+        companyWebsite1: "incompleteField",
+        corporateName: "incompleteField",
+        location: "incompleteField",
+        numberOfEmployees1: "incompleteField",
+      },
+    }
+  );
 
   useEffect(() => {
     //  async function checkAuth() {
@@ -53,11 +75,44 @@ export default function Register() {
     }
     return true;
   };
+
+  const clearForms = () => {
+    setIndustryArray("");
+    setEmployeeArray("");
+    setHrVoucherPosition("");
+    setHrVoucherCompanyName("");
+    setHrVoucherCompanyWebsite("");
+    setHrLocation("");
+    setHrCompanyLogo("");
+    setCheckBoxValidation(false);
+  };
+
   const onSubmit = () => {
-    //Form Validation
-    //QUERY TO UPSERT ON SUBMIT
-    //post to BE
-    //CLEAR FORMS
+    const hrID = user.uid;
+    const hrEmail = user.email;
+    const userName = user.displayName;
+
+    initializeCandidateMetaData({
+      variables: {
+        companyName: hrVoucherCompanyName,
+        companyWebsite: hrVoucherCompanyWebsite,
+        hrEmail: hrEmail,
+        industry: industryArray,
+        numberOfEmployees: employeeArray,
+        position: hrVoucherPosition,
+        userName: userName,
+        hrId: hrID,
+        companyLogoAddress: hrCompanyLogo,
+        companyWebsite1: hrVoucherCompanyWebsite,
+        corporateName: hrVoucherCompanyName,
+        location: hrLocation,
+        numberOfEmployees1: employeeArray,
+      },
+    });
+    if (loading) return "Submitting...";
+    if (error) return `Submission error! ${error.message}`; //post to BE
+
+    clearForms();
   };
   return (
     <div>
