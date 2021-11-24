@@ -20,25 +20,25 @@ const UserIdBar = () => {
 
   const [homeCheck, setHomeCheck] = useState(false);
   const [favoritesCheck, setFavoritesCheck] = useState(false);
-  const [notNowCheck, setNotNowCheck] = useState(false);
+  const [unfitCheck, setUnfitCheck] = useState(false);
   const [contactedCheck, setContactedCheck] = useState(false);
 
   const homeClick = () => {
     setHomeCheck(true);
     setFavoritesCheck(false);
-    setNotNowCheck(false);
+    setUnfitCheck(false);
     setContactedCheck(false);
   };
 
   const favoritesClick = () => {
     setFavoritesCheck(true);
     setHomeCheck(false);
-    setNotNowCheck(false);
+    setUnfitCheck(false);
     setContactedCheck(false);
   };
 
-  const notNowClick = () => {
-    setNotNowCheck(true);
+  const unfitClick = () => {
+    setUnfitCheck(true);
     setHomeCheck(false);
     setFavoritesCheck(false);
     setContactedCheck(false);
@@ -46,7 +46,7 @@ const UserIdBar = () => {
 
   const contactedClick = () => {
     setContactedCheck(true);
-    setNotNowCheck(false);
+    setUnfitCheck(false);
     setHomeCheck(false);
     setFavoritesCheck(false);
   };
@@ -83,11 +83,11 @@ const UserIdBar = () => {
       </div>
       <div className={"col-start-6 flex justify-center items-center"}>
         <ButtonNav
-          backgroundColour={notNowCheck ? "gray" : "white"}
+          backgroundColour={unfitCheck ? "gray" : "white"}
           buttonType={"square"}
-          textColour={notNowCheck ? "VouchGreen" : "black"}
-          label={"Not Now"}
-          onClick={notNowClick}
+          textColour={unfitCheck ? "VouchGreen" : "black"}
+          label={"Unfit"}
+          onClick={unfitClick}
         />
       </div>
       <div className={"col-start-7 flex justify-center items-center"}>
