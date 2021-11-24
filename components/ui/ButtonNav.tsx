@@ -1,15 +1,15 @@
 import React from "react";
-export interface ButtonVouchProps {
-  backgroundColour: "VouchGreen" | "white";
+export interface ButtonNavProps {
+  backgroundColour: "gray" | "white";
   buttonType: "rounded" | "square";
-  textColour: "black" | "white";
+  textColour: "black" | "VouchGreen";
   label: string;
   disabled?: boolean;
   onClick: () => void;
   buttonWidth?: "wide";
 }
 
-export const ButtonVouch: React.FC<ButtonVouchProps> = ({
+export const ButtonNav: React.FC<ButtonNavProps> = ({
   backgroundColour,
   buttonType,
   textColour,
@@ -27,12 +27,12 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
   }
   let backgroundStyles;
   switch (backgroundColour) {
-    case "VouchGreen":
-      backgroundStyles = "bg-VouchGreen";
+    case "gray":
+      backgroundStyles = "bg-gray-50";
       break;
 
     case "white":
-      backgroundStyles = "bg-white border-gray-400 border-2";
+      backgroundStyles = "bg-white";
       break;
   }
   let buttonStyles;
@@ -49,8 +49,8 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
     case "black":
       textStyles = "text-gray-400";
       break;
-    case "white":
-      textStyles = "text-white";
+    case "VouchGreen":
+      textStyles = "text-VouchGreen";
       break;
   }
 
@@ -59,7 +59,7 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
       onClick={onClick}
       disabled={disabled}
       type="button"
-      className={`bg-gradient-to-b px-8 py-1 text-red font-bold ${buttonSize}
+      className={`bg-gradient-to-b px-8 py-1 h-full font-bold ${buttonSize}
       ${disabled ? "bg-gray-400 opacity-25" : backgroundStyles}
       ${disabled ? "rounded" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}

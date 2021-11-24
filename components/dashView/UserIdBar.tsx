@@ -19,9 +19,36 @@ const UserIdBar = () => {
   const { user } = useAuth();
 
   const [homeCheck, setHomeCheck] = useState(false);
+  const [favoritesCheck, setFavoritesCheck] = useState(false);
+  const [notNowCheck, setNotNowCheck] = useState(false);
+  const [contactedCheck, setContactedCheck] = useState(false);
 
   const homeClick = () => {
-    setHomeCheck((prevCheck) => !prevCheck);
+    setHomeCheck(true);
+    setFavoritesCheck(false);
+    setNotNowCheck(false);
+    setContactedCheck(false);
+  };
+
+  const favoritesClick = () => {
+    setFavoritesCheck(true);
+    setHomeCheck(false);
+    setNotNowCheck(false);
+    setContactedCheck(false);
+  };
+
+  const notNowClick = () => {
+    setNotNowCheck(true);
+    setHomeCheck(false);
+    setFavoritesCheck(false);
+    setContactedCheck(false);
+  };
+
+  const contactedClick = () => {
+    setContactedCheck(true);
+    setNotNowCheck(false);
+    setHomeCheck(false);
+    setFavoritesCheck(false);
   };
 
   return (
@@ -38,7 +65,7 @@ const UserIdBar = () => {
       </div>
       <div className={"col-start-4 flex justify-center items-center"}>
         <ButtonNav
-          backgroundColour={homeCheck ? "white" : "gray"}
+          backgroundColour={homeCheck ? "gray" : "white"}
           buttonType={"square"}
           textColour={homeCheck ? "VouchGreen" : "black"}
           label={"Home"}
@@ -46,16 +73,31 @@ const UserIdBar = () => {
         />
       </div>
       <div className={"col-start-5 flex justify-center items-center"}>
-        {" "}
-        Favourites
+        <ButtonNav
+          backgroundColour={favoritesCheck ? "gray" : "white"}
+          buttonType={"square"}
+          textColour={favoritesCheck ? "VouchGreen" : "black"}
+          label={"Favorites"}
+          onClick={favoritesClick}
+        />
       </div>
       <div className={"col-start-6 flex justify-center items-center"}>
-        {" "}
-        Not now{" "}
+        <ButtonNav
+          backgroundColour={notNowCheck ? "gray" : "white"}
+          buttonType={"square"}
+          textColour={notNowCheck ? "VouchGreen" : "black"}
+          label={"Not Now"}
+          onClick={notNowClick}
+        />
       </div>
       <div className={"col-start-7 flex justify-center items-center"}>
-        {" "}
-        Contacted{" "}
+        <ButtonNav
+          backgroundColour={contactedCheck ? "gray" : "white"}
+          buttonType={"square"}
+          textColour={contactedCheck ? "VouchGreen" : "black"}
+          label={"Contacted"}
+          onClick={contactedClick}
+        />
       </div>
 
       <div className={"col-start-11 col-span-2"}>
