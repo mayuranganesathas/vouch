@@ -1,7 +1,9 @@
 import React from "react";
+import { useState } from "react";
 import UserProfile from "./UserProfile";
 import HrCompanyProfile from "./HrCompanyProfile";
 import { useAuth } from "../../lib/authContext";
+import { ButtonNav } from "../ui/ButtonNav";
 
 const UserIdBarTest = {
   userHrCompanyName: "Google HQ",
@@ -16,6 +18,12 @@ const UserIdBarTest = {
 const UserIdBar = () => {
   const { user } = useAuth();
 
+  const [homeCheck, setHomeCheck] = useState(false);
+
+  const homeClick = () => {
+    setHomeCheck((prevCheck) => !prevCheck);
+  };
+
   return (
     <div className={"grid grid-cols-12"}>
       <div className={"col-start-1 col-span-2"}>
@@ -29,8 +37,13 @@ const UserIdBar = () => {
         </div>
       </div>
       <div className={"col-start-4 flex justify-center items-center"}>
-        {" "}
-        Home{" "}
+        <ButtonNav
+          backgroundColour={homeCheck ? "white" : "gray"}
+          buttonType={"square"}
+          textColour={homeCheck ? "VouchGreen" : "black"}
+          label={"Home"}
+          onClick={homeClick}
+        />
       </div>
       <div className={"col-start-5 flex justify-center items-center"}>
         {" "}
