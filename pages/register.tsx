@@ -22,7 +22,20 @@ export default function Register() {
   const [hrCompanyLogo, setHrCompanyLogo] = useState("");
   const [checkBoxValidation, setCheckBoxValidation] = useState(false);
 
-  const [initializeCandidateMetaData, { data, loading, error }] = useMutation(
+  const { data: hrData } = useQuery(QUERY_HRID, {
+    variables: { hrId: user.uid },
+  });
+
+  useEffect(() => {
+    const hrRegister = () => {
+      if (hrData.hr_voucher.length > 0) {
+        router.push("/dashboard");
+      }
+    };
+    hrData && hrRegister();
+  }, [hrData]);
+
+  const [initializeRegisterHr, { data, loading, error }] = useMutation(
     INSERT_HR_VOUCHER,
 
     {
@@ -40,27 +53,10 @@ export default function Register() {
         corporateName: "incompleteField",
         location: "incompleteField",
         numberOfEmployees1: "incompleteField",
+        hrId1: "incompleteField",
       },
     }
   );
-
-  useEffect(() => {
-    // async function checkAuth() {
-    //   const result = await getRedirectResult(auth);
-    //   if (result) {
-    //     router.push("/dashboard");
-    //   }
-    // }
-    // checkAuth();
-    //CHECK IF REGISTERED ACCOUNT!!!! if REGISTERED -> ROUTE TO DASHBOARD, IF NOT STAY ON REGISTER PAGE
-    // const checkIfRegistered = () => {
-    //   const { loading, error, data } = useQuery(QUERY_HRID, {
-    //     variables: { hrId: user.uuid },
-    //   });
-    //   if (loading) return null;
-    //   if (error) return `Error! ${error}`;
-    // };
-  }, []);
 
   const formValidator = () => {
     const employeeArrayValidator = employeeArray;
@@ -103,7 +99,7 @@ export default function Register() {
     const hrEmail = user.email;
     const userName = user.displayName;
 
-    initializeCandidateMetaData({
+    initializeRegisterHr({
       variables: {
         companyName: hrVoucherCompanyName,
         companyWebsite: hrVoucherCompanyWebsite,
@@ -118,38 +114,39 @@ export default function Register() {
         corporateName: hrVoucherCompanyName,
         location: hrLocation,
         numberOfEmployees1: employeeArray,
+        hrId1: hrID,
       },
     });
     if (loading) return "Submitting...";
     if (error) return `Submission error! ${error.message}`; //post to BE
 
     clearForms();
-
-    router.push("/dashboard");
+    setTimeout(() => router.push("/dashboard"), 1000);
   };
   return (
     <div>
-      <HROnboarding
-        onClick={onSubmit}
-        industryArray={industryArray}
-        setIndustryArray={setIndustryArray}
-        hrLocation={hrLocation}
-        setHrLocation={setHrLocation}
-        employeeArray={employeeArray}
-        setEmployeeArray={setEmployeeArray}
-        hrVoucherPosition={hrVoucherPosition}
-        setHrVoucherPosition={setHrVoucherPosition}
-        hrVoucherCompanyName={hrVoucherCompanyName}
-        setHrVoucherCompanyName={setHrVoucherCompanyName}
-        hrVoucherCompanyWebsite={hrVoucherCompanyWebsite}
-        setHrVoucherWebsite={setHrVoucherCompanyWebsite}
-        hrCompanyLogo={hrCompanyLogo}
-        setHrCompanyLogo={setHrCompanyLogo}
-        setCheckBoxValidation={setCheckBoxValidation}
-        checkBoxValidation={checkBoxValidation}
-        formValidation={formValidator}
-      />
-      ;
+      {hrData && (
+        <HROnboarding
+          onClick={onSubmit}
+          industryArray={industryArray}
+          setIndustryArray={setIndustryArray}
+          hrLocation={hrLocation}
+          setHrLocation={setHrLocation}
+          employeeArray={employeeArray}
+          setEmployeeArray={setEmployeeArray}
+          hrVoucherPosition={hrVoucherPosition}
+          setHrVoucherPosition={setHrVoucherPosition}
+          hrVoucherCompanyName={hrVoucherCompanyName}
+          setHrVoucherCompanyName={setHrVoucherCompanyName}
+          hrVoucherCompanyWebsite={hrVoucherCompanyWebsite}
+          setHrVoucherWebsite={setHrVoucherCompanyWebsite}
+          hrCompanyLogo={hrCompanyLogo}
+          setHrCompanyLogo={setHrCompanyLogo}
+          setCheckBoxValidation={setCheckBoxValidation}
+          checkBoxValidation={checkBoxValidation}
+          formValidation={formValidator}
+        />
+      )}
     </div>
   );
 }
