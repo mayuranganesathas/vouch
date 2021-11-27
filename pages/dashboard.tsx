@@ -44,7 +44,33 @@ const dbData = {
   numberThanks: 2,
 };
 const DashBoard = (data) => {
+  enum STAGE {
+    Home,
+    Favorites,
+    Unfit,
+    Contacted,
+  }
+
+  const [stage, setStage] = useState(STAGE.Home);
+
   const { user } = useAuth();
+
+  const getComponent = (stage: STAGE) => {
+    if (stage == STAGE.Home) {
+      return (
+        <DashCandidateTiles
+          vouchData={data}
+          userLinkedinURL={dashBoardTest.userLinkedinURL}
+        />
+      );
+    } else if (stage == STAGE.Favorites) {
+      return <div> FAVORITES TILES</div>;
+    } else if (stage == STAGE.Unfit) {
+      return <div>UNFIT TILES</div>;
+    } else if (stage == STAGE.Contacted) {
+      return <div> CONTACT TILES</div>;
+    }
+  };
 
   const { data: hrData } = useQuery(QUERY_HRID, {
     variables: { hrId: user.uid },
@@ -109,12 +135,7 @@ const DashBoard = (data) => {
               <div className={"grid-start-12 grid-end-13"}>Stand Out Skill</div>
               <div className={"grid-start-14"}></div>
             </div>
-            <div className={"py-4"}>
-              <DashCandidateTiles
-                vouchData={data}
-                userLinkedinURL={dashBoardTest.userLinkedinURL}
-              />
-            </div>
+            <div className={"py-4"}>{getComponent(stage)}</div>
           </div>
         </div>
       )}
