@@ -64,14 +64,14 @@ const DashBoard = (data) => {
       {hrData && (
         <div>
           <div className={"pt-4 px-20"}>
-            <UserIdBar />
+            <UserIdBar hrData={hrData} />
           </div>
           <div className={"w-full border-gray-500 border-b"}></div>
           <div className={"px-2 grid grid-cols-2"}>
             <div className={"pl-24 pt-10"}>
               <WelcomeComp
                 newCandidateNumber={dashBoardTest.newCandidateNumber}
-                userHrFirstName={dashBoardTest.userHrFirstName}
+                userHrFirstName={user.displayName}
                 moveToCandidates={dashBoardTest.moveToCandidate}
               />
             </div>

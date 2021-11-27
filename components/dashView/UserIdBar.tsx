@@ -13,21 +13,24 @@ const UserIdBarTest = {
   userHrPosition: "HR Lead",
 };
 
-const UserIdBar = () => {
+export interface UserIdBarProps {
+  hrData: any;
+}
+const UserIdBar = ({ hrData }: UserIdBarProps) => {
   const { user } = useAuth();
 
   return (
     <div className="flex px-2 justify-between">
       <HrCompanyProfile
-        userHrCompanyName={UserIdBarTest.userHrCompanyName}
-        userHrCompanyImage={UserIdBarTest.userHrCompanyImage}
-        userHrCompanyIndustry={UserIdBarTest.userHrCompanyIndustry}
-        userHrCompanyWebsite={UserIdBarTest.userHrCompanyWebsite}
+        userHrCompanyName={hrData.hr_voucher[0].companyName}
+        userHrCompanyImage={hrData.company_data[0].companyLogoAddress}
+        userHrCompanyIndustry={hrData.hr_voucher[0].industry}
+        userHrCompanyWebsite={hrData.hr_voucher[0].companyWebsite}
       />
       <UserProfile
         userHrImg={user.photoURL}
         userHrName={user.displayName}
-        userHrPosition={UserIdBarTest.userHrPosition}
+        userHrPosition={hrData.hr_voucher[0].position}
       />
     </div>
   );
