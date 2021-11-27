@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import WelcomeComp from "../components/dashView/WelcomeComp";
 import VouchCTA from "../components/dashView/VouchCTA";
@@ -6,10 +6,12 @@ import { CandidateCount } from "../components/dashView/CandidateCount";
 import DashCandidateTiles from "../components/dashView/DashCandidateTiles";
 import UserIdBar from "../components/dashView/UserIdBar";
 import { GetServerSideProps } from "next";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, useQuery } from "@apollo/client";
 import { QUERY_DASHBOARD_TILES } from "../graphql/QUERY_DASHBOARD_TILES";
 import { DatabaseIcon } from "@heroicons/react/solid";
 import { useAuth } from "../lib/authContext";
+import { QUERY_HRID } from "../graphql/QUERY_HRID";
+import router from "next/router";
 
 const dashBoardTest = {
   newCandidateNumber: 14,
@@ -41,55 +43,81 @@ const dbData = {
   numbersReferred: 3,
   numberThanks: 2,
 };
-const DashBoard = (data, userLinkedinURL, setUserLinkedinURL) => {
+const DashBoard = (data) => {
+  const { user } = useAuth();
+
+  const { data: hrData } = useQuery(QUERY_HRID, {
+    variables: { hrId: user.uid },
+  });
+
+  useEffect(() => {
+    const hrRegister = () => {
+      if (hrData.hr_voucher.length <= 0) {
+        router.push("/register");
+      }
+    };
+    hrData && hrRegister();
+  }, [hrData]);
+
   return (
     <div>
-      <div className={"pt-4 px-20"}>
-        <UserIdBar />
-      </div>
-      <div className={"w-full border-gray-500 border-b"}></div>
-      <div className={"px-2 grid grid-cols-2"}>
-        <div className={"pl-24 pt-10"}>
-          <WelcomeComp
-            newCandidateNumber={dashBoardTest.newCandidateNumber}
-            userHrFirstName={dashBoardTest.userHrFirstName}
-            moveToCandidates={dashBoardTest.moveToCandidate}
-          />
-        </div>
+      {hrData && (
+        <div>
+          <div className={"pt-4 px-20"}>
+            <UserIdBar />
+          </div>
+          <div className={"w-full border-gray-500 border-b"}></div>
+          <div className={"px-2 grid grid-cols-2"}>
+            <div className={"pl-24 pt-10"}>
+              <WelcomeComp
+                newCandidateNumber={dashBoardTest.newCandidateNumber}
+                userHrFirstName={dashBoardTest.userHrFirstName}
+                moveToCandidates={dashBoardTest.moveToCandidate}
+              />
+            </div>
 
-        <div className="grid justify-items-end pr-40 pt-10">
-          <VouchCTA
-            numberReferred={dashBoardTest.numberReferred}
-            numberThanks={dashBoardTest.numberThanks}
-          />
+            <div className="grid justify-items-end pr-40 pt-10">
+              <VouchCTA
+                numberReferred={dashBoardTest.numberReferred}
+                numberThanks={dashBoardTest.numberThanks}
+              />
+            </div>
+          </div>
+          <div className={"grid grid-cols-2"}>
+            <div className={"pl-20"}>
+              <CandidateCount
+                candidateCount={dashBoardTest.candidateCount}
+                lastCandidateCount={dashBoardTest.lastCandidateCount}
+              />
+            </div>
+            <div
+              className={"grid justify-items-end col-start-2 pr-40 py-8"}
+            ></div>
+          </div>
+          <div className={"bg-gray-50 px-20"}>
+            <div
+              className={"grid grid-cols-14 gap-4 bg-gray-200 grid-flow-col"}
+            >
+              <div className={"col-start-1 pl-4"}> Referral</div>
+              <div className={"grid-start-2 grid-end-5"}>
+                {" "}
+                Role Interviewed For
+              </div>
+              <div className={"grid-start-5 grid-end-7"}>Referring By</div>
+              <div className={"grid-start-7 grid-end-9"}> Vetted To</div>
+              <div className={"grid-start-9 grid-end-12"}>Last Role</div>
+              <div className={"grid-start-12 grid-end-13"}>Stand Out Skill</div>
+              <div className={"grid-start-14"}></div>
+            </div>
+            <div className={"py-4"}>
+              <DashCandidateTiles
+                vouchData={data}
+                userLinkedinURL={dashBoardTest.userLinkedinURL}
+              />
+            </div>
+          </div>
         </div>
-      </div>
-      <div className={"grid grid-cols-2"}>
-        <div className={"pl-20"}>
-          <CandidateCount
-            candidateCount={dashBoardTest.candidateCount}
-            lastCandidateCount={dashBoardTest.lastCandidateCount}
-          />
-        </div>
-        <div className={"grid justify-items-end col-start-2 pr-40 py-8"}></div>
-      </div>
-      <div className={"bg-gray-50 px-20"}>
-        <div className={"grid grid-cols-14 gap-4 bg-gray-200 grid-flow-col"}>
-          <div className={"col-start-1 pl-4"}> Referral</div>
-          <div className={"grid-start-2 grid-end-5"}> Role Interviewed For</div>
-          <div className={"grid-start-5 grid-end-7"}>Referring By</div>
-          <div className={"grid-start-7 grid-end-9"}> Vetted To</div>
-          <div className={"grid-start-9 grid-end-12"}>Last Role</div>
-          <div className={"grid-start-12 grid-end-13"}>Stand Out Skill</div>
-          <div className={"grid-start-14"}></div>
-        </div>
-        <div className={"py-4"}>
-          <DashCandidateTiles
-            vouchData={data}
-            userLinkedinURL={dashBoardTest.userLinkedinURL}
-          />
-        </div>
-      </div>
+      )}
     </div>
   );
 };
