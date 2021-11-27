@@ -6,7 +6,7 @@ export const INSERT_HR_VOUCHER = gql`
     $companyWebsite: String = ""
     $hrEmail: String = ""
     $industry: String = ""
-    $numberOfEmployees: Int = 10
+    $numberOfEmployees: String = ""
     $position: String = ""
     $userName: String = ""
     $hrId: String = ""
@@ -14,7 +14,9 @@ export const INSERT_HR_VOUCHER = gql`
     $companyWebsite1: String = ""
     $corporateName: String = ""
     $location: String = ""
-    $numberOfEmployees1: Int = 10
+    $numberOfEmployees1: String = ""
+    $rangeOfEmployees: String = ""
+    $hrId1: String = ""
   ) {
     insert_hr_voucher(
       objects: {
@@ -22,12 +24,11 @@ export const INSERT_HR_VOUCHER = gql`
         companyWebsite: $companyWebsite
         hrEmail: $hrEmail
         industry: $industry
-        numberOfEmployees: $numberOfEmployees
+        rangeOfEmployees: $numberOfEmployees
         position: $position
         userName: $userName
         hrId: $hrId
       }
-      on_conflict: {}
     ) {
       returning {
         created_at
@@ -40,7 +41,8 @@ export const INSERT_HR_VOUCHER = gql`
         companyWebsite: $companyWebsite1
         corporateName: $corporateName
         location: $location
-        numberOfEmployees: $numberOfEmployees1
+        rangeOfEmployees: $numberOfEmployees1
+        hrId: $hrId1
       }
     ) {
       returning {

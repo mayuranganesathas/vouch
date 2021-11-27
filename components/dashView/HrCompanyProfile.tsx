@@ -5,12 +5,14 @@ export interface HrCompanyProfileProps {
   userHrCompanyName: string;
   userHrCompanyIndustry: string;
   userHrCompanyWebsite: string;
+  userHrCompanyLocation: string;
 }
 const HrCompanyProfile = ({
   userHrCompanyImage,
   userHrCompanyName,
   userHrCompanyIndustry,
   userHrCompanyWebsite,
+  userHrCompanyLocation,
 }: HrCompanyProfileProps) => {
   return (
     <div className="flex py-2">
@@ -27,7 +29,7 @@ const HrCompanyProfile = ({
           <img src="icons/industry.png" className="w-4 h-4 " />
           <span className="text-xs text-gray-500 flex-nowrap py-0.5 px-0.5">
             {" "}
-            {userHrCompanyIndustry}
+            {userHrCompanyIndustry} | {userHrCompanyLocation}
           </span>
         </div>
       </div>
