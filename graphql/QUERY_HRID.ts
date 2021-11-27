@@ -8,6 +8,7 @@ export const QUERY_HRID = gql`
       industry
       companyWebsite
       userName
+      position
     }
     company_data(where: { hrId: { _eq: $hrId } }) {
       companyLogoAddress
