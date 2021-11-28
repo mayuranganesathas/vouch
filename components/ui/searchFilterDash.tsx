@@ -2,8 +2,8 @@ import React from "react";
 
 export interface SearchFilterDashProps {
   backgroundColour: "VouchGreen" | "white";
-  dropDownArray: string[];
-  value: string;
+  dropDownArray: any[];
+  value: any;
   onChange: (e) => void;
   width?: "wide-md" | "wide-lg" | "wide-sm";
 }
@@ -39,7 +39,7 @@ export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
   return (
     <form>
       <select
-        className={`${backgroundStyles} ${buttonWidth} rounded-md text-xs w-min text-gray-500 `}
+        className={`${backgroundStyles} ${buttonWidth} rounded-md text-xs w-min text-gray-500 py-2 `}
         name="Select From List"
         id="Select From List"
         value={value}

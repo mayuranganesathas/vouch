@@ -15,7 +15,7 @@ export const ButtonEmail: React.FC<ButtonEmailProps> = ({
       onClick={onClick}
       disabled={disabled}
       type="button"
-      className={`border border-gray-300 rounded px-4 py-1 w-16
+      className={`border border-gray-300 rounded px-4 py-1 h-10 w-16
       ${disabled ? "bg-gray-400 opacity-25" : backgroundColour}
 
       ${disabled ? "cursor-default" : "cursor-pointer"}

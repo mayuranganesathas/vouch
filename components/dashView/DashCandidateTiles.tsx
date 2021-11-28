@@ -3,14 +3,18 @@ import { CandidateTile } from "./CandidateTile";
 
 export interface DashCandidateTilesProps {
   vouchData: any;
+  userLinkedinURL: string;
 }
 
-const DashCandidateTiles = (vouchData) => {
+const DashCandidateTiles = ({
+  vouchData,
+  userLinkedinURL,
+}: DashCandidateTilesProps) => {
   return (
     <div className="">
       {/* {JSON.stringify(vouchData)} */}
       {vouchData &&
-        vouchData.vouchData.hr_voucher_metadata.map((e) => (
+        vouchData.hr_voucher_metadata.map((e) => (
           <CandidateTile
             userID={e.candidateId}
             positionTitle={e.positionTitle}
@@ -24,6 +28,7 @@ const DashCandidateTiles = (vouchData) => {
             pastPosition1={e.Vouchee[0].positionTitle1}
             pastIndustry1={e.Vouchee[0].industry1}
             standOutSkill1={e.standOutSkill1}
+            userLinkedinURL={e.Vouchee[0].linkedIn}
           />
         ))}
     </div>
