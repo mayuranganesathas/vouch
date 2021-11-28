@@ -6,6 +6,7 @@ import { CandidateOnThree } from "../components/CandidateOnboarding/CandidateOnT
 import { ButtonVouch } from "../components/ui/ButtonVouch";
 import { useMutation } from "@apollo/client";
 import { UPSERT_CANDIDATE_METADATA } from "../graphql/UPSERT_CANDIDATE_METADATA";
+import router from "next/router";
 
 export default function CandidateOn(props) {
   enum STAGE {
@@ -46,6 +47,7 @@ export default function CandidateOn(props) {
     "Space",
   ]);
 
+  const hrIdUrl = router.pathname;
   const clearFormState = () => {
     setJob1("");
     setJob2("");
@@ -75,6 +77,8 @@ export default function CandidateOn(props) {
       },
     }
   );
+  //update UPSERT INFORMATION VARIABLES
+  // PARSE URL AND PASS INTO HRID
   const formValidator = () => {
     const job1Validator = job1;
     const job2Validator = job2;
@@ -134,7 +138,6 @@ export default function CandidateOn(props) {
     if (stage == STAGE.CandidateOnOne) {
       return (
         <div>
-          {" "}
           <CandidateOnOne onClick={nextStage} />
           <div className={"flex justify-center items-center gap-4 pt-4"}> </div>
         </div>
