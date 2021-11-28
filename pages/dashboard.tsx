@@ -13,6 +13,8 @@ import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
 
+export interface DashboardProps {}
+
 const dashBoardTest = {
   newCandidateNumber: 14,
   userHrFirstName: "Vivian",
@@ -44,30 +46,23 @@ const dbData = {
   numberThanks: 2,
 };
 const DashBoard = (data) => {
-  enum STAGE {
-    Home,
-    Favorites,
-    Unfit,
-    Contacted,
-  }
-
-  const [stage, setStage] = useState(STAGE.Home);
+  const [stage, setStage] = useState("Home");
+  const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-
-  const getComponent = (stage: STAGE) => {
-    if (stage == STAGE.Home) {
+  const getComponent = (stage) => {
+    if (stageStatus == "Home") {
       return (
         <DashCandidateTiles
           vouchData={data}
           userLinkedinURL={dashBoardTest.userLinkedinURL}
         />
       );
-    } else if (stage == STAGE.Favorites) {
+    } else if (stageStatus == "Favorites") {
       return <div> FAVORITES TILES</div>;
-    } else if (stage == STAGE.Unfit) {
+    } else if (stageStatus == "Unfit") {
       return <div>UNFIT TILES</div>;
-    } else if (stage == STAGE.Contacted) {
+    } else if (stageStatus == "Contacted") {
       return <div> CONTACT TILES</div>;
     }
   };
@@ -90,7 +85,11 @@ const DashBoard = (data) => {
       {hrData && (
         <div>
           <div className={"pt-4 px-20"}>
-            <UserIdBar hrData={hrData} />
+            <UserIdBar
+              hrData={hrData}
+              stageStatus={stageStatus}
+              setStageStatus={setStageStatus}
+            />
           </div>
           <div className={"w-full border-gray-500 border-b"}></div>
           <div className={"px-2 grid grid-cols-2"}>
