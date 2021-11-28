@@ -95,9 +95,7 @@ const DashBoard = (data) => {
             ></div>
           </div>
           <div className={"bg-gray-50 px-20"}>
-            <div
-              className={"grid grid-cols-14 gap-4 bg-gray-200 grid-flow-col"}
-            >
+            <div className={"grid grid-cols-14 bg-gray-200 grid-flow-col"}>
               <div className={"col-start-1 pl-4"}> Referral</div>
               <div className={"grid-start-2 grid-end-5"}>
                 {" "}
