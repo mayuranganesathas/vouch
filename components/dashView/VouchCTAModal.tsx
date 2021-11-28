@@ -6,6 +6,7 @@ import { SearchFilterDash } from "../ui/searchFilterDash";
 import StandOutSkill from "../ui/StandOutSkill";
 import { UPSERT_VOUCH_CANDIDATE } from "../../graphql/UPSERT_VOUCHEE_FORM";
 import { useMutation } from "@apollo/client";
+import { useAuth } from "../../lib/authContext";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -22,6 +23,8 @@ export interface VouchCTAModalProps {
 //EMAIL INPUT VALIDATOR
 
 const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
+  const { user } = useAuth();
+
   const dropDownArray = [
     "test1231231",
     "test2123123",
@@ -84,6 +87,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     const res = await fetch("/api/vouchEmailCandidate", {
       body: JSON.stringify({
         email: email,
+        hrId: user.uid,
       }),
       headers: {
         "Content-Type": "application/json",
