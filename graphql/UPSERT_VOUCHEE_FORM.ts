@@ -12,6 +12,9 @@ export const UPSERT_VOUCH_CANDIDATE = gql`
     $standOutSkill3: String = ""
     $standOutSkill4: String = ""
     $standOutSkill5: String = ""
+    $hrId1: String = ""
+    $hrId2: String = ""
+    $candidateEmail: String = ""
   ) {
     insert_hr_voucher_metadata(
       objects: {
@@ -29,6 +32,16 @@ export const UPSERT_VOUCH_CANDIDATE = gql`
     ) {
       returning {
         hrId
+      }
+    }
+    insert_candidate_metadata(objects: { hrId: $hrId1 }) {
+      returning {
+        created_at
+      }
+    }
+    insert_candidates(objects: { hrId: $hrId2 }) {
+      returning {
+        created_at
       }
     }
   }

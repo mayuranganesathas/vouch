@@ -33,7 +33,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     "test512312231",
   ];
   //authentication passes hrID
-  const [hrId, setHrId] = useState("fieldtest1");
   const [email, setEmail] = useState("");
   const [positionTitle, setPositionTitle] = useState("");
   const [interviewStage, setInterviewStage] = useState("");
@@ -75,10 +74,12 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
         standOutSkill3: "incompleteField",
         standOutSkill4: "incompleteField",
         standOutSkill5: "incompleteField",
+        hrId1: "incompleteField",
+        hrId2: "incompleteField",
       },
     }
   );
-
+  // insert hrID in candidates and
   const emailChecker = (e) => {
     setEmail(e);
   };
@@ -106,7 +107,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   const submitForm = async () => {
     initializeVouchCandidate({
       variables: {
-        hrId: hrId,
+        hrId: user.uid,
         positionLevel: positionLevel,
         positionTitle: positionTitle,
         salaryRange: salaryRange,
@@ -116,6 +117,8 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
         standOutSkill3: standOutSkill3,
         standOutSkill4: standOutSkill4,
         standOutSkill5: standOutSkill5,
+        hrId1: user.uid,
+        hrId2: user.uid,
       },
     });
     if (loading) return "Submitting...";

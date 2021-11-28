@@ -9,22 +9,23 @@ const RouterList = ({}: RouterListProps) => {
   const { user } = useAuth();
 
   const sendEmail = async () => {
-    const res = await fetch("/api/vouchEmailCandidate", {
-      body: JSON.stringify({
-        email: "mayuran852@gmail.com",
-        hrId: user.uid,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
+    // const res = await fetch("/api/vouchEmailCandidate", {
+    //   body: JSON.stringify({
+    //     email: "mayuran852@gmail.com",
+    //     hrId: user.uid,
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   method: "POST",
+    // });
 
-    const { error } = await res.json();
-    if (error) {
-      console.log(error);
-      return;
-    }
+    // const { error } = await res.json();
+    // if (error) {
+    //   console.log(error);
+    //   return;
+    // }
+    console.log("You're an idiot");
   };
 
   return (
@@ -56,7 +57,6 @@ const RouterList = ({}: RouterListProps) => {
           Email Test (Do Not Click Please){" "}
         </button>
       </div>
-      ;
     </div>
   );
 };
