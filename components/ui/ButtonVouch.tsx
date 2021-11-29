@@ -1,6 +1,6 @@
 import React from "react";
 export interface ButtonVouchProps {
-  backgroundColour: "VouchGreen" | "white";
+  backgroundColour: "VouchGreen" | "white" | "empty";
   buttonType: "rounded" | "square";
   textColour: "black" | "white";
   label: string;
@@ -33,6 +33,10 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
 
     case "white":
       backgroundStyles = "bg-white border-gray-400 border-2";
+      break;
+
+    case "empty":
+      backgroundStyles = "border-white border-2";
       break;
   }
   let buttonStyles;
