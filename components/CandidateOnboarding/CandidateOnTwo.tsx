@@ -22,17 +22,46 @@ export interface CandidateOnTwoProps {
   industry3: string;
   setIndustry3: (industry3: string) => void;
   jobArray: any[];
-  setJobArray: (jobArray: any[]) => void;
   yearArray: any[];
-  setYearArray: (yearArray: any[]) => void;
   industryArray: any[];
-  setIndustryArray: (industryArray: any) => void;
+  // locationState: string;
+  // setLocationState: (remoteStatus: string) => void;
+  // locationCity: string;
+  // setLocationCity: (locationCity: string) => void;
+
+  firstName: string;
+  setFirstName: (firstName: string) => void;
+
+  lastName: string;
+  setLastName: (lastName: string) => void;
+
+  linkedIn: string;
+  setLinkedIn: (linkedIn: string) => void;
+
+  candidateEmail: string;
+  setCandidateEmail: (candidateEmail: string) => void;
+
+  companyWebsite1: string;
+  setCompanyWebsite1: (companyWebsite1: string) => void;
+
+  companyWebsite2: string;
+  setCompanyWebsite2: (companyWebsite2: string) => void;
+
+  companyWebsite3: string;
+  setCompanyWebsite3: (companyWebsite3: string) => void;
+
   previousStage: () => void;
   completeForm: () => void;
   formValidation: () => boolean;
 }
 
 export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
+  companyWebsite1,
+  companyWebsite2,
+  companyWebsite3,
+  setCompanyWebsite2,
+  setCompanyWebsite1,
+  setCompanyWebsite3,
   job1,
   setJob1,
   job2,
@@ -52,11 +81,22 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   industry3,
   setIndustry3,
   jobArray,
-  setJobArray,
   yearArray,
-  setYearArray,
   industryArray,
-  setIndustryArray,
+  // locationState,
+  // setLocationState,
+  // locationCity,
+  // setLocationCity,
+  // remoteArray,
+
+  firstName,
+  setFirstName,
+  lastName,
+  setLastName,
+  candidateEmail,
+  setCandidateEmail,
+  linkedIn,
+  setLinkedIn,
   previousStage,
   completeForm,
   formValidation,
@@ -69,6 +109,74 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
           A few details to help standout in our qualified pool of referrals
         </div>
         <div className={"pb-4 border-b border-gray-200 "}></div>
+
+        <div className={"text-sm pb-2 pt-8"}>Your Profile</div>
+        <div className="grid grid-cols-4 gap-4">
+          <input
+            className={"border border-gray-300 text-xs rounded px-4"}
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          ></input>
+          <input
+            className={"border border-gray-300 text-xs rounded px-4"}
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          ></input>
+        </div>
+        <div className={"grid grid-cols-3 gap-4"}>
+          <div className={"text-xs pb-2 pt-8"}>Email</div>
+          <div className={"text-xs pb-2 pt-8"}>LinkedIn</div>
+        </div>
+        <div className="grid grid-cols-3 gap-4 pb-8">
+          <input
+            className={"border border-gray-300 text-xs rounded px-4"}
+            placeholder="Enter your email"
+            value={candidateEmail}
+            onChange={(e) => setCandidateEmail(e.target.value)}
+          ></input>
+          <div className={"col-span-2"}>
+            <div className={"grid grid-cols-2 gap-2"}>
+              <input
+                className={"border border-gray-300 text-xs rounded px-4"}
+                placeholder="Paste your personal LinkedIn URL"
+                value={linkedIn}
+                onChange={(e) => setLinkedIn(e.target.value)}
+              ></input>
+              <img src="./images/linkedInTile.png" width="20" height="20" />
+            </div>
+          </div>
+          {/* <div>
+            <div className={"text-xs pt-8"}> Location</div>
+            <div className={"grid grid-cols-3 gap-2"}>
+              <SearchFilterDash
+                backgroundColour={"white"}
+                dropDownArray={remoteArray}
+                value={locationState}
+                onChange={(e) => {
+                  setLocationState(e.target.value);
+                }}
+                width={"wide-sm"}
+              />
+
+              <SearchFilterDash
+                backgroundColour={"white"}
+                dropDownArray={remoteArray}
+                value={locationCity}
+                onChange={(e) => {
+                  setLocationCity(e.target.value);
+                }}
+                width={"wide-sm"}
+              />
+            </div>
+          </div> */}
+        </div>
+
+        <div className="grid grid-cols-3 gap-2"></div>
+
+        <div className={"pb-4 border-b border-gray-200 "}></div>
+
         <div className={"grid grid-cols-4 pt-8 pb-4 pr-4 pl-8"}>
           <div>
             <div className={"text-sm"}> Position Title:</div>
@@ -106,14 +214,20 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             <input
               className={"border border-gray-300 text-xs rounded px-4"}
               placeholder="Enter Company URL"
+              value={companyWebsite1}
+              onChange={(e) => setCompanyWebsite1(e.target.value)}
             ></input>
             <input
               className={"border border-gray-300 text-xs rounded px-4"}
               placeholder="Enter Company URL"
+              value={companyWebsite2}
+              onChange={(e) => setCompanyWebsite2(e.target.value)}
             ></input>
             <input
               className={"border border-gray-300 text-xs rounded px-4"}
               placeholder="Enter Company URL"
+              value={companyWebsite3}
+              onChange={(e) => setCompanyWebsite3(e.target.value)}
             ></input>
           </div>
           <div>

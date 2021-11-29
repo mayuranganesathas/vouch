@@ -47,6 +47,14 @@ export default function CandidateOn(props) {
     "Space",
   ]);
 
+  const [linkedIn, setLinkedIn] = useState("");
+  const [email, setEmail] = useState("");
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [companyWebsite1, setCompanyWebsite1] = useState("");
+  const [companyWebsite2, setCompanyWebsite2] = useState("");
+  const [companyWebsite3, setCompanyWebsite3] = useState("");
+
   const hrId = router.query.hrId.toString();
   //filter out the URL and pass into variables
   const clearFormState = () => {
@@ -126,14 +134,14 @@ export default function CandidateOn(props) {
         industry1: industry1,
         industry2: industry2,
         industry3: industry3,
-        companyWebsite1: "incompleteField",
-        companyWebsite2: "incompleteField",
-        companyWebsite3: "incompleteField",
-        linkedIn: "incompleteField",
+        companyWebsite1: companyWebsite1,
+        companyWebsite2: companyWebsite2,
+        companyWebsite3: companyWebsite3,
+        linkedIn: linkedIn,
         Location1: "incompleteField",
-        candidateEmail: "incompleteField",
-        candidateFirstName: "incompleteField",
-        candidateLastName: "incompleteField",
+        candidateEmail: email,
+        candidateFirstName: firstName,
+        candidateLastName: lastName,
         hrId: hrId,
       },
     });
@@ -165,6 +173,12 @@ export default function CandidateOn(props) {
       return (
         <div>
           <CandidateOnTwo
+            companyWebsite1={companyWebsite1}
+            setCompanyWebsite1={setCompanyWebsite1}
+            companyWebsite2={companyWebsite2}
+            setCompanyWebsite2={setCompanyWebsite2}
+            companyWebsite3={companyWebsite3}
+            setCompanyWebsite3={setCompanyWebsite3}
             job1={job1}
             setJob1={setJob1}
             job2={job2}
@@ -184,11 +198,16 @@ export default function CandidateOn(props) {
             industry3={industry3}
             setIndustry3={setIndustry3}
             jobArray={jobArray}
-            setJobArray={setJobArray}
             yearArray={yearArray}
-            setYearArray={setYearArray}
             industryArray={industryArray}
-            setIndustryArray={setIndustryArray}
+            firstName={firstName}
+            setFirstName={setfirstName}
+            lastName={lastName}
+            setLastName={setlastName}
+            candidateEmail={email}
+            setCandidateEmail={setEmail}
+            linkedIn={linkedIn}
+            setLinkedIn={setLinkedIn}
             previousStage={previousStage}
             completeForm={onSubmit}
             formValidation={formValidator}
