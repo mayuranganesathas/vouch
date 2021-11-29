@@ -29,6 +29,7 @@ const DashCandidateTiles = ({
             pastIndustry1={e.Vouchee[0].industry1}
             standOutSkill1={e.standOutSkill1}
             userLinkedinURL={e.Vouchee[0].linkedIn}
+            userEmailAction={e.Vouchee[0].email}
           />
         ))}
     </div>
