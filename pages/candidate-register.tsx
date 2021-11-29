@@ -47,7 +47,8 @@ export default function CandidateOn(props) {
     "Space",
   ]);
 
-  const hrIdUrl = router.pathname;
+  const hrId = router.query.hrId.toString();
+  //filter out the URL and pass into variables
   const clearFormState = () => {
     setJob1("");
     setJob2("");
@@ -74,6 +75,15 @@ export default function CandidateOn(props) {
         industry1: "incompleteField",
         industry2: "incompleteField",
         industry3: "incompleteField",
+        companyWebsite1: "incompleteField",
+        companyWebsite2: "incompleteField",
+        companyWebsite3: "incompleteField",
+        linkedIn: "incompleteField",
+        Location1: "incompleteField",
+        candidateEmail: "incompleteField",
+        candidateFirstName: "incompleteField",
+        candidateLastName: "incompleteField",
+        hrId: "incompleteField",
       },
     }
   );
@@ -116,6 +126,15 @@ export default function CandidateOn(props) {
         industry1: industry1,
         industry2: industry2,
         industry3: industry3,
+        companyWebsite1: "incompleteField",
+        companyWebsite2: "incompleteField",
+        companyWebsite3: "incompleteField",
+        linkedIn: "incompleteField",
+        Location1: "incompleteField",
+        candidateEmail: "incompleteField",
+        candidateFirstName: "incompleteField",
+        candidateLastName: "incompleteField",
+        hrId: hrId,
       },
     });
     if (loading) return "Submitting...";

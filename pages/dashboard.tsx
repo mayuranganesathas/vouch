@@ -39,10 +39,6 @@ const dashBoardTest = {
   userLinkedinURL: "https://ca.linkedin.com/in/mayuranganesathas",
 };
 
-const dbData = {
-  numbersReferred: 3,
-  numberThanks: 2,
-};
 const DashBoard = (data) => {
   const { user } = useAuth();
 
