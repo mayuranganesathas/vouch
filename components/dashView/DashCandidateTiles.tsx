@@ -25,6 +25,7 @@ const DashCandidateTiles = ({ vouchData }: DashCandidateTilesProps) => {
             pastIndustry1={vouchData.candidate_metadata[i].industry1}
             standOutSkill1={e.standOutSkill1}
             userLinkedinURL={vouchData.candidate_metadata[i].linkedIn}
+            userEmailAction={vouchData.candidates[i].candidateEmail}
           />
         ))}
     </div>

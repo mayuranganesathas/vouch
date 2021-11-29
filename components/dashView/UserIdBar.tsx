@@ -7,8 +7,10 @@ import { ButtonNav } from "../ui/ButtonNav";
 
 export interface UserIdBarProps {
   hrData: any;
+  stageStatus: string;
+  setStageStatus: (stageStatus: string) => void;
 }
-const UserIdBar = ({ hrData }: UserIdBarProps) => {
+const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
   const { user } = useAuth();
 
   const [homeCheck, setHomeCheck] = useState(false);
@@ -21,6 +23,7 @@ const UserIdBar = ({ hrData }: UserIdBarProps) => {
     setFavoritesCheck(false);
     setUnfitCheck(false);
     setContactedCheck(false);
+    setStageStatus("Home");
   };
 
   const favoritesClick = () => {
@@ -28,6 +31,7 @@ const UserIdBar = ({ hrData }: UserIdBarProps) => {
     setHomeCheck(false);
     setUnfitCheck(false);
     setContactedCheck(false);
+    setStageStatus("Favorites");
   };
 
   const unfitClick = () => {
@@ -35,6 +39,7 @@ const UserIdBar = ({ hrData }: UserIdBarProps) => {
     setHomeCheck(false);
     setFavoritesCheck(false);
     setContactedCheck(false);
+    setStageStatus("Unfit");
   };
 
   const contactedClick = () => {
@@ -42,6 +47,7 @@ const UserIdBar = ({ hrData }: UserIdBarProps) => {
     setUnfitCheck(false);
     setHomeCheck(false);
     setFavoritesCheck(false);
+    setStageStatus("Contacted");
   };
 
   return (

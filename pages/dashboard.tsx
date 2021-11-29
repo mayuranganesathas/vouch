@@ -13,6 +13,8 @@ import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
 
+export interface DashboardProps {}
+
 const dashBoardTest = {
   newCandidateNumber: 14,
   userHrFirstName: "Vivian",
@@ -39,12 +41,45 @@ const dashBoardTest = {
   userLinkedinURL: "https://ca.linkedin.com/in/mayuranganesathas",
 };
 
-const dbData = {
-  numbersReferred: 3,
-  numberThanks: 2,
-};
 const DashBoard = (data) => {
+  const [stage, setStage] = useState("Home");
+  const [stageStatus, setStageStatus] = useState("Home");
+
   const { user } = useAuth();
+  const getTileComponent = (stage) => {
+    if (stageStatus == "Home") {
+      return (
+        <DashCandidateTiles
+          vouchData={data}
+          userLinkedinURL={dashBoardTest.userLinkedinURL}
+        />
+      );
+    } else if (stageStatus == "Favorites") {
+      return <div> FAVORITES TILES</div>;
+    } else if (stageStatus == "Unfit") {
+      return <div>UNFIT TILES</div>;
+    } else if (stageStatus == "Contacted") {
+      return <div> CONTACT TILES</div>;
+    }
+  };
+
+  const getWelcomeComponent = (stage) => {
+    if (stageStatus == "Home") {
+      return (
+        <WelcomeComp
+          newCandidateNumber={dashBoardTest.newCandidateNumber}
+          userHrFirstName={user.displayName}
+          moveToCandidates={dashBoardTest.moveToCandidate}
+        />
+      );
+    } else if (stageStatus == "Favorites") {
+      return <div></div>;
+    } else if (stageStatus == "Unfit") {
+      return <div></div>;
+    } else if (stageStatus == "Contacted") {
+      return <div></div>;
+    }
+  };
 
   const { data: hrData } = useQuery(QUERY_HRID, {
     variables: { hrId: user.uid },
@@ -64,17 +99,15 @@ const DashBoard = (data) => {
       {hrData && (
         <div>
           <div className={"pt-4 px-20"}>
-            <UserIdBar hrData={hrData} />
+            <UserIdBar
+              hrData={hrData}
+              stageStatus={stageStatus}
+              setStageStatus={setStageStatus}
+            />
           </div>
           <div className={"w-full border-gray-500 border-b"}></div>
           <div className={"px-2 grid grid-cols-2"}>
-            <div className={"pl-24 pt-10"}>
-              <WelcomeComp
-                newCandidateNumber={dashBoardTest.newCandidateNumber}
-                userHrFirstName={user.displayName}
-                moveToCandidates={dashBoardTest.moveToCandidate}
-              />
-            </div>
+            <div className={"pl-24 pt-10"}>{getWelcomeComponent(stage)}</div>
 
             <div className="grid justify-items-end pr-40 pt-10">
               <VouchCTA
@@ -95,9 +128,7 @@ const DashBoard = (data) => {
             ></div>
           </div>
           <div className={"bg-gray-50 px-20"}>
-            <div
-              className={"grid grid-cols-14 gap-4 bg-gray-200 grid-flow-col"}
-            >
+            <div className={"grid grid-cols-14 bg-gray-200 grid-flow-col"}>
               <div className={"col-start-1 pl-4"}> Referral</div>
               <div className={"grid-start-2 grid-end-5"}>
                 {" "}
@@ -109,9 +140,7 @@ const DashBoard = (data) => {
               <div className={"grid-start-12 grid-end-13"}>Stand Out Skill</div>
               <div className={"grid-start-14"}></div>
             </div>
-            <div className={"py-4"}>
-              <DashCandidateTiles vouchData={data} />
-            </div>
+            <div className={"py-4"}>{getTileComponent(stage)}</div>
           </div>
         </div>
       )}

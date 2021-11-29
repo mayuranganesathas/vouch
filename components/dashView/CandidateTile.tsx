@@ -19,6 +19,7 @@ export interface CandidateTileProps {
   pastIndustry1: string;
   standOutSkill1: string;
   userLinkedinURL: string;
+  userEmailAction: string;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -35,6 +36,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   pastIndustry1,
   standOutSkill1,
   userLinkedinURL,
+  userEmailAction,
 }) => {
   const [thumbUpCheck, thumbUpSetCheck] = useState(false);
   const [thumbDownCheck, thumbDownSetCheck] = useState(false);
@@ -55,7 +57,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     <div className="py-0.5">
       <div
         className={
-          "w-6/6 h-24 border-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-14 gap-2 grid-flow-col text-sm"
+          "w-6/6 h-24 border-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-14 grid-flow-col text-sm"
         }
       >
         <div className={"grid-start-1"}>
@@ -96,15 +98,15 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             </div>
           </div>
         </div>
-        <div className={"grid-start-2 grid-end-5 pt-4 pl-4"}>
+        <div className={"grid-start-2 grid-end-5 pt-4 pl-6"}>
           <div className={""}>
             <div>{positionTitle}</div>
-            <div className={"pt-1"}> {salaryRange}</div>
+            <div className={"pt-1"}> ${salaryRange} K/year</div>
             <div className={"pt-2 text-gray-500 text-xs"}> {jobLocation}</div>
           </div>
         </div>
 
-        <div className={"grid-start-5 grid-end-7 pt-4 z-20"}>
+        <div className={"grid-start-5 grid-end-7 pt-4"}>
           <div className={"grid grid-cols-2"}>
             <div className={"flex justify-center items-center"}>
               {" "}
@@ -132,11 +134,9 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           </div>
         </div>
 
-        <div className={"grid-start-7 grid-end-9 pt-7"}>
-          <div className={"flex justify-center"}>{stageInterview}</div>
-          <div className={"text-gray-500 text-xs flex justify-center"}>
-            {stageNumber}
-          </div>
+        <div className={"grid-start-7 grid-end-9 pt-7 pl-8"}>
+          <div className={""}>{stageInterview}</div>
+          <div className={"text-gray-500 text-xs"}>{stageNumber}</div>
         </div>
 
         <div className={"grid-start-9 grid-end-12 pl-4 pt-5"}>
@@ -163,7 +163,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             </div>
             <div className={"pt-0.5"}>
               {" "}
-              <ButtonEmail backgroundColour="white" onClick={buttonEmail} />
+              <ButtonEmail
+                backgroundColour="white"
+                userEmailAction={userEmailAction}
+              />
             </div>
             <div className={"col-span-2"}>
               <ButtonConnected backgroundColour="white" />
