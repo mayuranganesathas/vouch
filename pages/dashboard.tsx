@@ -48,12 +48,7 @@ const DashBoard = (data) => {
   const { user } = useAuth();
   const getTileComponent = (stage) => {
     if (stageStatus == "Home") {
-      return (
-        <DashCandidateTiles
-          vouchData={data}
-          userLinkedinURL={dashBoardTest.userLinkedinURL}
-        />
-      );
+      return <DashCandidateTiles vouchData={data} />;
     } else if (stageStatus == "Favorites") {
       return <div> FAVORITES TILES</div>;
     } else if (stageStatus == "Unfit") {
