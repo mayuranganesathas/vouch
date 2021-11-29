@@ -8,19 +8,46 @@ export const UPSERT_CANDIDATE_METADATA = gql`
     $positionTitle1: String = ""
     $positionTitle3: String = ""
     $positionTitle2: String = ""
+    $hrId: String = ""
+    $candidateEmail: String = ""
+    $candidateFirstName: String = ""
+    $candidateLastName: String = ""
+    $companyWebsite1: String = ""
+    $companyWebsite2: String = ""
+    $companyWebsite3: String = ""
+    $linkedIn: String = ""
+    $Location1: String = ""
   ) {
-    insert_candidate_metadata(
-      objects: {
+    update_candidate_metadata(
+      where: { hrId: { _eq: $hrId } }
+      _set: {
         industry1: $industry1
         industry2: $industry2
         industry3: $industry3
         positionTitle1: $positionTitle1
         positionTitle2: $positionTitle2
         positionTitle3: $positionTitle3
+        companyWebsite1: $companyWebsite1
+        companyWebsite2: $companyWebsite2
+        companyWebsite3: $companyWebsite3
+        linkedIn: $linkedIn
+        Location: $Location1
       }
     ) {
       returning {
-        candidateId
+        created_at
+      }
+    }
+    update_candidates(
+      where: { hrId: { _eq: $hrId } }
+      _set: {
+        candidateEmail: $candidateEmail
+        candidateFirstName: $candidateFirstName
+        candidateLastName: $candidateLastName
+      }
+    ) {
+      returning {
+        created_at
       }
     }
   }

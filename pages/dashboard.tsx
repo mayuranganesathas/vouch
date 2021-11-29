@@ -41,10 +41,6 @@ const dashBoardTest = {
   userLinkedinURL: "https://ca.linkedin.com/in/mayuranganesathas",
 };
 
-const dbData = {
-  numbersReferred: 3,
-  numberThanks: 2,
-};
 const DashBoard = (data) => {
   const [stage, setStage] = useState("Home");
   const [stageStatus, setStageStatus] = useState("Home");
