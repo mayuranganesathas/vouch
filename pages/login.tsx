@@ -1,14 +1,15 @@
-import { getRedirectResult } from "firebase/auth";
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React from "react";
 import ButtonGoogleLogin from "../components/ui/ButtonGoogleLogin";
-import { useAuth } from "../lib/authContext";
-import { auth } from "../lib/firebase";
-
+import ButtonGoolgeLogin from "../components/ui/ButtonGoogleLogin";
+import { ButtonVouch } from "../components/ui/ButtonVouch";
 import background from "./images/officeHRLogin.png";
 
-export interface RegisterHRLogin {}
-export default function RegisterHRLogin() {
+export default function RegisterHRLogin(prop) {
+  const onClickHomePage = () => {
+    window.open(
+      "https://www.wix.com/feedback-ng/feedback/8cb3ccbe-2f71-4eaa-ac32-3474ed90b853"
+    );
+  };
   return (
     <div
       className={"h-screen bg-cover bg-no-repeat"}
@@ -20,14 +21,20 @@ export default function RegisterHRLogin() {
             "text-white col-start-1 col-span-1 flex justify-start items-center pl-8 pt-8"
           }
         >
-          [VouchLogo]]{" "}
+          <img src="./images/VouchLogo1.png" width="125" height="auto" />
         </div>
         <div
           className={
             "col-start-2 flex justify-end items-center pr-8 pt-8 text-white"
           }
         >
-          Vouch Homepage
+          <ButtonVouch
+            backgroundColour="white"
+            buttonType="rounded"
+            textColour="white"
+            label="Vouch Homepage"
+            onClick={onClickHomePage}
+          />
         </div>
       </div>
       <div className={"py-4 border-b-2 border-white"}></div>
