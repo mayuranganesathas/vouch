@@ -41,10 +41,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [thumbUpCheck, thumbUpSetCheck] = useState(false);
   const [thumbDownCheck, thumbDownSetCheck] = useState(false);
 
-  const buttonEmail = () => {
-    console.log("test1");
-  };
-
   const thumbUpClick = () => {
     thumbUpSetCheck((prevCheck) => !prevCheck);
   };
