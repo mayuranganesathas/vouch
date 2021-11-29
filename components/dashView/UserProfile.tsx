@@ -23,7 +23,9 @@ const UserProfile = ({
       </div>
 
       <div className=" px-4">
-        <img src={userHrImg} className="" width="50" height="50" />
+        {userHrImg && (
+          <img src={userHrImg} className="" width="50" height="50" />
+        )}
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import ButtonGoogleLogin from "../components/ui/ButtonGoogleLogin";
 import ButtonGoolgeLogin from "../components/ui/ButtonGoogleLogin";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
 import background from "./images/officeHRLogin.png";
@@ -28,7 +29,7 @@ export default function RegisterHRLogin(prop) {
           }
         >
           <ButtonVouch
-            backgroundColour="empty"
+            backgroundColour="white"
             buttonType="rounded"
             textColour="white"
             label="Vouch Homepage"
@@ -46,7 +47,7 @@ export default function RegisterHRLogin(prop) {
         </div>
         <div className={"col-start-3 flex justify-center items-center"}>
           {" "}
-          <ButtonGoolgeLogin />
+          <ButtonGoogleLogin />
         </div>
       </div>
     </div>

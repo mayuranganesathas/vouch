@@ -14,19 +14,6 @@ export const QUERY_DASHBOARD_TILES = gql`
       standOutSkill3
       standOutSkill4
       standOutSkill5
-      Vouchee {
-        Location
-        candidateId
-        companyWebsite1
-        industry1
-        industry2
-        industry3
-        companyWebsite2
-        companyWebsite3
-        linkedIn
-        positionTitle1
-        positionTitle2
-      }
       Company_Data {
         companyLogoAddress
         hrId
@@ -35,11 +22,26 @@ export const QUERY_DASHBOARD_TILES = gql`
         companyWebsite
         corporateName
       }
-      Candidate_Contact {
-        candidateEmail
-        candidateFirstName
-        candidateId
-      }
+    }
+    candidate_metadata {
+      Location
+      companyWebsite1
+      candidateId
+      companyWebsite3
+      industry1
+      companyWebsite2
+      industry2
+      industry3
+      linkedIn
+      positionTitle1
+      positionTitle2
+      positionTitle3
+    }
+    candidates {
+      candidateEmail
+      candidateFirstName
+      candidateLastName
+      candidateId
     }
   }
 `;

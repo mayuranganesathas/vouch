@@ -4,27 +4,80 @@ import { SearchFilterDash } from "../ui/searchFilterDash";
 
 export interface HROnboardingProps {
   onClick: () => void;
-  industrySelect: string;
-  setIndustrySelect: (industrySelect: string) => void;
-  industryArray: any[];
-  setIndustryArray: (industryArray: any[]) => void;
-  numberOfEmployees: string;
-  setNumberOfEmployees: (numberOfEmployees: string) => void;
-  employeeArray: any[];
-  setEmployeeArray: (employeeArray: any[]) => void;
+
+  industryArray: string;
+  setIndustryArray: (industryArray: string) => void;
+
+  employeeArray: string;
+  setEmployeeArray: (employeeArray: string) => void;
+
+  hrVoucherPosition: string;
+  setHrVoucherPosition: (hrVoucherVoucherPosition: string) => void;
+
+  hrVoucherCompanyName: string;
+  setHrVoucherCompanyName: (hrVoucherCompanyName: string) => void;
+
+  hrVoucherCompanyWebsite: string;
+  setHrVoucherWebsite: (hrVoucherVoucherWebsite: string) => void;
+
+  hrLocation: string;
+  setHrLocation: (hrLocation: string) => void;
+
+  hrCompanyLogo: string;
+  setHrCompanyLogo: (hrCompanyLogo: string) => void;
+
+  checkBoxValidation: boolean;
+  setCheckBoxValidation: (checkBoxValidation: boolean) => void;
+
+  formValidation: () => boolean;
 }
 
 export const HROnboarding: React.FC<HROnboardingProps> = ({
   onClick,
-  industrySelect,
-  setIndustrySelect,
+
   industryArray,
   setIndustryArray,
-  numberOfEmployees,
-  setNumberOfEmployees,
+
   employeeArray,
   setEmployeeArray,
+  hrVoucherCompanyName,
+  setHrVoucherCompanyName,
+  hrVoucherPosition,
+  setHrVoucherPosition,
+  hrVoucherCompanyWebsite,
+  setHrVoucherWebsite,
+  hrLocation,
+  setHrLocation,
+  hrCompanyLogo,
+  setHrCompanyLogo,
+  checkBoxValidation,
+  setCheckBoxValidation,
+  formValidation,
 }) => {
+  const industryArray1 = [
+    "Select Industry",
+    "Finance",
+    "Gaming",
+    "SaaS",
+    "Space",
+  ];
+
+  const hrPositionArray1 = [
+    "Select Position",
+    "Recruiter",
+    "HR Manager",
+    "Executive",
+  ];
+
+  const employeeArray1 = [
+    "Select the number of Employees",
+    "<10",
+    "10-50",
+    "50-100",
+    "100-200",
+    "200-500",
+    "500+",
+  ];
   return (
     <div className={"flex justify-center items-center"}>
       <div className={"px-8 shadow-lg rounded-xl w-2/5 h-auto bg-white"}>
@@ -46,8 +99,11 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
                 }
                 placeholder="Enter company name"
-              ></input>
+                value={hrVoucherCompanyName}
+                onChange={(e) => setHrVoucherCompanyName(e.target.value)}
+              />
             </div>
+
             <div className={"py-4"}>
               <div className={"text-sm"}> Company Website:</div>
               <input
@@ -55,7 +111,9 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
                 }
                 placeholder="Paste your company's website URL"
-              ></input>
+                value={hrVoucherCompanyWebsite}
+                onChange={(e) => setHrVoucherWebsite(e.target.value)}
+              />
             </div>
             <div>
               <div className={"text-sm"}> Location:</div>
@@ -64,7 +122,9 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
                 }
                 placeholder="Enter the city for your Corporate HQ"
-              ></input>
+                value={hrLocation}
+                onChange={(e) => setHrLocation(e.target.value)}
+              />
             </div>
           </div>
           <div className={"col-start-2 pt-4"}>
@@ -72,29 +132,45 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               <div className={"text-sm"}>Industry</div>
               <SearchFilterDash
                 backgroundColour={"white"}
-                dropDownArray={industryArray}
-                value={industrySelect}
+                dropDownArray={industryArray1}
+                value={industryArray}
                 onChange={(e) => {
-                  setIndustrySelect(e.target.value);
+                  setIndustryArray(e.target.value);
                 }}
               />
             </div>
             <div className={"py-4"}>
-              <div className={"text-sm"}>Industry</div>
+              <div className={"text-sm"}>Company Size</div>
               <SearchFilterDash
                 backgroundColour={"white"}
-                dropDownArray={employeeArray}
-                value={numberOfEmployees}
+                dropDownArray={employeeArray1}
+                value={employeeArray}
                 onChange={(e) => {
-                  setNumberOfEmployees(e.target.value);
+                  setEmployeeArray(e.target.value);
+                }}
+              />
+              <div className={"text-sm"}>Your Position</div>
+              <SearchFilterDash
+                backgroundColour={"white"}
+                dropDownArray={hrPositionArray1}
+                value={hrVoucherPosition}
+                onChange={(e) => {
+                  setHrVoucherPosition(e.target.value);
                 }}
               />
             </div>
+
             <div>
-              <div className={"text-sm pb-4"}>Upload your company's logo:</div>
+              {/* <div className={"text-sm pb-4"}>Upload your company's logo:</div>
               <form action="/action_page.php" className={"text-xs"}>
-                <input type="file" id="myFile" name="filename"></input>
-              </form>
+                <input
+                  type="file"
+                  id="myFile"
+                  name="filename"
+                  value={hrCompanyLogo}
+                  onChange={(e) => setHrCompanyLogo(e.target.value)}
+                />
+              </form> */}
             </div>
           </div>
         </div>
@@ -106,9 +182,11 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   type="checkbox"
                   id="USCAN"
                   name="USCANVerified"
-                  value="true"
-                ></input>
+                  checked={checkBoxValidation}
+                  onChange={(e) => setCheckBoxValidation(e.target.checked)}
+                />
               </form>
+
               <div className={"text-xs pl-2"}>
                 {" "}
                 We recruit for roles in Canada and USA
@@ -122,7 +200,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 buttonType={"rounded"}
                 textColour={"white"}
                 label={"Submit"}
-                disabled={false}
+                disabled={formValidation()}
                 onClick={onClick}
               />
             </div>
