@@ -172,7 +172,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         </div>
         <div
           className={
-            "grid-start-10 col-span-2 flex justify-center items-center py-1"
+            "grid-start-11 col-span-2 flex justify-center items-center py-1"
           }
         >
           <div className={"grid grid-cols-2"}>
