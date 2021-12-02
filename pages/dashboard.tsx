@@ -46,15 +46,19 @@ const DashBoard = (data) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
+
+  //create 3 queries based on thumbs up, thumbs down and contacted
+  // get all cand id's , pass into second query and map through them based on the queries
+
   const getTileComponent = (stage) => {
     if (stageStatus == "Home") {
       return <DashCandidateTiles vouchData={data} />;
     } else if (stageStatus == "Favorites") {
-      return <div> FAVORITES TILES</div>;
+      return <div>{/* <DashCandidateTiles vouchData={} /> */}</div>;
     } else if (stageStatus == "Unfit") {
-      return <div>UNFIT TILES</div>;
+      return <div>{/* <DashCandidateTiles vouchData={} /> */}</div>;
     } else if (stageStatus == "Contacted") {
-      return <div> CONTACT TILES</div>;
+      return <div>{/* <DashCandidateTiles vouchData={} /> */}</div>;
     }
   };
 
