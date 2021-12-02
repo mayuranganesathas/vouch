@@ -41,6 +41,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [thumbUpCheck, thumbUpSetCheck] = useState(false);
   const [thumbDownCheck, thumbDownSetCheck] = useState(false);
 
+  const buttonEmail = () => {
+    console.log("test1");
+  };
+
   const thumbUpClick = () => {
     thumbUpSetCheck((prevCheck) => !prevCheck);
     thumbDownSetCheck(false);
@@ -52,10 +56,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   };
 
   return (
-    <div className="py-0.5">
+    <div className="py-0.5 col-span-12">
       <div
         className={
-          "w-6/6 h-24 border-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-14 grid-flow-col text-sm"
+          "w-6/6 h-24 border-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-12 grid-flow-col text-sm"
         }
       >
         <div className={"grid-start-1"}>
@@ -96,15 +100,23 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             </div>
           </div>
         </div>
-        <div className={"grid-start-2 grid-end-5 pt-4 pl-6"}>
+        <div className={"grid-start-2 col-span-2 pt-4 pl-6 text-left"}>
           <div className={""}>
-            <div>{positionTitle}</div>
-            <div className={"pt-1"}> ${salaryRange} K/year</div>
-            <div className={"pt-2 text-gray-500 text-xs"}> {jobLocation}</div>
+            <div>
+              <p className="w-full">{positionTitle}</p>
+            </div>
+            <div className={"pt-1"}>
+              {" "}
+              <p className={"w-full"}>${salaryRange} K/year </p>
+            </div>
+            <div className={"pt-2 text-gray-500 text-xs"}>
+              {" "}
+              <p className="w-full">{jobLocation}</p>
+            </div>
           </div>
         </div>
 
-        <div className={"grid-start-5 grid-end-7 pt-4"}>
+        <div className={"grid-start-4 col-span-2 pt-4"}>
           <div className={"grid grid-cols-2"}>
             <div className={"flex justify-end items-center"}>
               {" "}
@@ -112,14 +124,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             </div>
             <div className={""}>
               <div className={"flex justify-center items-center text-lg"}>
-                {numEmployees}
+                <p className="w-full">{numEmployees}</p>
               </div>
               <div
                 className={
                   "text-gray-500 text-xs flex justify-center items-center"
                 }
               >
-                Headcount
+                <p className="w-full">Headcount</p>
               </div>
             </div>
             <div
@@ -127,30 +139,44 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                 "col-span-2 flex justify-center items-center pt-1 text-gray-500"
               }
             >
-              {companyName}
+              <p className="w-full">{companyName}</p>
             </div>
           </div>
         </div>
 
-        <div className={"grid-start-7 grid-end-9 pt-7 pl-8"}>
-          <div className={""}>{stageInterview}</div>
-          <div className={"text-gray-500 text-xs"}>{stageNumber}</div>
+        <div className={"grid-start-6 col-span-2 pt-7 pl-8"}>
+          <div className={""}>
+            <p className={"w-full"}>{stageInterview}</p>
+          </div>
+          <div className={"text-gray-500 text-xs"}>
+            <p className={"w-full"}>{stageNumber}</p>
+          </div>
         </div>
 
-        <div className={"grid-start-9 grid-end-12 pl-4 pt-5"}>
-          <div>{pastPosition1}</div>
-          <div className={"text-gray-500 text-xs"}>{pastIndustry1}</div>
-          <div className={"text-gray-500 text-xs"}>(see more..)</div>
+        <div className={"grid-start-8 col-span-2 pl-4 pt-5"}>
+          <div>
+            <p className={"w-full"}>{pastPosition1}</p>
+          </div>
+          <div className={"text-gray-500 text-xs"}>
+            <p className={"w-full"}>{pastIndustry1}</p>
+          </div>
+          <div className={"text-gray-500 text-xs"}>
+            <p className={"w-full"}>(see more..)</p>
+          </div>
         </div>
         <div
           className={
-            "grid-start-12 grid-end-13 flex justify-center items-center"
+            "grid-start-10 col-span-1 flex justify-center items-center"
           }
         >
           {" "}
-          {standOutSkill1}
+          <p className={"w-full"}>{standOutSkill1}</p>
         </div>
-        <div className={"grid-start-14 flex justify-center items-center py-1"}>
+        <div
+          className={
+            "grid-start-11 col-span-2 flex justify-center items-center py-1"
+          }
+        >
           <div className={"grid grid-cols-2"}>
             <div className={"pt-0.5"}>
               {" "}
@@ -172,7 +198,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           </div>
         </div>
       </div>
-      <div className={"grid grid-cols-14"}>
+      <div className={"grid grid-cols-12"}>
         <div className={"col-start-2"}></div>
       </div>
     </div>
