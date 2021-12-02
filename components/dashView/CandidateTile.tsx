@@ -43,10 +43,12 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
   const thumbUpClick = () => {
     thumbUpSetCheck((prevCheck) => !prevCheck);
+    thumbDownSetCheck(false);
   };
 
   const thumbDownClick = () => {
     thumbDownSetCheck((prevCheck) => !prevCheck);
+    thumbUpSetCheck(false);
   };
 
   return (
