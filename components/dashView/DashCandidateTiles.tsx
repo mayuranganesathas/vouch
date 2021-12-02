@@ -7,7 +7,7 @@ export interface DashCandidateTilesProps {
 
 const DashCandidateTiles = ({ vouchData }: DashCandidateTilesProps) => {
   return (
-    <div className="">
+    <div className="grid grid-cols-12">
       {/* {JSON.stringify(vouchData)} */}
       {vouchData &&
         vouchData.hr_voucher_metadata.map((e, i) => (

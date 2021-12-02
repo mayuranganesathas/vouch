@@ -127,17 +127,29 @@ const DashBoard = (data) => {
             ></div>
           </div>
           <div className={"bg-gray-50 px-20"}>
-            <div className={"grid grid-cols-14 bg-gray-200 grid-flow-col"}>
-              <div className={"col-start-1 pl-4"}> Referral</div>
-              <div className={"grid-start-2 grid-end-5"}>
+            <div className={"grid grid-cols-12 bg-gray-200 grid-flow-col"}>
+              <div className={"col-start-1 pl-4"}>
                 {" "}
-                Role Interviewed For
+                <p className={"w-full pl-4"}>Referral</p>
               </div>
-              <div className={"grid-start-5 grid-end-7"}>Referring By</div>
-              <div className={"grid-start-7 grid-end-9"}> Vetted To</div>
-              <div className={"grid-start-9 grid-end-12"}>Last Role</div>
-              <div className={"grid-start-12 grid-end-13"}>Stand Out Skill</div>
-              <div className={"grid-start-14"}></div>
+              <div className={"grid-start-2 col-span-2"}>
+                {" "}
+                <p className={"w-full pl-6"}>Role Interviewed For</p>
+              </div>
+              <div className={"grid-start-4 col-span-2"}>
+                <p className={"w-full"}>Referring By</p>
+              </div>
+              <div className={"grid-start-6 col-span-2"}>
+                {" "}
+                <p className={"w-full pl-8"}>Vetted To</p>
+              </div>
+              <div className={"grid-start-8 col-span-2"}>
+                <p className={"w-full pl-4"}>Last Role</p>
+              </div>
+              <div className={"grid-start-10 col-span-1 "}>
+                <p className={"w-full"}>Stand Out Skill</p>
+              </div>
+              <div className={"grid-start-11"}></div>
             </div>
             <div className={"py-4"}>{getTileComponent(stage)}</div>
           </div>
