@@ -104,9 +104,9 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
         <div className={"grid-start-5 grid-end-7 pt-4"}>
           <div className={"grid grid-cols-2"}>
-            <div className={"flex justify-center items-center"}>
+            <div className={"flex justify-end items-center"}>
               {" "}
-              <img src={companyLogo} width="70" height="auto" />
+              <img src={companyLogo} width="30" height="auto" />
             </div>
             <div className={""}>
               <div className={"flex justify-center items-center text-lg"}>
