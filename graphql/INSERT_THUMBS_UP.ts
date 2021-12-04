@@ -7,7 +7,7 @@ export const INSERT_THUMBS_UP_AND_DOWN = gql`
     $jobSeniority: String = ""
     $jobType: String = ""
     $status: String = ""
-    $candidateId: Int = ""
+    $candidateId: Int
   ) {
     insert_shortlist(
       objects: {

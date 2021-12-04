@@ -51,7 +51,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
     {
       variables: {
-        hrID: "incompleteField",
+        hrId: "incompleteField",
         jobName: "incompleteField",
         jobSeniority: "incompleteField",
         jobType: "incompleteField",
@@ -67,7 +67,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
     ThumbUpAndDownMutation({
       variables: {
-        hrID: hrId,
+        hrId: hrId,
         jobName: "",
         jobSeniority: "",
         jobType: "",
@@ -83,7 +83,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
     ThumbUpAndDownMutation({
       variables: {
-        hrID: hrId,
+        hrId: hrId,
         jobName: "",
         jobSeniority: "",
         jobType: "",
@@ -92,11 +92,12 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       },
     });
   };
+  //refetch queries.
 
   const moveToContacted = () => {
     ThumbUpAndDownMutation({
       variables: {
-        hrID: hrId,
+        hrId: hrId,
         jobName: "",
         jobSeniority: "",
         jobType: "",
