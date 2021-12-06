@@ -7,6 +7,7 @@ import { ButtonConnected } from "./ButtonConnected";
 import { useMutation } from "@apollo/client";
 import { INSERT_THUMBS_UP_AND_DOWN } from "../../graphql/INSERT_THUMBS_UP";
 import { useAuth } from "../../lib/authContext";
+import { QUERY_SHORT_LIST } from "../../graphql/QUERY_SHORTLIST";
 export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
@@ -44,18 +45,24 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const { user } = useAuth();
 
   const hrId = user.uid;
-  const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
-    INSERT_THUMBS_UP_AND_DOWN,
 
+  const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
+    //Mutation for updating a user emoji value after a practice
+    INSERT_THUMBS_UP_AND_DOWN,
     {
-      variables: {
-        hrId: "incompleteField",
-        jobName: "incompleteField",
-        jobSeniority: "incompleteField",
-        jobType: "incompleteField",
-        status: "incompleteField",
-        candidateId: 0,
-      },
+      refetchQueries: [
+        {
+          query: QUERY_SHORT_LIST,
+          variables: {
+            hrId: "incompleteField",
+            jobName: "incompleteField",
+            jobSeniority: "incompleteField",
+            jobType: "incompleteField",
+            status: "incompleteField",
+            candidateId: 0,
+          },
+        },
+      ],
     }
   );
 
