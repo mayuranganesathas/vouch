@@ -59,7 +59,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     <div className="py-0.5 px-8 col-span-full">
       <div
         className={
-          "w-6/6 h-36 border-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-5 grid-flow-col text-sm"
+          "w-6/6 h-36 border-r-2 border-t-2 border-b-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-5 grid-flow-col text-sm"
         }
       >
         <div className={"col-start-1 col-span-2 "}>
@@ -70,7 +70,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           >
             <div className={"text-center "}>
               <p className={"text-lg font-bold"}>User Name Details:{userID}</p>
-              <div className={"text-white"}>Location,(prop needed)</div>
+              <div className={"text-white text-sm"}>Location,(prop needed)</div>
               <div className={"pt-0.5"}>
                 {" "}
                 <ButtonLinkedin
@@ -83,7 +83,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               {" "}
               <div>
                 {" "}
-                <p className={"w-full text-base font-bold"}>{pastPosition1}</p>
+                <p className={"w-full text-sm font-bold"}>{pastPosition1}</p>
               </div>
               <div>
                 {" "}
@@ -91,7 +91,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   Industry:{pastIndustry1}
                 </p>
                 <div className={"pt-4"}>
-                  <p className={"text-base font-bold"}>
+                  <p className={"text-sm font-bold"}>
                     {" "}
                     Years of Industry Experience
                   </p>
