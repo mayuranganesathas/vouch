@@ -56,86 +56,122 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   };
 
   return (
-    <div className="py-0.5 px-24 col-span-full">
+    <div className="py-0.5 px-8 col-span-full">
       <div
         className={
-          "w-6/6 h-36 border-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-2 grid-flow-col text-sm"
+          "w-6/6 h-36 border-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-5 grid-flow-col text-sm"
         }
       >
-        <div
-          className={
-            "grid grid-cols-2 content-center bg-VouchGreen rounded-full"
-          }
-        >
-          <div className={"text-center "}>
-            <p className={"text-lg font-bold"}>User Name Details:{userID}</p>
-            <div className={"text-white"}>Location,(prop needed)</div>
-            <div className={"pt-0.5"}>
-              {" "}
-              <ButtonLinkedin
-                backgroundColour="white"
-                userLinkedinURL={userLinkedinURL}
-              />
+        <div className={"col-start-1 col-span-2 "}>
+          <div
+            className={
+              "grid grid-cols-2 content-center bg-VouchGreen rounded-full h-36"
+            }
+          >
+            <div className={"text-center "}>
+              <p className={"text-lg font-bold"}>User Name Details:{userID}</p>
+              <div className={"text-white"}>Location,(prop needed)</div>
+              <div className={"pt-0.5"}>
+                {" "}
+                <ButtonLinkedin
+                  backgroundColour="white"
+                  userLinkedinURL={userLinkedinURL}
+                />
+              </div>
             </div>
-          </div>
-          <div className={"content-center"}>
-            {" "}
-            <div>
+            <div className={"content-center"}>
               {" "}
-              <p className={"w-full text-base font-bold"}>{pastPosition1}</p>
-            </div>
-            <div>
-              {" "}
-              <p className={"w-full text-sm text-white"}>
-                Industry:{pastIndustry1}
-              </p>
-              <div className={"pt-4"}>
-                <p className={"text-base font-bold"}>
-                  {" "}
-                  Years of Industry Experience
+              <div>
+                {" "}
+                <p className={"w-full text-base font-bold"}>{pastPosition1}</p>
+              </div>
+              <div>
+                {" "}
+                <p className={"w-full text-sm text-white"}>
+                  Industry:{pastIndustry1}
                 </p>
-                <p className={"text-sm text-white"}> Number of Years (prop)</p>
+                <div className={"pt-4"}>
+                  <p className={"text-base font-bold"}>
+                    {" "}
+                    Years of Industry Experience
+                  </p>
+                  <p className={"text-sm text-white"}>
+                    {" "}
+                    Number of Years (prop)
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className={"grid grid-cols-4 pl-8 content-center"}>
-          <div>
-            <p className={"font-bold text-sm pb-2 text-VouchMed"}>
-              Referred By
-            </p>
-            <p className="w-full text-xs font-bold">{companyName}</p>
-            <p className="w-full text-xs pt-1 text-gray-500">
-              {" "}
-              Headcount: {numEmployees}
-            </p>
-            <p className={"pt-1 text-xs text-gray-500"}>
-              {" "}
-              Industry: (new prop)
-            </p>
-            <div className={"pl-10 py-1"}>
-              <img src={companyLogo} width="25" height="auto" />
+
+        <div className={"col-start-3"}>
+          <div className={"pl-8 content-center"}>
+            <div>
+              <p className={"font-bold text-sm pb-2 text-VouchMed"}>
+                Referred By
+              </p>
+              <p className="w-full text-xs font-bold">{companyName}</p>
+              <p className="w-full text-xs pt-1 text-gray-500">
+                {" "}
+                Headcount: {numEmployees}
+              </p>
+              <p className={"pt-1 text-xs text-gray-500"}>
+                {" "}
+                Industry: (new prop)
+              </p>
+              <div className={"pl-10 py-1"}>
+                <img src={companyLogo} width="25" height="auto" />
+              </div>
             </div>
           </div>
+        </div>
+        <div className={"col-start-4"}>
+          <p className={"font-bold text-sm text-VouchMed pb-2"}>
+            {" "}
+            Role Interviewed For
+          </p>
+          <p className={"font-bold text-xs"}> Position Open Text</p>
+          <p className={"w-full text-xs text-gray-500 pt-1"}>
+            Role Category: {positionTitle}
+          </p>
+          <p className={"w-full text-xs text-gray-500 pt-1"}>
+            {" "}
+            Salary Range: ${salaryRange} K/year{" "}
+          </p>
+          <p className={"text-bold text-xs pt-2 font-bold"}>Interviewed To:</p>
+          <p className={"w-full text-xs text-gray-500"}>{stageInterview}</p>
+        </div>
+        <div className={"col-start-5"}>
+          <div className={"grid grid-cols-3"}>
+            <div className={"col-start-1 col-span-2"}>
+              <p className={"font-bold text-sm text-VouchMed pb-2"}>
+                Interview Notes
+              </p>
+              <p className={"font-bold text-xs"}>Standout Skills</p>
+              <p className={"w-full text-xs font-gray-500"}>
+                [S] {standOutSkill1}
+              </p>
+              <p className={"w-full text-xs font-gray-500 pt-1"}>
+                {" "}
+                [S] New Prop
+              </p>
+              <p className={"w-full text-xs font-gray-500 pt-1"}>
+                {" "}
+                [S] New Prop
+              </p>
+            </div>
 
-          <div>
-            <p className={"font-bold text-sm text-VouchMed pb-2"}>
-              {" "}
-              Role Interviewed For
-            </p>
-            <p className={"font-bold text-xs"}> Position Open Text</p>
-            <p className={"w-full text-xs text-gray-500"}>
-              Role Category: {positionTitle}
-            </p>
-            <p className={"w-full text-xs text-gray-500"}>
-              {" "}
-              Salary Range: ${salaryRange} K/year{" "}
-            </p>
-            <p className={"text-bold text-xs"}>Interviewed To:</p>
-            <p className={"w-full text-xs text-gray-500"}>{stageInterview}</p>
+            <div
+              className={
+                "col-start-3 col-span-1 grid justify-items-end content-center"
+              }
+            >
+              <div className={""}>[Star]</div>
+              <div className="py-2">[Hidd]</div>
+              <div>[Move]</div>
+            </div>
           </div>
-          <div>Interview Notes</div>
-          <div>Notes</div>
         </div>
       </div>
     </div>
