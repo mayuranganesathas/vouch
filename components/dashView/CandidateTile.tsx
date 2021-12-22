@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ButtonLinkedin } from "./ButtonLinkedin";
+import { StarIcon } from "@heroicons/react/solid";
+import { EyeOffIcon } from "@heroicons/react/solid";
+import { MailOpenIcon } from "@heroicons/react/solid";
+import { SparklesIcon } from "@heroicons/react/solid";
 import { ButtonEmail } from "./ButtonEmail";
 import { CompTooltip } from "./CompTooltip";
 import ReactTooltip from "react-tooltip";
@@ -168,7 +172,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               <p
                 className={"w-full text-base font-gray-500 pt-1 text-gray-500"}
               >
-                {" "}
                 [S] New Prop
               </p>
               <p
@@ -181,12 +184,18 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
             <div
               className={
-                "col-start-3 col-span-1 grid justify-items-end content-center"
+                "col-start-3 col-span-1 grid justify-items-end content-center pr-4 pt-4"
               }
             >
-              <div className={""}>[Star]</div>
-              <div className="py-2">[Hidd]</div>
-              <div>[Move]</div>
+              <div className={""}>
+                <StarIcon className={"h-7 w-7"} fill="none" stroke="gray" />
+              </div>
+              <div className="py-8">
+                <EyeOffIcon className={"h-7 w-7"} fill="none" stroke="gray" />
+              </div>
+              <div>
+                <MailOpenIcon className={"h-7 w-7"} fill="none" stroke="gray" />
+              </div>
             </div>
           </div>
         </div>
