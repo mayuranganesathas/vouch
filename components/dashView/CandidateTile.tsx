@@ -63,13 +63,13 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     <div className="py-4  col-span-full">
       <div
         className={
-          "w-6/6 max-h-fit border-r-2 border-t-2 border-b-2 border-gray-200 filter drop-shadow rounded-tl-full rounded-bl-full bg-white grid grid-cols-5 grid-flow-col text-sm"
+          "w-6/6 max-h-fit border-r-2 border-t-2 border-b-2 border-gray-300 filter drop-shadow rounded-tl-full rounded-bl-full bg-white grid grid-cols-5 grid-flow-col text-sm"
         }
       >
         <div className={"col-start-1 col-span-2 "}>
           <div
             className={
-              "grid grid-cols-2 content-center bg-VouchMed rounded-full h-full filter drop-shadow-md"
+              "grid grid-cols-2 content-center bg-VouchMed rounded-full h-full "
             }
           >
             <div className={"text-center py-4"}>
