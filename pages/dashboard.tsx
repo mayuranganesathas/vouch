@@ -123,29 +123,23 @@ const DashBoard = (data) => {
             ></div>
           </div>
           <div className={"bg-gray-50 px-20"}>
-            <div className={"grid grid-cols-12 bg-gray-200 grid-flow-col"}>
-              <div className={"col-start-1 pl-4"}>
+            <div
+              className={
+                "grid grid-cols-5 bg-gray-100 grid-flow-col content-center py-3"
+              }
+            >
+              <div className={"col-start-1 pl-4 col-span-2"}>
                 {" "}
-                <p className={"w-full pl-4"}>Referral</p>
+                <p className={"w-full pl-20 font-bold text-base text-gray-800"}>
+                  About Candidate
+                </p>
               </div>
-              <div className={"grid-start-2 col-span-2"}>
+              <div className={"grid-start-3 col-span-3"}>
                 {" "}
-                <p className={"w-full pl-6"}>Role Interviewed For</p>
+                <p className={"w-full pl-10 font-bold text-base text-gray-800"}>
+                  Referring Company
+                </p>
               </div>
-              <div className={"grid-start-4 col-span-2"}>
-                <p className={"w-full"}>Referring By</p>
-              </div>
-              <div className={"grid-start-6 col-span-2"}>
-                {" "}
-                <p className={"w-full pl-8"}>Vetted To</p>
-              </div>
-              <div className={"grid-start-8 col-span-2"}>
-                <p className={"w-full pl-4"}>Last Role</p>
-              </div>
-              <div className={"grid-start-10 col-span-1 "}>
-                <p className={"w-full"}>Stand Out Skill</p>
-              </div>
-              <div className={"grid-start-11"}></div>
             </div>
             <div className={"py-4"}>{getTileComponent(stage)}</div>
           </div>

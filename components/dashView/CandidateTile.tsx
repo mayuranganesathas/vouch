@@ -56,22 +56,24 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   };
 
   return (
-    <div className="py-0.5 px-8 col-span-full">
+    <div className="py-4 px-8 col-span-full">
       <div
         className={
-          "w-6/6 h-36 border-r-2 border-t-2 border-b-2 border-gray-200 filter drop-shadow-md rounded-md bg-white grid grid-cols-5 grid-flow-col text-sm"
+          "w-6/6 max-h-fit border-r-2 border-t-2 border-b-2 border-gray-200 filter drop-shadow rounded-tl-full rounded-bl-full bg-white grid grid-cols-5 grid-flow-col text-sm"
         }
       >
         <div className={"col-start-1 col-span-2 "}>
           <div
             className={
-              "grid grid-cols-2 content-center bg-VouchGreen rounded-full h-36"
+              "grid grid-cols-2 content-center bg-VouchGreen rounded-full h-full filter drop-shadow-md"
             }
           >
-            <div className={"text-center "}>
+            <div className={"text-center py-4"}>
               <p className={"text-lg font-bold"}>User Name Details:{userID}</p>
-              <div className={"text-white text-sm"}>Location,(prop needed)</div>
-              <div className={"pt-0.5"}>
+              <div className={"text-white text-base font-bold"}>
+                Location,(prop needed)
+              </div>
+              <div className={"pt-2"}>
                 {" "}
                 <ButtonLinkedin
                   backgroundColour="white"
@@ -79,23 +81,24 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                 />
               </div>
             </div>
-            <div className={"content-center"}>
+            <div className={""}>
               {" "}
+              <p className={"text-lg font-bold"}>Current/Most Recent Role</p>
               <div>
                 {" "}
-                <p className={"w-full text-sm font-bold"}>{pastPosition1}</p>
+                <p className={"w-full text-base font-bold"}>{pastPosition1}</p>
               </div>
               <div>
                 {" "}
-                <p className={"w-full text-sm text-white"}>
+                <p className={"w-full text-base text-white font-bold"}>
                   Industry:{pastIndustry1}
                 </p>
                 <div className={"pt-4"}>
-                  <p className={"text-sm font-bold"}>
+                  <p className={"text-base font-bold"}>
                     {" "}
                     Years of Industry Experience
                   </p>
-                  <p className={"text-sm text-white"}>
+                  <p className={"text-base text-white font-bold"}>
                     {" "}
                     Number of Years (prop)
                   </p>
@@ -105,58 +108,66 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           </div>
         </div>
 
-        <div className={"col-start-3"}>
+        <div className={"col-start-3 py-4"}>
           <div className={"pl-8 content-center"}>
             <div>
-              <p className={"font-bold text-sm pb-2 text-VouchMed"}>
+              <p className={"font-bold text-base pb-2 text-VouchMed"}>
                 Referred By
               </p>
-              <p className="w-full text-xs font-bold">{companyName}</p>
-              <p className="w-full text-xs pt-1 text-gray-500">
+              <p className="w-full text-base font-bold">{companyName}</p>
+              <p className="w-full text-base pt-1 text-gray-500">
                 {" "}
                 Headcount: {numEmployees}
               </p>
-              <p className={"pt-1 text-xs text-gray-500"}>
+              <p className={"pt-1 text-base text-gray-500"}>
                 {" "}
                 Industry: (new prop)
               </p>
-              <div className={"pl-10 py-1"}>
-                <img src={companyLogo} width="25" height="auto" />
+              <div className={"pl-10 pt-4"}>
+                <img src={companyLogo} width="45" height="auto" />
               </div>
             </div>
           </div>
         </div>
-        <div className={"col-start-4"}>
-          <p className={"font-bold text-sm text-VouchMed pb-2"}>
+        <div className={"col-start-4 py-4"}>
+          <p className={"font-bold text-base text-VouchMed pb-2"}>
             {" "}
             Role Interviewed For
           </p>
-          <p className={"font-bold text-xs"}> Position Open Text</p>
-          <p className={"w-full text-xs text-gray-500 pt-1"}>
-            Role Category: {positionTitle}
+          <p className={"font-bold text-base"}> Position Open Text</p>
+          <p className={"w-full text-base text-gray-500 pt-1"}>
+            Role: {positionTitle}
           </p>
-          <p className={"w-full text-xs text-gray-500 pt-1"}>
+          <p className={"w-full text-base text-gray-500 pt-1"}>
             {" "}
-            Salary Range: ${salaryRange} K/year{" "}
+            Salary: ${salaryRange} K/year{" "}
           </p>
-          <p className={"text-bold text-xs pt-2 font-bold"}>Interviewed To:</p>
-          <p className={"w-full text-xs text-gray-500"}>{stageInterview}</p>
+          <p className={"text-bold text-base pt-4 font-bold"}>
+            Interviewed To:
+          </p>
+          <p className={"w-full text-base text-gray-500"}>{stageInterview}</p>
         </div>
-        <div className={"col-start-5"}>
+        <div className={"col-start-5 py-4"}>
           <div className={"grid grid-cols-3"}>
             <div className={"col-start-1 col-span-2"}>
-              <p className={"font-bold text-sm text-VouchMed pb-2"}>
+              <p className={"font-bold text-base text-VouchMed pb-2"}>
                 Interview Notes
               </p>
-              <p className={"font-bold text-xs"}>Standout Skills</p>
-              <p className={"w-full text-xs font-gray-500"}>
+              <p className={"font-bold text-base"}>Standout Skills</p>
+              <p
+                className={"w-full text-base font-gray-500 pt-1 text-gray-500"}
+              >
                 [S] {standOutSkill1}
               </p>
-              <p className={"w-full text-xs font-gray-500 pt-1"}>
+              <p
+                className={"w-full text-base font-gray-500 pt-1 text-gray-500"}
+              >
                 {" "}
                 [S] New Prop
               </p>
-              <p className={"w-full text-xs font-gray-500 pt-1"}>
+              <p
+                className={"w-full text-base font-gray-500 pt-1 text-gray-500"}
+              >
                 {" "}
                 [S] New Prop
               </p>
