@@ -79,12 +79,19 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               <div className={"text-white text-base font-bold"}>
                 Location,(prop needed)
               </div>
-              <div className={"pt-2"}>
-                {" "}
-                <ButtonLinkedin
-                  backgroundColour="white"
-                  userLinkedinURL={userLinkedinURL}
-                />
+              <div className={"pt-2 grid grid-cols-2 pr-2"}>
+                <div className={"grid justify-items-end"}>
+                  <ButtonLinkedin
+                    backgroundColour="white"
+                    userLinkedinURL={userLinkedinURL}
+                  />{" "}
+                </div>
+                <div className={"grid justify-items-start pl-2"}>
+                  <ButtonEmail
+                    backgroundColour="white"
+                    userEmailAction={userEmailAction}
+                  />
+                </div>
               </div>
             </div>
             <div className={""}>
@@ -119,7 +126,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         </div>
 
         <div className={"col-start-3 py-4"}>
-          <div className={"pl-8 content-center"}>
+          <div className={"pl-10 content-center"}>
             <div>
               <p className={"font-bold text-lg pb-2 text-VouchDark"}>
                 Referred By
