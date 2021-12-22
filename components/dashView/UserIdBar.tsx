@@ -72,8 +72,8 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
             textColour={homeCheck ? "VouchGreen" : "black"}
             label={"Home"}
             onClick={homeClick}
+            icon={"Home"}
           />
-          <div></div>
         </div>
         <div className={"col-start-5 flex justify-center items-center"}>
           <ButtonNav
@@ -82,6 +82,7 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
             textColour={favoritesCheck ? "VouchGreen" : "black"}
             label={"Favorites"}
             onClick={favoritesClick}
+            icon={"Favorites"}
           />
         </div>
         <div className={"col-start-6 flex justify-center items-center"}>
@@ -91,6 +92,7 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
             textColour={unfitCheck ? "VouchGreen" : "black"}
             label={"Unfit"}
             onClick={unfitClick}
+            icon={"NotNow"}
           />
         </div>
         <div className={"col-start-7 flex justify-center items-center"}>
@@ -100,6 +102,7 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
             textColour={contactedCheck ? "VouchGreen" : "black"}
             label={"Contacted"}
             onClick={contactedClick}
+            icon={"Contacted"}
           />
         </div>
 
