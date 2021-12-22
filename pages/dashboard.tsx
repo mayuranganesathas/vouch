@@ -176,7 +176,6 @@ const DashBoard = (data) => {
               <IndustryFilter
                 backgroundColour="white"
                 dropDownArrayIndustry={dashBoardTest.dropDownArrayIndustry}
-                width="wide-lg"
               />
             </div>
 

@@ -4,6 +4,7 @@ import UserProfile from "./UserProfile";
 import HrCompanyProfile from "./HrCompanyProfile";
 import { useAuth } from "../../lib/authContext";
 import { ButtonNav } from "../ui/ButtonNav";
+import { ViewListIcon } from "@heroicons/react/solid";
 
 export interface UserIdBarProps {
   hrData: any;
@@ -72,6 +73,7 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
             label={"Home"}
             onClick={homeClick}
           />
+          <div></div>
         </div>
         <div className={"col-start-5 flex justify-center items-center"}>
           <ButtonNav
