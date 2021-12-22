@@ -90,7 +90,7 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
             backgroundColour={unfitCheck ? "gray" : "white"}
             buttonType={"square"}
             textColour={unfitCheck ? "VouchGreen" : "black"}
-            label={"Unfit"}
+            label={"Hidden"}
             onClick={unfitClick}
             icon={"NotNow"}
           />

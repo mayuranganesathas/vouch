@@ -3,6 +3,8 @@ import { ViewListIcon } from "@heroicons/react/solid";
 import { ThumbUpIcon } from "@heroicons/react/solid";
 import { ThumbDownIcon } from "@heroicons/react/solid";
 import { MailOpenIcon } from "@heroicons/react/solid";
+import { StarIcon } from "@heroicons/react/solid";
+import { EyeOffIcon } from "@heroicons/react/solid";
 
 export interface ButtonNavProps {
   backgroundColour: "gray" | "white";
@@ -67,10 +69,10 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       iconStyles = <ViewListIcon className={"w-6 h-auto"} fill="#d1d5db" />;
       break;
     case "Favorites":
-      iconStyles = <ThumbUpIcon className={"w-6 h-auto"} fill="#d1d5db" />;
+      iconStyles = <StarIcon className={"w-6 h-auto"} fill="#d1d5db" />;
       break;
     case "NotNow":
-      iconStyles = <ThumbDownIcon className={"w-6 h-auto"} fill="#d1d5db" />;
+      iconStyles = <EyeOffIcon className={"w-6 h-auto"} fill="#d1d5db" />;
       break;
     case "Contacted":
       iconStyles = <MailOpenIcon className={"w-6 h-auto"} fill="#d1d5db" />;
