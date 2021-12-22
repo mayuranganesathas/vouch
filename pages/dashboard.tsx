@@ -12,7 +12,10 @@ import { DatabaseIcon } from "@heroicons/react/solid";
 import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
-
+import { JobCategoryFilter } from "../components/ui/JobCategoryFilter";
+import { SeniorityFilter } from "../components/ui/SeniorityFilter";
+import { CompanySizeFilter } from "../components/ui/CompanySizeFilter";
+import { IndustryFilter } from "../components/ui/IndustryFilter";
 export interface DashboardProps {}
 
 const dashBoardTest = {
@@ -23,7 +26,39 @@ const dashBoardTest = {
   numberThanks: 4,
   candidateCount: [10],
   lastCandidateCount: 5,
-  dropDownArray: ["software eng", "mayu's butthole", "brian's face"],
+  dropDownArrayJobCategory: [
+    "Job Category",
+    "software eng",
+    "mayu's butthole",
+    "brian's face",
+  ],
+  dropDownArraySeniority: [
+    "Seniority Level",
+    "Junior",
+    "Intermeidate",
+    "Senior",
+    "Director",
+    "VP",
+  ],
+  dropDownArrayCompanySize: [
+    "Company Size",
+    "<10",
+    "11-50",
+    "51-100",
+    "101-200",
+    "201-500",
+    "500+",
+  ],
+
+  dropDownArrayIndustry: [
+    "Industry",
+    "Tech",
+    "Gaming",
+    "Saas",
+    "something",
+    "Blah",
+    "Cool",
+  ],
 
   starStatus: false,
   userID: 1234,
@@ -101,17 +136,49 @@ const DashBoard = (data) => {
             />
           </div>
           <div className={"w-full border-gray-500 border-b"}></div>
-          <div className={"grid grid-cols-6 pt-4 pb-8 bg-gray-50"}>
-            <div className={"pl-8"}>
+          <div
+            className={
+              "grid grid-cols-6 justify-items-center pt-8 pb-8 px-14 bg-gray-50"
+            }
+          >
+            <div className={""}>
               <CandidateCount
                 candidateCount={dashBoardTest.candidateCount}
                 lastCandidateCount={dashBoardTest.lastCandidateCount}
               />
             </div>
-            <div> Job Category</div>
-            <div> Seniority Level</div>
-            <div> Company Size</div>
-            <div> Industry</div>
+            <div>
+              <JobCategoryFilter
+                backgroundColour="white"
+                dropDownArrayJobCategory={
+                  dashBoardTest.dropDownArrayJobCategory
+                }
+              />
+            </div>
+            <div>
+              {" "}
+              <SeniorityFilter
+                backgroundColour="white"
+                dropDownArraySeniority={dashBoardTest.dropDownArraySeniority}
+              />
+            </div>
+            <div>
+              {" "}
+              <CompanySizeFilter
+                backgroundColour="white"
+                dropDownArrayCompanySize={
+                  dashBoardTest.dropDownArrayCompanySize
+                }
+              />
+            </div>
+            <div>
+              {" "}
+              <IndustryFilter
+                backgroundColour="white"
+                dropDownArrayIndustry={dashBoardTest.dropDownArrayIndustry}
+                width="wide-lg"
+              />
+            </div>
 
             <div className="grid justify-items-end">
               <VouchCTA
