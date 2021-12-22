@@ -101,31 +101,30 @@ const DashBoard = (data) => {
             />
           </div>
           <div className={"w-full border-gray-500 border-b"}></div>
-          <div className={"px-2 grid grid-cols-2"}>
-            <div className={"pl-24 pt-10"}>{getWelcomeComponent(stage)}</div>
+          <div className={"grid grid-cols-6 pt-4 pb-8 bg-gray-50"}>
+            <div className={"pl-8"}>
+              <CandidateCount
+                candidateCount={dashBoardTest.candidateCount}
+                lastCandidateCount={dashBoardTest.lastCandidateCount}
+              />
+            </div>
+            <div> Job Category</div>
+            <div> Seniority Level</div>
+            <div> Company Size</div>
+            <div> Industry</div>
 
-            <div className="grid justify-items-end pr-40 pt-10">
+            <div className="grid justify-items-end">
               <VouchCTA
                 numberReferred={dashBoardTest.numberReferred}
                 numberThanks={dashBoardTest.numberThanks}
               />
             </div>
           </div>
-          <div className={"grid grid-cols-2"}>
-            <div className={"pl-20"}>
-              <CandidateCount
-                candidateCount={dashBoardTest.candidateCount}
-                lastCandidateCount={dashBoardTest.lastCandidateCount}
-              />
-            </div>
-            <div
-              className={"grid justify-items-end col-start-2 pr-40 py-8"}
-            ></div>
-          </div>
+
           <div className={"bg-gray-50 px-20"}>
             <div
               className={
-                "grid grid-cols-5 bg-gray-100 grid-flow-col content-center py-3"
+                "grid grid-cols-5 bg-gray-200 grid-flow-col content-center py-3"
               }
             >
               <div className={"col-start-1 pl-4 col-span-2"}>

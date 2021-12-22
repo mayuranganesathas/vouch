@@ -22,7 +22,7 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
 
   switch (buttonWidth) {
     case "wide":
-      buttonSize = "w-10/12";
+      buttonSize = "w-12/12";
       break;
   }
   let backgroundStyles;
@@ -63,7 +63,7 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
       onClick={onClick}
       disabled={disabled}
       type="button"
-      className={`bg-gradient-to-b px-8 py-1 text-red font-bold ${buttonSize}
+      className={`bg-gradient-to-b px-8 py-3 text-red font-bold ${buttonSize}
       ${disabled ? "bg-gray-400 opacity-25" : backgroundStyles}
       ${disabled ? "rounded" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}

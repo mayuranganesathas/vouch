@@ -20,26 +20,23 @@ const VouchCTA = ({ numberReferred, numberThanks }: VouchCTAProps) => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-xl shadow-lg w-8/12">
-      <div className="flex p-4 gap-8">
-        <div className="text-center text-md ">
-          <div>Number of People you've referred:</div>
-          <div className="font-bold ">{numberReferred}</div>
-        </div>
-        <div className="text-center text-md">
-          <div>Number of People employed thanks to you:</div>
-          <div className="font-bold ">{numberThanks}</div>
-        </div>
-      </div>
-      <div className="p-4 text-center">
+    <div className="">
+      <div className="text-center">
         <ButtonVouch
           label="Vouch For A Candidate"
           backgroundColour="VouchGreen"
-          buttonType="rounded"
+          buttonType="square"
           textColour="white"
           onClick={openModal}
           buttonWidth="wide"
         />
+      </div>
+      <div className="text-sm text-gray-500 pt-4 ">
+        Candidates you've referred: {numberReferred}
+      </div>
+      <div className="text-sm text-gray-500 ">
+        {" "}
+        Candidates landing roles: {numberThanks}
       </div>
       <VouchCTAModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
     </div>
