@@ -65,11 +65,13 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"col-start-1 col-span-2 "}>
           <div
             className={
-              "grid grid-cols-2 content-center bg-VouchGreen rounded-full h-full filter drop-shadow-md"
+              "grid grid-cols-2 content-center bg-VouchMed rounded-full h-full filter drop-shadow-md"
             }
           >
             <div className={"text-center py-4"}>
-              <p className={"text-lg font-bold"}>User Name Details:{userID}</p>
+              <p className={"text-2xl font-bold text-VouchDark"}>
+                User Name :{userID}
+              </p>
               <div className={"text-white text-base font-bold"}>
                 Location,(prop needed)
               </div>
@@ -83,10 +85,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             </div>
             <div className={""}>
               {" "}
-              <p className={"text-lg font-bold"}>Current/Most Recent Role</p>
+              <p className={"text-lg font-bold text-VouchDark"}>
+                Current/Most Recent Role
+              </p>
               <div>
                 {" "}
-                <p className={"w-full text-base font-bold"}>{pastPosition1}</p>
+                <p className={"w-full text-base text-white font-bold"}>
+                  {pastPosition1}
+                </p>
               </div>
               <div>
                 {" "}
@@ -94,7 +100,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   Industry:{pastIndustry1}
                 </p>
                 <div className={"pt-4"}>
-                  <p className={"text-base font-bold"}>
+                  <p className={"text-base font-bold text-VouchDark"}>
                     {" "}
                     Years of Industry Experience
                   </p>
@@ -111,7 +117,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"col-start-3 py-4"}>
           <div className={"pl-8 content-center"}>
             <div>
-              <p className={"font-bold text-base pb-2 text-VouchMed"}>
+              <p className={"font-bold text-lg pb-2 text-VouchDark"}>
                 Referred By
               </p>
               <p className="w-full text-base font-bold">{companyName}</p>
@@ -130,7 +136,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           </div>
         </div>
         <div className={"col-start-4 py-4"}>
-          <p className={"font-bold text-base text-VouchMed pb-2"}>
+          <p className={"font-bold text-lg text-VouchDark pb-2"}>
             {" "}
             Role Interviewed For
           </p>
@@ -150,7 +156,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"col-start-5 py-4"}>
           <div className={"grid grid-cols-3"}>
             <div className={"col-start-1 col-span-2"}>
-              <p className={"font-bold text-base text-VouchMed pb-2"}>
+              <p className={"font-bold text-lg text-VouchDark pb-2"}>
                 Interview Notes
               </p>
               <p className={"font-bold text-base"}>Standout Skills</p>

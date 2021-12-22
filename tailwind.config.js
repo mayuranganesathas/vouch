@@ -5,8 +5,8 @@ module.exports = {
     extend: {
       colors: {
         VouchGreen: "#49BEB0",
-        VouchDark: "#305252",
-        VouchMed: "#2A6041",
+        VouchDark: "#006d77",
+        VouchMed: "#83c5be",
       },
       borderRadius: {
         large: "12px",
