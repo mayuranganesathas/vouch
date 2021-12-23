@@ -23,18 +23,11 @@ const HrCompanyProfile = ({
       <div className="grid content-center py-1 ">
         <a
           href={userHrCompanyWebsite}
-          className=" flex-nowrap text-xl font-bold text-gray-500"
+          className=" flex-nowrap text-2xl font-bold text-gray-500"
         >
           {" "}
           {userHrCompanyName}
         </a>
-        <div className="flex pt-1">
-          <img src="icons/industry.png" className="w-4 h-4 " />
-          <span className="text-xs text-gray-500 flex-nowrap pt-1 px-0.5">
-            {" "}
-            {userHrCompanyIndustry} | {userHrCompanyLocation}
-          </span>
-        </div>
       </div>
     </div>
   );
