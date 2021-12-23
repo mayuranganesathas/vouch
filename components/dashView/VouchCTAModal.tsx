@@ -11,6 +11,7 @@ import { UserGroupIcon } from "@heroicons/react/solid";
 import { MailOpenIcon } from "@heroicons/react/solid";
 import { UserAddIcon } from "@heroicons/react/solid";
 import { SearchCircleIcon } from "@heroicons/react/solid";
+import { PositionFilterVouch } from "../ui/PositionFilterVouch";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -30,7 +31,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   const { user } = useAuth();
 
   const dropDownArray = [
-    "test1231231",
+    "Select One",
     "test2123123",
     "test31223123",
     "test4123123",
@@ -38,6 +39,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   ];
   //authentication passes hrID
   const [email, setEmail] = useState("");
+  const [position, setPosition] = useState("");
   const [positionTitle, setPositionTitle] = useState("");
   const [interviewStage, setInterviewStage] = useState("");
   const [positionLevel, setPositionLevel] = useState("");
@@ -86,6 +88,10 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   // insert hrID in candidates and
   const emailChecker = (e) => {
     setEmail(e);
+  };
+
+  const positionChecker = (e) => {
+    setPosition(e);
   };
 
   const sendEmail = async () => {
@@ -193,12 +199,12 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                 </div>
                 <div
                   className={
-                    "flex justify-center py-2 font-bold text-xl text-white"
+                    "flex justify-center py-2 font-bold text-lg text-white"
                   }
                 >
                   VOUCHING CANDIDATES
                 </div>
-                <div className={"text-base text-white"}>
+                <div className={"text-sm text-white"}>
                   <div className={"flex justify-center"}>
                     Help other qualified candidates from{" "}
                   </div>
@@ -215,15 +221,13 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                 <div className={"flex justify-center pt-8"}>
                   <MailOpenIcon className={"w-12 h-auto"} fill="white" />
                 </div>
-                <div
-                  className={"text-base text-white  py-2 flex justify-center"}
-                >
+                <div className={"text-sm text-white  py-2 flex justify-center"}>
                   Candidates get invited to join.
                 </div>
                 <div className={"flex justify-center pt-8"}>
                   <UserAddIcon className={"w-12 h-auto"} fill="white" />
                 </div>
-                <div className={"text-base text-white py-2"}>
+                <div className={"text-sm text-white py-2"}>
                   <div className={"flex justify-center"}>
                     Referred candidates match more
                   </div>
@@ -236,7 +240,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   <SearchCircleIcon className={"w-12 h-auto"} fill="white" />
                 </div>
                 <div>
-                  <div className={"text-base text-white py-2"}>
+                  <div className={"text-sm text-white py-2"}>
                     <div className={"flex justify-center"}>Pay it forward.</div>
                     <div className={"flex justify-center"}>
                       Find active and qualified
@@ -257,10 +261,12 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     onClick={closeModal}
                   />
                 </div>
-                <div className="py-2 ">Invite a Candidate</div>
-                <div>
+                <div className="py-2 font-bold flex justify-center text-lg ">
+                  Invite a Candidate
+                </div>
+                <div className={"flex justify-center py-2"}>
                   <input
-                    className="border-2 w-60 rounded-lg"
+                    className="border-2 w-full py-2 pl-1 rounded"
                     id="guess"
                     type="text"
                     placeholder=" Enter Candidate Email"
@@ -270,111 +276,110 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                 </div>
               </div>
               <div className="	">
-                <div className="py-2">
-                  <hr className="text-red-500 justify-items-end" />
-                </div>
-
                 <div className="py-4">
-                  <div className="text-bold text-md">Position Details</div>
-                  <div className="text-gray-400 text-xs">
-                    For the role they just interviewed for
+                  <div className="font-bold text-lg flex justify-center">
+                    Position Details
+                  </div>
+                  <div className="text-gray-300 text-xs font-bold flex justify-center">
+                    The role they recently interviewed for
                   </div>
                 </div>
-                <div className={"grid grid-cols-2"}>
+
+                <div className={"flex justify-center py-2"}>
+                  <input
+                    className="border-2 w-full py-2 pl-1 rounded"
+                    id="guess"
+                    type="text"
+                    placeholder=" Position Title"
+                    value={email}
+                    onChange={(e) => positionChecker(e.target.value)}
+                  ></input>
+                </div>
+                <div className={"grid grid-cols-2 pt-4"}>
                   <div className={""}>
-                    <div className="flex-norwap">
-                      <div className="py-1 text-xs">Position Title</div>
-                      <SearchFilterDash
-                        value={positionTitle}
-                        backgroundColour="white"
-                        onChange={(e) => {
-                          setPositionTitle(e.target.value);
-                        }}
-                        dropDownArray={dropDownArray}
-                        width="wide-sm"
-                      />
-                    </div>
-                    <div className="py-4 flex gap-8">
-                      <div>
-                        <div className="text-xs py-0.5">
-                          Stage Of Interview:
-                        </div>{" "}
-                        <SearchFilterDash
-                          value={interviewStage}
+                    <div className="">
+                      <div className="py-1 text-xs font-bold text-gray-500">
+                        Position Category
+                      </div>
+                      <div className={"pr-3"}>
+                        <PositionFilterVouch
+                          value={positionTitle}
                           backgroundColour="white"
                           onChange={(e) => {
-                            setInterviewStage(e.target.value);
+                            setPositionTitle(e.target.value);
                           }}
                           dropDownArray={dropDownArray}
-                          width="wide-sm"
                         />
+                      </div>
+                    </div>
+                    <div className="">
+                      <div>
+                        <div className="text-xs py-1 font-bold text-gray-500">
+                          Furtherst Interview Stage:
+                        </div>
+                        <div className={"pr-3"}>
+                          <PositionFilterVouch
+                            value={interviewStage}
+                            backgroundColour="white"
+                            onChange={(e) => {
+                              setInterviewStage(e.target.value);
+                            }}
+                            dropDownArray={dropDownArray}
+                          />{" "}
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   <div>
                     <div>
-                      <div className="text-xs py-0.5">Position Level:</div>{" "}
-                      <SearchFilterDash
-                        value={positionLevel}
-                        backgroundColour="white"
-                        onChange={(e) => {
-                          setPositionLevel(e.target.value);
-                        }}
-                        dropDownArray={dropDownArray}
-                        width="wide-sm"
-                      />
+                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
+                        Seniority Level:
+                      </div>{" "}
+                      <div className={"pl-3"}>
+                        <PositionFilterVouch
+                          value={positionLevel}
+                          backgroundColour="white"
+                          onChange={(e) => {
+                            setPositionLevel(e.target.value);
+                          }}
+                          dropDownArray={dropDownArray}
+                        />
+                      </div>
                     </div>
                     <div>
-                      <div className="text-xs py-0.5">Salary Range:</div>{" "}
-                      <SearchFilterDash
-                        value={salaryRange}
-                        backgroundColour="white"
-                        onChange={(e) => {
-                          setSalaryRange(e.target.value);
-                        }}
-                        dropDownArray={dropDownArray}
-                        width="wide-sm"
-                      />
+                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
+                        Base Salary Range:
+                      </div>{" "}
+                      <div className={"pl-3"}>
+                        <PositionFilterVouch
+                          value={salaryRange}
+                          backgroundColour="white"
+                          onChange={(e) => {
+                            setSalaryRange(e.target.value);
+                          }}
+                          dropDownArray={dropDownArray}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-
-                <div className="py-4">
-                  <div className="text-bold">Stand Out Skills</div>
-                  <div className="text-gray-400 text-xs">
-                    Select the top skill that impressed you the most about this
-                    Candidate{" "}
+                <div className="py-10">
+                  <hr className="" />
+                </div>
+                <div className="pb-4">
+                  <div className="font-bold flex justify-center">
+                    Stand Out Skills
                   </div>
-                  <div className="grid grid-cols-2">
-                    <div>
-                      <StandOutSkill
-                        value={dropDownArray[0]}
-                        onChange={(e) => setStandOutSkill1(e.target.value)}
-                      />
-
-                      <StandOutSkill
-                        value={dropDownArray[1]}
-                        onChange={(e) => setStandOutSkill2(e.target.value)}
-                      />
+                  <div className="text-gray-400 text-xs py-2">
+                    <div className={"flex justify-center"}>
+                      Select the top skill that impressed
                     </div>
-                    <div>
-                      <StandOutSkill
-                        value={dropDownArray[2]}
-                        onChange={(e) => setStandOutSkill3(e.target.value)}
-                      />
-
-                      <StandOutSkill
-                        value={dropDownArray[3]}
-                        onChange={(e) => setStandOutSkill4(e.target.value)}
-                      />
+                    <div className={"flex justify-center"}>
+                      you in the interview process
                     </div>
-
-                    <StandOutSkill
-                      value={dropDownArray[4]}
-                      onChange={(e) => setStandOutSkill5(e.target.value)}
-                    />
                   </div>
+                  <div className="grid grid-cols-2"></div>
                 </div>
                 <div className="py-1 justify-items-end">
                   <ButtonVouch
