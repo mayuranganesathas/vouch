@@ -313,9 +313,9 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                       </div>
                     </div>
                     <div className="">
-                      <div>
+                      <div className={"pt-4"}>
                         <div className="text-xs py-1 font-bold text-gray-500">
-                          Furtherst Interview Stage:
+                          Furthest Interview Stage:
                         </div>
                         <div className={"pr-3"}>
                           <PositionFilterVouch
@@ -347,7 +347,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                         />
                       </div>
                     </div>
-                    <div>
+                    <div className={"pt-4"}>
                       <div className="text-xs py-1 pl-3 font-bold text-gray-500">
                         Base Salary Range:
                       </div>{" "}
@@ -379,9 +379,57 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                       you in the interview process
                     </div>
                   </div>
-                  <div className="grid grid-cols-2"></div>
+                  <div className="grid grid-cols-2 pt-2">
+                    <div>
+                      <div>
+                        <div className="text-xs py-1 pl-3 font-bold text-gray-500">
+                          Role Related Strenghs [prop]:
+                        </div>{" "}
+                        <div className={"pl-3"}>
+                          <PositionFilterVouch
+                            value={positionLevel}
+                            backgroundColour="white"
+                            onChange={(e) => {
+                              setPositionLevel(e.target.value);
+                            }}
+                            dropDownArray={dropDownArray}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-xs pt-1 pl-3 font-bold text-gray-500">
+                        Interpersonal Strengths [props]:
+                      </div>{" "}
+                      <div className={"pl-3"}>
+                        <PositionFilterVouch
+                          value={salaryRange}
+                          backgroundColour="white"
+                          onChange={(e) => {
+                            setSalaryRange(e.target.value);
+                          }}
+                          dropDownArray={dropDownArray}
+                        />
+                      </div>
+                    </div>
+                    <div className={"pt-4"}>
+                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
+                        Interview Strengths [props]:
+                      </div>{" "}
+                      <div className={"pl-3"}>
+                        <PositionFilterVouch
+                          value={salaryRange}
+                          backgroundColour="white"
+                          onChange={(e) => {
+                            setSalaryRange(e.target.value);
+                          }}
+                          dropDownArray={dropDownArray}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="py-1 justify-items-end">
+                <div className="py-2 flex justify-center">
                   <ButtonVouch
                     backgroundColour="VouchGreen"
                     textColour="white"
