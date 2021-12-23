@@ -184,7 +184,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
           <div className={"grid grid-cols-5"}>
             <div
               className={
-                "col-span-2 grid grid-rows-4 py-8 px-4 bg-VouchMed content-evenly"
+                "col-span-2 grid grid-rows-1 py-8 px-4 bg-VouchMed content-evenly"
               }
             >
               <div className={""}>
@@ -212,10 +212,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     but they could be someone elses.
                   </div>
                 </div>
-              </div>
-
-              <div className={"py-4 grid content-center"}>
-                <div className={"flex justify-center"}>
+                <div className={"flex justify-center pt-8"}>
                   <MailOpenIcon className={"w-12 h-auto"} fill="white" />
                 </div>
                 <div
@@ -223,9 +220,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                 >
                   Candidates get invited to join.
                 </div>
-              </div>
-              <div className={"py-4 grid content-center"}>
-                <div className={"flex justify-center"}>
+                <div className={"flex justify-center pt-8"}>
                   <UserAddIcon className={"w-12 h-auto"} fill="white" />
                 </div>
                 <div className={"text-base text-white py-2"}>
@@ -237,9 +232,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   </div>
                   <div className={"flex justify-center"}>of recruiters.</div>
                 </div>
-              </div>
-              <div className={"py-4 grid content-center"}>
-                <div className={"flex justify-center"}>
+                <div className={"flex justify-center pt-8"}>
                   <SearchCircleIcon className={"w-12 h-auto"} fill="white" />
                 </div>
                 <div>
