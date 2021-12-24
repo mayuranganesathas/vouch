@@ -4,7 +4,9 @@ import { ButtonEmail } from "./ButtonEmail";
 import { CompTooltip } from "./CompTooltip";
 import ReactTooltip from "react-tooltip";
 import { ButtonConnected } from "./ButtonConnected";
-
+import { useMutation } from "@apollo/client";
+import { INSERT_THUMBS_UP_AND_DOWN } from "../../graphql/INSERT_THUMBS_UP";
+import { useAuth } from "../../lib/authContext";
 export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
@@ -41,18 +43,68 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [thumbUpCheck, thumbUpSetCheck] = useState(false);
   const [thumbDownCheck, thumbDownSetCheck] = useState(false);
 
-  const buttonEmail = () => {
-    console.log("test1");
-  };
+  const { user } = useAuth();
+
+  const hrId = user.uid;
+  const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
+    INSERT_THUMBS_UP_AND_DOWN,
+
+    {
+      variables: {
+        hrId: "incompleteField",
+        jobName: "incompleteField",
+        jobSeniority: "incompleteField",
+        jobType: "incompleteField",
+        status: "incompleteField",
+        candidateId: 0,
+      },
+    }
+  );
 
   const thumbUpClick = () => {
     thumbUpSetCheck((prevCheck) => !prevCheck);
     thumbDownSetCheck(false);
+
+    ThumbUpAndDownMutation({
+      variables: {
+        hrId: hrId,
+        jobName: "",
+        jobSeniority: "",
+        jobType: "",
+        status: "thumbsUp",
+        candidateId: userID,
+      },
+    });
   };
 
   const thumbDownClick = () => {
     thumbDownSetCheck((prevCheck) => !prevCheck);
     thumbUpSetCheck(false);
+
+    ThumbUpAndDownMutation({
+      variables: {
+        hrId: hrId,
+        jobName: "",
+        jobSeniority: "",
+        jobType: "",
+        status: "thumbsDown",
+        candidateId: userID,
+      },
+    });
+  };
+  //refetch queries.
+
+  const moveToContacted = () => {
+    ThumbUpAndDownMutation({
+      variables: {
+        hrId: hrId,
+        jobName: "",
+        jobSeniority: "",
+        jobType: "",
+        status: "contacted",
+        candidateId: userID,
+      },
+    });
   };
 
   return (
@@ -65,7 +117,9 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"grid-start-1"}>
           <div className={"grid grid-cols-2"}>
             <div className={"grid grid-cols-2"}>
-              <div className={"flex items-center justify-center pt-4"}>
+              <div
+                className={`flex items-center justify-center pt-4 cursor-pointer`}
+              >
                 <img
                   src={
                     thumbUpCheck
@@ -77,7 +131,11 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   onClick={thumbUpClick}
                 />
               </div>
-              <div className={"flex items-center justify-center pt-4"}>
+              <div
+                className={
+                  "flex items-center justify-center pt-4 cursor-pointer"
+                }
+              >
                 <img
                   src={
                     thumbDownCheck
@@ -193,7 +251,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               />
             </div>
             <div className={"col-span-2"}>
-              <ButtonConnected backgroundColour="white" />
+              <ButtonConnected
+                backgroundColour="white"
+                onClick={moveToContacted}
+              />
             </div>
           </div>
         </div>

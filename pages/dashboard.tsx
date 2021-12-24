@@ -12,6 +12,8 @@ import { DatabaseIcon } from "@heroicons/react/solid";
 import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
+import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
+import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
 import { SearchFilterDash } from "../components/ui/searchFilterDash";
 import { filterArgTypes } from "@storybook/client-api";
 
@@ -51,26 +53,65 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
+
+  let { loading, data: ShortList } = useQuery(QUERY_SHORT_LIST, {
+    variables: {
+      hrId: user.uid,
+    },
+  });
+
+  //create 3 queries based on thumbs up, thumbs down and contacted
+  // get all cand id's , pass into second query and map through them based on the queries
+
   const getTileComponent = (stage) => {
     if (stageStatus == "Home") {
       return <DashCandidateTiles vouchData={data} />;
     } else if (stageStatus == "Favorites") {
-      return <div> FAVORITES TILES</div>;
+      return (
+        <div>
+          {
+            <DashCandidateTilesShortList
+              vouchData={ShortList}
+              filter="thumbsUp"
+            />
+          }
+        </div>
+      );
     } else if (stageStatus == "Unfit") {
-      return <div>UNFIT TILES</div>;
+      return (
+        <div>
+          {
+            <DashCandidateTilesShortList
+              vouchData={ShortList}
+              filter="thumbsDown"
+            />
+          }
+        </div>
+      );
     } else if (stageStatus == "Contacted") {
-      return <div> CONTACT TILES</div>;
+      return (
+        <div>
+          {
+            <DashCandidateTilesShortList
+              vouchData={ShortList}
+              filter="contacted"
+            />
+          }
+        </div>
+      );
     }
   };
 
   const getWelcomeComponent = (stage) => {
     if (stageStatus == "Home") {
       return (
-        <WelcomeComp
-          newCandidateNumber={dashBoardTest.newCandidateNumber}
-          userHrFirstName={user.displayName}
-          moveToCandidates={dashBoardTest.moveToCandidate}
-        />
+        <div>
+          <WelcomeComp
+            newCandidateNumber={dashBoardTest.newCandidateNumber}
+            userHrFirstName={user.displayName}
+            moveToCandidates={dashBoardTest.moveToCandidate}
+          />
+        </div>
       );
     } else if (stageStatus == "Favorites") {
       return <div></div>;
