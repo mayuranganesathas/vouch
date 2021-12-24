@@ -14,8 +14,13 @@ import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
 import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
 import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
+import { SearchFilterDash } from "../components/ui/searchFilterDash";
+import { filterArgTypes } from "@storybook/client-api";
 
-export interface DashboardProps {}
+export interface DashboardProps {
+  filter: string;
+  setFilter: (filter: string) => void;
+}
 
 const dashBoardTest = {
   newCandidateNumber: 14,
@@ -43,7 +48,7 @@ const dashBoardTest = {
   userLinkedinURL: "https://ca.linkedin.com/in/mayuranganesathas",
 };
 
-const DashBoard = (data) => {
+const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
   const [stage, setStage] = useState("Home");
   const [stageStatus, setStageStatus] = useState("Home");
 
@@ -130,6 +135,10 @@ const DashBoard = (data) => {
     hrData && hrRegister();
   }, [hrData]);
 
+  const value = () => {};
+
+  const onChange = () => {};
+
   return (
     <div>
       {hrData && (
@@ -159,9 +168,14 @@ const DashBoard = (data) => {
                 lastCandidateCount={dashBoardTest.lastCandidateCount}
               />
             </div>
-            <div
-              className={"grid justify-items-end col-start-2 pr-40 py-8"}
-            ></div>
+            <div className={"grid justify-items-end col-start-2 pr-40 py-8"}>
+              <SearchFilterDash
+                backgroundColour="white"
+                dropDownArray={dashBoardTest.dropDownArray}
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
+              />
+            </div>
           </div>
           <div className={"bg-gray-50 px-20"}>
             <div className={"grid grid-cols-12 bg-gray-200 grid-flow-col"}>
