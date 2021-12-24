@@ -185,10 +185,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"col-start-3 py-4"}>
           <div className={"pl-10 content-center"}>
             <div>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 117e418cf9b3f745c95911af2c7721488c2188a7
               <p className={"font-bold text-lg pb-2 text-VouchDark"}>
                 Referred By
               </p>
@@ -204,22 +200,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               <div className={"pl-10 pt-4"}>
                 <img src={companyLogo} width="45" height="auto" />
               </div>
-<<<<<<< HEAD
-=======
-=======
-              <p className="w-full">{positionTitle}</p>
-            </div>
-            <div className={"pt-1"}>
-              {" "}
-              <p className={"w-full"}>${salaryRange} K/year </p>
-            </div>
-            <div className={"pt-2 text-gray-500 text-xs"}>
-              {" "}
-              <p className="w-full">
-                {jobLocation == "Yes" ? "Remote" : jobLocation}
-              </p>
->>>>>>> main
->>>>>>> 117e418cf9b3f745c95911af2c7721488c2188a7
             </div>
           </div>
         </div>
@@ -309,10 +289,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               onClick={thumbUpClick}
             />
           </div>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 117e418cf9b3f745c95911af2c7721488c2188a7
           <div className={"flex items-center justify-center pt-4"}>
             <img
               src={
@@ -324,13 +300,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               height="20"
               onClick={thumbDownClick}
             />
-<<<<<<< HEAD
-=======
-=======
-          <div className={"text-gray-500 text-xs"}>
-            <p className={"w-full"}> </p>
->>>>>>> main
->>>>>>> 117e418cf9b3f745c95911af2c7721488c2188a7
           </div>
         </div>
         <div className={""}>
@@ -380,36 +349,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             "col-span-2 flex justify-center items-center pt-1 text-gray-500"
           }
         >
-<<<<<<< HEAD
           <p className="w-full">{companyName}</p>
-=======
-<<<<<<< HEAD
-          <p className="w-full">{companyName}</p>
-=======
-          <div className={"grid grid-cols-2"}>
-            <div className={"pt-0.5"}>
-              {" "}
-              <ButtonLinkedin
-                backgroundColour="white"
-                userLinkedinURL={userLinkedinURL}
-              />
-            </div>
-            <div className={"pt-0.5"}>
-              {" "}
-              <ButtonEmail
-                backgroundColour="white"
-                userEmailAction={userEmailAction}
-              />
-            </div>
-            <div className={"col-span-2"}>
-              <ButtonConnected
-                backgroundColour="white"
-                onClick={moveToContacted}
-              />
-            </div>
-          </div>
->>>>>>> main
->>>>>>> 117e418cf9b3f745c95911af2c7721488c2188a7
         </div>
       </div>
     </div>
