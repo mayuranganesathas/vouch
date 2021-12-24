@@ -54,7 +54,7 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
   return (
     hrData.hr_voucher.length > 0 && (
       <div className={"grid grid-cols-12"}>
-        <div className={"col-start-1 col-span-2"}>
+        <div className={"col-start-1 col-span-4"}>
           <div className="flex px-2 justify-between">
             <HrCompanyProfile
               userHrCompanyName={hrData.hr_voucher[0].companyName}
@@ -65,41 +65,44 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
             />
           </div>
         </div>
-        <div className={"col-start-4 flex justify-center items-center"}>
+        <div className={"col-start-5 flex justify-center items-center"}>
           <ButtonNav
             backgroundColour={homeCheck ? "gray" : "white"}
             buttonType={"square"}
             textColour={homeCheck ? "VouchGreen" : "black"}
             label={"Home"}
             onClick={homeClick}
+            icon={"Home"}
           />
-          <div></div>
         </div>
-        <div className={"col-start-5 flex justify-center items-center"}>
+        <div className={"col-start-6 flex justify-center items-center"}>
           <ButtonNav
             backgroundColour={favoritesCheck ? "gray" : "white"}
             buttonType={"square"}
             textColour={favoritesCheck ? "VouchGreen" : "black"}
             label={"Favorites"}
             onClick={favoritesClick}
+            icon={"Favorites"}
           />
         </div>
-        <div className={"col-start-6 flex justify-center items-center"}>
+        <div className={"col-start-7 flex justify-center items-center"}>
           <ButtonNav
             backgroundColour={unfitCheck ? "gray" : "white"}
             buttonType={"square"}
             textColour={unfitCheck ? "VouchGreen" : "black"}
-            label={"Unfit"}
+            label={"Hidden"}
             onClick={unfitClick}
+            icon={"NotNow"}
           />
         </div>
-        <div className={"col-start-7 flex justify-center items-center"}>
+        <div className={"col-start-8 flex justify-center items-center"}>
           <ButtonNav
             backgroundColour={contactedCheck ? "gray" : "white"}
             buttonType={"square"}
             textColour={contactedCheck ? "VouchGreen" : "black"}
             label={"Contacted"}
             onClick={contactedClick}
+            icon={"Contacted"}
           />
         </div>
 

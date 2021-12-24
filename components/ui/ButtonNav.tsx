@@ -1,4 +1,11 @@
 import React from "react";
+import { ViewListIcon } from "@heroicons/react/solid";
+import { ThumbUpIcon } from "@heroicons/react/solid";
+import { ThumbDownIcon } from "@heroicons/react/solid";
+import { MailOpenIcon } from "@heroicons/react/solid";
+import { StarIcon } from "@heroicons/react/solid";
+import { EyeOffIcon } from "@heroicons/react/solid";
+
 export interface ButtonNavProps {
   backgroundColour: "gray" | "white";
   buttonType: "rounded" | "square";
@@ -7,6 +14,7 @@ export interface ButtonNavProps {
   disabled?: boolean;
   onClick: () => void;
   buttonWidth?: "wide";
+  icon: string;
 }
 
 export const ButtonNav: React.FC<ButtonNavProps> = ({
@@ -17,6 +25,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   disabled,
   onClick,
   buttonWidth,
+  icon,
 }) => {
   let buttonSize;
 
@@ -54,6 +63,22 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       break;
   }
 
+  let iconStyles;
+  switch (icon) {
+    case "Home":
+      iconStyles = <ViewListIcon className={"w-6 h-auto"} fill="#d1d5db" />;
+      break;
+    case "Favorites":
+      iconStyles = <StarIcon className={"w-6 h-auto"} fill="#d1d5db" />;
+      break;
+    case "NotNow":
+      iconStyles = <EyeOffIcon className={"w-6 h-auto"} fill="#d1d5db" />;
+      break;
+    case "Contacted":
+      iconStyles = <MailOpenIcon className={"w-6 h-auto"} fill="#d1d5db" />;
+      break;
+  }
+
   return (
     <button
       onClick={onClick}
@@ -67,6 +92,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       `}
     >
       <div className={textStyles}>{label} </div>
+      <div className={"flex justify-center pt-1"}>{iconStyles}</div>
     </button>
   );
 };
