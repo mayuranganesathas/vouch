@@ -15,6 +15,9 @@ import { PositionFilterVouch } from "../ui/PositionFilterVouch";
 import { IntStageFilterVouch } from "../ui/IntStageFilterVouch";
 import { SeniorityFilterVouch } from "../ui/SeniorityFilterVouch";
 import { BaseSalaryFilterVouch } from "../ui/BaseSalaryFilterVouch";
+import { RoleSkillFilterVouch } from "../ui/RoleSkillFilterVouch";
+import { IntPersonalSkillFilterVouch } from "../ui/IntPersonalSkillFilterVouch";
+import { IntStrengthSkillFilterVouch } from "../ui/IntStrengthSkillFilterVouch";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -77,16 +80,47 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     "$250k+",
   ];
 
+  const RoleSkillDropDownArray = [
+    "Industry Expert",
+    "International Teams Exp",
+    "Strong Technical Chops",
+    "Product Vision",
+    "Project Management",
+    "Versatile Programming Skills",
+    "Understands the Customer",
+    "Cross-Functional Team Exp",
+    "Great Design Eye",
+  ];
+
+  const IntPersonalSkillDropDownArray = [
+    "Confident",
+    "Effective Communicator",
+    "Positive Personality",
+    "Team Oriented",
+    "Managing/Coaching Exp",
+    "Strategic Thinker",
+    "Critical Thinker",
+    "Strong Business Acumen",
+  ];
+
+  const IntStrengthSkillDropDownArray = [
+    "Asked Good Questions",
+    "Did their hmwk (role/org)",
+    "Strong Presentation Skills",
+    "Polished and Professional",
+    "Active Listener",
+  ];
+
   //authentication passes hrID
   const [email, setEmail] = useState("");
-  const [position, setPosition] = useState("");
+  const [position, setPosition] = useState(""); //new
   const [positionTitle, setPositionTitle] = useState("");
   const [interviewStage, setInterviewStage] = useState("");
   const [positionLevel, setPositionLevel] = useState("");
   const [salaryRange, setSalaryRange] = useState("");
-  const [standOutSkill1, setStandOutSkill1] = useState("");
-  const [standOutSkill2, setStandOutSkill2] = useState("");
-  const [standOutSkill3, setStandOutSkill3] = useState("");
+  const [standOutSkill1, setStandOutSkill1] = useState(""); // Industry Skill
+  const [standOutSkill2, setStandOutSkill2] = useState(""); // Interpersonal Skill
+  const [standOutSkill3, setStandOutSkill3] = useState(""); // Interview Skill
   const [standOutSkill4, setStandOutSkill4] = useState("");
   const [standOutSkill5, setStandOutSkill5] = useState("");
 
@@ -302,7 +336,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   />
                 </div>
                 <div className="pt-1 font-bold flex justify-center text-base ">
-                  Vouch for a Candidate
+                  Add Candidate to the Vouch Platform
                 </div>
                 <div className={"flex justify-center py-2"}>
                   <input
@@ -331,7 +365,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     id="guess"
                     type="text"
                     placeholder=" Position Title"
-                    value={email}
+                    value={position}
                     onChange={(e) => positionChecker(e.target.value)}
                   ></input>
                 </div>
@@ -427,13 +461,13 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                           Role Related Strenghs [prop]:
                         </div>{" "}
                         <div className={"pl-3"}>
-                          <PositionFilterVouch
-                            value={positionLevel}
+                          <RoleSkillFilterVouch
+                            value={standOutSkill1}
                             backgroundColour="white"
                             onChange={(e) => {
-                              setPositionLevel(e.target.value);
+                              setStandOutSkill1(e.target.value);
                             }}
-                            positionDropDownArray={positionDropDownArray}
+                            RoleSkillDropDownArray={RoleSkillDropDownArray}
                           />
                         </div>
                       </div>
@@ -443,13 +477,15 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                         Interpersonal Strengths [props]:
                       </div>{" "}
                       <div className={"pl-3"}>
-                        <PositionFilterVouch
-                          value={salaryRange}
+                        <IntPersonalSkillFilterVouch
+                          value={standOutSkill2}
                           backgroundColour="white"
                           onChange={(e) => {
-                            setSalaryRange(e.target.value);
+                            setStandOutSkill2(e.target.value);
                           }}
-                          positionDropDownArray={positionDropDownArray}
+                          IntPersonalSkillDropDownArray={
+                            IntPersonalSkillDropDownArray
+                          }
                         />
                       </div>
                     </div>
@@ -458,13 +494,15 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                         Interview Strengths [props]:
                       </div>{" "}
                       <div className={"pl-3"}>
-                        <PositionFilterVouch
-                          value={salaryRange}
+                        <IntStrengthSkillFilterVouch
+                          value={standOutSkill3}
                           backgroundColour="white"
                           onChange={(e) => {
-                            setSalaryRange(e.target.value);
+                            setStandOutSkill3(e.target.value);
                           }}
-                          positionDropDownArray={positionDropDownArray}
+                          IntStrengthSkillDropDownArray={
+                            IntStrengthSkillDropDownArray
+                          }
                         />
                       </div>
                     </div>
@@ -476,7 +514,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     textColour="white"
                     onClick={submitForm}
                     buttonType="rounded"
-                    label="Refer Candidate!"
+                    label="Add Candidate!"
                     disabled={formValidation()}
                   />
                   {/* TODO FORM VALIDATION */}
