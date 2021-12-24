@@ -20,10 +20,21 @@ const DashCandidateTiles = ({ vouchData }: DashCandidateTilesProps) => {
             numEmployees={e.Company_Data[0].numberOfEmployees}
             companyName={e.Company_Data[0].corporateName}
             stageInterview={e.stageOfInterview}
-            stageNumber="3/5"
             pastPosition1={vouchData.candidate_metadata[i].positionTitle1}
             pastIndustry1={vouchData.candidate_metadata[i].industry1}
-            standOutSkill1={e.standOutSkill1}
+            standOutSkill1={
+              e.standOutSkill1
+                ? e.standOutSkill1
+                : "Information Missing." || e.standOutSkill2
+                ? e.standOutSkill2
+                : "Information Missing." || e.standOutSkill3
+                ? e.standOutSkill3
+                : "Information Missing." || e.standOutSkill4
+                ? e.standOutSkill4
+                : "Information Missing." || e.standOutSkill5
+                ? e.standOutSkill5
+                : "Information Missing."
+            }
             userLinkedinURL={vouchData.candidate_metadata[i].linkedIn}
             userEmailAction={vouchData.candidates[i].candidateEmail}
           />
