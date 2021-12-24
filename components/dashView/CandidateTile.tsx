@@ -123,7 +123,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           "w-6/6 max-h-fit border-r-2 border-t-2 border-b-2 border-gray-300 filter drop-shadow rounded-tl-full rounded-bl-full bg-white grid grid-cols-5 grid-flow-col text-sm"
         }
       >
-<<<<<<< HEAD
         <div className={"col-start-1 col-span-2 "}>
           <div
             className={
@@ -150,40 +149,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                     userEmailAction={userEmailAction}
                   />
                 </div>
-=======
-        <div className={"grid-start-1"}>
-          <div className={"grid grid-cols-2"}>
-            <div className={"grid grid-cols-2"}>
-              <div
-                className={`flex items-center justify-center pt-4 cursor-pointer`}
-              >
-                <img
-                  src={
-                    thumbUpCheck
-                      ? "./images/thumbsUpSelected.png"
-                      : "./images/thumbsUpBlank.png"
-                  }
-                  width="20"
-                  height="20"
-                  onClick={thumbUpClick}
-                />
-              </div>
-              <div
-                className={
-                  "flex items-center justify-center pt-4 cursor-pointer"
-                }
-              >
-                <img
-                  src={
-                    thumbDownCheck
-                      ? "./images/thumbsDownSelected.png"
-                      : "./images/thumbsDownBlank.png"
-                  }
-                  width="20"
-                  height="20"
-                  onClick={thumbDownClick}
-                />
->>>>>>> main
               </div>
             </div>
             <div className={""}>
@@ -220,7 +185,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"col-start-3 py-4"}>
           <div className={"pl-10 content-center"}>
             <div>
-<<<<<<< HEAD
               <p className={"font-bold text-lg pb-2 text-VouchDark"}>
                 Referred By
               </p>
@@ -236,19 +200,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               <div className={"pl-10 pt-4"}>
                 <img src={companyLogo} width="45" height="auto" />
               </div>
-=======
-              <p className="w-full">{positionTitle}</p>
-            </div>
-            <div className={"pt-1"}>
-              {" "}
-              <p className={"w-full"}>${salaryRange} K/year </p>
-            </div>
-            <div className={"pt-2 text-gray-500 text-xs"}>
-              {" "}
-              <p className="w-full">
-                {jobLocation == "Yes" ? "Remote" : jobLocation}
-              </p>
->>>>>>> main
             </div>
           </div>
         </div>
@@ -338,7 +289,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               onClick={thumbUpClick}
             />
           </div>
-<<<<<<< HEAD
           <div className={"flex items-center justify-center pt-4"}>
             <img
               src={
@@ -350,10 +300,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               height="20"
               onClick={thumbDownClick}
             />
-=======
-          <div className={"text-gray-500 text-xs"}>
-            <p className={"w-full"}> </p>
->>>>>>> main
           </div>
         </div>
         <div className={""}>
@@ -403,32 +349,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             "col-span-2 flex justify-center items-center pt-1 text-gray-500"
           }
         >
-<<<<<<< HEAD
           <p className="w-full">{companyName}</p>
-=======
-          <div className={"grid grid-cols-2"}>
-            <div className={"pt-0.5"}>
-              {" "}
-              <ButtonLinkedin
-                backgroundColour="white"
-                userLinkedinURL={userLinkedinURL}
-              />
-            </div>
-            <div className={"pt-0.5"}>
-              {" "}
-              <ButtonEmail
-                backgroundColour="white"
-                userEmailAction={userEmailAction}
-              />
-            </div>
-            <div className={"col-span-2"}>
-              <ButtonConnected
-                backgroundColour="white"
-                onClick={moveToContacted}
-              />
-            </div>
-          </div>
->>>>>>> main
         </div>
       </div>
     </div>

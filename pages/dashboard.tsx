@@ -12,13 +12,11 @@ import { DatabaseIcon } from "@heroicons/react/solid";
 import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
-<<<<<<< HEAD
 import { JobCategoryFilter } from "../components/ui/JobCategoryFilter";
 import { SeniorityFilter } from "../components/ui/SeniorityFilter";
 import { CompanySizeFilter } from "../components/ui/CompanySizeFilter";
 import { IndustryFilter } from "../components/ui/IndustryFilter";
 export interface DashboardProps {}
-=======
 import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
 import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
 import { SearchFilterDash } from "../components/ui/searchFilterDash";
@@ -28,7 +26,6 @@ export interface DashboardProps {
   filter: string;
   setFilter: (filter: string) => void;
 }
->>>>>>> main
 
 const dashBoardTest = {
   newCandidateNumber: 14,
@@ -241,26 +238,6 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
               />
             </div>
           </div>
-<<<<<<< HEAD
-
-=======
-          <div className={"grid grid-cols-2"}>
-            <div className={"pl-20"}>
-              <CandidateCount
-                candidateCount={dashBoardTest.candidateCount}
-                lastCandidateCount={dashBoardTest.lastCandidateCount}
-              />
-            </div>
-            <div className={"grid justify-items-end col-start-2 pr-40 py-8"}>
-              <SearchFilterDash
-                backgroundColour="white"
-                dropDownArray={dashBoardTest.dropDownArray}
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-              />
-            </div>
-          </div>
->>>>>>> main
           <div className={"bg-gray-50 px-20"}>
             <div
               className={
