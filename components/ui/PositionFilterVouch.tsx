@@ -2,14 +2,14 @@ import React from "react";
 
 export interface PositionFilterVouchProps {
   backgroundColour: "VouchGreen" | "white";
-  dropDownArray: any[];
+  positionDropDownArray: any[];
   value: any;
   onChange: (e) => void;
 }
 
 export const PositionFilterVouch: React.FC<PositionFilterVouchProps> = ({
   backgroundColour,
-  dropDownArray,
+  positionDropDownArray,
   value,
   onChange,
 }) => {
@@ -26,14 +26,17 @@ export const PositionFilterVouch: React.FC<PositionFilterVouchProps> = ({
   return (
     <form>
       <select
-        className={`${backgroundStyles} w-full rounded text-xs text-gray-500 py-2 `}
+        className={`${backgroundStyles} w-full rounded text-xs text-gray-400 py-1 `}
         name="Select From List"
         id="Select From List"
         value={value}
         onChange={onChange}
       >
-        {dropDownArray &&
-          dropDownArray
+        <option value="" disabled selected hidden>
+          Select One
+        </option>
+        {positionDropDownArray &&
+          positionDropDownArray
             .filter((v, i, a) => a.indexOf(v) === i)
             .filter((ele) => ele != "")
             .map((ele) => <option value={ele}> {ele} </option>)}

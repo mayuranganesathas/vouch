@@ -30,12 +30,18 @@ export interface VouchCTAModalProps {
 const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   const { user } = useAuth();
 
-  const dropDownArray = [
-    "Select One",
-    "test2123123",
-    "test31223123",
-    "test4123123",
-    "test512312231",
+  const positionDropDownArray = [
+    "Front-End Dev",
+    "Back-End Dev",
+    "Software Eng",
+    "Quality Assurance",
+    "Customer Success",
+    "Sales/BD",
+    "Marketing",
+    "Account Mgmt.",
+    "Product Mangement",
+    "Data Analysis/Science",
+    "Design-UX/UI",
   ];
   //authentication passes hrID
   const [email, setEmail] = useState("");
@@ -261,12 +267,12 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     onClick={closeModal}
                   />
                 </div>
-                <div className="py-2 font-bold flex justify-center text-lg ">
+                <div className="pt-1 font-bold flex justify-center text-base ">
                   Invite a Candidate
                 </div>
                 <div className={"flex justify-center py-2"}>
                   <input
-                    className="border-2 w-full py-2 pl-1 rounded"
+                    className="border-2 w-full py-0.5 pl-1 rounded"
                     id="guess"
                     type="text"
                     placeholder=" Enter Candidate Email"
@@ -276,8 +282,8 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                 </div>
               </div>
               <div className="	">
-                <div className="py-4">
-                  <div className="font-bold text-lg flex justify-center">
+                <div className="pt-2">
+                  <div className="font-bold text-base flex justify-center">
                     Position Details
                   </div>
                   <div className="text-gray-300 text-xs font-bold flex justify-center">
@@ -287,7 +293,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
 
                 <div className={"flex justify-center py-2"}>
                   <input
-                    className="border-2 w-full py-2 pl-1 rounded"
+                    className="border-2 w-full py-0.5 pl-1 rounded"
                     id="guess"
                     type="text"
                     placeholder=" Position Title"
@@ -308,7 +314,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                           onChange={(e) => {
                             setPositionTitle(e.target.value);
                           }}
-                          dropDownArray={dropDownArray}
+                          positionDropDownArray={positionDropDownArray}
                         />
                       </div>
                     </div>
@@ -324,7 +330,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                             onChange={(e) => {
                               setInterviewStage(e.target.value);
                             }}
-                            dropDownArray={dropDownArray}
+                            positionDropDownArray={positionDropDownArray}
                           />{" "}
                         </div>
                       </div>
@@ -343,7 +349,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                           onChange={(e) => {
                             setPositionLevel(e.target.value);
                           }}
-                          dropDownArray={dropDownArray}
+                          positionDropDownArray={positionDropDownArray}
                         />
                       </div>
                     </div>
@@ -358,25 +364,26 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                           onChange={(e) => {
                             setSalaryRange(e.target.value);
                           }}
-                          dropDownArray={dropDownArray}
+                          positionDropDownArray={positionDropDownArray}
                         />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="py-10">
+                <div className="py-6">
                   <hr className="" />
                 </div>
                 <div className="pb-4">
-                  <div className="font-bold flex justify-center">
+                  <div className="font-bold flex justify-center text-base">
                     Stand Out Skills
                   </div>
-                  <div className="text-gray-400 text-xs py-2">
-                    <div className={"flex justify-center"}>
-                      Select the top skill that impressed
-                    </div>
-                    <div className={"flex justify-center"}>
-                      you in the interview process
+                  <div className="text-gray-400 text-xs py-0.5">
+                    <div
+                      className={
+                        "text-gray-300 text-xs font-bold flex justify-center"
+                      }
+                    >
+                      Select skill that impressed you
                     </div>
                   </div>
                   <div className="grid grid-cols-2 pt-2">
@@ -392,7 +399,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                             onChange={(e) => {
                               setPositionLevel(e.target.value);
                             }}
-                            dropDownArray={dropDownArray}
+                            positionDropDownArray={positionDropDownArray}
                           />
                         </div>
                       </div>
@@ -408,7 +415,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                           onChange={(e) => {
                             setSalaryRange(e.target.value);
                           }}
-                          dropDownArray={dropDownArray}
+                          positionDropDownArray={positionDropDownArray}
                         />
                       </div>
                     </div>
@@ -423,7 +430,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                           onChange={(e) => {
                             setSalaryRange(e.target.value);
                           }}
-                          dropDownArray={dropDownArray}
+                          positionDropDownArray={positionDropDownArray}
                         />
                       </div>
                     </div>
