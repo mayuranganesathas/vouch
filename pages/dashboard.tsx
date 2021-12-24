@@ -12,11 +12,23 @@ import { DatabaseIcon } from "@heroicons/react/solid";
 import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
+<<<<<<< HEAD
 import { JobCategoryFilter } from "../components/ui/JobCategoryFilter";
 import { SeniorityFilter } from "../components/ui/SeniorityFilter";
 import { CompanySizeFilter } from "../components/ui/CompanySizeFilter";
 import { IndustryFilter } from "../components/ui/IndustryFilter";
 export interface DashboardProps {}
+=======
+import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
+import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
+import { SearchFilterDash } from "../components/ui/searchFilterDash";
+import { filterArgTypes } from "@storybook/client-api";
+
+export interface DashboardProps {
+  filter: string;
+  setFilter: (filter: string) => void;
+}
+>>>>>>> main
 
 const dashBoardTest = {
   newCandidateNumber: 14,
@@ -76,31 +88,70 @@ const dashBoardTest = {
   userLinkedinURL: "https://ca.linkedin.com/in/mayuranganesathas",
 };
 
-const DashBoard = (data) => {
+const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
   const [stage, setStage] = useState("Home");
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
+
+  let { loading, data: ShortList } = useQuery(QUERY_SHORT_LIST, {
+    variables: {
+      hrId: user.uid,
+    },
+  });
+
+  //create 3 queries based on thumbs up, thumbs down and contacted
+  // get all cand id's , pass into second query and map through them based on the queries
+
   const getTileComponent = (stage) => {
     if (stageStatus == "Home") {
       return <DashCandidateTiles vouchData={data} />;
     } else if (stageStatus == "Favorites") {
-      return <div> FAVORITES TILES</div>;
+      return (
+        <div>
+          {
+            <DashCandidateTilesShortList
+              vouchData={ShortList}
+              filter="thumbsUp"
+            />
+          }
+        </div>
+      );
     } else if (stageStatus == "Unfit") {
-      return <div>UNFIT TILES</div>;
+      return (
+        <div>
+          {
+            <DashCandidateTilesShortList
+              vouchData={ShortList}
+              filter="thumbsDown"
+            />
+          }
+        </div>
+      );
     } else if (stageStatus == "Contacted") {
-      return <div> CONTACT TILES</div>;
+      return (
+        <div>
+          {
+            <DashCandidateTilesShortList
+              vouchData={ShortList}
+              filter="contacted"
+            />
+          }
+        </div>
+      );
     }
   };
 
   const getWelcomeComponent = (stage) => {
     if (stageStatus == "Home") {
       return (
-        <WelcomeComp
-          newCandidateNumber={dashBoardTest.newCandidateNumber}
-          userHrFirstName={user.displayName}
-          moveToCandidates={dashBoardTest.moveToCandidate}
-        />
+        <div>
+          <WelcomeComp
+            newCandidateNumber={dashBoardTest.newCandidateNumber}
+            userHrFirstName={user.displayName}
+            moveToCandidates={dashBoardTest.moveToCandidate}
+          />
+        </div>
       );
     } else if (stageStatus == "Favorites") {
       return <div></div>;
@@ -123,6 +174,10 @@ const DashBoard = (data) => {
     };
     hrData && hrRegister();
   }, [hrData]);
+
+  const value = () => {};
+
+  const onChange = () => {};
 
   return (
     <div>
@@ -186,7 +241,26 @@ const DashBoard = (data) => {
               />
             </div>
           </div>
+<<<<<<< HEAD
 
+=======
+          <div className={"grid grid-cols-2"}>
+            <div className={"pl-20"}>
+              <CandidateCount
+                candidateCount={dashBoardTest.candidateCount}
+                lastCandidateCount={dashBoardTest.lastCandidateCount}
+              />
+            </div>
+            <div className={"grid justify-items-end col-start-2 pr-40 py-8"}>
+              <SearchFilterDash
+                backgroundColour="white"
+                dropDownArray={dashBoardTest.dropDownArray}
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
+              />
+            </div>
+          </div>
+>>>>>>> main
           <div className={"bg-gray-50 px-20"}>
             <div
               className={

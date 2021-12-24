@@ -28,6 +28,7 @@ export const INSERT_HR_VOUCHER = gql`
         position: $position
         userName: $userName
         hrId: $hrId
+        location: $location
       }
     ) {
       returning {
