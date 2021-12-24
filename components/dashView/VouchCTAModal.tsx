@@ -519,6 +519,12 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   />
                   {/* TODO FORM VALIDATION */}
                 </div>
+                <div className={"w-96 text-xs text-gray-300 py-2"}>
+                  By clicking on “Refer Candidate”, you agree to the
+                  VouchRecruit Terms and Conditions .To see how we may use the
+                  information, please take a look at our Privacey Policy [LINKS
+                  TO ADD]{" "}
+                </div>
               </div>
             </div>
           </div>
