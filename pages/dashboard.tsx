@@ -86,20 +86,27 @@ const dashBoardTest = {
 };
 
 const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
-  const [stage, setStage] = useState("Home");
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
 
-  let { loading, data: ShortList } = useQuery(QUERY_SHORT_LIST, {
-    variables: {
-      hrId: user.uid,
-    },
-  });
+  let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
+    QUERY_SHORT_LIST,
+    {
+      variables: {
+        hrId: user.uid,
+      },
+    }
+  );
 
-  const getTileComponent = (stage) => {
+  const getTileComponent = () => {
     if (stageStatus == "Home") {
-      return <DashCandidateTiles vouchData={data} />;
+      return (
+        <DashCandidateTiles
+          vouchData={data}
+          refetchShortList={refetchShortList}
+        />
+      );
     } else if (stageStatus == "Favorites") {
       return (
         <div>
@@ -107,6 +114,7 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
             <DashCandidateTilesShortList
               vouchData={ShortList}
               filter="thumbsUp"
+              refetchShortList={refetchShortList}
             />
           }
         </div>
@@ -118,6 +126,7 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
             <DashCandidateTilesShortList
               vouchData={ShortList}
               filter="thumbsDown"
+              refetchShortList={refetchShortList}
             />
           }
         </div>
@@ -129,30 +138,11 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
             <DashCandidateTilesShortList
               vouchData={ShortList}
               filter="contacted"
+              refetchShortList={refetchShortList}
             />
           }
         </div>
       );
-    }
-  };
-
-  const getWelcomeComponent = (stage) => {
-    if (stageStatus == "Home") {
-      return (
-        <div>
-          <WelcomeComp
-            newCandidateNumber={dashBoardTest.newCandidateNumber}
-            userHrFirstName={user.displayName}
-            moveToCandidates={dashBoardTest.moveToCandidate}
-          />
-        </div>
-      );
-    } else if (stageStatus == "Favorites") {
-      return <div></div>;
-    } else if (stageStatus == "Unfit") {
-      return <div></div>;
-    } else if (stageStatus == "Contacted") {
-      return <div></div>;
     }
   };
 
@@ -169,10 +159,6 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
     hrData && hrRegister();
   }, [hrData]);
 
-  const value = () => {};
-
-  const onChange = () => {};
-
   return (
     <div>
       {hrData && (
@@ -182,6 +168,7 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
               hrData={hrData}
               stageStatus={stageStatus}
               setStageStatus={setStageStatus}
+              queryUpdateOnClick={refetchShortList}
             />
           </div>
           <div className={"w-full border-gray-500 border-b"}></div>
@@ -254,7 +241,7 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
                 </p>
               </div>
             </div>
-            <div className={"py-4"}>{getTileComponent(stage)}</div>
+            <div className={"py-4"}>{getTileComponent()}</div>
           </div>
         </div>
       )}

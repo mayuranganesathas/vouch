@@ -4,11 +4,13 @@ import { CandidateTile } from "./CandidateTile";
 export interface DashCandidateTilesShortListProps {
   vouchData: any;
   filter: string;
+  refetchShortList: any;
 }
 
 const DashCandidateTilesShortList = ({
   vouchData,
   filter,
+  refetchShortList,
 }: DashCandidateTilesShortListProps) => {
   return (
     <div className="grid grid-cols-12">
@@ -42,6 +44,7 @@ const DashCandidateTilesShortList = ({
               userEmailAction={
                 e.hr_voucher_metadatum.Candidate_Contact[0].candidateEmail
               }
+              refetchShortList={refetchShortList}
             />
           ))}
     </div>

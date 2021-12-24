@@ -10,8 +10,14 @@ export interface UserIdBarProps {
   hrData: any;
   stageStatus: string;
   setStageStatus: (stageStatus: string) => void;
+  queryUpdateOnClick: () => void;
 }
-const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
+const UserIdBar = ({
+  hrData,
+  stageStatus,
+  setStageStatus,
+  queryUpdateOnClick,
+}: UserIdBarProps) => {
   const { user } = useAuth();
 
   const [homeCheck, setHomeCheck] = useState(false);
@@ -25,6 +31,7 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
     setUnfitCheck(false);
     setContactedCheck(false);
     setStageStatus("Home");
+    queryUpdateOnClick;
   };
 
   const favoritesClick = () => {
@@ -33,6 +40,7 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
     setUnfitCheck(false);
     setContactedCheck(false);
     setStageStatus("Favorites");
+    queryUpdateOnClick;
   };
 
   const unfitClick = () => {
@@ -41,6 +49,7 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
     setFavoritesCheck(false);
     setContactedCheck(false);
     setStageStatus("Unfit");
+    queryUpdateOnClick;
   };
 
   const contactedClick = () => {
@@ -49,6 +58,7 @@ const UserIdBar = ({ hrData, stageStatus, setStageStatus }: UserIdBarProps) => {
     setHomeCheck(false);
     setFavoritesCheck(false);
     setStageStatus("Contacted");
+    queryUpdateOnClick;
   };
 
   return (

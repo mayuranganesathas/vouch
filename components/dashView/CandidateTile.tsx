@@ -26,6 +26,7 @@ export interface CandidateTileProps {
   standOutSkill1: string;
   userLinkedinURL: string;
   userEmailAction: string;
+  refetchShortList: any;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -42,6 +43,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   standOutSkill1,
   userLinkedinURL,
   userEmailAction,
+  refetchShortList,
 }) => {
   const [thumbUpCheck, setthumbUpSetCheck] = useState(false);
   const [thumbDownCheck, setthumbDownSetCheck] = useState(false);
@@ -55,19 +57,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     //Mutation for updating a user emoji value after a practice
     INSERT_THUMBS_UP_AND_DOWN,
     {
-      refetchQueries: [
-        {
-          query: QUERY_SHORT_LIST,
-          variables: {
-            hrId: "incompleteField",
-            jobName: "incompleteField",
-            jobSeniority: "incompleteField",
-            jobType: "incompleteField",
-            status: "incompleteField",
-            candidateId: 0,
-          },
-        },
-      ],
+      onCompleted: refetchShortList,
     }
   );
 
