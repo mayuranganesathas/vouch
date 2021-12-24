@@ -1,4 +1,5 @@
 import React from "react";
+import { UsersIcon } from "@heroicons/react/solid";
 
 export interface CandidateCountProps {
   candidateCount: any[];
@@ -10,19 +11,22 @@ export const CandidateCount: React.FC<CandidateCountProps> = ({
   lastCandidateCount,
 }) => {
   return (
-    <div className={"grid grid-cols-13 w-64"}>
-      <div className={"col-start-1 col-span-2"}>
-        <img
-          className={"justify-center"}
-          src="./images/candidates.png"
-          width="50"
-          height="50"
-        />
+    <div className={"grid grid-cols-5 w-64"}>
+      <div className={"col-start-1"}>
+        <UsersIcon className={"h-10 w-auto"} fill="gray" />
       </div>
-      <div className={"flex items-center font-bold col-start-3 text-xl"}>
+      <div
+        className={
+          "flex items-center font-bold col-start-2 col-span-4 text-2xl"
+        }
+      >
         <div className={""}>{candidateCount.length} Candidates</div>
       </div>
-      <div className={"col-start-5 items-start text-red-400 text-sm pt-1"}>
+      <div
+        className={
+          "items-start text-red-400 text-sm pt-1 col-start-2 col-span-4"
+        }
+      >
         {" "}
         ({candidateCount.length - lastCandidateCount} New)
       </div>

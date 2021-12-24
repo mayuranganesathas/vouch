@@ -12,6 +12,11 @@ import { DatabaseIcon } from "@heroicons/react/solid";
 import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
+import { JobCategoryFilter } from "../components/ui/JobCategoryFilter";
+import { SeniorityFilter } from "../components/ui/SeniorityFilter";
+import { CompanySizeFilter } from "../components/ui/CompanySizeFilter";
+import { IndustryFilter } from "../components/ui/IndustryFilter";
+export interface DashboardProps {}
 import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
 import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
 import { SearchFilterDash } from "../components/ui/searchFilterDash";
@@ -30,7 +35,39 @@ const dashBoardTest = {
   numberThanks: 4,
   candidateCount: [10],
   lastCandidateCount: 5,
-  dropDownArray: ["software eng", "mayu's butthole", "brian's face"],
+  dropDownArrayJobCategory: [
+    "Job Category",
+    "software eng",
+    "mayu's butthole",
+    "brian's face",
+  ],
+  dropDownArraySeniority: [
+    "Seniority Level",
+    "Junior",
+    "Intermeidate",
+    "Senior",
+    "Director",
+    "VP",
+  ],
+  dropDownArrayCompanySize: [
+    "Company Size",
+    "<10",
+    "11-50",
+    "51-100",
+    "101-200",
+    "201-500",
+    "500+",
+  ],
+
+  dropDownArrayIndustry: [
+    "Industry",
+    "Tech",
+    "Gaming",
+    "Saas",
+    "something",
+    "Blah",
+    "Cool",
+  ],
 
   starStatus: false,
   userID: 1234,
@@ -151,36 +188,60 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
             />
           </div>
           <div className={"w-full border-gray-500 border-b"}></div>
-          <div className={"px-2 grid grid-cols-2"}>
-            <div className={"pl-24 pt-10"}>{getWelcomeComponent(stage)}</div>
+          <div
+            className={
+              "grid grid-cols-6 justify-items-center pt-8 pb-8 px-14 bg-gray-50"
+            }
+          >
+            <div className={""}>
+              <CandidateCount
+                candidateCount={dashBoardTest.candidateCount}
+                lastCandidateCount={dashBoardTest.lastCandidateCount}
+              />
+            </div>
+            <div>
+              <JobCategoryFilter
+                backgroundColour="white"
+                dropDownArrayJobCategory={
+                  dashBoardTest.dropDownArrayJobCategory
+                }
+              />
+            </div>
+            <div>
+              {" "}
+              <SeniorityFilter
+                backgroundColour="white"
+                dropDownArraySeniority={dashBoardTest.dropDownArraySeniority}
+              />
+            </div>
+            <div>
+              {" "}
+              <CompanySizeFilter
+                backgroundColour="white"
+                dropDownArrayCompanySize={
+                  dashBoardTest.dropDownArrayCompanySize
+                }
+              />
+            </div>
+            <div>
+              {" "}
+              <IndustryFilter
+                backgroundColour="white"
+                dropDownArrayIndustry={dashBoardTest.dropDownArrayIndustry}
+              />
+            </div>
 
-            <div className="grid justify-items-end pr-40 pt-10">
+            <div className="grid justify-items-end">
               <VouchCTA
                 numberReferred={dashBoardTest.numberReferred}
                 numberThanks={dashBoardTest.numberThanks}
               />
             </div>
           </div>
-          <div className={"grid grid-cols-2"}>
-            <div className={"pl-20"}>
-              <CandidateCount
-                candidateCount={dashBoardTest.candidateCount}
-                lastCandidateCount={dashBoardTest.lastCandidateCount}
-              />
-            </div>
-            <div className={"grid justify-items-end col-start-2 pr-40 py-8"}>
-              <SearchFilterDash
-                backgroundColour="white"
-                dropDownArray={dashBoardTest.dropDownArray}
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-              />
-            </div>
-          </div>
           <div className={"bg-gray-50 px-20"}>
             <div
               className={
-                "grid grid-cols-5 bg-gray-100 grid-flow-col content-center py-3"
+                "grid grid-cols-5 bg-gray-200 grid-flow-col content-center py-3"
               }
             >
               <div className={"col-start-1 pl-4 col-span-2"}>
