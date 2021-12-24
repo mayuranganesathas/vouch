@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.4.16",
-    "@heroicons/react": "^1.0.4",
+    "@heroicons/react": "^1.0.5",
     "@sendgrid/mail": "^7.6.0",
     "acorn": "^8.5.0",
     "apollo": "^2.33.8",
