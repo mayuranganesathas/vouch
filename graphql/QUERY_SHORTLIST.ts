@@ -22,6 +22,27 @@ export const QUERY_SHORT_LIST = gql`
         standOutSkill3
         standOutSkill4
         standOutSkill5
+        Candidate_Contact {
+          candidateEmail
+          candidateFirstName
+          candidateLastName
+          candidateId
+        }
+        Company_Data {
+          companyLogoAddress
+          companyWebsite
+          corporateName
+          rangeOfEmployees
+          numberOfEmployees
+          location
+        }
+        Vouchee {
+          industry1
+          positionTitle1
+          linkedIn
+          companyWebsite1
+          Location
+        }
       }
     }
   }

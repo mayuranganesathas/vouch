@@ -18,19 +18,30 @@ const DashCandidateTilesShortList = ({
           .map((e, i) => (
             <CandidateTile
               userID={e.candidateId}
-              positionTitle={e.positionTitle}
-              salaryRange={e.salaryRange}
-              jobLocation="3/5"
-              companyLogo="3/5"
-              numEmployees="3/5"
-              companyName="3/5"
-              stageInterview={e.stageOfInterview}
-              stageNumber="3/5"
-              pastPosition1="3/5"
-              pastIndustry1="3/5"
-              standOutSkill1="3/5"
-              userLinkedinURL="3/5"
-              userEmailAction="3/5"
+              positionTitle={e.hr_voucher_metadatum.positionTitle}
+              salaryRange={e.hr_voucher_metadatum.salaryRange}
+              jobLocation={e.hr_voucher_metadatum.Company_Data[0].location}
+              companyLogo={
+                e.hr_voucher_metadatum.Company_Data[0].companyLogoAddress
+              }
+              numEmployees={
+                e.hr_voucher_metadatum.Company_Data[0].numberOfEmployees
+              }
+              companyName={e.hr_voucher_metadatum.Company_Data[0].corporateName}
+              stageInterview={e.hr_voucher_metadatum.stageOfInterview}
+              pastPosition1={e.hr_voucher_metadatum.Vouchee[0].positionTitle1}
+              pastIndustry1={e.hr_voucher_metadatum.Vouchee[0].industry1}
+              standOutSkill1={
+                e.hr_voucher_metadatum.standOutSkill1 ||
+                e.hr_voucher_metadatum.standOutSkill2 ||
+                e.hr_voucher_metadatum.standOutSkill3 ||
+                e.hr_voucher_metadatum.standOutSkill4 ||
+                e.hr_voucher_metadatum.standOutSkill5
+              }
+              userLinkedinURL={e.hr_voucher_metadatum.Vouchee[0].linkedIn}
+              userEmailAction={
+                e.hr_voucher_metadatum.Candidate_Contact[0].candidateEmail
+              }
             />
           ))}
     </div>
