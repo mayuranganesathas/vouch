@@ -12,6 +12,9 @@ import { MailOpenIcon } from "@heroicons/react/solid";
 import { UserAddIcon } from "@heroicons/react/solid";
 import { SearchCircleIcon } from "@heroicons/react/solid";
 import { PositionFilterVouch } from "../ui/PositionFilterVouch";
+import { IntStageFilterVouch } from "../ui/IntStageFilterVouch";
+import { SeniorityFilterVouch } from "../ui/SeniorityFilterVouch";
+import { BaseSalaryFilterVouch } from "../ui/BaseSalaryFilterVouch";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -43,6 +46,37 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     "Data Analysis/Science",
     "Design-UX/UI",
   ];
+
+  const IntStageDropDownArray = [
+    "Technical Interview",
+    "Case Study/Code Review",
+    "Panel Interview",
+    "Final Interview",
+  ];
+
+  const SeniorityDropDownArray = [
+    "Junior (1-2 Years)",
+    "Intermediate (3-5 Years)",
+    "Senior (5-8 Years)",
+    "Manager",
+    "Director",
+    "VP",
+    "SVP/Executive",
+  ];
+
+  const BaseSalaryDropDownArray = [
+    "<$75k",
+    "$75k - $90k",
+    "$90k - $110k",
+    "$110k - $130k",
+    "$130k - $150k",
+    "$150k - $170k",
+    "$170k - $190k",
+    "$190k - $210k",
+    "$210k - $250k",
+    "$250k+",
+  ];
+
   //authentication passes hrID
   const [email, setEmail] = useState("");
   const [position, setPosition] = useState("");
@@ -268,7 +302,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   />
                 </div>
                 <div className="pt-1 font-bold flex justify-center text-base ">
-                  Invite a Candidate
+                  Vouch for a Candidate
                 </div>
                 <div className={"flex justify-center py-2"}>
                   <input
@@ -324,13 +358,13 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                           Furthest Interview Stage:
                         </div>
                         <div className={"pr-3"}>
-                          <PositionFilterVouch
+                          <IntStageFilterVouch
                             value={interviewStage}
                             backgroundColour="white"
                             onChange={(e) => {
                               setInterviewStage(e.target.value);
                             }}
-                            positionDropDownArray={positionDropDownArray}
+                            IntStageDropDownArray={IntStageDropDownArray}
                           />{" "}
                         </div>
                       </div>
@@ -343,13 +377,13 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                         Seniority Level:
                       </div>{" "}
                       <div className={"pl-3"}>
-                        <PositionFilterVouch
+                        <SeniorityFilterVouch
                           value={positionLevel}
                           backgroundColour="white"
                           onChange={(e) => {
                             setPositionLevel(e.target.value);
                           }}
-                          positionDropDownArray={positionDropDownArray}
+                          SeniorityDropDownArray={SeniorityDropDownArray}
                         />
                       </div>
                     </div>
@@ -358,13 +392,13 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                         Base Salary Range:
                       </div>{" "}
                       <div className={"pl-3"}>
-                        <PositionFilterVouch
+                        <BaseSalaryFilterVouch
                           value={salaryRange}
                           backgroundColour="white"
                           onChange={(e) => {
                             setSalaryRange(e.target.value);
                           }}
-                          positionDropDownArray={positionDropDownArray}
+                          BaseSalaryDropDownArray={BaseSalaryDropDownArray}
                         />
                       </div>
                     </div>
