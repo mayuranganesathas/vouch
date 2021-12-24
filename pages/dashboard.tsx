@@ -97,9 +97,6 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
     },
   });
 
-  //create 3 queries based on thumbs up, thumbs down and contacted
-  // get all cand id's , pass into second query and map through them based on the queries
-
   const getTileComponent = (stage) => {
     if (stageStatus == "Home") {
       return <DashCandidateTiles vouchData={data} />;

@@ -43,8 +43,9 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   userLinkedinURL,
   userEmailAction,
 }) => {
-  const [thumbUpCheck, thumbUpSetCheck] = useState(false);
-  const [thumbDownCheck, thumbDownSetCheck] = useState(false);
+  const [thumbUpCheck, setthumbUpSetCheck] = useState(false);
+  const [thumbDownCheck, setthumbDownSetCheck] = useState(false);
+  const [moveToContactedCheck, setmoveToContactedCheck] = useState(false);
 
   const { user } = useAuth();
 
@@ -71,8 +72,8 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   );
 
   const thumbUpClick = () => {
-    thumbUpSetCheck((prevCheck) => !prevCheck);
-    thumbDownSetCheck(false);
+    setthumbUpSetCheck((prevCheck) => !prevCheck);
+    setthumbDownSetCheck(false);
 
     ThumbUpAndDownMutation({
       variables: {
@@ -87,8 +88,8 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   };
 
   const thumbDownClick = () => {
-    thumbDownSetCheck((prevCheck) => !prevCheck);
-    thumbUpSetCheck(false);
+    setthumbDownSetCheck((prevCheck) => !prevCheck);
+    setthumbUpSetCheck(false);
 
     ThumbUpAndDownMutation({
       variables: {
@@ -104,6 +105,8 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   //refetch queries.
 
   const moveToContacted = () => {
+    setmoveToContactedCheck((prevCheck) => !prevCheck);
+    setmoveToContactedCheck(false);
     ThumbUpAndDownMutation({
       variables: {
         hrId: hrId,
@@ -252,13 +255,26 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               }
             >
               <div className={""}>
-                <StarIcon className={"h-7 w-7"} fill="none" stroke="gray" />
+                <StarIcon
+                  className={
+                    "h-7 w-7 text-gray-400 hover:text-yellow-200 cursor-pointer"
+                  }
+                  onClick={thumbUpClick}
+                />
               </div>
               <div className="py-8">
-                <EyeOffIcon className={"h-7 w-7"} fill="none" stroke="gray" />
+                <EyeOffIcon
+                  className={
+                    "h-7 w-7 text-gray-400 hover:text-red-500 cursor-pointer"
+                  }
+                  onClick={thumbDownClick}
+                />
               </div>
               <div>
-                <MailOpenIcon className={"h-7 w-7"} fill="none" stroke="gray" />
+                <MailOpenIcon
+                  className={`h-7 w-7 text-gray-400 hover:text-blue-500 cursor-pointer`}
+                  onClick={moveToContacted}
+                />
               </div>
             </div>
           </div>
