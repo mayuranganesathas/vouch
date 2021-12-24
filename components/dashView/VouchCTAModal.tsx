@@ -7,6 +7,17 @@ import StandOutSkill from "../ui/StandOutSkill";
 import { UPSERT_VOUCH_CANDIDATE } from "../../graphql/UPSERT_VOUCHEE_FORM";
 import { useMutation } from "@apollo/client";
 import { useAuth } from "../../lib/authContext";
+import { UserGroupIcon } from "@heroicons/react/solid";
+import { MailOpenIcon } from "@heroicons/react/solid";
+import { UserAddIcon } from "@heroicons/react/solid";
+import { SearchCircleIcon } from "@heroicons/react/solid";
+import { PositionFilterVouch } from "../ui/PositionFilterVouch";
+import { IntStageFilterVouch } from "../ui/IntStageFilterVouch";
+import { SeniorityFilterVouch } from "../ui/SeniorityFilterVouch";
+import { BaseSalaryFilterVouch } from "../ui/BaseSalaryFilterVouch";
+import { RoleSkillFilterVouch } from "../ui/RoleSkillFilterVouch";
+import { IntPersonalSkillFilterVouch } from "../ui/IntPersonalSkillFilterVouch";
+import { IntStrengthSkillFilterVouch } from "../ui/IntStrengthSkillFilterVouch";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -25,22 +36,91 @@ export interface VouchCTAModalProps {
 const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   const { user } = useAuth();
 
-  const dropDownArray = [
-    "test1231231",
-    "test2123123",
-    "test31223123",
-    "test4123123",
-    "test512312231",
+  const positionDropDownArray = [
+    "Front-End Dev",
+    "Back-End Dev",
+    "Software Eng",
+    "Quality Assurance",
+    "Customer Success",
+    "Sales/BD",
+    "Marketing",
+    "Account Mgmt.",
+    "Product Mangement",
+    "Data Analysis/Science",
+    "Design-UX/UI",
   ];
+
+  const IntStageDropDownArray = [
+    "Technical Interview",
+    "Case Study/Code Review",
+    "Panel Interview",
+    "Final Interview",
+  ];
+
+  const SeniorityDropDownArray = [
+    "Junior (1-2 Years)",
+    "Intermediate (3-5 Years)",
+    "Senior (5-8 Years)",
+    "Manager",
+    "Director",
+    "VP",
+    "SVP/Executive",
+  ];
+
+  const BaseSalaryDropDownArray = [
+    "<$75k",
+    "$75k - $90k",
+    "$90k - $110k",
+    "$110k - $130k",
+    "$130k - $150k",
+    "$150k - $170k",
+    "$170k - $190k",
+    "$190k - $210k",
+    "$210k - $250k",
+    "$250k+",
+  ];
+
+  const RoleSkillDropDownArray = [
+    "Industry Expert",
+    "International Teams Exp",
+    "Strong Technical Chops",
+    "Product Vision",
+    "Project Management",
+    "Versatile Programming Skills",
+    "Understands the Customer",
+    "Cross-Functional Team Exp",
+    "Great Design Eye",
+  ];
+
+  const IntPersonalSkillDropDownArray = [
+    "Confident",
+    "Effective Communicator",
+    "Positive Personality",
+    "Team Oriented",
+    "Managing/Coaching Exp",
+    "Strategic Thinker",
+    "Critical Thinker",
+    "Strong Business Acumen",
+  ];
+
+  const IntStrengthSkillDropDownArray = [
+    "Asked Good Questions",
+    "Did their hmwk (role/org)",
+    "Strong Presentation Skills",
+    "Polished and Professional",
+    "Active Listener",
+  ];
+
   //authentication passes hrID
   const [email, setEmail] = useState("");
+  const [position, setPosition] = useState(""); //new
   const [positionTitle, setPositionTitle] = useState("");
   const [interviewStage, setInterviewStage] = useState("");
   const [positionLevel, setPositionLevel] = useState("");
   const [salaryRange, setSalaryRange] = useState("");
-  const [standOutSkill1, setStandOutSkill1] = useState("");
-  const [standOutSkill2, setStandOutSkill2] = useState("");
-  const [standOutSkill3, setStandOutSkill3] = useState("");
+  const [standOutSkill1, setStandOutSkill1] = useState(""); // Industry Skill
+  const [standOutSkill2, setStandOutSkill2] = useState(""); // Interpersonal Skill
+  const [standOutSkill3, setStandOutSkill3] = useState(""); // Interview Skill
   const [standOutSkill4, setStandOutSkill4] = useState("");
   const [standOutSkill5, setStandOutSkill5] = useState("");
 
@@ -82,6 +162,10 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   // insert hrID in candidates and
   const emailChecker = (e) => {
     setEmail(e);
+  };
+
+  const positionChecker = (e) => {
+    setPosition(e);
   };
 
   const sendEmail = async () => {
@@ -168,7 +252,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className=" w-min h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto h-min absolute right-0"
+        className=" w-fit h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto absolute right-0"
         contentLabel="Test Name"
         ariaHideApp={false}
         aria={{
@@ -176,132 +260,273 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
           describedby: "full_description",
         }}
       >
-        <div className="	">
-          <div className="flex justify-between gap-x-40  py-1 ">
-            <div>
-              <div className="py-2 ">Referred Candidate Email</div>
-              <div>
-                <input
-                  className="border-2 w-60 rounded-lg"
-                  id="guess"
-                  type="text"
-                  placeholder=" Enter Candidate Email"
-                  value={email}
-                  onChange={(e) => emailChecker(e.target.value)}
-                ></input>
+        <div className={""}>
+          <div className={"grid grid-cols-5"}>
+            <div
+              className={
+                "col-span-2 grid grid-rows-1 py-8 px-4 bg-VouchMed content-evenly"
+              }
+            >
+              <div className={""}>
+                <div className={"flex justify-center"}>
+                  <UserGroupIcon className={"w-20 h-auto "} fill="white" />
+                </div>
+                <div
+                  className={
+                    "flex justify-center py-2 font-bold text-lg text-white"
+                  }
+                >
+                  VOUCHING CANDIDATES
+                </div>
+                <div className={"text-sm text-white"}>
+                  <div className={"flex justify-center"}>
+                    Help other qualified candidates from{" "}
+                  </div>
+                  <div className={"flex justify-center"}>
+                    your recruitment pipeline get noticed!
+                  </div>
+                  <div className={"flex justify-center"}>
+                    They may not have been your final pick,
+                  </div>
+                  <div className={"flex justify-center"}>
+                    but they could be someone elses.
+                  </div>
+                </div>
+                <div className={"flex justify-center pt-8"}>
+                  <MailOpenIcon className={"w-12 h-auto"} fill="white" />
+                </div>
+                <div className={"text-sm text-white  py-2 flex justify-center"}>
+                  Candidates get invited to join.
+                </div>
+                <div className={"flex justify-center pt-8"}>
+                  <UserAddIcon className={"w-12 h-auto"} fill="white" />
+                </div>
+                <div className={"text-sm text-white py-2"}>
+                  <div className={"flex justify-center"}>
+                    Referred candidates match more
+                  </div>
+                  <div className={"flex justify-center"}>
+                    easily with our community
+                  </div>
+                  <div className={"flex justify-center"}>of recruiters.</div>
+                </div>
+                <div className={"flex justify-center pt-8"}>
+                  <SearchCircleIcon className={"w-12 h-auto"} fill="white" />
+                </div>
+                <div>
+                  <div className={"text-sm text-white py-2"}>
+                    <div className={"flex justify-center"}>Pay it forward.</div>
+                    <div className={"flex justify-center"}>
+                      Find active and qualified
+                    </div>
+                    <div className={"flex justify-center"}>
+                      candidates for your next hire.
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <XIcon
-              className="h-5 w-5 text-gray-400 hover:text-red-500 cursor-pointer"
-              onClick={closeModal}
-            />
-          </div>
-          <div className="py-2">
-            <hr className="text-red-500 justify-items-end" />
-          </div>
-
-          <div className="py-4">
-            <div className="text-bold text-md">Position Details</div>
-            <div className="text-gray-400 text-xs">
-              For the role they just interviewed for
-            </div>
-          </div>
-          <div>
-            <div className="flex-norwap">
-              <div className="py-1 text-xs">Position Title</div>
-              <SearchFilterDash
-                value={positionTitle}
-                backgroundColour="white"
-                onChange={(e) => {
-                  setPositionTitle(e.target.value);
-                }}
-                dropDownArray={dropDownArray}
-                width="wide-sm"
-              />
-            </div>
-            <div className="py-4 flex gap-8">
+            <div className={"col-span-3 px-8"}>
+              {" "}
               <div>
-                <div className="text-xs py-0.5">Stage Of Interview:</div>{" "}
-                <SearchFilterDash
-                  value={interviewStage}
-                  backgroundColour="white"
-                  onChange={(e) => {
-                    setInterviewStage(e.target.value);
-                  }}
-                  dropDownArray={dropDownArray}
-                  width="wide-sm"
-                />
+                <div className="grid justify-items-end">
+                  <XIcon
+                    className="h-5 w-5 text-gray-400 hover:text-red-500 cursor-pointer"
+                    onClick={closeModal}
+                  />
+                </div>
+                <div className="pt-1 font-bold flex justify-center text-base ">
+                  Add Candidate to the Vouch Platform
+                </div>
+                <div className={"flex justify-center py-2"}>
+                  <input
+                    className="border-2 w-full py-0.5 pl-1 rounded"
+                    id="guess"
+                    type="text"
+                    placeholder=" Enter Candidate Email"
+                    value={email}
+                    onChange={(e) => emailChecker(e.target.value)}
+                  ></input>
+                </div>
               </div>
-              <div>
-                <div className="text-xs py-0.5">Position Level:</div>{" "}
-                <SearchFilterDash
-                  value={positionLevel}
-                  backgroundColour="white"
-                  onChange={(e) => {
-                    setPositionLevel(e.target.value);
-                  }}
-                  dropDownArray={dropDownArray}
-                  width="wide-sm"
-                />
-              </div>
-              <div>
-                <div className="text-xs py-0.5">Salary Range:</div>{" "}
-                <SearchFilterDash
-                  value={salaryRange}
-                  backgroundColour="white"
-                  onChange={(e) => {
-                    setSalaryRange(e.target.value);
-                  }}
-                  dropDownArray={dropDownArray}
-                  width="wide-sm"
-                />
+              <div className="	">
+                <div className="pt-2">
+                  <div className="font-bold text-base flex justify-center">
+                    Position Details
+                  </div>
+                  <div className="text-gray-300 text-xs font-bold flex justify-center">
+                    The role they recently interviewed for
+                  </div>
+                </div>
+
+                <div className={"flex justify-center py-2"}>
+                  <input
+                    className="border-2 w-full py-0.5 pl-1 rounded"
+                    id="guess"
+                    type="text"
+                    placeholder=" Position Title"
+                    value={position}
+                    onChange={(e) => positionChecker(e.target.value)}
+                  ></input>
+                </div>
+                <div className={"grid grid-cols-2 pt-4"}>
+                  <div className={""}>
+                    <div className="">
+                      <div className="py-1 text-xs font-bold text-gray-500">
+                        Position Category
+                      </div>
+                      <div className={"pr-3"}>
+                        <PositionFilterVouch
+                          value={positionTitle}
+                          backgroundColour="white"
+                          onChange={(e) => {
+                            setPositionTitle(e.target.value);
+                          }}
+                          positionDropDownArray={positionDropDownArray}
+                        />
+                      </div>
+                    </div>
+                    <div className="">
+                      <div className={"pt-4"}>
+                        <div className="text-xs py-1 font-bold text-gray-500">
+                          Furthest Interview Stage:
+                        </div>
+                        <div className={"pr-3"}>
+                          <IntStageFilterVouch
+                            value={interviewStage}
+                            backgroundColour="white"
+                            onChange={(e) => {
+                              setInterviewStage(e.target.value);
+                            }}
+                            IntStageDropDownArray={IntStageDropDownArray}
+                          />{" "}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div>
+                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
+                        Seniority Level:
+                      </div>{" "}
+                      <div className={"pl-3"}>
+                        <SeniorityFilterVouch
+                          value={positionLevel}
+                          backgroundColour="white"
+                          onChange={(e) => {
+                            setPositionLevel(e.target.value);
+                          }}
+                          SeniorityDropDownArray={SeniorityDropDownArray}
+                        />
+                      </div>
+                    </div>
+                    <div className={"pt-4"}>
+                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
+                        Base Salary Range:
+                      </div>{" "}
+                      <div className={"pl-3"}>
+                        <BaseSalaryFilterVouch
+                          value={salaryRange}
+                          backgroundColour="white"
+                          onChange={(e) => {
+                            setSalaryRange(e.target.value);
+                          }}
+                          BaseSalaryDropDownArray={BaseSalaryDropDownArray}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="py-6">
+                  <hr className="" />
+                </div>
+                <div className="pb-4">
+                  <div className="font-bold flex justify-center text-base">
+                    Stand Out Skills
+                  </div>
+                  <div className="text-gray-400 text-xs py-0.5">
+                    <div
+                      className={
+                        "text-gray-300 text-xs font-bold flex justify-center"
+                      }
+                    >
+                      Select skill that impressed you
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 pt-2">
+                    <div>
+                      <div>
+                        <div className="text-xs py-1 pl-3 font-bold text-gray-500">
+                          Role Related Strenghs [prop]:
+                        </div>{" "}
+                        <div className={"pl-3"}>
+                          <RoleSkillFilterVouch
+                            value={standOutSkill1}
+                            backgroundColour="white"
+                            onChange={(e) => {
+                              setStandOutSkill1(e.target.value);
+                            }}
+                            RoleSkillDropDownArray={RoleSkillDropDownArray}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-xs pt-1 pl-3 font-bold text-gray-500">
+                        Interpersonal Strengths [props]:
+                      </div>{" "}
+                      <div className={"pl-3"}>
+                        <IntPersonalSkillFilterVouch
+                          value={standOutSkill2}
+                          backgroundColour="white"
+                          onChange={(e) => {
+                            setStandOutSkill2(e.target.value);
+                          }}
+                          IntPersonalSkillDropDownArray={
+                            IntPersonalSkillDropDownArray
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div className={"pt-4"}>
+                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
+                        Interview Strengths [props]:
+                      </div>{" "}
+                      <div className={"pl-3"}>
+                        <IntStrengthSkillFilterVouch
+                          value={standOutSkill3}
+                          backgroundColour="white"
+                          onChange={(e) => {
+                            setStandOutSkill3(e.target.value);
+                          }}
+                          IntStrengthSkillDropDownArray={
+                            IntStrengthSkillDropDownArray
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="py-2 flex justify-center">
+                  <ButtonVouch
+                    backgroundColour="VouchGreen"
+                    textColour="white"
+                    onClick={submitForm}
+                    buttonType="rounded"
+                    label="Add Candidate!"
+                    disabled={formValidation()}
+                  />
+                  {/* TODO FORM VALIDATION */}
+                </div>
+                <div className={"w-96 text-xs text-gray-300 py-2"}>
+                  By clicking on “Refer Candidate”, you agree to the
+                  VouchRecruit Terms and Conditions .To see how we may use the
+                  information, please take a look at our Privacey Policy [LINKS
+                  TO ADD]{" "}
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="py-4">
-            <div className="text-bold">Stand Out Skills</div>
-            <div className="text-gray-400 text-xs">
-              Select the top skill that impressed you the most about this
-              Candidate{" "}
-            </div>
-            <div className="flex flex-wrap justify-center gap-x-4  gap-y-4 py-6">
-              <StandOutSkill
-                value={dropDownArray[0]}
-                onChange={(e) => setStandOutSkill1(e.target.value)}
-              />
-
-              <StandOutSkill
-                value={dropDownArray[1]}
-                onChange={(e) => setStandOutSkill2(e.target.value)}
-              />
-
-              <StandOutSkill
-                value={dropDownArray[2]}
-                onChange={(e) => setStandOutSkill3(e.target.value)}
-              />
-
-              <StandOutSkill
-                value={dropDownArray[3]}
-                onChange={(e) => setStandOutSkill4(e.target.value)}
-              />
-
-              <StandOutSkill
-                value={dropDownArray[4]}
-                onChange={(e) => setStandOutSkill5(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="py-1 justify-items-end">
-            <ButtonVouch
-              backgroundColour="VouchGreen"
-              textColour="white"
-              onClick={submitForm}
-              buttonType="rounded"
-              label="Refer Candidate!"
-              disabled={formValidation()}
-            />
-            {/* TODO FORM VALIDATION */}
           </div>
         </div>
       </Modal>{" "}
