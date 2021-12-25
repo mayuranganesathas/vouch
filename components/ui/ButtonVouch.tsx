@@ -22,7 +22,7 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
 
   switch (buttonWidth) {
     case "wide":
-      buttonSize = "w-12/12";
+      buttonSize = "w-full";
       break;
   }
   let backgroundStyles;

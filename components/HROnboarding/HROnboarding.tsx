@@ -1,6 +1,11 @@
 import React from "react";
 import { ButtonVouch } from "../ui/ButtonVouch";
 import { SearchFilterDash } from "../ui/searchFilterDash";
+import { UserGroupIcon } from "@heroicons/react/solid";
+import { MailOpenIcon } from "@heroicons/react/solid";
+import { UserAddIcon } from "@heroicons/react/solid";
+import { SearchCircleIcon } from "@heroicons/react/solid";
+import { PositionFilterVouch } from "../ui/PositionFilterVouch";
 
 export interface HROnboardingProps {
   onClick: () => void;
@@ -54,23 +59,11 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
   setCheckBoxValidation,
   formValidation,
 }) => {
-  const industryArray1 = [
-    "Select Industry",
-    "Finance",
-    "Gaming",
-    "SaaS",
-    "Space",
-  ];
+  const industryArray1 = ["Finance", "Gaming", "SaaS", "Space"];
 
-  const hrPositionArray1 = [
-    "Select Position",
-    "Recruiter",
-    "HR Manager",
-    "Executive",
-  ];
+  const hrPositionArray1 = ["Recruiter", "HR Manager", "Executive"];
 
   const employeeArray1 = [
-    "Select the number of Employees",
     "<10",
     "10-50",
     "50-100",
@@ -83,10 +76,69 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
       <div className={"shadow-lg rounded-xl w-3/6 h-auto bg-white"}>
         <div className={"grid grid-cols-3"}>
           <div className={"col-start-1 bg-VouchMed rounded-l-lg"}>
-            <div></div>
+            <div>
+              <div className={""}>
+                <div className={"flex justify-center"}>
+                  <UserGroupIcon className={"w-20 h-auto "} fill="white" />
+                </div>
+                <div
+                  className={
+                    "flex justify-center py-2 font-bold text-lg text-white"
+                  }
+                >
+                  VOUCHING CANDIDATES
+                </div>
+                <div className={"text-sm text-white"}>
+                  <div className={"flex justify-center"}>
+                    Help other qualified candidates from{" "}
+                  </div>
+                  <div className={"flex justify-center"}>
+                    your recruitment pipeline get noticed!
+                  </div>
+                  <div className={"flex justify-center"}>
+                    They may not have been your final pick,
+                  </div>
+                  <div className={"flex justify-center"}>
+                    but they could be someone elses.
+                  </div>
+                </div>
+                <div className={"flex justify-center pt-8"}>
+                  <MailOpenIcon className={"w-12 h-auto"} fill="white" />
+                </div>
+                <div className={"text-sm text-white  py-2 flex justify-center"}>
+                  Candidates get invited to join.
+                </div>
+                <div className={"flex justify-center pt-8"}>
+                  <UserAddIcon className={"w-12 h-auto"} fill="white" />
+                </div>
+                <div className={"text-sm text-white py-2"}>
+                  <div className={"flex justify-center"}>
+                    Referred candidates match more
+                  </div>
+                  <div className={"flex justify-center"}>
+                    easily with our community
+                  </div>
+                  <div className={"flex justify-center"}>of recruiters.</div>
+                </div>
+                <div className={"flex justify-center pt-8"}>
+                  <SearchCircleIcon className={"w-12 h-auto"} fill="white" />
+                </div>
+                <div>
+                  <div className={"text-sm text-white py-2"}>
+                    <div className={"flex justify-center"}>Pay it forward.</div>
+                    <div className={"flex justify-center"}>
+                      Find active and qualified
+                    </div>
+                    <div className={"flex justify-center"}>
+                      candidates for your next hire.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={"col-start-2 col-span-2 px-8"}>
-            <div className={"pt-8 text-left font-bold text-base"}>
+            <div className={"pt-4 text-left font-bold text-base"}>
               Set Up Your Company Profile
             </div>
             <div className={"text-gray-600 text-sm pt-1"}>
@@ -109,7 +161,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
             </div>
             <div className={"font-bold text-base"}>Company Details</div>
             <div className={"grid grid-cols-2 gap-2"}>
-              <div className={"col-start-1 pt-4"}>
+              <div className={"col-start-1"}>
                 <div className={"pt-4"}>
                   <input
                     className={
@@ -146,7 +198,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   <input type="file" id="myFile" name="filename"></input>
                 </div>
               </div>
-              <div className={"col-start-2 pt-4"}>
+              <div className={"col-start-2"}>
                 <div>
                   <div className={"text-xs font-bold text-gray-500"}>
                     Industry
@@ -217,7 +269,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               </div>
             </div>
             <div className={"col-span-2"}>
-              <div className="flex justify-center px-8 pt-2">
+              <div className="flex justify-center pt-2">
                 <ButtonVouch
                   backgroundColour={"VouchGreen"}
                   buttonType={"rounded"}
@@ -225,8 +277,14 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   label={"JOIN"}
                   disabled={formValidation()}
                   onClick={onClick}
+                  buttonWidth="wide"
                 />
               </div>
+            </div>
+            <div className={"w-full text-xs text-gray-300 py-2"}>
+              By clicking on “Refer Candidate”, you agree to the VouchRecruit
+              Terms and Conditions .To see how we may use the information,
+              please take a look at our Privacey Policy [LINKS TO ADD]{" "}
             </div>
 
             <div className={"pb-4 border-b border-gray-200 "}></div>
