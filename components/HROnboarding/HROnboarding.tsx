@@ -141,6 +141,10 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                     onChange={(e) => setHrLocation(e.target.value)}
                   />
                 </div>
+                <div className={"text-xs pt-8 text-gray-500"}>
+                  <div className={" pb-1"}>Upload your company logo:</div>
+                  <input type="file" id="myFile" name="filename"></input>
+                </div>
               </div>
               <div className={"col-start-2 pt-4"}>
                 <div>
@@ -195,36 +199,33 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 </div>
               </div>
             </div>
-            <div className={"grid grid-cols-2"}>
-              <div className={"col-start-1"}>
-                <div className={"flex content-end pt-20"}>
-                  <form action="/action_page.php" className={"text-xs"}>
-                    <input
-                      type="checkbox"
-                      id="USCAN"
-                      name="USCANVerified"
-                      checked={checkBoxValidation}
-                      onChange={(e) => setCheckBoxValidation(e.target.checked)}
-                    />
-                  </form>
 
-                  <div className={"text-xs pl-2"}>
-                    {" "}
-                    We recruit for roles in Canada and USA
-                  </div>
-                </div>
+            <div className={"flex content-end pt-8 pb-4"}>
+              <form action="/action_page.php" className={"text-xs"}>
+                <input
+                  type="checkbox"
+                  id="USCAN"
+                  name="USCANVerified"
+                  checked={checkBoxValidation}
+                  onChange={(e) => setCheckBoxValidation(e.target.checked)}
+                />
+              </form>
+
+              <div className={"text-xs pl-2"}>
+                {" "}
+                We recruit for roles in Canada and USA
               </div>
-              <div className={"col-start-2"}>
-                <div className="flex justify-center pt-14">
-                  <ButtonVouch
-                    backgroundColour={"VouchGreen"}
-                    buttonType={"rounded"}
-                    textColour={"white"}
-                    label={"Submit"}
-                    disabled={formValidation()}
-                    onClick={onClick}
-                  />
-                </div>
+            </div>
+            <div className={"col-span-2"}>
+              <div className="flex justify-center px-8 pt-2">
+                <ButtonVouch
+                  backgroundColour={"VouchGreen"}
+                  buttonType={"rounded"}
+                  textColour={"white"}
+                  label={"JOIN"}
+                  disabled={formValidation()}
+                  onClick={onClick}
+                />
               </div>
             </div>
 
