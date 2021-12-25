@@ -6,6 +6,10 @@ import { MailOpenIcon } from "@heroicons/react/solid";
 import { UserAddIcon } from "@heroicons/react/solid";
 import { SearchCircleIcon } from "@heroicons/react/solid";
 import { PositionFilterVouch } from "../ui/PositionFilterVouch";
+import { UsersIcon } from "@heroicons/react/solid";
+import { FlagIcon } from "@heroicons/react/solid";
+import { LockOpenIcon } from "@heroicons/react/solid";
+import { TagIcon } from "@heroicons/react/solid";
 
 export interface HROnboardingProps {
   onClick: () => void;
@@ -77,61 +81,53 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
         <div className={"grid grid-cols-3"}>
           <div className={"col-start-1 bg-VouchMed rounded-l-lg"}>
             <div>
-              <div className={""}>
+              <div className={"py-10 "}>
                 <div className={"flex justify-center"}>
-                  <UserGroupIcon className={"w-20 h-auto "} fill="white" />
+                  <FlagIcon className={"w-20 h-auto "} fill="white" />
                 </div>
                 <div
                   className={
                     "flex justify-center py-2 font-bold text-lg text-white"
                   }
                 >
-                  VOUCHING CANDIDATES
+                  JOIN THE MOVEMENT
                 </div>
-                <div className={"text-sm text-white"}>
-                  <div className={"flex justify-center"}>
-                    Help other qualified candidates from{" "}
-                  </div>
-                  <div className={"flex justify-center"}>
-                    your recruitment pipeline get noticed!
-                  </div>
-                  <div className={"flex justify-center"}>
-                    They may not have been your final pick,
-                  </div>
-                  <div className={"flex justify-center"}>
-                    but they could be someone elses.
-                  </div>
+                <div className={"text-sm text-white w-full text-center px-6"}>
+                  End the war for talent by working together. Gain access to a
+                  network of candidates of our very own
                 </div>
-                <div className={"flex justify-center pt-8"}>
-                  <MailOpenIcon className={"w-12 h-auto"} fill="white" />
+                <div className={"flex justify-center pt-12"}>
+                  <LockOpenIcon className={"w-12 h-auto"} fill="white" />
                 </div>
-                <div className={"text-sm text-white  py-2 flex justify-center"}>
-                  Candidates get invited to join.
+                <div
+                  className={
+                    "text-sm text-white  w-full px-6 pt-2 pb-12 text-center"
+                  }
+                >
+                  Get access to qualified and active candidates and continuously
+                  build up your pipeline{" "}
                 </div>
                 <div className={"flex justify-center pt-8"}>
                   <UserAddIcon className={"w-12 h-auto"} fill="white" />
                 </div>
-                <div className={"text-sm text-white py-2"}>
-                  <div className={"flex justify-center"}>
-                    Referred candidates match more
-                  </div>
-                  <div className={"flex justify-center"}>
-                    easily with our community
-                  </div>
-                  <div className={"flex justify-center"}>of recruiters.</div>
+                <div
+                  className={
+                    "text-sm text-white text-center px-6 w-full pt-2 pb-12"
+                  }
+                >
+                  Add late stage candidates from your own pipeline and make it a
+                  win-win!
                 </div>
                 <div className={"flex justify-center pt-8"}>
-                  <SearchCircleIcon className={"w-12 h-auto"} fill="white" />
+                  <TagIcon className={"w-12 h-auto"} fill="white" />
                 </div>
                 <div>
-                  <div className={"text-sm text-white py-2"}>
-                    <div className={"flex justify-center"}>Pay it forward.</div>
-                    <div className={"flex justify-center"}>
-                      Find active and qualified
-                    </div>
-                    <div className={"flex justify-center"}>
-                      candidates for your next hire.
-                    </div>
+                  <div
+                    className={
+                      "text-sm text-white py-2 width-full text-center px-6"
+                    }
+                  >
+                    Use Vouch to save time and money on your next hire
                   </div>
                 </div>
               </div>
@@ -160,8 +156,8 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               <hr className="" />
             </div>
             <div className={"font-bold text-base"}>Company Details</div>
-            <div className={"grid grid-cols-2 gap-2"}>
-              <div className={"col-start-1"}>
+            <div className={"grid grid-cols-3 "}>
+              <div className={"col-start-1 col-span-2"}>
                 <div className={"pt-4"}>
                   <input
                     className={
@@ -198,7 +194,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   <input type="file" id="myFile" name="filename"></input>
                 </div>
               </div>
-              <div className={"col-start-2"}>
+              <div className={"col-start-3"}>
                 <div>
                   <div className={"text-xs font-bold text-gray-500"}>
                     Industry
