@@ -26,14 +26,14 @@ export default function Register() {
     variables: { hrId: user.uid },
   });
 
-  /*useEffect(() => {
+  useEffect(() => {
     const hrRegister = () => {
       if (hrData.hr_voucher.length > 0) {
         router.push("/dashboard");
       }
     };
     hrData && hrRegister();
-  }, [hrData]);*/
+  }, [hrData]);
 
   const [initializeRegisterHr, { data, loading, error }] = useMutation(
     INSERT_HR_VOUCHER,
