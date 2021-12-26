@@ -124,7 +124,7 @@ export default function Register() {
     setTimeout(() => router.push("/dashboard"), 1000);
   };
   return (
-    <div>
+    <div className={"pt-4"}>
       {hrData && (
         <HROnboarding
           onClick={onSubmit}
