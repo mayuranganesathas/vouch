@@ -12,20 +12,19 @@ import { DatabaseIcon } from "@heroicons/react/solid";
 import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
-import { JobCategoryFilter } from "../components/ui/JobCategoryFilter";
-import { SeniorityFilter } from "../components/ui/SeniorityFilter";
-import { CompanySizeFilter } from "../components/ui/CompanySizeFilter";
-import { IndustryFilter } from "../components/ui/IndustryFilter";
-export interface DashboardProps {}
+import { DashboardCategoryFilter } from "../components/ui/DashboardCategoryFilter";
+
 import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
 import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
 import { SearchFilterDash } from "../components/ui/searchFilterDash";
 import { filterArgTypes } from "@storybook/client-api";
-
-export interface DashboardProps {
-  filter: string;
-  setFilter: (filter: string) => void;
-}
+import {
+  jobIndustryDropdownData,
+  jobCategoryDropdownData,
+  jobCompanySizeDropdownData,
+  jobSeniorityDropdownData,
+} from "./api/dropdownCategories";
+export interface DashboardProps {}
 
 const dashBoardTest = {
   newCandidateNumber: 14,
@@ -35,39 +34,6 @@ const dashBoardTest = {
   numberThanks: 4,
   candidateCount: [10],
   lastCandidateCount: 5,
-  dropDownArrayJobCategory: [
-    "Job Category",
-    "software eng",
-    "mayu's butthole",
-    "brian's face",
-  ],
-  dropDownArraySeniority: [
-    "Seniority Level",
-    "Junior",
-    "Intermeidate",
-    "Senior",
-    "Director",
-    "VP",
-  ],
-  dropDownArrayCompanySize: [
-    "Company Size",
-    "<10",
-    "11-50",
-    "51-100",
-    "101-200",
-    "201-500",
-    "500+",
-  ],
-
-  dropDownArrayIndustry: [
-    "Industry",
-    "Tech",
-    "Gaming",
-    "Saas",
-    "something",
-    "Blah",
-    "Cool",
-  ],
 
   starStatus: false,
   userID: 1234,
@@ -85,10 +51,16 @@ const dashBoardTest = {
   userLinkedinURL: "https://ca.linkedin.com/in/mayuranganesathas",
 };
 
-const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
+const DashBoard = (data, {}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
+  const [industryDropdown, setIndustryDropdown] = useState("Industry");
+  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("Sector");
+  const [companySizeDropdown, setCompanySizeDropdown] = useState(
+    "Company Size"
+  );
+  const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
 
   let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
     QUERY_SHORT_LIST,
@@ -105,6 +77,10 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
         <DashCandidateTiles
           vouchData={data}
           refetchShortList={refetchShortList}
+          filterJobCategory={jobCategoryDropdown}
+          filterJobCompanySize={companySizeDropdown}
+          filterJobIndustry={industryDropdown}
+          filterJobSeniority={seniorityDropdown}
         />
       );
     } else if (stageStatus == "Favorites") {
@@ -183,38 +159,39 @@ const DashBoard = (data, { filter, setFilter }: DashboardProps) => {
                 lastCandidateCount={dashBoardTest.lastCandidateCount}
               />
             </div>
-            <div>
-              <JobCategoryFilter
-                backgroundColour="white"
-                dropDownArrayJobCategory={
-                  dashBoardTest.dropDownArrayJobCategory
-                }
-              />
-            </div>
-            <div>
-              {" "}
-              <SeniorityFilter
-                backgroundColour="white"
-                dropDownArraySeniority={dashBoardTest.dropDownArraySeniority}
-              />
-            </div>
-            <div>
-              {" "}
-              <CompanySizeFilter
-                backgroundColour="white"
-                dropDownArrayCompanySize={
-                  dashBoardTest.dropDownArrayCompanySize
-                }
-              />
-            </div>
-            <div>
-              {" "}
-              <IndustryFilter
-                backgroundColour="white"
-                dropDownArrayIndustry={dashBoardTest.dropDownArrayIndustry}
-              />
-            </div>
 
+            <div>
+              <DashboardCategoryFilter
+                backgroundColour="white"
+                dropDownArray={jobCategoryDropdownData}
+                value={jobCategoryDropdown}
+                onChange={(e) => setJobCategoryDropdown(e.target.value)}
+              />
+            </div>
+            <div>
+              <DashboardCategoryFilter
+                backgroundColour="white"
+                dropDownArray={jobSeniorityDropdownData}
+                value={seniorityDropdown}
+                onChange={(e) => setSeniorityDropdown(e.target.value)}
+              />
+            </div>
+            <div>
+              <DashboardCategoryFilter
+                backgroundColour="white"
+                dropDownArray={jobCompanySizeDropdownData}
+                value={companySizeDropdown}
+                onChange={(e) => setCompanySizeDropdown(e.target.value)}
+              />
+            </div>
+            <div>
+              <DashboardCategoryFilter
+                backgroundColour="white"
+                dropDownArray={jobIndustryDropdownData}
+                value={industryDropdown}
+                onChange={(e) => setIndustryDropdown(e.target.value)}
+              />
+            </div>
             <div className="grid justify-items-end">
               <VouchCTA
                 numberReferred={dashBoardTest.numberReferred}

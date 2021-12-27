@@ -1,16 +1,16 @@
 import React from "react";
 
-export interface JobCategoryFilterProps {
+export interface DashboardCategoryFilterProps {
   backgroundColour: "VouchGreen" | "white";
-  dropDownArrayJobCategory: any[];
+  dropDownArray: any[];
   value?: any;
   onChange?: (e) => void;
   width?: "wide-md" | "wide-lg" | "wide-sm";
 }
 
-export const JobCategoryFilter: React.FC<JobCategoryFilterProps> = ({
+export const DashboardCategoryFilter: React.FC<DashboardCategoryFilterProps> = ({
   backgroundColour,
-  dropDownArrayJobCategory,
+  dropDownArray,
   value,
   onChange,
   width,
@@ -36,6 +36,7 @@ export const JobCategoryFilter: React.FC<JobCategoryFilterProps> = ({
       buttonWidth = "w-36";
       break;
   }
+
   return (
     <form>
       <select
@@ -45,8 +46,8 @@ export const JobCategoryFilter: React.FC<JobCategoryFilterProps> = ({
         value={value}
         onChange={onChange}
       >
-        {dropDownArrayJobCategory &&
-          dropDownArrayJobCategory
+        {dropDownArray &&
+          dropDownArray
             .filter((v, i, a) => a.indexOf(v) === i)
             .filter((ele) => ele != "")
             .map((ele) => <option value={ele}> {ele} </option>)}
