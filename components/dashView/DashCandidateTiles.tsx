@@ -20,21 +20,13 @@ const DashCandidateTiles = ({
 }: DashCandidateTilesProps) => {
   return (
     <div className="grid grid-cols-12">
-      {/* {JSON.stringify(vouchData)} */}
+      {/* TODO: Highlight or Hide if they are short listed ,filter array for basic drop downs, Update DB to allow for basic logic to sort through job categories, */}
+
       {vouchData &&
         vouchData.hr_voucher_metadata
-          // .filter(
-          //   (e) => e.Company_Data[0].numberOfEmployees === filterJobCategory
-          // )
-          // .filter(
-          //   (e) => e.Company_Data[0].numberOfEmployees === filterJobCompanySize
-          // )
-          // )
-          // .filter(
-          //   (e) => e.Company_Data[0].numberOfEmployees === filterJobIndustry
-          // )
-          // .filter((e) => e.positionLevel === filterJobSeniority)
-
+          .filter(
+            (e) => e.Company_Data[0].numberOfEmployees === filterJobCompanySize
+          )
           .map((e, i) => (
             <CandidateTile
               userID={e.candidateId}

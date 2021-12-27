@@ -4,7 +4,7 @@ import { CandidateTile } from "./CandidateTile";
 export interface DashCandidateTilesShortListProps {
   vouchData: any;
   filter: string;
-  refetchShortList: any;
+  refetchShortList: () => void;
 }
 
 const DashCandidateTilesShortList = ({
@@ -18,6 +18,7 @@ const DashCandidateTilesShortList = ({
         vouchData.shortlist
           .filter((e) => e.status === filter)
           .map((e, i) => (
+            //include job category
             <CandidateTile
               userID={e.candidateId}
               positionTitle={e.hr_voucher_metadatum.positionTitle}
@@ -34,11 +35,17 @@ const DashCandidateTilesShortList = ({
               pastPosition1={e.hr_voucher_metadatum.Vouchee[0].positionTitle1}
               pastIndustry1={e.hr_voucher_metadatum.Vouchee[0].industry1}
               standOutSkill1={
-                e.hr_voucher_metadatum.standOutSkill1 ||
-                e.hr_voucher_metadatum.standOutSkill2 ||
-                e.hr_voucher_metadatum.standOutSkill3 ||
-                e.hr_voucher_metadatum.standOutSkill4 ||
-                e.hr_voucher_metadatum.standOutSkill5
+                e.standOutSkill1
+                  ? e.standOutSkill1
+                  : "Information Missing." || e.standOutSkill2
+                  ? e.standOutSkill2
+                  : "Information Missing." || e.standOutSkill3
+                  ? e.standOutSkill3
+                  : "Information Missing." || e.standOutSkill4
+                  ? e.standOutSkill4
+                  : "Information Missing." || e.standOutSkill5
+                  ? e.standOutSkill5
+                  : "Information Missing."
               }
               userLinkedinURL={e.hr_voucher_metadatum.Vouchee[0].linkedIn}
               userEmailAction={
