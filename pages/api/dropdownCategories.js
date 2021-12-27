@@ -1,5 +1,4 @@
 export const jobIndustryDropdownData = [
-  "Industry",
   "Tech",
   "Gaming",
   "Saas",
@@ -24,8 +23,7 @@ export const jobCategoryDropdownData = [
 ];
 
 export const jobCompanySizeDropdownData = [
-  "Company Size",
-  "<10",
+  "0-10",
   "11-50",
   "51-100",
   "101-200",
