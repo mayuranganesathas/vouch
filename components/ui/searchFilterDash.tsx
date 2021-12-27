@@ -39,7 +39,7 @@ export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
   return (
     <form>
       <select
-        className={`${backgroundStyles} ${buttonWidth} rounded-md text-xs w-min text-gray-500 py-2 `}
+        className={`${backgroundStyles} ${buttonWidth} rounded-md text-xs w-full text-gray-500 py-2 `}
         name="Select From List"
         id="Select From List"
         value={value}
