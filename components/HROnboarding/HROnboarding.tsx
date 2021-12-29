@@ -63,9 +63,31 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
   setCheckBoxValidation,
   formValidation,
 }) => {
-  const industryArray1 = ["Finance", "Gaming", "SaaS", "Space"];
+  const industryArray1 = [
+    "Advertising",
+    "Hardware",
+    "Software",
+    "Digital",
+    "Media",
+    "Finance",
+    "Health",
+    "Gaming",
+    "Ed Tech",
+    "Ecommerce",
+    "Marketing",
+    "News and Entertainment",
+    "Professional Services",
+    "Other-not listed",
+  ];
 
-  const hrPositionArray1 = ["Recruiter", "HR Manager", "Executive"];
+  const hrPositionArray1 = [
+    "Recruiter",
+    "Recruitment Manager",
+    "HR/People Manager",
+    "VP of HR/People",
+    "Department Head",
+    "Operations Lead",
+  ];
 
   const employeeArray1 = [
     "<10",
