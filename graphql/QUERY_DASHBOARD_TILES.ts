@@ -17,10 +17,10 @@ export const QUERY_DASHBOARD_TILES = gql`
       Company_Data {
         companyLogoAddress
         hrId
-        numberOfEmployees
         location
         companyWebsite
         corporateName
+        rangeOfEmployees
       }
     }
     candidate_metadata {
