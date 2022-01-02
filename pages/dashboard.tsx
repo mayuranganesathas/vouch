@@ -19,10 +19,9 @@ import DashCandidateTilesShortList from "../components/dashView/DashCandidateTil
 import { SearchFilterDash } from "../components/ui/searchFilterDash";
 import { filterArgTypes } from "@storybook/client-api";
 import {
-  jobIndustryDropdownData,
   jobCategoryDropdownData,
-  jobCompanySizeDropdownData,
   jobSeniorityDropdownData,
+  stateProvince,
 } from "./api/dropdownCategories";
 export interface DashboardProps {}
 
@@ -55,12 +54,10 @@ const DashBoard = (data, {}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-  const [industryDropdown, setIndustryDropdown] = useState("Industry");
-  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("Sector");
-  const [companySizeDropdown, setCompanySizeDropdown] = useState(
-    "Company Size"
-  );
-  const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
+  const [locationDropdown, setLocationDropdown] = useState("empty");
+  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("empty");
+
+  const [seniorityDropdown, setSeniorityDropdown] = useState("empty");
 
   let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
     QUERY_SHORT_LIST,
@@ -78,9 +75,8 @@ const DashBoard = (data, {}: DashboardProps) => {
           vouchData={data}
           refetchShortList={refetchShortList}
           filterJobCategory={jobCategoryDropdown}
-          filterJobCompanySize={companySizeDropdown}
-          filterJobIndustry={industryDropdown}
           filterJobSeniority={seniorityDropdown}
+          filterLocation={locationDropdown}
         />
       );
     } else if (stageStatus == "Favorites") {
@@ -179,19 +175,12 @@ const DashBoard = (data, {}: DashboardProps) => {
             <div>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={jobCompanySizeDropdownData}
-                value={companySizeDropdown}
-                onChange={(e) => setCompanySizeDropdown(e.target.value)}
+                dropDownArray={stateProvince}
+                value={locationDropdown}
+                onChange={(e) => setLocationDropdown(e.target.value)}
               />
             </div>
-            <div>
-              <DashboardCategoryFilter
-                backgroundColour="white"
-                dropDownArray={jobIndustryDropdownData}
-                value={industryDropdown}
-                onChange={(e) => setIndustryDropdown(e.target.value)}
-              />
-            </div>
+
             <div className="grid justify-items-end">
               <VouchCTA
                 numberReferred={dashBoardTest.numberReferred}
