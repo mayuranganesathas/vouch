@@ -54,19 +54,20 @@ const DashBoard = (data, {}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-  const [locationDropdown, setLocationDropdown] = useState("empty");
-  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("empty");
+  const [locationStateDropdown, setLocationStateDropdown] = useState("");
+  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("");
 
-  const [seniorityDropdown, setSeniorityDropdown] = useState("empty");
+  const [seniorityDropdown, setSeniorityDropdown] = useState("");
 
-  let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
-    QUERY_SHORT_LIST,
-    {
-      variables: {
-        hrId: user.uid,
-      },
-    }
-  );
+  let {
+    loading,
+    data: ShortList,
+    refetch: refetchShortList,
+  } = useQuery(QUERY_SHORT_LIST, {
+    variables: {
+      hrId: user.uid,
+    },
+  });
 
   const getTileComponent = () => {
     if (stageStatus == "Home") {
@@ -76,7 +77,7 @@ const DashBoard = (data, {}: DashboardProps) => {
           refetchShortList={refetchShortList}
           filterJobCategory={jobCategoryDropdown}
           filterJobSeniority={seniorityDropdown}
-          filterLocation={locationDropdown}
+          filterStateLocation={locationStateDropdown}
         />
       );
     } else if (stageStatus == "Favorites") {
@@ -176,8 +177,8 @@ const DashBoard = (data, {}: DashboardProps) => {
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={stateProvince}
-                value={locationDropdown}
-                onChange={(e) => setLocationDropdown(e.target.value)}
+                value={locationStateDropdown}
+                onChange={(e) => setLocationStateDropdown(e.target.value)}
               />
             </div>
 

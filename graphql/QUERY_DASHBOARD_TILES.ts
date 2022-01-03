@@ -24,7 +24,8 @@ export const QUERY_DASHBOARD_TILES = gql`
       }
     }
     candidate_metadata {
-      Location
+      locationCity
+      locationState
       companyWebsite1
       candidateId
       companyWebsite3
