@@ -54,7 +54,7 @@ const DashBoard = (data, {}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-  const [locationDropdown, setLocationDropdown] = useState("empty");
+  const [locationStateDropdown, setLocationStateDropdown] = useState("empty");
   const [jobCategoryDropdown, setJobCategoryDropdown] = useState("empty");
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("empty");
@@ -76,7 +76,7 @@ const DashBoard = (data, {}: DashboardProps) => {
           refetchShortList={refetchShortList}
           filterJobCategory={jobCategoryDropdown}
           filterJobSeniority={seniorityDropdown}
-          filterLocation={locationDropdown}
+          filterStateLocation={locationStateDropdown}
         />
       );
     } else if (stageStatus == "Favorites") {
@@ -176,8 +176,8 @@ const DashBoard = (data, {}: DashboardProps) => {
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={stateProvince}
-                value={locationDropdown}
-                onChange={(e) => setLocationDropdown(e.target.value)}
+                value={locationStateDropdown}
+                onChange={(e) => setLocationStateDropdown(e.target.value)}
               />
             </div>
 
