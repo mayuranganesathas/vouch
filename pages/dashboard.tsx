@@ -54,19 +54,20 @@ const DashBoard = (data, {}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-  const [locationStateDropdown, setLocationStateDropdown] = useState("empty");
-  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("empty");
+  const [locationStateDropdown, setLocationStateDropdown] = useState("");
+  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("");
 
-  const [seniorityDropdown, setSeniorityDropdown] = useState("empty");
+  const [seniorityDropdown, setSeniorityDropdown] = useState("");
 
-  let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
-    QUERY_SHORT_LIST,
-    {
-      variables: {
-        hrId: user.uid,
-      },
-    }
-  );
+  let {
+    loading,
+    data: ShortList,
+    refetch: refetchShortList,
+  } = useQuery(QUERY_SHORT_LIST, {
+    variables: {
+      hrId: user.uid,
+    },
+  });
 
   const getTileComponent = () => {
     if (stageStatus == "Home") {

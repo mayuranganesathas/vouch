@@ -41,7 +41,8 @@ export const QUERY_SHORT_LIST = gql`
           positionTitle1
           linkedIn
           companyWebsite1
-          Location
+          locationCity
+          locationState
         }
       }
     }

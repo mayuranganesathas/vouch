@@ -23,7 +23,7 @@ const DashCandidateTilesShortList = ({
               userID={e.candidateId}
               positionTitle={e.hr_voucher_metadatum.positionTitle}
               salaryRange={e.hr_voucher_metadatum.salaryRange}
-              jobLocation={e.hr_voucher_metadatum.Company_Data[0].location}
+              jobLocation={e.hr_voucher_metadatum.Company_Data[0].locationCity}
               companyLogo={
                 e.hr_voucher_metadatum.Company_Data[0].companyLogoAddress
               }
