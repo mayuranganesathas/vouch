@@ -113,110 +113,147 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     <div className="py-4  col-span-full">
       <div
         className={
-          "w-6/6 max-h-fit border-r-2 border-t-2 border-b-2 border-gray-300 filter drop-shadow rounded-tl-full rounded-bl-full bg-white grid grid-cols-5 grid-flow-col text-sm"
+          "w-6/6 max-h-fit filter drop-shadow-sm bg-white grid grid-cols-3 grid-flow-col text-sm"
         }
       >
-        <div className={"col-start-1 col-span-2 "}>
-          <div
-            className={
-              "grid grid-cols-2 content-center bg-VouchMed rounded-full h-full "
-            }
-          >
-            <div className={"text-center py-4"}>
-              <p className={"text-2xl font-bold text-VouchDark"}>
-                User Name :{userID}
-              </p>
-              <div className={"text-white text-base font-bold"}>
-                Location,(prop needed)
-              </div>
-              <div className={"pt-2 grid grid-cols-2 pr-2"}>
-                <div className={"grid justify-items-end"}>
-                  <ButtonLinkedin
-                    backgroundColour="white"
-                    userLinkedinURL={userLinkedinURL}
-                  />{" "}
+        <div className={"col-start-1"}>
+          <div className={"grid grid-cols-3"}>
+            <div className={"col-start-1"}>
+              <div className={"grid justify-items-center content-center"}>
+                <div className={""}>
+                  <StarIcon
+                    className={
+                      "h-7 w-7 text-gray-400 hover:text-yellow-200 cursor-pointer"
+                    }
+                    onClick={thumbUpClick}
+                  />
                 </div>
-                <div className={"grid justify-items-start pl-2"}>
-                  <ButtonEmail
-                    backgroundColour="white"
-                    userEmailAction={userEmailAction}
+                <div className="py-8">
+                  <EyeOffIcon
+                    className={
+                      "h-7 w-7 text-gray-400 hover:text-red-500 cursor-pointer"
+                    }
+                    onClick={thumbDownClick}
+                  />
+                </div>
+                <div>
+                  <MailOpenIcon
+                    className={`h-7 w-7 text-gray-400 hover:text-blue-500 cursor-pointer`}
+                    onClick={moveToContacted}
                   />
                 </div>
               </div>
             </div>
-            <div className={""}>
-              {" "}
-              <p className={"text-lg font-bold text-VouchDark"}>
-                Current/Most Recent Role
-              </p>
-              <div>
-                {" "}
-                <p className={"w-full text-base text-white font-bold"}>
-                  {pastPosition1}
-                </p>
-              </div>
-              <div>
-                {" "}
-                <p className={"w-full text-base text-white font-bold"}>
-                  Industry:{pastIndustry1}
-                </p>
-                <div className={"pt-4"}>
-                  <p className={"text-base font-bold text-VouchDark"}>
-                    {" "}
-                    Years of Industry Experience
+
+            <div className={"col-start-2 col-span-2 "}>
+              <div
+                className={
+                  "grid grid-cols-2 content-center bg-VouchMed rounded-full h-full "
+                }
+              >
+                <div className={"text-center py-4"}>
+                  <p className={"text-2xl font-bold text-VouchDark"}>
+                    User Name :{userID}
                   </p>
-                  <p className={"text-base text-white font-bold"}>
-                    {" "}
-                    Number of Years (prop)
+                  <div className={"text-white text-base font-bold"}>
+                    Location,(prop needed)
+                  </div>
+                  <div className={"pt-2 grid grid-cols-2 pr-2"}>
+                    <div className={"grid justify-items-end"}>
+                      <ButtonLinkedin
+                        backgroundColour="white"
+                        userLinkedinURL={userLinkedinURL}
+                      />{" "}
+                    </div>
+                    <div className={"grid justify-items-start pl-2"}>
+                      <ButtonEmail
+                        backgroundColour="white"
+                        userEmailAction={userEmailAction}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className={""}>
+                  {" "}
+                  <p className={"text-lg font-bold text-VouchDark"}>
+                    Current/Most Recent Role
                   </p>
+                  <div>
+                    {" "}
+                    <p className={"w-full text-base text-white font-bold"}>
+                      {pastPosition1}
+                    </p>
+                  </div>
+                  <div>
+                    {" "}
+                    <p className={"w-full text-base text-white font-bold"}>
+                      Industry:{pastIndustry1}
+                    </p>
+                    <div className={"pt-4"}>
+                      <p className={"text-base font-bold text-VouchDark"}>
+                        {" "}
+                        Years of Industry Experience
+                      </p>
+                      <p className={"text-base text-white font-bold"}>
+                        {" "}
+                        Number of Years (prop)
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div className={"col-start-3 py-4"}>
-          <div className={"pl-10 content-center"}>
-            <div>
-              <p className={"font-bold text-lg pb-2 text-VouchDark"}>
-                Referred By
-              </p>
-              <p className="w-full text-base font-bold">{companyName}</p>
-              <p className="w-full text-base pt-1 text-gray-500">
-                {" "}
-                Headcount: {numEmployees}
-              </p>
-              <p className={"pt-1 text-base text-gray-500"}>
-                {" "}
-                Industry: (new prop)
-              </p>
-              <div className={"pl-10 pt-4"}>
-                <img src={companyLogo} width="45" height="auto" />
+        <div className={"col-start-2 py-4"}>
+          <div className={"grid grid-cols-2"}>
+            <div className={"col-start-1 py-4"}>
+              <div className={"pl-10 content-center"}>
+                <div>
+                  <p className={"font-bold text-lg pb-2 text-VouchDark"}>
+                    Referred By
+                  </p>
+                  <p className="w-full text-base font-bold">{companyName}</p>
+                  <p className="w-full text-base pt-1 text-gray-500">
+                    {" "}
+                    Headcount: {numEmployees}
+                  </p>
+                  <p className={"pt-1 text-base text-gray-500"}>
+                    {" "}
+                    Industry: (new prop)
+                  </p>
+                  <div className={"pl-10 pt-4"}>
+                    <img src={companyLogo} width="45" height="auto" />
+                  </div>
+                </div>
               </div>
+            </div>
+            <div className={"col-start-2 py-4"}>
+              <p className={"font-bold text-lg text-VouchDark pb-2"}>
+                {" "}
+                Role Interviewed For
+              </p>
+              <p className={"font-bold text-base"}> Position Open Text</p>
+              <p className={"w-full text-base text-gray-500 pt-1"}>
+                Role: {positionTitle}
+              </p>
+              <p className={"w-full text-base text-gray-500 pt-1"}>
+                {" "}
+                Salary: ${salaryRange} K/year{" "}
+              </p>
+              <p className={"text-bold text-base pt-4 font-bold"}>
+                Interviewed To:
+              </p>
+              <p className={"w-full text-base text-gray-500"}>
+                {stageInterview}
+              </p>
             </div>
           </div>
         </div>
-        <div className={"col-start-4 py-4"}>
-          <p className={"font-bold text-lg text-VouchDark pb-2"}>
-            {" "}
-            Role Interviewed For
-          </p>
-          <p className={"font-bold text-base"}> Position Open Text</p>
-          <p className={"w-full text-base text-gray-500 pt-1"}>
-            Role: {positionTitle}
-          </p>
-          <p className={"w-full text-base text-gray-500 pt-1"}>
-            {" "}
-            Salary: ${salaryRange} K/year{" "}
-          </p>
-          <p className={"text-bold text-base pt-4 font-bold"}>
-            Interviewed To:
-          </p>
-          <p className={"w-full text-base text-gray-500"}>{stageInterview}</p>
-        </div>
-        <div className={"col-start-5 py-4"}>
-          <div className={"grid grid-cols-3"}>
-            <div className={"col-start-1 col-span-2"}>
+        <div className={"col-start-3 py-4"}>
+          <div className={"grid grid-cols-2"}>
+            <div className={"col-start-1"}> Salary </div>
+            <div className={"col-start-2"}>
               <p className={"font-bold text-lg text-VouchDark pb-2"}>
                 Interview Notes
               </p>
@@ -237,35 +274,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                 {" "}
                 [S] New Prop
               </p>
-            </div>
-
-            <div
-              className={
-                "col-start-3 col-span-1 grid justify-items-end content-center pr-4 pt-4"
-              }
-            >
-              <div className={""}>
-                <StarIcon
-                  className={
-                    "h-7 w-7 text-gray-400 hover:text-yellow-200 cursor-pointer"
-                  }
-                  onClick={thumbUpClick}
-                />
-              </div>
-              <div className="py-8">
-                <EyeOffIcon
-                  className={
-                    "h-7 w-7 text-gray-400 hover:text-red-500 cursor-pointer"
-                  }
-                  onClick={thumbDownClick}
-                />
-              </div>
-              <div>
-                <MailOpenIcon
-                  className={`h-7 w-7 text-gray-400 hover:text-blue-500 cursor-pointer`}
-                  onClick={moveToContacted}
-                />
-              </div>
             </div>
           </div>
         </div>
