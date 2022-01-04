@@ -22,14 +22,14 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
       disabled={disabled}
       onClick={openSite}
       type="button"
-      className={`border-2 bg-white w-auto h-auto rounded
+      className={` bg-white w-4 h-auto
       ${disabled ? "bg-gray-400 opacity-25" : backgroundColour}
       ${disabled ? "cursor-default" : "cursor-pointer"}
       `}
     >
       <img
         src="./images/linkedInTile.png"
-        className={"flex justify-center items-center p-1.5 w-8 h-auto"}
+        className={"flex justify-center items-center w-8 h-auto"}
       />
     </button>
   );
