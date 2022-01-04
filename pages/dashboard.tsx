@@ -55,8 +55,9 @@ const DashBoard = (data, {}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-  const [locationStateDropdown, setLocationStateDropdown] =
-    useState("--CANADA--");
+  const [locationStateDropdown, setLocationStateDropdown] = useState(
+    "--CANADA--"
+  );
   const [jobCategoryDropdown, setJobCategoryDropdown] = useState("Category");
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
@@ -151,14 +152,16 @@ const DashBoard = (data, {}: DashboardProps) => {
               "grid grid-cols-6 justify-items-center pt-8 pb-8 px-14 bg-gray-50"
             }
           >
-            <div className={""}>
-              <CandidateCount
-                candidateCount={dashBoardTest.candidateCount}
-                lastCandidateCount={dashBoardTest.lastCandidateCount}
+            <div className="grid justify-items-end">
+              <VouchCTA
+                numberReferred={dashBoardTest.numberReferred}
+                numberThanks={dashBoardTest.numberThanks}
               />
             </div>
-
-            <div>
+          </div>
+          <div className={"py-8 px-24 grid grid-cols-12 bg-gray-50"}>
+            <div className={"col-start-1 col-span-2"}>Candidate Filters</div>
+            <div className={"col-start-3"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={jobCategoryDropdownData}
@@ -166,7 +169,7 @@ const DashBoard = (data, {}: DashboardProps) => {
                 onChange={(e) => setJobCategoryDropdown(e.target.value)}
               />
             </div>
-            <div>
+            <div className={"col-start-5"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={jobSeniorityDropdownData}
@@ -174,7 +177,7 @@ const DashBoard = (data, {}: DashboardProps) => {
                 onChange={(e) => setSeniorityDropdown(e.target.value)}
               />
             </div>
-            <div>
+            <div className={"col-start-7"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={stateProvince}
@@ -182,11 +185,10 @@ const DashBoard = (data, {}: DashboardProps) => {
                 onChange={(e) => setLocationStateDropdown(e.target.value)}
               />
             </div>
-
-            <div className="grid justify-items-end">
-              <VouchCTA
-                numberReferred={dashBoardTest.numberReferred}
-                numberThanks={dashBoardTest.numberThanks}
+            <div className={"col-start-11"}>
+              <CandidateCount
+                candidateCount={dashBoardTest.candidateCount}
+                lastCandidateCount={dashBoardTest.lastCandidateCount}
               />
             </div>
           </div>
