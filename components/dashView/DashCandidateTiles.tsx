@@ -81,7 +81,7 @@ const DashCandidateTiles = ({
       {vouchData &&
         filterManage().map((e, i) => (
           <CandidateTile
-            userID={e.candidateId}
+            userID={e.Candidate_Contact[0].candidateFirstName}
             positionTitle={e.positionTitle}
             salaryRange={e.salaryRange}
             jobLocation={e.Vouchee[0].locationCity}

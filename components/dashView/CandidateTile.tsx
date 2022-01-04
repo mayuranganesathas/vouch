@@ -150,9 +150,9 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                 </div>
                 <div className={"col-start-3 col-span-5 pt-4 pl-2"}>
                   <p className={"font-bold text-gray-900 text-base"}>
-                    User Name :{userID}
+                    {userID}
                   </p>
-                  <div className={""}>Location {jobLocation}</div>
+                  <div className={""}> {jobLocation}</div>
                   <div className={""}>
                     <div className={"grid justify-items-start pt-1"}>
                       <ButtonLinkedin
