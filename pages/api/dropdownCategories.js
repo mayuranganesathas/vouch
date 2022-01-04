@@ -8,6 +8,7 @@ export const jobIndustryDropdownData = [
 ];
 
 export const jobSeniorityDropdownData = [
+  "Seniority",
   "Junior",
   "Intermediate",
   "Senior",
@@ -16,6 +17,7 @@ export const jobSeniorityDropdownData = [
 ];
 
 export const jobCategoryDropdownData = [
+  "Category",
   "Engineering",
   "Marketing",
   "Sales",

@@ -127,7 +127,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                 User Name :{userID}
               </p>
               <div className={"text-white text-base font-bold"}>
-                Location,(prop needed)
+                {jobLocation}
               </div>
               <div className={"pt-2 grid grid-cols-2 pr-2"}>
                 <div className={"grid justify-items-end"}>

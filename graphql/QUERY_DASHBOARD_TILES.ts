@@ -22,27 +22,31 @@ export const QUERY_DASHBOARD_TILES = gql`
         corporateName
         rangeOfEmployees
       }
-    }
-    candidate_metadata {
-      locationCity
-      locationState
-      companyWebsite1
-      candidateId
-      companyWebsite3
-      industry1
-      companyWebsite2
-      industry2
-      industry3
-      linkedIn
-      positionTitle1
-      positionTitle2
-      positionTitle3
-    }
-    candidates {
-      candidateEmail
-      candidateFirstName
-      candidateLastName
-      candidateId
+      Candidate_Contact {
+        candidateEmail
+        candidateFirstName
+        candidateLastName
+        candidateId
+      }
+      Vouchee {
+        candidateId
+        companyWebsite1
+        companyWebsite2
+        companyWebsite3
+        hrId
+        industry1
+        industry2
+        industry3
+        jobCategory
+        linkedIn
+        locationCity
+        locationState
+        positionTitle1
+        positionTitle2
+        positionTitle3
+        seniority
+        created_at
+      }
     }
   }
 `;
