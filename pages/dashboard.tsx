@@ -160,8 +160,14 @@ const DashBoard = (data, {}: DashboardProps) => {
             </div>
           </div>
           <div className={"py-8 px-24 grid grid-cols-12 bg-gray-50"}>
-            <div className={"col-start-1 col-span-2"}>Candidate Filters</div>
-            <div className={"col-start-3"}>
+            <div
+              className={
+                "col-start-1 col-span-2 font-bold flex justify-center items-center"
+              }
+            >
+              Candidate Filters
+            </div>
+            <div className={"col-start-3 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={jobCategoryDropdownData}
@@ -169,7 +175,7 @@ const DashBoard = (data, {}: DashboardProps) => {
                 onChange={(e) => setJobCategoryDropdown(e.target.value)}
               />
             </div>
-            <div className={"col-start-5"}>
+            <div className={"col-start-5 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={jobSeniorityDropdownData}
@@ -177,7 +183,7 @@ const DashBoard = (data, {}: DashboardProps) => {
                 onChange={(e) => setSeniorityDropdown(e.target.value)}
               />
             </div>
-            <div className={"col-start-7"}>
+            <div className={"col-start-7 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={stateProvince}
@@ -185,7 +191,7 @@ const DashBoard = (data, {}: DashboardProps) => {
                 onChange={(e) => setLocationStateDropdown(e.target.value)}
               />
             </div>
-            <div className={"col-start-11"}>
+            <div className={"col-start-11 col-span-2 flex items-start"}>
               <CandidateCount
                 candidateCount={dashBoardTest.candidateCount}
                 lastCandidateCount={dashBoardTest.lastCandidateCount}
