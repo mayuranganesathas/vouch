@@ -55,10 +55,11 @@ const DashBoard = (data, {}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-  const [locationStateDropdown, setLocationStateDropdown] = useState("");
-  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("");
+  const [locationStateDropdown, setLocationStateDropdown] =
+    useState("--CANADA--");
+  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("Category");
 
-  const [seniorityDropdown, setSeniorityDropdown] = useState("");
+  const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
 
   let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
     QUERY_SHORT_LIST,

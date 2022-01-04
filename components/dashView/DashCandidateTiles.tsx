@@ -16,60 +16,116 @@ const DashCandidateTiles = ({
   filterJobSeniority,
   filterStateLocation,
 }: DashCandidateTilesProps) => {
+  const filterManage = () => {
+    if (filterJobCategory != "Category" && filterJobSeniority != "Seniority") {
+      return vouchData.hr_voucher_metadata
+        .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory)
+        .filter((e) => e.Vouchee[0].seniority == filterJobSeniority);
+    } else if (
+      filterJobCategory != "Category" &&
+      filterStateLocation != "--CANADA--"
+    ) {
+      return vouchData.hr_voucher_metadata
+        .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory)
+        .filter((e) => e.Vouchee[0].locationState == filterStateLocation);
+    } else if (
+      filterStateLocation != "--CANADA--" &&
+      filterJobSeniority != "Seniority"
+    ) {
+      return vouchData.hr_voucher_metadata
+        .filter((e) => e.Vouchee[0].seniority == filterJobSeniority)
+        .filter((e) => e.Vouchee[0].locationState == filterStateLocation);
+    } else if (
+      filterStateLocation != "--CANADA--" &&
+      filterJobSeniority != "Seniority" &&
+      filterJobCategory != "Category"
+    ) {
+      return vouchData.hr_voucher_metadata
+        .filter((e) => e.Vouchee[0].seniority == filterJobSeniority)
+        .filter((e) => e.Vouchee[0].locationState == filterStateLocation)
+        .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory);
+    } else if (
+      filterStateLocation != "--CANADA--" &&
+      filterJobSeniority == "Seniority" &&
+      filterJobCategory == "Category"
+    ) {
+      return vouchData.hr_voucher_metadata.filter(
+        (e) => e.Vouchee[0].locationState == filterStateLocation
+      );
+    } else if (
+      filterStateLocation == "--CANADA--" &&
+      filterJobSeniority != "Seniority" &&
+      filterJobCategory == "Category"
+    ) {
+      return vouchData.hr_voucher_metadata.filter(
+        (e) => e.Vouchee[0].seniority == filterJobSeniority
+      );
+    } else if (
+      filterStateLocation == "--CANADA--" &&
+      filterJobSeniority == "Seniority" &&
+      filterJobCategory != "Category"
+    ) {
+      return vouchData.hr_voucher_metadata.filter(
+        (e) => e.Vouchee[0].jobCategory == filterJobCategory
+      );
+    } else {
+      return vouchData.hr_voucher_metadata;
+    }
+  };
+
   return (
     <div className="grid grid-cols-12">
-      {/* TODO: Highlight or Hide if they are short listed ,filter array for basic drop downs, Update DB to allow for basic logic to sort through job categories, */}
-      {/* (currentOption === 'all' ? assets : assets.filter(asset => asset.type === currentOption))
-    .map( asset => <img src={asset.url} /> )
-    
-        .filter(
-            (e) => e.Company_Data[0].rangeOfEmployees == filterJobCompanySize
-          )
-*/}
+      {/* TODO: Highlight or Hide if they are short listed ,filter array for basic drop downs */}
+      {/* Clear Filters Feature , dropdown shows default*/}
 
       {vouchData &&
-        vouchData.hr_voucher_metadata
-          // .filter(
-          //   (e) => e.Company_Data[0].rangeOfEmployees == filterStateLocation
-          // )
-          // .filter(
-          //   (e) => e.Company_Data[0].rangeOfEmployees == filterJobSeniority
-          // )
-          // .filter(
-          //   (e) => e.Company_Data[0].rangeOfEmployees == filterJobCategory
-          // )
-          .map((e, i) => (
-            <CandidateTile
-              userID={e.candidateId}
-              positionTitle={e.positionTitle}
-              salaryRange={e.salaryRange}
-              jobLocation={vouchData.candidate_metadata[i].locationCity}
-              companyLogo={e.Company_Data[0].companyLogoAddress}
-              numEmployees={e.Company_Data[0].numberOfEmployees}
-              companyName={e.Company_Data[0].corporateName}
-              stageInterview={e.stageOfInterview}
-              pastPosition1={vouchData.candidate_metadata[i].positionTitle1}
-              pastIndustry1={vouchData.candidate_metadata[i].industry1}
-              standOutSkill1={
-                e.standOutSkill1
-                  ? e.standOutSkill1
-                  : "Information Missing." || e.standOutSkill2
-                  ? e.standOutSkill2
-                  : "Information Missing." || e.standOutSkill3
-                  ? e.standOutSkill3
-                  : "Information Missing." || e.standOutSkill4
-                  ? e.standOutSkill4
-                  : "Information Missing." || e.standOutSkill5
-                  ? e.standOutSkill5
-                  : "Information Missing."
-              }
-              userLinkedinURL={vouchData.candidate_metadata[i].linkedIn}
-              userEmailAction={vouchData.candidates[i].candidateEmail}
-              refetchShortList={refetchShortList}
-            />
-          ))}
+        filterManage().map((e, i) => (
+          <CandidateTile
+            userID={e.candidateId}
+            positionTitle={e.positionTitle}
+            salaryRange={e.salaryRange}
+            jobLocation={e.Vouchee[0].locationCity}
+            companyLogo={e.Company_Data[0].companyLogoAddress}
+            numEmployees={e.Company_Data[0].numberOfEmployees}
+            companyName={e.Company_Data[0].corporateName}
+            stageInterview={e.stageOfInterview}
+            pastPosition1={e.Vouchee.positionTitle1}
+            pastIndustry1={e.Vouchee.industry1}
+            standOutSkill1={
+              e.standOutSkill1
+                ? e.standOutSkill1
+                : "Information Missing." || e.standOutSkill2
+                ? e.standOutSkill2
+                : "Information Missing." || e.standOutSkill3
+                ? e.standOutSkill3
+                : "Information Missing." || e.standOutSkill4
+                ? e.standOutSkill4
+                : "Information Missing." || e.standOutSkill5
+                ? e.standOutSkill5
+                : "Information Missing."
+            }
+            userLinkedinURL={e.Vouchee.linkedIn}
+            userEmailAction={e.Candidate_Contact[0].candidateEmail}
+            refetchShortList={refetchShortList}
+          />
+        ))}
     </div>
   );
 };
 
 export default DashCandidateTiles;
+
+// vouchData.hr_voucher_metadata
+
+// .filter(
+//     (e) => e.Vouchee[0].locationState == filterStateLocation
+//   )
+//
+
+// .filter(
+//         (e) => e.Vouchee[0].jobCategory == filterJobCategory
+//       )
+
+// .filter(
+// //         (e) => e.Vouchee[0].seniority == filterJobSeniority
+// //       )
