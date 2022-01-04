@@ -13,6 +13,7 @@ import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
 import { DashboardCategoryFilter } from "../components/ui/DashboardCategoryFilter";
+import { InformationCircleIcon } from "@heroicons/react/solid";
 
 import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
 import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
@@ -59,15 +60,14 @@ const DashBoard = (data, {}: DashboardProps) => {
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("");
 
-  let {
-    loading,
-    data: ShortList,
-    refetch: refetchShortList,
-  } = useQuery(QUERY_SHORT_LIST, {
-    variables: {
-      hrId: user.uid,
-    },
-  });
+  let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
+    QUERY_SHORT_LIST,
+    {
+      variables: {
+        hrId: user.uid,
+      },
+    }
+  );
 
   const getTileComponent = () => {
     if (stageStatus == "Home") {
@@ -189,26 +189,79 @@ const DashBoard = (data, {}: DashboardProps) => {
               />
             </div>
           </div>
-          <div className={"bg-gray-50 px-20"}>
+          <div className={"bg-gray-50 px-24"}>
             <div
-              className={
-                "grid grid-cols-5 bg-gray-200 grid-flow-col content-center py-3"
-              }
+              className={"grid grid-cols-3 grid-flow-col content-center py-1"}
             >
-              <div className={"col-start-1 pl-4 col-span-2"}>
-                {" "}
-                <p className={"w-full pl-20 font-bold text-base text-gray-800"}>
-                  About Candidate
-                </p>
+              <div className={"col-start-1"}>
+                <div className={"grid grid-cols-2"}>
+                  <p
+                    className={
+                      "col-start-2 w-full pl-4 font-bold text-sm text-gray-400"
+                    }
+                  >
+                    Most recent position
+                  </p>
+                </div>
               </div>
-              <div className={"grid-start-3 col-span-3"}>
-                {" "}
-                <p className={"w-full pl-10 font-bold text-base text-gray-800"}>
-                  Referring Company
-                </p>
+              <div className={"grid-start-2"}>
+                <div className={"grid grid-cols-2"}>
+                  <p className={"w-full pl-12 font-bold text-sm text-gray-400"}>
+                    Vouched by
+                  </p>
+                  <div
+                    className={
+                      "w-full pl-4 font-bold text-sm text-gray-400 grid grid-cols-10"
+                    }
+                  >
+                    <div className={"col-span-8"}>
+                      {" "}
+                      Position Interviewed for
+                    </div>
+                    <div className={"col-start-9"}>
+                      <InformationCircleIcon
+                        className={
+                          "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer"
+                        }
+                      />{" "}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={"grid-start-3"}>
+                <div className={"grid grid-cols-2"}>
+                  <div
+                    className={
+                      "w-full pl-8 font-bold text-sm text-gray-400 grid grid-cols-12"
+                    }
+                  >
+                    <div className={"col-span-5"}>Vouched by</div>
+                    <div className={"col-start-6 pl-1"}>
+                      <InformationCircleIcon
+                        className={
+                          "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer"
+                        }
+                      />{" "}
+                    </div>
+                  </div>
+                  <div
+                    className={
+                      "w-full font-bold text-sm text-gray-400 grid grid-cols-12"
+                    }
+                  >
+                    <div className={"col-span-6"}>Standout Skills</div>
+                    <div className={"col-start-7"}>
+                      <InformationCircleIcon
+                        className={
+                          "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer"
+                        }
+                      />{" "}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className={"py-4"}>{getTileComponent()}</div>
+            <div className={""}>{getTileComponent()}</div>
           </div>
         </div>
       )}
