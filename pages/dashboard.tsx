@@ -146,7 +146,7 @@ const DashBoard = (data, {}: DashboardProps) => {
               queryUpdateOnClick={refetchShortList}
             />
           </div>
-          <div className={"w-full border-gray-500 border-b"}></div>
+          <div className={"w-full border-gray-500 border-b-2"}></div>
           <div className={"grid grid-cols-3  pt-8 pb-8 px-24 bg-gray-50 "}>
             <div className={"col-start-1 col-span-2 bg-gray-200 py-6 pl-6"}>
               <div className={"grid grid-rows-2"}>
@@ -178,7 +178,16 @@ const DashBoard = (data, {}: DashboardProps) => {
                 "col-start-1 col-span-2 font-bold flex justify-center items-center"
               }
             >
-              Candidate Filters
+              <div className={"grid grid-cols-10"}>
+                <div className={"col-span-8"}>Candidate Filters</div>
+                <div className={"col-start-10"}>
+                  <InformationCircleIcon
+                    className={
+                      "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer"
+                    }
+                  />{" "}
+                </div>
+              </div>
             </div>
             <div className={"col-start-3 flex items-center"}>
               <DashboardCategoryFilter
