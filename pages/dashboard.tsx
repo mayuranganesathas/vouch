@@ -138,7 +138,7 @@ const DashBoard = (data, {}: DashboardProps) => {
     <div>
       {hrData && (
         <div>
-          <div className={"pt-4 px-20 bg-white"}>
+          <div className={"pt-4 px-20"}>
             <UserIdBar
               hrData={hrData}
               stageStatus={stageStatus}
