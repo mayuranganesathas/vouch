@@ -9,7 +9,7 @@ async function sendEmail(req, res) {
       from: "mayuran852@gmail.com", // your website email address here
       templateId: "d-40f048ed85414c7dbef11d9280a4502b",
       dynamicTemplateData: {
-        link: `localhost:3000/candidate-register?hrId=${req.body.hrId}`,
+        link: `www.vouchrecruit.com/candidate-register?hrId=${req.body.hrId}`,
       },
     });
   } catch (error) {
