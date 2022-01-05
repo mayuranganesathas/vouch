@@ -37,7 +37,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   let backgroundStyles;
   switch (backgroundColour) {
     case "gray":
-      backgroundStyles = "bg-gray-50";
+      backgroundStyles = "bg-gray-50 border-b-8 border-VouchGreen";
       break;
 
     case "white":
@@ -50,7 +50,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       buttonStyles = "rounded-full";
       break;
     case "square":
-      buttonStyles = "rounded";
+      buttonStyles = "rounded-none";
   }
 
   let textStyles;
