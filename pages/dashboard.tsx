@@ -55,8 +55,9 @@ const DashBoard = ({}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-  const [locationStateDropdown, setLocationStateDropdown] =
-    useState("--CANADA--");
+  const [locationStateDropdown, setLocationStateDropdown] = useState(
+    "--CANADA--"
+  );
   const [jobCategoryDropdown, setJobCategoryDropdown] = useState("Category");
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
@@ -151,20 +152,50 @@ const DashBoard = ({}: DashboardProps) => {
               queryUpdateOnClick={refetchShortList}
             />
           </div>
-          <div className={"w-full border-gray-500 border-b"}></div>
-          <div
-            className={
-              "grid grid-cols-6 justify-items-center pt-8 pb-8 px-14 bg-gray-50"
-            }
-          >
-            <div className={""}>
-              <CandidateCount
-                candidateCount={dashBoardTest.candidateCount}
-                lastCandidateCount={dashBoardTest.lastCandidateCount}
-              />
+          <div className={"w-full border-gray-500 border-b-2"}></div>
+          <div className={"grid grid-cols-3  pt-8 pb-8 px-24 bg-gray-50 "}>
+            <div className={"col-start-1 col-span-2 bg-gray-200 py-6 pl-6"}>
+              <div className={"grid grid-rows-2"}>
+                <div className={"text-xl font-bold"}>
+                  {" "}
+                  Welcome {user.displayName}
+                </div>
+                <div className={"pt-1"}>
+                  {" "}
+                  To date, you have referred {
+                    dashBoardTest.numberReferred
+                  }, {dashBoardTest.numberThanks} of your vouchees have landed
+                  new interviews
+                </div>
+              </div>
             </div>
-
-            <div>
+            <div className="grid col-start-3 bg-gray-200 py-6 pr-6">
+              <div className={"flex items-center justify-end"}>
+                <VouchCTA
+                  numberReferred={dashBoardTest.numberReferred}
+                  numberThanks={dashBoardTest.numberThanks}
+                />
+              </div>
+            </div>
+          </div>
+          <div className={"pb-4 px-24 grid grid-cols-12 bg-gray-50"}>
+            <div
+              className={
+                "col-start-1 col-span-2 font-bold flex justify-center items-center"
+              }
+            >
+              <div className={"grid grid-cols-10"}>
+                <div className={"col-span-8"}>Candidate Filters</div>
+                <div className={"col-start-10"}>
+                  <InformationCircleIcon
+                    className={
+                      "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer"
+                    }
+                  />{" "}
+                </div>
+              </div>
+            </div>
+            <div className={"col-start-3 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={jobCategoryDropdownData}
@@ -172,7 +203,7 @@ const DashBoard = ({}: DashboardProps) => {
                 onChange={(e) => setJobCategoryDropdown(e.target.value)}
               />
             </div>
-            <div>
+            <div className={"col-start-5 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={jobSeniorityDropdownData}
@@ -180,7 +211,7 @@ const DashBoard = ({}: DashboardProps) => {
                 onChange={(e) => setSeniorityDropdown(e.target.value)}
               />
             </div>
-            <div>
+            <div className={"col-start-7 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={stateProvince}
@@ -188,11 +219,10 @@ const DashBoard = ({}: DashboardProps) => {
                 onChange={(e) => setLocationStateDropdown(e.target.value)}
               />
             </div>
-
-            <div className="grid justify-items-end">
-              <VouchCTA
-                numberReferred={dashBoardTest.numberReferred}
-                numberThanks={dashBoardTest.numberThanks}
+            <div className={"col-start-11 col-span-2 flex items-start pb-12"}>
+              <CandidateCount
+                candidateCount={dashBoardTest.candidateCount}
+                lastCandidateCount={dashBoardTest.lastCandidateCount}
               />
             </div>
           </div>

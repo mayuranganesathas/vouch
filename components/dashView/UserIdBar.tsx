@@ -75,7 +75,7 @@ const UserIdBar = ({
             />
           </div>
         </div>
-        <div className={"col-start-5 flex justify-center items-center"}>
+        <div className={"col-start-8 flex justify-center items-center"}>
           <ButtonNav
             backgroundColour={homeCheck ? "gray" : "white"}
             buttonType={"square"}
@@ -83,9 +83,10 @@ const UserIdBar = ({
             label={"Home"}
             onClick={homeClick}
             icon={"Home"}
+            buttonWidth={"wide"}
           />
         </div>
-        <div className={"col-start-6 flex justify-center items-center"}>
+        <div className={"col-start-9 flex justify-center items-center"}>
           <ButtonNav
             backgroundColour={favoritesCheck ? "gray" : "white"}
             buttonType={"square"}
@@ -93,9 +94,10 @@ const UserIdBar = ({
             label={"Favorites"}
             onClick={favoritesClick}
             icon={"Favorites"}
+            buttonWidth={"wide"}
           />
         </div>
-        <div className={"col-start-7 flex justify-center items-center"}>
+        <div className={"col-start-10 flex justify-center items-center"}>
           <ButtonNav
             backgroundColour={unfitCheck ? "gray" : "white"}
             buttonType={"square"}
@@ -103,9 +105,10 @@ const UserIdBar = ({
             label={"Hidden"}
             onClick={unfitClick}
             icon={"NotNow"}
+            buttonWidth={"wide"}
           />
         </div>
-        <div className={"col-start-8 flex justify-center items-center"}>
+        <div className={"col-start-11 flex justify-center items-center"}>
           <ButtonNav
             backgroundColour={contactedCheck ? "gray" : "white"}
             buttonType={"square"}
@@ -113,10 +116,11 @@ const UserIdBar = ({
             label={"Contacted"}
             onClick={contactedClick}
             icon={"Contacted"}
+            buttonWidth={"wide"}
           />
         </div>
 
-        <div className={"col-start-11 col-span-2"}>
+        <div className={"col-start-13 col-span-2 flex items-center"}>
           <UserProfile
             userHrImg={user.photoURL}
             userHrName={user.displayName}

@@ -31,13 +31,7 @@ const VouchCTA = ({ numberReferred, numberThanks }: VouchCTAProps) => {
           buttonWidth="wide"
         />
       </div>
-      <div className="text-sm text-gray-500 pt-4 ">
-        Candidates you've referred: {numberReferred}
-      </div>
-      <div className="text-sm text-gray-500 ">
-        {" "}
-        Candidates landing roles: {numberThanks}
-      </div>
+
       <VouchCTAModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
     </div>
   );
