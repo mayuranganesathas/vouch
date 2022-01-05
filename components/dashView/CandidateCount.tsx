@@ -11,13 +11,20 @@ export const CandidateCount: React.FC<CandidateCountProps> = ({
   lastCandidateCount,
 }) => {
   return (
-    <div className={"grid grid-cols-5 w-64"}>
-      <div className={"flex items-center col-start-2 col-span-3 text-2xl"}>
+    <div className={"grid grid-cols-5 w-64 grid-rows-3"}>
+      <div
+        className={
+          "flex items-center col-start-2 row-start-2 row-span-2 col-span-3 text-2xl"
+        }
+      >
         <div className={""}>{candidateCount.length} Candidates</div>
       </div>
-      <div className={"items-start text-red-400 text-sm pt-1 col-start-5"}>
-        {" "}
-        ({candidateCount.length - lastCandidateCount} New)
+      <div
+        className={
+          "items-center rounded-full px-0.5 text-white bg-gray-500 text-xs col-start-4 row-start-1"
+        }
+      >
+        <div> {candidateCount.length - lastCandidateCount} New</div>
       </div>
     </div>
   );

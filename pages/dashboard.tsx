@@ -147,19 +147,27 @@ const DashBoard = (data, {}: DashboardProps) => {
             />
           </div>
           <div className={"w-full border-gray-500 border-b"}></div>
-          <div
-            className={
-              "grid grid-cols-6 justify-items-center pt-8 pb-8 px-14 bg-gray-50"
-            }
-          >
-            <div className="grid justify-items-end">
+          <div className={"grid grid-cols-3  pt-8 pb-8 px-24 "}>
+            <div className={"col-start-1 col-span-2 bg-gray-200 py-6 pl-6"}>
+              <div className={"grid grid-rows-2"}>
+                <div> Welcome [NAME]</div>
+                <div>
+                  {" "}
+                  To date, you have referred {
+                    dashBoardTest.numberReferred
+                  }, {dashBoardTest.numberThanks} of your vouchees have landed
+                  new interviews
+                </div>
+              </div>
+            </div>
+            <div className="grid justify-items-end col-start-3 bg-gray-200 py-6 pr-6">
               <VouchCTA
                 numberReferred={dashBoardTest.numberReferred}
                 numberThanks={dashBoardTest.numberThanks}
               />
             </div>
           </div>
-          <div className={"py-8 px-24 grid grid-cols-12 bg-gray-50"}>
+          <div className={"pb-4 px-24 grid grid-cols-12 bg-gray-50"}>
             <div
               className={
                 "col-start-1 col-span-2 font-bold flex justify-center items-center"
@@ -191,7 +199,7 @@ const DashBoard = (data, {}: DashboardProps) => {
                 onChange={(e) => setLocationStateDropdown(e.target.value)}
               />
             </div>
-            <div className={"col-start-11 col-span-2 flex items-start"}>
+            <div className={"col-start-11 col-span-2 flex items-start pb-12"}>
               <CandidateCount
                 candidateCount={dashBoardTest.candidateCount}
                 lastCandidateCount={dashBoardTest.lastCandidateCount}
