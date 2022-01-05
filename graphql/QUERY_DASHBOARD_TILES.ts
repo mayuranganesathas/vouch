@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_DASHBOARD_TILES = gql`
-  query QUERY_DASHBOARD_TILES {
+  query QUERY_DASHBOARD_TILES($hrId: String = "") {
     hr_voucher_metadata {
       candidateId
       hrId
@@ -47,6 +47,9 @@ export const QUERY_DASHBOARD_TILES = gql`
         seniority
         created_at
       }
+    }
+    shortlist(where: { hrId: { _eq: $hrId } }) {
+      candidateId
     }
   }
 `;

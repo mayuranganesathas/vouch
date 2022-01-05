@@ -73,15 +73,17 @@ const DashCandidateTiles = ({
     }
   };
 
+  const shortListFilter = () => {
+    const x = vouchData.shortlist.map((e) => e.candidateId);
+    return filterManage().filter((e) => !x.includes(e.candidateId));
+  };
+
   return (
     <div className="grid grid-cols-12">
-      {/* TODO: Highlight or Hide if they are short listed ,filter array for basic drop downs */}
-      {/* Clear Filters Feature , dropdown shows default*/}
-
       {vouchData &&
-        filterManage().map((e, i) => (
+        shortListFilter().map((e, i) => (
           <CandidateTile
-            userID={e.Candidate_Contact[0].candidateFirstName}
+            userID={e.candidateId}
             positionTitle={e.positionTitle}
             salaryRange={e.salaryRange}
             jobLocation={e.Vouchee[0].locationCity}

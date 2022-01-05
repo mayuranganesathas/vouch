@@ -51,7 +51,7 @@ const dashBoardTest = {
   userLinkedinURL: "https://ca.linkedin.com/in/mayuranganesathas",
 };
 
-const DashBoard = (data, {}: DashboardProps) => {
+const DashBoard = ({}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
@@ -61,14 +61,20 @@ const DashBoard = (data, {}: DashboardProps) => {
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
 
-  let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
-    QUERY_SHORT_LIST,
-    {
-      variables: {
-        hrId: user.uid,
-      },
-    }
-  );
+  let {
+    loading,
+    data: ShortList,
+    refetch: refetchShortList,
+  } = useQuery(QUERY_SHORT_LIST, {
+    variables: {
+      hrId: user.uid,
+    },
+  });
+  const { data } = useQuery(QUERY_DASHBOARD_TILES, {
+    variables: {
+      hrId: user.uid,
+    },
+  });
 
   const getTileComponent = () => {
     if (stageStatus == "Home") {
@@ -269,34 +275,6 @@ const DashBoard = (data, {}: DashboardProps) => {
     </div>
   );
 };
-
-export async function getServerSideProps() {
-  const client = new ApolloClient({
-    uri: "https://zerglings-1.hasura.app/v1/graphql",
-    cache: new InMemoryCache(),
-    headers: {
-      "content-type": "application/json",
-      "x-hasura-admin-secret": process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET,
-    },
-  });
-
-  const { data } = await client.query({
-    query: QUERY_DASHBOARD_TILES,
-  });
-
-  if (!data) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: data, // will be passed to the page component as props
-  };
-}
 
 export default DashBoard;
 
