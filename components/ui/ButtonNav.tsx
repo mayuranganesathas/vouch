@@ -31,13 +31,13 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
 
   switch (buttonWidth) {
     case "wide":
-      buttonSize = "w-10/12";
+      buttonSize = "w-fit";
       break;
   }
   let backgroundStyles;
   switch (backgroundColour) {
     case "gray":
-      backgroundStyles = "bg-gray-50 border-b-8 border-VouchGreen";
+      backgroundStyles = "border-b-8 border-VouchGreen";
       break;
 
     case "white":
@@ -84,7 +84,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       onClick={onClick}
       disabled={disabled}
       type="button"
-      className={`bg-gradient-to-b px-8 py-1 h-full font-bold ${buttonSize}
+      className={`bg-gradient-to-b px-2 py-1 h-full font-bold ${buttonSize}
       ${disabled ? "bg-gray-400 opacity-25" : backgroundStyles}
       ${disabled ? "rounded" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}

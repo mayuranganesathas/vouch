@@ -83,6 +83,7 @@ const UserIdBar = ({
             label={"Home"}
             onClick={homeClick}
             icon={"Home"}
+            buttonWidth={"wide"}
           />
         </div>
         <div className={"col-start-9 flex justify-center items-center"}>
@@ -93,6 +94,7 @@ const UserIdBar = ({
             label={"Favorites"}
             onClick={favoritesClick}
             icon={"Favorites"}
+            buttonWidth={"wide"}
           />
         </div>
         <div className={"col-start-10 flex justify-center items-center"}>
@@ -103,6 +105,7 @@ const UserIdBar = ({
             label={"Hidden"}
             onClick={unfitClick}
             icon={"NotNow"}
+            buttonWidth={"wide"}
           />
         </div>
         <div className={"col-start-11 flex justify-center items-center"}>
@@ -113,6 +116,7 @@ const UserIdBar = ({
             label={"Contacted"}
             onClick={contactedClick}
             icon={"Contacted"}
+            buttonWidth={"wide"}
           />
         </div>
 
