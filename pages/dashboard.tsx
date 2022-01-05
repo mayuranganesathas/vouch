@@ -138,7 +138,7 @@ const DashBoard = (data, {}: DashboardProps) => {
     <div>
       {hrData && (
         <div>
-          <div className={"pt-4 px-20"}>
+          <div className={"pt-4 px-20 bg-white"}>
             <UserIdBar
               hrData={hrData}
               stageStatus={stageStatus}
@@ -147,11 +147,14 @@ const DashBoard = (data, {}: DashboardProps) => {
             />
           </div>
           <div className={"w-full border-gray-500 border-b"}></div>
-          <div className={"grid grid-cols-3  pt-8 pb-8 px-24 "}>
+          <div className={"grid grid-cols-3  pt-8 pb-8 px-24 bg-gray-50 "}>
             <div className={"col-start-1 col-span-2 bg-gray-200 py-6 pl-6"}>
               <div className={"grid grid-rows-2"}>
-                <div> Welcome [NAME]</div>
-                <div>
+                <div className={"text-xl font-bold"}>
+                  {" "}
+                  Welcome {user.displayName}
+                </div>
+                <div className={"pt-1"}>
                   {" "}
                   To date, you have referred {
                     dashBoardTest.numberReferred
@@ -160,11 +163,13 @@ const DashBoard = (data, {}: DashboardProps) => {
                 </div>
               </div>
             </div>
-            <div className="grid justify-items-end col-start-3 bg-gray-200 py-6 pr-6">
-              <VouchCTA
-                numberReferred={dashBoardTest.numberReferred}
-                numberThanks={dashBoardTest.numberThanks}
-              />
+            <div className="grid col-start-3 bg-gray-200 py-6 pr-6">
+              <div className={"flex items-center justify-end"}>
+                <VouchCTA
+                  numberReferred={dashBoardTest.numberReferred}
+                  numberThanks={dashBoardTest.numberThanks}
+                />
+              </div>
             </div>
           </div>
           <div className={"pb-4 px-24 grid grid-cols-12 bg-gray-50"}>
