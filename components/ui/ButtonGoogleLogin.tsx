@@ -14,7 +14,7 @@ const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
     async function checkAuth() {
       const result = await getRedirectResult(auth);
       if (result) {
-        router.push("/register");
+        router.push("/dashboard");
       }
     }
     checkAuth();
