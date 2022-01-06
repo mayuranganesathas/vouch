@@ -59,7 +59,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       textStyles = "text-gray-400";
       break;
     case "textBlack":
-      textStyles = "text-black";
+      textStyles = "text-gray-700";
       break;
   }
 

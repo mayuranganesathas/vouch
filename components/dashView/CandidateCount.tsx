@@ -24,7 +24,7 @@ export const CandidateCount: React.FC<CandidateCountProps> = ({
           "items-center rounded-full px-0.5 text-white bg-VouchSalmon text-xs col-start-4 row-start-1"
         }
       >
-        <div className={"text-black"}>
+        <div className={"text-gray-600"}>
           {" "}
           {candidateCount.length - lastCandidateCount} New
         </div>

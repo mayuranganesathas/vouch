@@ -16,7 +16,9 @@ const WelcomeComp = ({
       <div className="text-gray-500 py-2">Welcome back {userHrFirstName}!</div>
       <div className="text-gray-500">
         There are{" "}
-        <span className="text-bold text-black">{newCandidateNumber} new</span>{" "}
+        <span className="text-bold text-gray-600">
+          {newCandidateNumber} new
+        </span>{" "}
         referrals in the pool.{" "}
         <button
           className="text-blue-400 cursor-pointer"
