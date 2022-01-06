@@ -75,6 +75,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
         standOutSkill1: "incompleteField",
         standOutSkill2: "incompleteField",
         standOutSkill3: "incompleteField",
+        candidateEmail: "incompleteField",
       },
     }
   );
@@ -100,7 +101,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
       console.log(error);
       return;
     }
-    console.log(email);
   };
 
   const submitForm = async () => {
@@ -113,6 +113,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
         standOutSkill1: standOutSkill1,
         standOutSkill2: standOutSkill2,
         standOutSkill3: standOutSkill3,
+        candidateEmail: email,
       },
     });
     if (loading) return "Submitting...";
