@@ -171,12 +171,12 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
             <div className={"col-start-2 pt-4 pl-4"}>
               <div>
-                <p className={"w-full text-base border-r-4 border-gray-100 "}>
+                <p className={"w-full text-base border-r-4 border-gray-300 "}>
                   {pastPosition1}
                 </p>
               </div>
               <div>
-                <p className={"w-full pt-1 border-r-4 border-gray-100"}>
+                <p className={"w-full pt-1 border-r-4 border-gray-300"}>
                   in {pastIndustry1}
                 </p>
               </div>
