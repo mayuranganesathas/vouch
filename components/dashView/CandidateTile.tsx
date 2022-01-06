@@ -187,7 +187,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   <p className="w-full text-base">{companyName}</p>
                   <p className="w-full pt-1 ">
                     {" "}
-                    # of Employees: {JSON.stringify(numEmployees)}
+                    # of Employees: {numEmployees}
                   </p>
                 </div>
               </div>
