@@ -55,9 +55,8 @@ const DashBoard = ({}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-  const [locationStateDropdown, setLocationStateDropdown] = useState(
-    "--CANADA--"
-  );
+  const [locationStateDropdown, setLocationStateDropdown] =
+    useState("--CANADA--");
   const [jobCategoryDropdown, setJobCategoryDropdown] = useState("Category");
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
@@ -272,7 +271,7 @@ const DashBoard = ({}: DashboardProps) => {
                       "w-full pl-8 font-bold text-sm text-gray-400 grid grid-cols-12"
                     }
                   >
-                    <div className={"col-span-5"}>Vouched by</div>
+                    <div className={"col-span-5"}>Salary Range</div>
                     <div className={"col-start-6 pl-1"}>
                       <InformationCircleIcon
                         className={
