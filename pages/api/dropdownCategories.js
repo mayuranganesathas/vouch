@@ -1,3 +1,93 @@
+export const positionCategoryDropDownArray = [
+  "Front-End Dev",
+  "Back-End Dev",
+  "Software Eng",
+  "Quality Assurance",
+  "Customer Success",
+  "Sales/BD",
+  "Marketing",
+  "Account Mgmt.",
+  "Product Mangement",
+  "Data Analysis/Science",
+  "Design-UX/UI",
+];
+
+export const InterviewStageDropDownArray = [
+  "Technical Interview",
+  "Case Study/Code Review",
+  "Panel Interview",
+  "Final Interview",
+];
+
+export const SeniorityDropDownArray = [
+  "Junior (1-2 Years)",
+  "Intermediate (3-5 Years)",
+  "Senior (5-8 Years)",
+  "Manager",
+  "Director",
+  "VP",
+  "SVP/Executive",
+];
+
+export const BaseSalaryDropDownArray = [
+  "<$75k",
+  "$75k - $90k",
+  "$90k - $110k",
+  "$110k - $130k",
+  "$130k - $150k",
+  "$150k - $170k",
+  "$170k - $190k",
+  "$190k - $210k",
+  "$210k - $250k",
+  "$250k+",
+];
+
+export const RoleSkillDropDownArray = [
+  "Industry Expert",
+  "International Teams Exp",
+  "Strong Technical Chops",
+  "Product Vision",
+  "Project Management",
+  "Versatile Programming Skills",
+  "Understands the Customer",
+  "Cross-Functional Team Exp",
+  "Great Design Eye",
+];
+
+export const IntPersonalSkillDropDownArray = [
+  "Confident",
+  "Effective Communicator",
+  "Positive Personality",
+  "Team Oriented",
+  "Managing/Coaching Exp",
+  "Strategic Thinker",
+  "Critical Thinker",
+  "Strong Business Acumen",
+];
+
+export const generalStrengths = [
+  "Experience with international teams ",
+  "Clear and effective communicator",
+  "Positive energy",
+  "Team oriented",
+  "Experienced people manager",
+  "Strategic thinker",
+  "Critical thinker",
+  "Strong business acumen",
+  "Industry expert",
+  "Cross functional team experience",
+];
+
+export const InterviewStrengthSkillDropDownArray = [
+  "Asked Good Questions",
+  "Well Prepared For Interview",
+  "Strong Presentation Skills",
+  "Polished and Professional",
+  "Active Listener",
+  "Impressive Technical Assignment",
+  "Confident",
+];
+
 export const industryArrayList = [
   "Advertising",
   "Hardware",
@@ -7,38 +97,12 @@ export const industryArrayList = [
   "Finance",
   "Health",
   "Gaming",
-  "Ed Tech",
+  "Education",
   "Ecommerce",
   "Marketing",
   "News and Entertainment",
   "Professional Services",
   "Other-not listed",
-];
-
-export const jobIndustryDropdownData = [
-  "Tech",
-  "Gaming",
-  "Saas",
-  "something",
-  "Blah",
-  "Cool",
-];
-
-export const jobSeniorityDropdownData = [
-  "Seniority",
-  "Junior",
-  "Intermediate",
-  "Senior",
-  "Director",
-  "VP",
-];
-
-export const jobCategoryDropdownData = [
-  "Category",
-  "Engineering",
-  "Marketing",
-  "Sales",
-  "Operations",
 ];
 
 export const jobCompanySizeDropdownData = [
