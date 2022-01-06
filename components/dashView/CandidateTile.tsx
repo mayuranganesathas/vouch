@@ -199,14 +199,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <div className={"col-start-2 pl-4"}>
               <p className={"text-base"}> {positionTitle}</p>
 
-              <p className={"w-full pt-1 "}>{stageInterview}</p>
+              <p className={"w-full text-base"}>${salaryRange} k/year </p>
             </div>
           </div>
         </div>
         <div className={"col-start-3 pt-4 "}>
           <div className={"grid grid-cols-2"}>
             <div className={"col-start-1 pl-8"}>
-              <p className={"w-full text-base"}>${salaryRange} k/year </p>
+              <p className={"w-full pt-1 "}>{stageInterview}</p>
             </div>
             <div className={"col-start-2"}>
               <p className={"w-full font-gray-500 "}>[S] {standOutSkill1}</p>

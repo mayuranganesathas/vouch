@@ -250,10 +250,7 @@ const DashBoard = ({}: DashboardProps) => {
                       "w-full pl-4 font-bold text-sm text-gray-400 grid grid-cols-10"
                     }
                   >
-                    <div className={"col-span-8"}>
-                      {" "}
-                      Position Interviewed for
-                    </div>
+                    <div className={"col-span-8"}> Salary Range</div>
                     <div className={"col-start-9"}>
                       <InformationCircleIcon
                         className={
@@ -271,7 +268,9 @@ const DashBoard = ({}: DashboardProps) => {
                       "w-full pl-8 font-bold text-sm text-gray-400 grid grid-cols-12"
                     }
                   >
-                    <div className={"col-span-5"}>Salary Range</div>
+                    <div className={"col-span-5"}>
+                      Position Interviewed for{" "}
+                    </div>
                     <div className={"col-start-6 pl-1"}>
                       <InformationCircleIcon
                         className={
