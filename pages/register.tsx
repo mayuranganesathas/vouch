@@ -51,7 +51,7 @@ export default function Register() {
         companyLogoAddress: "incompleteField",
         companyWebsite1: "incompleteField",
         corporateName: "incompleteField",
-        location: "incompleteField",
+        locationState: "incompleteField",
         numberOfEmployees1: "incompleteField",
         hrId1: "incompleteField",
       },
@@ -112,7 +112,7 @@ export default function Register() {
         companyLogoAddress: hrCompanyLogo,
         companyWebsite1: hrVoucherCompanyWebsite,
         corporateName: hrVoucherCompanyName,
-        location: hrLocation,
+        locationState: hrLocation,
         numberOfEmployees1: employeeArray,
         hrId1: hrID,
       },
@@ -121,7 +121,7 @@ export default function Register() {
     if (error) return `Submission error! ${error.message}`; //post to BE
 
     clearForms();
-    setTimeout(() => router.push("/dashboard"), 1000);
+    location.reload();
   };
   return (
     <div className={"pt-4"}>

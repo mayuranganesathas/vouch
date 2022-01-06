@@ -13,7 +13,7 @@ export const INSERT_HR_VOUCHER = gql`
     $companyLogoAddress: String = ""
     $companyWebsite1: String = ""
     $corporateName: String = ""
-    $location: String = ""
+    $locationState: String = ""
     $numberOfEmployees1: String = ""
     $rangeOfEmployees: String = ""
     $hrId1: String = ""
@@ -28,7 +28,7 @@ export const INSERT_HR_VOUCHER = gql`
         position: $position
         userName: $userName
         hrId: $hrId
-        location: $location
+        locationState: $locationState
       }
     ) {
       returning {
@@ -41,7 +41,7 @@ export const INSERT_HR_VOUCHER = gql`
         companyLogoAddress: $companyLogoAddress
         companyWebsite: $companyWebsite1
         corporateName: $corporateName
-        location: $location
+        location: $locationState
         rangeOfEmployees: $numberOfEmployees1
         hrId: $hrId1
       }
