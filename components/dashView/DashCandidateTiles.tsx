@@ -84,6 +84,8 @@ const DashCandidateTiles = ({
         shortListFilter().map((e, i) => (
           <CandidateTile
             userID={e.candidateId}
+            firstName={e.Candidate_Contact[0].candidateFirstName}
+            lastName={e.Candidate_Contact[0].candidateLastName}
             positionTitle={e.positionTitle}
             salaryRange={e.salaryRange}
             jobLocation={e.Vouchee[0].locationCity}

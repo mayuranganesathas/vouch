@@ -21,6 +21,12 @@ const DashCandidateTilesShortList = ({
             //include job category
             <CandidateTile
               userID={e.candidateId}
+              firstName={
+                e.hr_voucher_metadatum.Candidate_Contact[0].candidateFirstName
+              }
+              lastName={
+                e.hr_voucher_metadatum.Candidate_Contact[0].candidateLastName
+              }
               positionTitle={e.hr_voucher_metadatum.positionTitle}
               salaryRange={e.hr_voucher_metadatum.salaryRange}
               jobLocation={e.hr_voucher_metadatum.Company_Data[0].locationCity}

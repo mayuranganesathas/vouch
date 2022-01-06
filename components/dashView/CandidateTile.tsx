@@ -26,11 +26,15 @@ export interface CandidateTileProps {
   standOutSkill1: string;
   userLinkedinURL: string;
   userEmailAction: string;
+  firstName: string;
+  lastName: string;
   refetchShortList: any;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
   userID,
+  firstName,
+  lastName,
   positionTitle,
   salaryRange,
   jobLocation,
@@ -150,7 +154,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                 </div>
                 <div className={"col-start-3 col-span-5 pt-4 pl-2"}>
                   <p className={"font-bold text-gray-900 text-base"}>
-                    {userID}
+                    {firstName} {lastName}
                   </p>
                   <div className={""}> {jobLocation}</div>
                   <div className={""}>
