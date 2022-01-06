@@ -264,7 +264,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
           <div className={"grid grid-cols-5"}>
             <div
               className={
-                "col-span-2 grid grid-rows-1 py-8 px-4 bg-VouchMed content-evenly"
+                "col-span-2 grid grid-rows-1 py-8 px-4 bg-VouchDark content-evenly"
               }
             >
               <div className={""}>

@@ -9,7 +9,7 @@ import { EyeOffIcon } from "@heroicons/react/solid";
 export interface ButtonNavProps {
   backgroundColour: "gray" | "white";
   buttonType: "rounded" | "square";
-  textColour: "black" | "VouchGreen";
+  textColour: "black" | "textBlack";
   label: string;
   disabled?: boolean;
   onClick: () => void;
@@ -37,7 +37,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   let backgroundStyles;
   switch (backgroundColour) {
     case "gray":
-      backgroundStyles = "border-b-8 border-VouchGreen";
+      backgroundStyles = "border-b-8 border-VouchLight";
       break;
 
     case "white":
@@ -58,8 +58,8 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
     case "black":
       textStyles = "text-gray-400";
       break;
-    case "VouchGreen":
-      textStyles = "text-VouchGreen";
+    case "textBlack":
+      textStyles = "text-black";
       break;
   }
 

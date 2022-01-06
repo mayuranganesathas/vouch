@@ -21,10 +21,13 @@ export const CandidateCount: React.FC<CandidateCountProps> = ({
       </div>
       <div
         className={
-          "items-center rounded-full px-0.5 text-white bg-gray-500 text-xs col-start-4 row-start-1"
+          "items-center rounded-full px-0.5 text-white bg-VouchSalmon text-xs col-start-4 row-start-1"
         }
       >
-        <div> {candidateCount.length - lastCandidateCount} New</div>
+        <div className={"text-black"}>
+          {" "}
+          {candidateCount.length - lastCandidateCount} New
+        </div>
       </div>
     </div>
   );
