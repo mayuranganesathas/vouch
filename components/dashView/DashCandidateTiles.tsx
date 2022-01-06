@@ -91,8 +91,8 @@ const DashCandidateTiles = ({
             numEmployees={e.Company_Data[0].numberOfEmployees}
             companyName={e.Company_Data[0].corporateName}
             stageInterview={e.stageOfInterview}
-            pastPosition1={e.Vouchee.positionTitle1}
-            pastIndustry1={e.Vouchee.industry1}
+            pastPosition1={e.Vouchee[0].positionTitle1}
+            pastIndustry1={e.Vouchee[0].industry1}
             standOutSkill1={
               e.standOutSkill1
                 ? e.standOutSkill1
@@ -106,7 +106,7 @@ const DashCandidateTiles = ({
                 ? e.standOutSkill5
                 : "Information Missing."
             }
-            userLinkedinURL={e.Vouchee.linkedIn}
+            userLinkedinURL={e.Vouchee[0].linkedIn}
             userEmailAction={e.Candidate_Contact[0].candidateEmail}
             refetchShortList={refetchShortList}
           />

@@ -168,7 +168,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <div className={"col-start-2 pt-4 pl-4"}>
               <div>
                 <p className={"w-full text-base border-r-4 border-gray-100 "}>
-                  {pastPosition1}
+                  {pastPosition1} 1
                 </p>
               </div>
               <div>
