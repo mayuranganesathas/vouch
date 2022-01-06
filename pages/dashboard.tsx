@@ -20,8 +20,8 @@ import DashCandidateTilesShortList from "../components/dashView/DashCandidateTil
 import { SearchFilterDash } from "../components/ui/searchFilterDash";
 import { filterArgTypes } from "@storybook/client-api";
 import {
-  jobCategoryDropdownData,
-  jobSeniorityDropdownData,
+  positionCategoryDropDownArray,
+  SeniorityDropDownArray,
   stateProvince,
 } from "./api/dropdownCategories";
 export interface DashboardProps {}
@@ -197,7 +197,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-3 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={jobCategoryDropdownData}
+                dropDownArray={positionCategoryDropDownArray}
                 value={jobCategoryDropdown}
                 onChange={(e) => setJobCategoryDropdown(e.target.value)}
               />
@@ -205,7 +205,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-5 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={jobSeniorityDropdownData}
+                dropDownArray={SeniorityDropDownArray}
                 value={seniorityDropdown}
                 onChange={(e) => setSeniorityDropdown(e.target.value)}
               />
