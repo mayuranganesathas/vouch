@@ -130,7 +130,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     const stageOfInterviewValidator = interviewStage;
     const standOutSkill1Validator = standOutSkill1;
     const standOutSkill2Validator = standOutSkill2;
-
     const standOutSkill3Validator = standOutSkill3;
 
     if (
@@ -368,7 +367,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     label="Add Candidate!"
                     disabled={formValidation()}
                   />
-                  {/* TODO FORM VALIDATION */}
                 </div>
                 <div className={"w-96 text-xs text-gray-300 py-2"}>
                   By clicking on “Refer Candidate”, you agree to the
