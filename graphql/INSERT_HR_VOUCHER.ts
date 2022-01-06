@@ -2,21 +2,15 @@ import { gql } from "@apollo/client";
 
 export const INSERT_HR_VOUCHER = gql`
   mutation INSERT_HR_VOUCHER(
-    $companyName: String = ""
+    $companyName: String!
     $companyWebsite: String = ""
-    $hrEmail: String = ""
+    $hrEmail: String!
     $industry: String = ""
-    $numberOfEmployees: String = ""
-    $position: String = ""
-    $userName: String = ""
-    $hrId: String = ""
-    $companyLogoAddress: String = ""
-    $companyWebsite1: String = ""
-    $corporateName: String = ""
-    $locationState: String = ""
-    $numberOfEmployees1: String = ""
     $rangeOfEmployees: String = ""
-    $hrId1: String = ""
+    $userName: String = ""
+    $hrId: String!
+    $locationState: String = ""
+    $locationCity: String = ""
   ) {
     insert_hr_voucher(
       objects: {
@@ -24,11 +18,11 @@ export const INSERT_HR_VOUCHER = gql`
         companyWebsite: $companyWebsite
         hrEmail: $hrEmail
         industry: $industry
-        rangeOfEmployees: $numberOfEmployees
-        position: $position
+        rangeOfEmployees: $rangeOfEmployees
         userName: $userName
         hrId: $hrId
         locationState: $locationState
+        locationCity: $locationCity
       }
     ) {
       returning {
@@ -38,12 +32,11 @@ export const INSERT_HR_VOUCHER = gql`
     }
     insert_company_data(
       objects: {
-        companyLogoAddress: $companyLogoAddress
-        companyWebsite: $companyWebsite1
-        corporateName: $corporateName
-        location: $locationState
-        rangeOfEmployees: $numberOfEmployees1
-        hrId: $hrId1
+        companyWebsite: $companyWebsite
+        corporateName: $companyName
+        location: $locationCity
+        rangeOfEmployees: $rangeOfEmployees
+        hrId: $hrId
       }
     ) {
       returning {
