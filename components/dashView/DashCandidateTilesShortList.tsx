@@ -28,7 +28,7 @@ const DashCandidateTilesShortList = ({
                 e.hr_voucher_metadatum.Company_Data[0].companyLogoAddress
               }
               numEmployees={
-                e.hr_voucher_metadatum.Company_Data[0].numberOfEmployees
+                e.hr_voucher_metadatum.Company_Data[0].rangeOfEmployees
               }
               companyName={e.hr_voucher_metadatum.Company_Data[0].corporateName}
               stageInterview={e.hr_voucher_metadatum.stageOfInterview}

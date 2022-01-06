@@ -168,7 +168,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <div className={"col-start-2 pt-4 pl-4"}>
               <div>
                 <p className={"w-full text-base border-r-4 border-gray-100 "}>
-                  {pastPosition1} 1
+                  {pastPosition1}
                 </p>
               </div>
               <div>
@@ -187,13 +187,13 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   <p className="w-full text-base">{companyName}</p>
                   <p className="w-full pt-1 ">
                     {" "}
-                    # of Employees: {numEmployees}
+                    # of Employees: {JSON.stringify(numEmployees)}
                   </p>
                 </div>
               </div>
             </div>
             <div className={"col-start-2 pl-4"}>
-              <p className={"text-base"}> Position Open Text Prop</p>
+              <p className={"text-base"}> {positionTitle}</p>
 
               <p className={"w-full pt-1 "}>{stageInterview}</p>
             </div>

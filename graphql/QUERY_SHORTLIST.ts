@@ -33,7 +33,6 @@ export const QUERY_SHORT_LIST = gql`
           companyWebsite
           corporateName
           rangeOfEmployees
-          numberOfEmployees
           location
         }
         Vouchee {
