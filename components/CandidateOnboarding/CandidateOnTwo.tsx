@@ -9,54 +9,40 @@ import { UserAddIcon } from "@heroicons/react/solid";
 import { LightningBoltIcon } from "@heroicons/react/solid";
 import { RewindIcon } from "@heroicons/react/solid";
 import { ChevronDoubleRightIcon } from "@heroicons/react/solid";
+import {
+  industryArrayList,
+  positionCategoryDropDownArray,
+  SeniorityDropDownArray,
+  stateProvince,
+} from "../../pages/api/dropdownCategories";
 
 export interface CandidateOnTwoProps {
-  job1: string;
-  setJob1: (job1: string) => void;
-  job2: string;
-  setJob2: (job2: string) => void;
-  job3: string;
-  setJob3: (job3: string) => void;
-  year1: string;
-  setYear1: (year1: string) => void;
-  year2: string;
-  setYear2: (year2: string) => void;
-  year3: string;
-  setYear3: (year3: string) => void;
-  industry1: string;
-  setIndustry1: (industry1: string) => void;
-  industry2: string;
-  setIndustry2: (industry2: string) => void;
-  industry3: string;
-  setIndustry3: (industry3: string) => void;
-  jobArray: any[];
-  yearArray: any[];
-  industryArray: any[];
-  // locationState: string;
-  // setLocationState: (remoteStatus: string) => void;
-  // locationCity: string;
-  // setLocationCity: (locationCity: string) => void;
+  companyWebsite: string;
+  setCompanyWebsite: (companyWebsite: string) => void;
+  positionTitle: string;
+  setPositionTitle: (positionTitle: string) => void;
 
+  industry: string;
+  setIndustry: (industry: string) => void;
+
+  locationState: string;
+  setLocationState: (remoteStatus: string) => void;
+  locationCity: string;
+  setLocationCity: (locationCity: string) => void;
   firstName: string;
   setFirstName: (firstName: string) => void;
-
   lastName: string;
   setLastName: (lastName: string) => void;
-
   linkedIn: string;
   setLinkedIn: (linkedIn: string) => void;
 
-  candidateEmail: string;
-  setCandidateEmail: (candidateEmail: string) => void;
+  companyName: string;
+  setCompanyName: (companyName: string) => void;
 
-  companyWebsite1: string;
-  setCompanyWebsite1: (companyWebsite1: string) => void;
-
-  companyWebsite2: string;
-  setCompanyWebsite2: (companyWebsite2: string) => void;
-
-  companyWebsite3: string;
-  setCompanyWebsite3: (companyWebsite3: string) => void;
+  jobCategory: string;
+  setJobCategory: (jobCategory: string) => void;
+  jobSeniority: string;
+  setJobSeniority: (jobSeniority: string) => void;
 
   previousStage: () => void;
   completeForm: () => void;
@@ -64,47 +50,32 @@ export interface CandidateOnTwoProps {
 }
 
 export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
-  companyWebsite1,
-  companyWebsite2,
-  companyWebsite3,
-  setCompanyWebsite2,
-  setCompanyWebsite1,
-  setCompanyWebsite3,
-  job1,
-  setJob1,
-  job2,
-  setJob2,
-  job3,
-  setJob3,
-  year1,
-  setYear1,
-  year2,
-  setYear2,
-  year3,
-  setYear3,
-  industry1,
-  setIndustry1,
-  industry2,
-  setIndustry2,
-  industry3,
-  setIndustry3,
-  jobArray,
-  yearArray,
-  industryArray,
-  // locationState,
-  // setLocationState,
-  // locationCity,
-  // setLocationCity,
-  // remoteArray,
+  companyWebsite,
+  setCompanyWebsite,
+  positionTitle,
+  setPositionTitle,
+  companyName,
+  setCompanyName,
+
+  industry,
+  setIndustry,
+  jobCategory,
+  setJobCategory,
+  jobSeniority,
+  setJobSeniority,
 
   firstName,
   setFirstName,
   lastName,
   setLastName,
-  candidateEmail,
-  setCandidateEmail,
+
   linkedIn,
   setLinkedIn,
+  locationState,
+  setLocationState,
+  locationCity,
+  setLocationCity,
+
   previousStage,
   completeForm,
   formValidation,
@@ -206,19 +177,6 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
           <div className={"grid grid-cols-2 gap-2"}>
             <div className={"text-xs py-4"}>
               <div>
-                <MailIcon className={"w-4 h-auto"} fill="black" />{" "}
-              </div>
-              <input
-                className={
-                  "border border-gray-300 text-xs w-full rounded py-1 px-4"
-                }
-                placeholder="Enter address"
-                value={candidateEmail}
-                onChange={(e) => setCandidateEmail(e.target.value)}
-              ></input>
-            </div>
-            <div className={"text-xs py-4"}>
-              <div>
                 {" "}
                 <img
                   src="./images/linkedInTile.png"
@@ -227,6 +185,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                   className={"pb-1"}
                 />
               </div>
+              {/* Took out email intentionally. */}
               <input
                 className={
                   "border border-gray-300 text-xs w-full rounded py-1 px-4"
@@ -235,6 +194,27 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                 value={linkedIn}
                 onChange={(e) => setLinkedIn(e.target.value)}
               ></input>
+            </div>
+            <div className={"text-xs py-4"}>
+              <input
+                className={
+                  "border border-gray-300 text-xs w-full rounded py-1 px-4"
+                }
+                placeholder="City"
+                value={locationCity}
+                onChange={(e) => setLocationCity(e.target.value)}
+              ></input>
+            </div>
+            <div className={"text-xs py-4"}>
+              <SearchFilterDash
+                backgroundColour={"white"}
+                dropDownArray={stateProvince}
+                value={locationState}
+                onChange={(e) => {
+                  setLocationState(e.target.value);
+                }}
+                width={"wide-sm"}
+              />
             </div>
           </div>
           <div className="grid grid-cols-3 gap-2"></div>
@@ -253,8 +233,8 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                     "border border-gray-300 text-xs w-full rounded py-1 px-4"
                   }
                   placeholder="Company Name"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)} //PROP
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)} //PROP
                 ></input>
               </div>
               <div className={"pt-4 pr-1"}>
@@ -264,8 +244,8 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                       "border border-gray-300 text-xs w-full rounded py-1 px-4"
                     }
                     placeholder="Position Title"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)} //PROP
+                    value={positionTitle}
+                    onChange={(e) => setPositionTitle(e.target.value)} //PROP
                   ></input>
                 </div>
               </div>
@@ -277,8 +257,8 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                     "border border-gray-300 text-xs w-full rounded py-1 px-4"
                   }
                   placeholder="Company Website"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)} //PROP
+                  value={companyWebsite}
+                  onChange={(e) => setCompanyWebsite(e.target.value)} //PROP
                 ></input>
               </div>
             </div>
@@ -289,10 +269,10 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
 
               <SearchFilterDash
                 backgroundColour={"white"}
-                dropDownArray={jobArray}
-                value={job3}
+                dropDownArray={positionCategoryDropDownArray}
+                value={jobCategory}
                 onChange={(e) => {
-                  setJob3(e.target.value);
+                  setJobCategory(e.target.value);
                 }}
                 width={"wide-sm"}
               />
@@ -302,35 +282,35 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
               <div className={"text-xs"}>Industry</div>
               <SearchFilterDash
                 backgroundColour={"white"}
-                dropDownArray={industryArray}
-                value={industry1}
+                dropDownArray={industryArrayList}
+                value={industry}
                 onChange={(e) => {
-                  setIndustry1(e.target.value);
+                  setIndustry(e.target.value);
                 }}
                 width={"wide-lg"}
               />
             </div>
             <div>
-              <div className={"text-xs"}>Total Years of Experience</div>
+              <div className={"text-xs"}>Seniority</div>
               <SearchFilterDash
                 backgroundColour={"white"}
-                dropDownArray={yearArray}
-                value={year1}
+                dropDownArray={SeniorityDropDownArray}
+                value={jobSeniority}
                 onChange={(e) => {
-                  setYear1(e.target.value);
+                  setJobSeniority(e.target.value);
                 }}
                 width={"wide-lg"}
               />
             </div>
           </div>
 
-          <div className={"text-xs pt-8"}>
+          {/* <div className={"text-xs pt-8"}>
             {" "}
             Send a thank you message to thank the HR manager for referring you
           </div>
           <input
             className={"border border-gray-300 rounded-xl w-full h-20 pb-4"}
-          ></input>
+          ></input> */}
           <div className={"flex justify-center items-center gap-4 pt-4"}>
             {" "}
             <ButtonVouch

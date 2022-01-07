@@ -14,62 +14,39 @@ export default function CandidateOn(props) {
     CandidateOnTwo,
     CandidateOnThree,
   }
+  const hrId = router.query.hrId.toString();
+  const candidateEmail = router.query.email.toString();
 
   const [stage, setStage] = useState(STAGE.CandidateOnOne);
-  const [job1, setJob1] = useState("");
-  const [job2, setJob2] = useState("");
-  const [job3, setJob3] = useState("");
-  const [year1, setYear1] = useState("");
-  const [year2, setYear2] = useState("");
-  const [year3, setYear3] = useState("");
-  const [industry1, setIndustry1] = useState("");
-  const [industry2, setIndustry2] = useState("");
-  const [industry3, setIndustry3] = useState("");
-  const [jobArray, setJobArray] = useState([
-    "Select Job",
-    "jobA",
-    "jobB",
-    "jobC",
-  ]);
-  const [yearArray, setYearArray] = useState([
-    "Select Year",
-    "10+",
-    "5-9",
-    "3-5",
-    "1-2",
-    "0-1",
-  ]);
-  const [industryArray, setIndustryArray] = useState([
-    "Select Industry",
-    "Finance",
-    "Gaming",
-    "SaaS",
-    "Space",
-  ]);
+  const [positionTitle, setPositionTitle] = useState("");
+
+  const [industry, setIndustry] = useState("");
 
   const [linkedIn, setLinkedIn] = useState("");
-  const [email, setEmail] = useState("");
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [companyWebsite1, setCompanyWebsite1] = useState("");
-  const [companyWebsite2, setCompanyWebsite2] = useState("");
-  const [companyWebsite3, setCompanyWebsite3] = useState("");
+  const [email, setEmail] = useState(candidateEmail);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [locationCity, setLocationCity] = useState("");
+  const [locationState, setLocationState] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState("");
+  const [jobCategory, setJobCategory] = useState("");
+  const [jobSeniority, setJobSeniority] = useState("");
+  const [companyName, setCompanyName] = useState("");
 
-  const hrId = router.query.hrId.toString();
   //filter out the URL and pass into variables
   const clearFormState = () => {
-    setJob1("");
-    setJob2("");
-    setJob3("");
-    setYear1("");
-    setYear2("");
-    setYear3("");
-    setIndustry1("");
-    setIndustry2("");
-    setIndustry3("");
-    setJobArray(["jobA"]);
-    setYearArray(["10+"]);
-    setIndustryArray(["Finance"]);
+    setPositionTitle("");
+    setIndustry("");
+    setLinkedIn("");
+    setEmail("");
+    setFirstName("");
+    setLastName("");
+    setLocationCity("");
+    setLocationState("");
+    setCompanyWebsite("");
+    setJobCategory("");
+    setJobSeniority("");
+    setCompanyName("");
   };
 
   const [initializeCandidateMetaData, { data, loading, error }] = useMutation(
@@ -77,48 +54,30 @@ export default function CandidateOn(props) {
 
     {
       variables: {
-        positionTitle1: "incompleteField",
-        positionTitle2: "incompleteField",
-        positionTitle3: "incompleteField",
-        industry1: "incompleteField",
-        industry2: "incompleteField",
-        industry3: "incompleteField",
-        companyWebsite1: "incompleteField",
-        companyWebsite2: "incompleteField",
-        companyWebsite3: "incompleteField",
+        positionTitle: "incompleteField",
+        industry: "incompleteField",
+        companyWebsite: "incompleteField",
+        companyName: "incompleteField",
         linkedIn: "incompleteField",
-        Location1: "incompleteField",
+        locationCity: "incompleteField",
+        locationState: "incompleteField",
         candidateEmail: "incompleteField",
         candidateFirstName: "incompleteField",
         candidateLastName: "incompleteField",
         hrId: "incompleteField",
+        jobCategory: "incompleteField",
+        seniority: "incompleteField",
       },
     }
   );
   //update UPSERT INFORMATION VARIABLES
   // PARSE URL AND PASS INTO HRID
   const formValidator = () => {
-    const job1Validator = job1;
-    const job2Validator = job2;
-    const job3Validator = job3;
-    const year1Validator = year1;
-    const year2Validator = year2;
-    const year3Validator = year3;
-    const industry1Validator = industry1;
-    const industry2Validator = industry2;
-    const industry3Validator = industry3;
-    const jobArrayValidator = jobArray;
-    const yearArrayValidator = yearArray;
-    const industryArrayValidator = industryArray;
+    const positionTitleValidator = positionTitle;
 
-    if (
-      job1Validator &&
-      job2Validator &&
-      year1Validator &&
-      year2Validator &&
-      industry1Validator &&
-      industry2Validator
-    ) {
+    const industry1Validator = industry;
+
+    if (positionTitleValidator && industry1Validator) {
       return true;
     }
     return false;
@@ -128,21 +87,19 @@ export default function CandidateOn(props) {
     nextStage();
     initializeCandidateMetaData({
       variables: {
-        positionTitle1: job1,
-        positionTitle2: job2,
-        positionTitle3: job3,
-        industry1: industry1,
-        industry2: industry2,
-        industry3: industry3,
-        companyWebsite1: companyWebsite1,
-        companyWebsite2: companyWebsite2,
-        companyWebsite3: companyWebsite3,
+        positionTitle: positionTitle,
+        industry: industry,
+        companyWebsite: companyWebsite,
         linkedIn: linkedIn,
-        Location1: "incompleteField",
+        locationCity: locationCity,
+        locationState: locationState,
         candidateEmail: email,
         candidateFirstName: firstName,
         candidateLastName: lastName,
         hrId: hrId,
+        seniority: jobSeniority,
+        jobCategory: jobCategory,
+        companyName: companyName,
       },
     });
     if (loading) return "Submitting...";
@@ -173,41 +130,28 @@ export default function CandidateOn(props) {
       return (
         <div>
           <CandidateOnTwo
-            companyWebsite1={companyWebsite1}
-            setCompanyWebsite1={setCompanyWebsite1}
-            companyWebsite2={companyWebsite2}
-            setCompanyWebsite2={setCompanyWebsite2}
-            companyWebsite3={companyWebsite3}
-            setCompanyWebsite3={setCompanyWebsite3}
-            job1={job1}
-            setJob1={setJob1}
-            job2={job2}
-            setJob2={setJob2}
-            job3={job3}
-            setJob3={setJob3}
-            year1={year1}
-            setYear1={setYear1}
-            year2={year2}
-            setYear2={setYear2}
-            year3={year3}
-            setYear3={setYear3}
-            industry1={industry1}
-            setIndustry1={setIndustry1}
-            industry2={industry2}
-            setIndustry2={setIndustry2}
-            industry3={industry3}
-            setIndustry3={setIndustry3}
-            jobArray={jobArray}
-            yearArray={yearArray}
-            industryArray={industryArray}
+            companyWebsite={companyWebsite}
+            setCompanyWebsite={setCompanyWebsite}
+            positionTitle={positionTitle}
+            setPositionTitle={setPositionTitle}
+            industry={industry}
+            setIndustry={setIndustry}
             firstName={firstName}
-            setFirstName={setfirstName}
+            setFirstName={setFirstName}
             lastName={lastName}
-            setLastName={setlastName}
-            candidateEmail={email}
-            setCandidateEmail={setEmail}
+            setLastName={setLastName}
             linkedIn={linkedIn}
             setLinkedIn={setLinkedIn}
+            locationCity={locationCity}
+            setLocationCity={setLocationCity}
+            locationState={locationState}
+            setLocationState={setLocationState}
+            companyName={companyName}
+            setCompanyName={setCompanyName}
+            jobCategory={jobCategory}
+            setJobCategory={setJobCategory}
+            jobSeniority={jobSeniority}
+            setJobSeniority={setJobSeniority}
             previousStage={previousStage}
             completeForm={onSubmit}
             formValidation={formValidator}

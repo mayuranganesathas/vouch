@@ -75,6 +75,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
         standOutSkill1: "incompleteField",
         standOutSkill2: "incompleteField",
         standOutSkill3: "incompleteField",
+        candidateEmail: "incompleteField",
       },
     }
   );
@@ -100,7 +101,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
       console.log(error);
       return;
     }
-    console.log(email);
   };
 
   const submitForm = async () => {
@@ -113,6 +113,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
         standOutSkill1: standOutSkill1,
         standOutSkill2: standOutSkill2,
         standOutSkill3: standOutSkill3,
+        candidateEmail: email,
       },
     });
     if (loading) return "Submitting...";
@@ -130,7 +131,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     const stageOfInterviewValidator = interviewStage;
     const standOutSkill1Validator = standOutSkill1;
     const standOutSkill2Validator = standOutSkill2;
-
     const standOutSkill3Validator = standOutSkill3;
 
     if (
@@ -368,7 +368,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     label="Add Candidate!"
                     disabled={formValidation()}
                   />
-                  {/* TODO FORM VALIDATION */}
                 </div>
                 <div className={"w-96 text-xs text-gray-300 py-2"}>
                   By clicking on “Refer Candidate”, you agree to the
