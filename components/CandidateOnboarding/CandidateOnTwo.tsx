@@ -116,7 +116,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
           "shadow-lg rounded-xl w-3/5 h-auto bg-white grid grid-cols-3"
         }
       >
-        <div className={"py-4 px-4 col-start-1 bg-VouchMed rounded-l-lg"}>
+        <div className={"py-4 px-4 col-start-1 bg-VouchDark rounded-l-lg"}>
           <div className={"py-10 "}>
             <div className={"flex justify-center"}>
               <UserAddIcon className={"w-12 h-auto "} fill="white" />

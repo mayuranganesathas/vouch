@@ -79,7 +79,7 @@ const UserIdBar = ({
           <ButtonNav
             backgroundColour={homeCheck ? "gray" : "white"}
             buttonType={"square"}
-            textColour={homeCheck ? "VouchGreen" : "black"}
+            textColour={homeCheck ? "textBlack" : "black"}
             label={"Home"}
             onClick={homeClick}
             icon={"Home"}
@@ -90,7 +90,7 @@ const UserIdBar = ({
           <ButtonNav
             backgroundColour={favoritesCheck ? "gray" : "white"}
             buttonType={"square"}
-            textColour={favoritesCheck ? "VouchGreen" : "black"}
+            textColour={favoritesCheck ? "textBlack" : "black"}
             label={"Favorites"}
             onClick={favoritesClick}
             icon={"Favorites"}
@@ -101,7 +101,7 @@ const UserIdBar = ({
           <ButtonNav
             backgroundColour={unfitCheck ? "gray" : "white"}
             buttonType={"square"}
-            textColour={unfitCheck ? "VouchGreen" : "black"}
+            textColour={unfitCheck ? "textBlack" : "black"}
             label={"Hidden"}
             onClick={unfitClick}
             icon={"NotNow"}
@@ -112,7 +112,7 @@ const UserIdBar = ({
           <ButtonNav
             backgroundColour={contactedCheck ? "gray" : "white"}
             buttonType={"square"}
-            textColour={contactedCheck ? "VouchGreen" : "black"}
+            textColour={contactedCheck ? "textBlack" : "black"}
             label={"Contacted"}
             onClick={contactedClick}
             icon={"Contacted"}

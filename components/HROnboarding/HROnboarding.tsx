@@ -101,7 +101,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
     <div className={"flex justify-center items-center"}>
       <div className={"shadow-lg rounded-xl w-3/6 h-auto bg-white"}>
         <div className={"grid grid-cols-3"}>
-          <div className={"col-start-1 bg-VouchMed rounded-l-lg"}>
+          <div className={"col-start-1 bg-VouchDark rounded-l-lg"}>
             <div>
               <div className={"py-10 "}>
                 <div className={"flex justify-center"}>
