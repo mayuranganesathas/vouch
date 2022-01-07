@@ -2,7 +2,7 @@ import React from "react";
 import { UsersIcon } from "@heroicons/react/solid";
 
 export interface CandidateCountProps {
-  candidateCount: any[];
+  candidateCount: any;
   lastCandidateCount: number;
 }
 
@@ -17,17 +17,17 @@ export const CandidateCount: React.FC<CandidateCountProps> = ({
           "flex items-center col-start-2 row-start-2 row-span-2 col-span-3 text-2xl"
         }
       >
-        <div className={""}>{candidateCount.length} Candidates</div>
+        <div className={""}>{candidateCount} Candidates</div>
       </div>
       <div
         className={
-          "items-center rounded-full px-0.5 text-white bg-VouchSalmon text-xs col-start-4 row-start-1"
+          "items-center rounded-full px-0.5 text-white text-xs col-start-4 row-start-1"
         }
       >
-        <div className={"text-gray-600"}>
+        {/* <div className={"text-gray-600"}>
           {" "}
-          {candidateCount.length - lastCandidateCount} New
-        </div>
+          {candidateCount - lastCandidateCount} New
+        </div> */}
       </div>
     </div>
   );

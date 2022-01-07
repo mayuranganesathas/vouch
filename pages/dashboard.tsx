@@ -60,7 +60,6 @@ const DashBoard = ({}: DashboardProps) => {
   const [jobCategoryDropdown, setJobCategoryDropdown] = useState("Category");
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
-
   let {
     loading,
     data: ShortList,
