@@ -5,17 +5,13 @@ export const QUERY_DASHBOARD_TILES = gql`
     hr_voucher_metadata {
       candidateId
       hrId
-      positionLevel
       positionTitle
       salaryRange
       stageOfInterview
       standOutSkill1
       standOutSkill2
       standOutSkill3
-      standOutSkill4
-      standOutSkill5
       Company_Data {
-        companyLogoAddress
         hrId
         location
         companyWebsite
@@ -30,20 +26,14 @@ export const QUERY_DASHBOARD_TILES = gql`
       }
       Vouchee {
         candidateId
-        companyWebsite1
-        companyWebsite2
-        companyWebsite3
+        companyWebsite
         hrId
-        industry1
-        industry2
-        industry3
+        industry
         jobCategory
         linkedIn
         locationCity
         locationState
-        positionTitle1
-        positionTitle2
-        positionTitle3
+        positionTitle
         seniority
         created_at
       }

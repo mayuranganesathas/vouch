@@ -81,18 +81,14 @@ const DashCandidateTiles = ({
   return (
     <div className="grid grid-cols-12">
       {vouchData &&
-        shortListFilter().map((e, i) => (
+        shortListFilter().map((e) => (
           <CandidateTile
             userID={e.candidateId}
             firstName={e.Candidate_Contact[0].candidateFirstName}
             lastName={e.Candidate_Contact[0].candidateLastName}
             positionTitle={e.positionTitle}
             salaryRange={e.salaryRange}
-            jobLocation={
-              e.Vouchee[0].locationCity == "Yes"
-                ? "Remote"
-                : e.Vouchee[0].locationCity
-            }
+            jobLocation={e.Vouchee[0].locationCity}
             numEmployees={e.Company_Data[0].rangeOfEmployees}
             companyName={e.Company_Data[0].corporateName}
             stageInterview={e.stageOfInterview}
@@ -110,18 +106,3 @@ const DashCandidateTiles = ({
 };
 
 export default DashCandidateTiles;
-
-// vouchData.hr_voucher_metadata
-
-// .filter(
-//     (e) => e.Vouchee[0].locationState == filterStateLocation
-//   )
-//
-
-// .filter(
-//         (e) => e.Vouchee[0].jobCategory == filterJobCategory
-//       )
-
-// .filter(
-// //         (e) => e.Vouchee[0].seniority == filterJobSeniority
-// //       )
