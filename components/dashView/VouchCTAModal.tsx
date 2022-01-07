@@ -238,7 +238,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   />
                 </div>
                 <div className="pt-1 font-bold flex justify-center text-base ">
-                  Add Candidate to the Vouch Platform
+                  STEP 1: Invite a Candidate
                 </div>
                 <div className={"flex justify-center py-2"}>
                   <input
@@ -249,6 +249,10 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     value={email}
                     onChange={(e) => emailChecker(e.target.value)}
                   ></input>
+                  <div>
+                    I have confirmed the candidate consents to being referred on
+                    Vouch.
+                  </div>
                 </div>
               </div>
               <div className="	">
