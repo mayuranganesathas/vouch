@@ -12,14 +12,11 @@ export default function Register() {
   const { user } = useAuth();
 
   const [industryArray, setIndustryArray] = useState("");
-
   const [employeeArray, setEmployeeArray] = useState("");
-
-  const [hrVoucherPosition, setHrVoucherPosition] = useState("");
   const [hrVoucherCompanyName, setHrVoucherCompanyName] = useState("");
   const [hrVoucherCompanyWebsite, setHrVoucherCompanyWebsite] = useState("");
-  const [hrLocation, setHrLocation] = useState("");
-  const [hrCompanyLogo, setHrCompanyLogo] = useState("");
+  const [hrCityLocation, setHrCityLocation] = useState("");
+  const [hrStateLocation, setHrStateLocation] = useState("");
   const [checkBoxValidation, setCheckBoxValidation] = useState(false);
 
   const { data: hrData } = useQuery(QUERY_HRID, {
@@ -44,16 +41,11 @@ export default function Register() {
         companyWebsite: "incompleteField",
         hrEmail: "incompleteField",
         industry: "incompleteField",
-        numberOfEmployees: "incompleteField",
-        position: "incompleteField",
+        rangeOfEmployees: "incompleteField",
         userName: "incompleteField",
         hrId: "incompleteField",
-        companyLogoAddress: "incompleteField",
-        companyWebsite1: "incompleteField",
-        corporateName: "incompleteField",
         locationState: "incompleteField",
-        numberOfEmployees1: "incompleteField",
-        hrId1: "incompleteField",
+        locationCity: "incompleteField",
       },
     }
   );
@@ -61,21 +53,20 @@ export default function Register() {
   const formValidator = () => {
     const employeeArrayValidator = employeeArray;
     const industryArrayValidator = industryArray;
-    const hrVoucherPositionValidator = hrVoucherPosition;
     const hrVoucherCompanyNameValidator = hrVoucherCompanyName;
     const hrVoucherCompanyWebsiteValidator = hrVoucherCompanyWebsite;
-    const hrLocationValidator = hrLocation;
-    //const hrCompanyLogoValidator = hrCompanyLogo;
+    const hrCityLocationValidator = hrCityLocation;
+    const hrStateLocationValidator = hrStateLocation;
+
     const checkBoxValidationValidator = checkBoxValidation;
 
     if (
       employeeArrayValidator &&
       industryArrayValidator &&
-      hrVoucherPositionValidator &&
       hrVoucherCompanyNameValidator &&
       hrVoucherCompanyWebsiteValidator &&
-      hrLocationValidator &&
-      // hrCompanyLogoValidator &&
+      hrStateLocationValidator &&
+      hrCityLocationValidator &&
       checkBoxValidationValidator
     ) {
       return false;
@@ -86,11 +77,10 @@ export default function Register() {
   const clearForms = () => {
     setIndustryArray("");
     setEmployeeArray("");
-    setHrVoucherPosition("");
     setHrVoucherCompanyName("");
     setHrVoucherCompanyWebsite("");
-    setHrLocation("");
-    setHrCompanyLogo("");
+    setHrCityLocation("");
+    setHrStateLocation("");
     setCheckBoxValidation(false);
   };
 
@@ -105,20 +95,15 @@ export default function Register() {
         companyWebsite: hrVoucherCompanyWebsite,
         hrEmail: hrEmail,
         industry: industryArray,
-        numberOfEmployees: employeeArray,
-        position: hrVoucherPosition,
+        rangeOfEmployees: employeeArray,
         userName: userName,
         hrId: hrID,
-        companyLogoAddress: hrCompanyLogo,
-        companyWebsite1: hrVoucherCompanyWebsite,
-        corporateName: hrVoucherCompanyName,
-        locationState: hrLocation,
-        numberOfEmployees1: employeeArray,
-        hrId1: hrID,
+        locationState: hrStateLocation,
+        locationCity: hrCityLocation,
       },
     });
     if (loading) return "Submitting...";
-    if (error) return `Submission error! ${error.message}`; //post to BE
+    if (error) return `Submission error! ${error.message}`;
 
     clearForms();
     location.reload();
@@ -130,18 +115,16 @@ export default function Register() {
           onClick={onSubmit}
           industryArray={industryArray}
           setIndustryArray={setIndustryArray}
-          hrLocation={hrLocation}
-          setHrLocation={setHrLocation}
+          hrCityLocation={hrCityLocation}
+          setHrCityLocation={setHrCityLocation}
+          hrStateLocation={hrStateLocation}
+          setHrStateLocation={setHrStateLocation}
           employeeArray={employeeArray}
           setEmployeeArray={setEmployeeArray}
-          hrVoucherPosition={hrVoucherPosition}
-          setHrVoucherPosition={setHrVoucherPosition}
           hrVoucherCompanyName={hrVoucherCompanyName}
           setHrVoucherCompanyName={setHrVoucherCompanyName}
           hrVoucherCompanyWebsite={hrVoucherCompanyWebsite}
           setHrVoucherWebsite={setHrVoucherCompanyWebsite}
-          hrCompanyLogo={hrCompanyLogo}
-          setHrCompanyLogo={setHrCompanyLogo}
           setCheckBoxValidation={setCheckBoxValidation}
           checkBoxValidation={checkBoxValidation}
           formValidation={formValidator}

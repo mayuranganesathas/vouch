@@ -1,3 +1,20 @@
+export const industryArrayList = [
+  "Advertising",
+  "Hardware",
+  "Software",
+  "Digital",
+  "Media",
+  "Finance",
+  "Health",
+  "Gaming",
+  "Ed Tech",
+  "Ecommerce",
+  "Marketing",
+  "News and Entertainment",
+  "Professional Services",
+  "Other-not listed",
+];
+
 export const jobIndustryDropdownData = [
   "Tech",
   "Gaming",
@@ -26,10 +43,10 @@ export const jobCategoryDropdownData = [
 
 export const jobCompanySizeDropdownData = [
   "0-10",
-  "10-50",
-  "50-100",
-  "100-200",
-  "200-500",
+  "11-50",
+  "51-100",
+  "101-250",
+  "251-500",
   "500+",
 ];
 
