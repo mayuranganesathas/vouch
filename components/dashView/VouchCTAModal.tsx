@@ -18,6 +18,12 @@ import { BaseSalaryFilterVouch } from "../ui/BaseSalaryFilterVouch";
 import { RoleSkillFilterVouch } from "../ui/RoleSkillFilterVouch";
 import { IntPersonalSkillFilterVouch } from "../ui/IntPersonalSkillFilterVouch";
 import { IntStrengthSkillFilterVouch } from "../ui/IntStrengthSkillFilterVouch";
+import {
+  BaseSalaryDropDownArray,
+  generalStrengths,
+  InterviewStageDropDownArray,
+  InterviewStrengthSkillDropDownArray,
+} from "../../pages/api/dropdownCategories";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -36,105 +42,23 @@ export interface VouchCTAModalProps {
 const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
   const { user } = useAuth();
 
-  const positionDropDownArray = [
-    "Front-End Dev",
-    "Back-End Dev",
-    "Software Eng",
-    "Quality Assurance",
-    "Customer Success",
-    "Sales/BD",
-    "Marketing",
-    "Account Mgmt.",
-    "Product Mangement",
-    "Data Analysis/Science",
-    "Design-UX/UI",
-  ];
-
-  const IntStageDropDownArray = [
-    "Technical Interview",
-    "Case Study/Code Review",
-    "Panel Interview",
-    "Final Interview",
-  ];
-
-  const SeniorityDropDownArray = [
-    "Junior (1-2 Years)",
-    "Intermediate (3-5 Years)",
-    "Senior (5-8 Years)",
-    "Manager",
-    "Director",
-    "VP",
-    "SVP/Executive",
-  ];
-
-  const BaseSalaryDropDownArray = [
-    "<$75k",
-    "$75k - $90k",
-    "$90k - $110k",
-    "$110k - $130k",
-    "$130k - $150k",
-    "$150k - $170k",
-    "$170k - $190k",
-    "$190k - $210k",
-    "$210k - $250k",
-    "$250k+",
-  ];
-
-  const RoleSkillDropDownArray = [
-    "Industry Expert",
-    "International Teams Exp",
-    "Strong Technical Chops",
-    "Product Vision",
-    "Project Management",
-    "Versatile Programming Skills",
-    "Understands the Customer",
-    "Cross-Functional Team Exp",
-    "Great Design Eye",
-  ];
-
-  const IntPersonalSkillDropDownArray = [
-    "Confident",
-    "Effective Communicator",
-    "Positive Personality",
-    "Team Oriented",
-    "Managing/Coaching Exp",
-    "Strategic Thinker",
-    "Critical Thinker",
-    "Strong Business Acumen",
-  ];
-
-  const IntStrengthSkillDropDownArray = [
-    "Asked Good Questions",
-    "Did their hmwk (role/org)",
-    "Strong Presentation Skills",
-    "Polished and Professional",
-    "Active Listener",
-  ];
-
   //authentication passes hrID
   const [email, setEmail] = useState("");
-  const [position, setPosition] = useState(""); //new
   const [positionTitle, setPositionTitle] = useState("");
   const [interviewStage, setInterviewStage] = useState("");
-  const [positionLevel, setPositionLevel] = useState("");
   const [salaryRange, setSalaryRange] = useState("");
   const [standOutSkill1, setStandOutSkill1] = useState(""); // Industry Skill
   const [standOutSkill2, setStandOutSkill2] = useState(""); // Interpersonal Skill
   const [standOutSkill3, setStandOutSkill3] = useState(""); // Interview Skill
-  const [standOutSkill4, setStandOutSkill4] = useState("");
-  const [standOutSkill5, setStandOutSkill5] = useState("");
 
   const clearFormState = () => {
     setEmail("");
     setPositionTitle("");
-    setPositionLevel("");
     setSalaryRange("");
     setInterviewStage("");
     setStandOutSkill1("");
     setStandOutSkill2("");
     setStandOutSkill3("");
-    setStandOutSkill4("");
-    setStandOutSkill5("");
   };
 
   //replace with HR authentication
@@ -145,27 +69,18 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     {
       variables: {
         hrId: "incompleteForm",
-        positionLevel: "incompleteField",
         positionTitle: "incompleteField",
         salaryRange: "incompleteField",
         stageOfInterview: "incompleteField",
         standOutSkill1: "incompleteField",
         standOutSkill2: "incompleteField",
         standOutSkill3: "incompleteField",
-        standOutSkill4: "incompleteField",
-        standOutSkill5: "incompleteField",
-        hrId1: "incompleteField",
-        hrId2: "incompleteField",
       },
     }
   );
   // insert hrID in candidates and
   const emailChecker = (e) => {
     setEmail(e);
-  };
-
-  const positionChecker = (e) => {
-    setPosition(e);
   };
 
   const sendEmail = async () => {
@@ -192,17 +107,12 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     initializeVouchCandidate({
       variables: {
         hrId: user.uid,
-        positionLevel: positionLevel,
         positionTitle: positionTitle,
         salaryRange: salaryRange,
         stageOfInterview: interviewStage,
         standOutSkill1: standOutSkill1,
         standOutSkill2: standOutSkill2,
         standOutSkill3: standOutSkill3,
-        standOutSkill4: standOutSkill4,
-        standOutSkill5: standOutSkill5,
-        hrId1: user.uid,
-        hrId2: user.uid,
       },
     });
     if (loading) return "Submitting...";
@@ -215,7 +125,6 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
 
   const formValidation = () => {
     const emailValidator = email;
-    const positionLevelValidator = positionLevel;
     const positionTitleValidator = positionTitle;
     const salaryRangeValidator = salaryRange;
     const stageOfInterviewValidator = interviewStage;
@@ -224,17 +133,10 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
 
     const standOutSkill3Validator = standOutSkill3;
 
-    const standOutSkill4Validator = standOutSkill4;
-
-    const standOutSkill5Validator = standOutSkill5;
-
     if (
-      positionLevelValidator &&
       (standOutSkill1Validator ||
         standOutSkill2Validator ||
-        standOutSkill3Validator ||
-        standOutSkill4Validator ||
-        standOutSkill5Validator) &&
+        standOutSkill3Validator) &&
       emailValidator &&
       positionTitleValidator &&
       salaryRangeValidator &&
@@ -365,76 +267,42 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     id="guess"
                     type="text"
                     placeholder=" Position Title"
-                    value={position}
-                    onChange={(e) => positionChecker(e.target.value)}
+                    value={positionTitle}
+                    onChange={(e) => setPositionTitle(e.target.value)}
                   ></input>
                 </div>
                 <div className={"grid grid-cols-2 pt-4"}>
                   <div className={""}>
                     <div className="">
-                      <div className="py-1 text-xs font-bold text-gray-500">
-                        Position Category
+                      <div className="text-xs py-1 font-bold text-gray-500">
+                        Furthest Interview Stage:
                       </div>
                       <div className={"pr-3"}>
                         <PositionFilterVouch
-                          value={positionTitle}
+                          value={interviewStage}
                           backgroundColour="white"
                           onChange={(e) => {
-                            setPositionTitle(e.target.value);
+                            setInterviewStage(e.target.value);
                           }}
-                          positionDropDownArray={positionDropDownArray}
+                          positionDropDownArray={InterviewStageDropDownArray}
                         />
-                      </div>
-                    </div>
-                    <div className="">
-                      <div className={"pt-4"}>
-                        <div className="text-xs py-1 font-bold text-gray-500">
-                          Furthest Interview Stage:
-                        </div>
-                        <div className={"pr-3"}>
-                          <IntStageFilterVouch
-                            value={interviewStage}
-                            backgroundColour="white"
-                            onChange={(e) => {
-                              setInterviewStage(e.target.value);
-                            }}
-                            IntStageDropDownArray={IntStageDropDownArray}
-                          />{" "}
-                        </div>
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <div>
-                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
-                        Seniority Level:
-                      </div>{" "}
-                      <div className={"pl-3"}>
-                        <SeniorityFilterVouch
-                          value={positionLevel}
-                          backgroundColour="white"
-                          onChange={(e) => {
-                            setPositionLevel(e.target.value);
-                          }}
-                          SeniorityDropDownArray={SeniorityDropDownArray}
-                        />
-                      </div>
-                    </div>
-                    <div className={"pt-4"}>
-                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
-                        Base Salary Range:
-                      </div>{" "}
-                      <div className={"pl-3"}>
-                        <BaseSalaryFilterVouch
-                          value={salaryRange}
-                          backgroundColour="white"
-                          onChange={(e) => {
-                            setSalaryRange(e.target.value);
-                          }}
-                          BaseSalaryDropDownArray={BaseSalaryDropDownArray}
-                        />
-                      </div>
+                    <div className="text-xs py-1 pl-3 font-bold text-gray-500">
+                      Base Salary Range:
+                    </div>{" "}
+                    <div className={"pl-3"}>
+                      <BaseSalaryFilterVouch
+                        value={salaryRange}
+                        backgroundColour="white"
+                        onChange={(e) => {
+                          setSalaryRange(e.target.value);
+                        }}
+                        BaseSalaryDropDownArray={BaseSalaryDropDownArray}
+                      />
                     </div>
                   </div>
                 </div>
@@ -458,7 +326,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     <div>
                       <div>
                         <div className="text-xs py-1 pl-3 font-bold text-gray-500">
-                          Role Related Strenghs [prop]:
+                          General Strengths:
                         </div>{" "}
                         <div className={"pl-3"}>
                           <RoleSkillFilterVouch
@@ -467,14 +335,14 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                             onChange={(e) => {
                               setStandOutSkill1(e.target.value);
                             }}
-                            RoleSkillDropDownArray={RoleSkillDropDownArray}
+                            RoleSkillDropDownArray={generalStrengths}
                           />
                         </div>
                       </div>
                     </div>
                     <div>
                       <div className="text-xs pt-1 pl-3 font-bold text-gray-500">
-                        Interpersonal Strengths [props]:
+                        Interview Strengths:
                       </div>{" "}
                       <div className={"pl-3"}>
                         <IntPersonalSkillFilterVouch
@@ -484,24 +352,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                             setStandOutSkill2(e.target.value);
                           }}
                           IntPersonalSkillDropDownArray={
-                            IntPersonalSkillDropDownArray
-                          }
-                        />
-                      </div>
-                    </div>
-                    <div className={"pt-4"}>
-                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
-                        Interview Strengths [props]:
-                      </div>{" "}
-                      <div className={"pl-3"}>
-                        <IntStrengthSkillFilterVouch
-                          value={standOutSkill3}
-                          backgroundColour="white"
-                          onChange={(e) => {
-                            setStandOutSkill3(e.target.value);
-                          }}
-                          IntStrengthSkillDropDownArray={
-                            IntStrengthSkillDropDownArray
+                            InterviewStrengthSkillDropDownArray
                           }
                         />
                       </div>
