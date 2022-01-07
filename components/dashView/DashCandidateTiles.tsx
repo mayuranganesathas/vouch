@@ -81,37 +81,21 @@ const DashCandidateTiles = ({
   return (
     <div className="grid grid-cols-12">
       {vouchData &&
-        shortListFilter().map((e, i) => (
+        shortListFilter().map((e) => (
           <CandidateTile
             userID={e.candidateId}
             firstName={e.Candidate_Contact[0].candidateFirstName}
             lastName={e.Candidate_Contact[0].candidateLastName}
             positionTitle={e.positionTitle}
             salaryRange={e.salaryRange}
-            jobLocation={
-              e.Vouchee[0].locationCity == "Yes"
-                ? "Remote"
-                : e.Vouchee[0].locationCity
-            }
-            companyLogo={e.Company_Data[0].companyLogoAddress}
+            jobLocation={e.Vouchee[0].locationCity}
             numEmployees={e.Company_Data[0].rangeOfEmployees}
             companyName={e.Company_Data[0].corporateName}
             stageInterview={e.stageOfInterview}
-            pastPosition1={e.Vouchee[0].positionTitle1}
-            pastIndustry1={e.Vouchee[0].industry1}
-            standOutSkill1={
-              e.standOutSkill1
-                ? e.standOutSkill1
-                : "Information Missing." || e.standOutSkill2
-                ? e.standOutSkill2
-                : "Information Missing." || e.standOutSkill3
-                ? e.standOutSkill3
-                : "Information Missing." || e.standOutSkill4
-                ? e.standOutSkill4
-                : "Information Missing." || e.standOutSkill5
-                ? e.standOutSkill5
-                : "Information Missing."
-            }
+            pastPosition1={e.Vouchee[0].positionTitle}
+            pastIndustry1={e.Vouchee[0].industry}
+            standOutSkill1={e.standOutSkill1}
+            standOutSkill2={e.standOutSkill2}
             userLinkedinURL={e.Vouchee[0].linkedIn}
             userEmailAction={e.Candidate_Contact[0].candidateEmail}
             refetchShortList={refetchShortList}
@@ -122,18 +106,3 @@ const DashCandidateTiles = ({
 };
 
 export default DashCandidateTiles;
-
-// vouchData.hr_voucher_metadata
-
-// .filter(
-//     (e) => e.Vouchee[0].locationState == filterStateLocation
-//   )
-//
-
-// .filter(
-//         (e) => e.Vouchee[0].jobCategory == filterJobCategory
-//       )
-
-// .filter(
-// //         (e) => e.Vouchee[0].seniority == filterJobSeniority
-// //       )

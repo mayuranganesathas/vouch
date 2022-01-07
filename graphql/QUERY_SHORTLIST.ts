@@ -13,15 +13,12 @@ export const QUERY_SHORT_LIST = gql`
         candidateId
         created_at
         hrId
-        positionLevel
         positionTitle
         salaryRange
         stageOfInterview
         standOutSkill1
         standOutSkill2
         standOutSkill3
-        standOutSkill4
-        standOutSkill5
         Candidate_Contact {
           candidateEmail
           candidateFirstName
@@ -29,17 +26,16 @@ export const QUERY_SHORT_LIST = gql`
           candidateId
         }
         Company_Data {
-          companyLogoAddress
           companyWebsite
           corporateName
           rangeOfEmployees
           location
         }
         Vouchee {
-          industry1
-          positionTitle1
+          industry
+          positionTitle
           linkedIn
-          companyWebsite1
+          companyWebsite
           locationCity
           locationState
         }
