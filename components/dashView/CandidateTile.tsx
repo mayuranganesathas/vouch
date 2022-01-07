@@ -17,13 +17,13 @@ export interface CandidateTileProps {
   positionTitle: string;
   salaryRange: string;
   jobLocation: string;
-  companyLogo: string;
   numEmployees: string;
   companyName: string;
   stageInterview: string;
   pastPosition1: string;
   pastIndustry1: string;
   standOutSkill1: string;
+  standOutSkill2: string;
   userLinkedinURL: string;
   userEmailAction: string;
   firstName: string;
@@ -38,13 +38,13 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   positionTitle,
   salaryRange,
   jobLocation,
-  companyLogo,
   numEmployees,
   companyName,
   stageInterview,
   pastPosition1,
   pastIndustry1,
   standOutSkill1,
+  standOutSkill2,
   userLinkedinURL,
   userEmailAction,
   refetchShortList,
@@ -209,8 +209,8 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               <p className={"w-full text-base"}>${salaryRange} k/year </p>
             </div>
             <div className={"col-start-2"}>
-              <p className={"w-full font-gray-500 "}>[S] {standOutSkill1}</p>
-              <p className={"w-full  font-gray-500 pt-1 "}>[S] New Prop</p>
+              <p className={"w-full font-gray-500 "}>{standOutSkill1}</p>
+              <p className={"w-full  font-gray-500 pt-1 "}>{standOutSkill2}</p>
             </div>
           </div>
         </div>

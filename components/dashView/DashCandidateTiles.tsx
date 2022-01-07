@@ -93,25 +93,13 @@ const DashCandidateTiles = ({
                 ? "Remote"
                 : e.Vouchee[0].locationCity
             }
-            companyLogo={e.Company_Data[0].companyLogoAddress}
             numEmployees={e.Company_Data[0].rangeOfEmployees}
             companyName={e.Company_Data[0].corporateName}
             stageInterview={e.stageOfInterview}
-            pastPosition1={e.Vouchee[0].positionTitle1}
-            pastIndustry1={e.Vouchee[0].industry1}
-            standOutSkill1={
-              e.standOutSkill1
-                ? e.standOutSkill1
-                : "Information Missing." || e.standOutSkill2
-                ? e.standOutSkill2
-                : "Information Missing." || e.standOutSkill3
-                ? e.standOutSkill3
-                : "Information Missing." || e.standOutSkill4
-                ? e.standOutSkill4
-                : "Information Missing." || e.standOutSkill5
-                ? e.standOutSkill5
-                : "Information Missing."
-            }
+            pastPosition1={e.Vouchee[0].positionTitle}
+            pastIndustry1={e.Vouchee[0].industry}
+            standOutSkill1={e.standOutSkill1}
+            standOutSkill2={e.standOutSkill2}
             userLinkedinURL={e.Vouchee[0].linkedIn}
             userEmailAction={e.Candidate_Contact[0].candidateEmail}
             refetchShortList={refetchShortList}
