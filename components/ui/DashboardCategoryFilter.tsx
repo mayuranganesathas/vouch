@@ -8,9 +8,13 @@ export interface DashboardCategoryFilterProps {
   width?: "wide-md" | "wide-lg" | "wide-sm";
 }
 
-export const DashboardCategoryFilter: React.FC<
-  DashboardCategoryFilterProps
-> = ({ backgroundColour, dropDownArray, value, onChange, width }) => {
+export const DashboardCategoryFilter: React.FC<DashboardCategoryFilterProps> = ({
+  backgroundColour,
+  dropDownArray,
+  value,
+  onChange,
+  width,
+}) => {
   let backgroundStyles;
   switch (backgroundColour) {
     case "VouchGreen":
@@ -42,7 +46,7 @@ export const DashboardCategoryFilter: React.FC<
         value={value}
         onChange={onChange}
       >
-        <option disabled selected hidden>
+        <option value="" disabled selected hidden>
           Select One
         </option>
         {dropDownArray &&
