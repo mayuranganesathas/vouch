@@ -242,15 +242,16 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             Current or previous role (required){" "}
           </div>
           <div className={"grid grid-cols-2 "}>
-            <div className={"col-start-1  py-1 pb-4"}>
+            <div className={"col-start-1  py-1"}>
               <div className={"pr-1"}>
+                {" "}
                 <input
                   className={
                     "border border-gray-300 text-xs w-full rounded py-1 px-4"
                   }
-                  placeholder="Company Name"
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)} //PROP
+                  placeholder="Position Title"
+                  value={positionTitle}
+                  onChange={(e) => setPositionTitle(e.target.value)} //PROP
                 ></input>
               </div>
               <div className={"pt-4 pr-1"}>
@@ -259,15 +260,15 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                     className={
                       "border border-gray-300 text-xs w-full rounded py-1 px-4"
                     }
-                    placeholder="Position Title"
-                    value={positionTitle}
-                    onChange={(e) => setPositionTitle(e.target.value)} //PROP
+                    placeholder="Company Name"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)} //PROP
                   ></input>
                 </div>
               </div>
             </div>
             <div className={"col-start-2"}>
-              <div className={"pt-1 pl-1"}>
+              <div className={"pt-12 pl-1"}>
                 <input
                   className={
                     "border border-gray-300 text-xs w-full rounded py-1 px-4"
@@ -278,6 +279,12 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                 ></input>
               </div>
             </div>
+          </div>
+          <div className={"text-xs text-gray-400 pt-1 pb-6"}>
+            {" "}
+            Important: Company website is used to ensure profile DOES NOT show
+            up on your current company’s dashboard of candidates if they
+            participate in Vouch
           </div>
           <div className={"grid grid-cols-3 gap-4"}>
             <div>
@@ -331,7 +338,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             {" "}
             <ButtonVouch
               backgroundColour={"VouchGreen"}
-              buttonType={"rounded"}
+              buttonType={"square"}
               textColour={"white"}
               label={"Previous"}
               disabled={false}
@@ -339,7 +346,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             />
             <ButtonVouch
               backgroundColour={"VouchGreen"}
-              buttonType={"rounded"}
+              buttonType={"square"}
               textColour={"white"}
               label={"Submit"}
               disabled={formValidation() ? false : true}

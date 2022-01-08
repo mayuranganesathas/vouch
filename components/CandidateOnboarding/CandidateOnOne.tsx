@@ -19,7 +19,7 @@ export const CandidateOnOne: React.FC<CandidateOnOneProps> = ({ onClick }) => {
         <div className="flex justify-center py-4">
           <ButtonVouch
             backgroundColour={"VouchGreen"}
-            buttonType={"rounded"}
+            buttonType={"square"}
             textColour={"white"}
             label={"Yes, Sign me up!"}
             disabled={false}
