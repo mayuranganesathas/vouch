@@ -88,7 +88,11 @@ const DashCandidateTiles = ({
             lastName={e.Candidate_Contact[0].candidateLastName}
             positionTitle={e.positionTitle}
             salaryRange={e.salaryRange}
-            jobLocation={e.Vouchee[0].locationCity}
+            jobLocation={
+              e.Vouchee[0].locationCity == "Yes"
+                ? "Remote"
+                : e.Vouchee[0].locationCity
+            }
             numEmployees={e.Company_Data[0].rangeOfEmployees}
             companyName={e.Company_Data[0].corporateName}
             stageInterview={e.stageOfInterview}

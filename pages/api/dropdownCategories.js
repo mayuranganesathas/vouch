@@ -30,16 +30,16 @@ export const SeniorityDropDownArray = [
 ];
 
 export const BaseSalaryDropDownArray = [
-  "<$75k",
-  "$75k - $90k",
-  "$90k - $110k",
-  "$110k - $130k",
-  "$130k - $150k",
-  "$150k - $170k",
-  "$170k - $190k",
-  "$190k - $210k",
-  "$210k - $250k",
-  "$250k+",
+  "<$75k/year",
+  "$75k - $90k/year",
+  "$90k - $110k/year",
+  "$110k - $130k/year",
+  "$130k - $150k/year",
+  "$150k - $170k/year",
+  "$170k - $190k/year",
+  "$190k - $210k/year",
+  "$210k - $250k/year",
+  "$250k+/year",
 ];
 
 export const RoleSkillDropDownArray = [
