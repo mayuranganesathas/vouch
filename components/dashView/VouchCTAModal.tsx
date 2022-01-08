@@ -18,6 +18,7 @@ import { BaseSalaryFilterVouch } from "../ui/BaseSalaryFilterVouch";
 import { RoleSkillFilterVouch } from "../ui/RoleSkillFilterVouch";
 import { IntPersonalSkillFilterVouch } from "../ui/IntPersonalSkillFilterVouch";
 import { IntStrengthSkillFilterVouch } from "../ui/IntStrengthSkillFilterVouch";
+import { InformationCircleIcon } from "@heroicons/react/solid";
 import {
   BaseSalaryDropDownArray,
   generalStrengths,
@@ -154,7 +155,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className=" w-fit h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto absolute right-0"
+        className=" w-3/6 h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto absolute right-0"
         contentLabel="Test Name"
         ariaHideApp={false}
         aria={{
@@ -228,7 +229,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                 </div>
               </div>
             </div>
-            <div className={"col-span-3 px-8"}>
+            <div className={"col-span-3 px-8 text-gray-700"}>
               {" "}
               <div>
                 <div className="grid justify-items-end">
@@ -237,12 +238,12 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     onClick={closeModal}
                   />
                 </div>
-                <div className="pt-1 font-bold flex justify-center text-base ">
-                  Add Candidate to the Vouch Platform
+                <div className="pt-4 font-bold flex justify-start text-base ">
+                  STEP 1: Invite a Candidate
                 </div>
                 <div className={"flex justify-center py-2"}>
                   <input
-                    className="border-2 w-full py-0.5 pl-1 rounded"
+                    className="border-2 w-full py-0.5 pl-1 rounded text-sm"
                     id="guess"
                     type="text"
                     placeholder=" Enter Candidate Email"
@@ -250,20 +251,28 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     onChange={(e) => emailChecker(e.target.value)}
                   ></input>
                 </div>
+                <div className="text-gray-300 text-xs font-bold flex justify-start pb-4">
+                  I have confirmed the candidate consents to being referred into
+                  Vouch.
+                </div>
+              </div>
+              <div className="py-6">
+                <hr className="" />
               </div>
               <div className="	">
                 <div className="pt-2">
-                  <div className="font-bold text-base flex justify-center">
-                    Position Details
+                  <div className="font-bold text-base flex justify-start">
+                    Step 2: Interview and Position Details
                   </div>
-                  <div className="text-gray-300 text-xs font-bold flex justify-center">
-                    The role they recently interviewed for
+                  <div className="text-gray-300 text-xs font-bold flex justify-start pb-4">
+                    Provide detail about the role they just interviewed for.{" "}
+                    This information will ONLY be seen by HR Managers.
                   </div>
                 </div>
 
                 <div className={"flex justify-center py-2"}>
                   <input
-                    className="border-2 w-full py-0.5 pl-1 rounded"
+                    className="border-2 w-full py-0.5 pl-1 rounded text-sm"
                     id="guess"
                     type="text"
                     placeholder=" Position Title"
@@ -271,11 +280,16 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     onChange={(e) => setPositionTitle(e.target.value)}
                   ></input>
                 </div>
-                <div className={"grid grid-cols-2 pt-4"}>
+                <div className={"grid grid-cols-2 pt-4 text-gray-700"}>
                   <div className={""}>
-                    <div className="">
-                      <div className="text-xs py-1 font-bold text-gray-500">
-                        Furthest Interview Stage:
+                    <div className="pb-4">
+                      <div className="text-xs py-1 font-bold text-gray-500 flex flex-nowrap">
+                        Furthest Interview Stage
+                        <InformationCircleIcon
+                          className={
+                            "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer pl-0.5"
+                          }
+                        />{" "}
                       </div>
                       <div className={"pr-3"}>
                         <PositionFilterVouch
@@ -291,8 +305,13 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   </div>
 
                   <div>
-                    <div className="text-xs py-1 pl-3 font-bold text-gray-500">
-                      Base Salary Range:
+                    <div className="text-xs py-1 pl-3 font-bold text-gray-500 flex flex-nowrap">
+                      Base Salary Range{" "}
+                      <InformationCircleIcon
+                        className={
+                          "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer p,-0.5"
+                        }
+                      />{" "}
                     </div>{" "}
                     <div className={"pl-3"}>
                       <BaseSalaryFilterVouch
@@ -306,17 +325,17 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     </div>
                   </div>
                 </div>
-                <div className="py-6">
+                <div className="py-8">
                   <hr className="" />
                 </div>
-                <div className="pb-4">
-                  <div className="font-bold flex justify-center text-base">
-                    Stand Out Skills
+                <div className="pb-10 text-gray-700">
+                  <div className="font-bold flex justify-start text-base">
+                    Step 3: Stand Out Skills
                   </div>
                   <div className="text-gray-400 text-xs py-0.5">
                     <div
                       className={
-                        "text-gray-300 text-xs font-bold flex justify-center"
+                        "text-gray-300 text-xs font-bold flex justify-start"
                       }
                     >
                       Select skill that impressed you
@@ -325,10 +344,10 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   <div className="grid grid-cols-2 pt-2">
                     <div>
                       <div>
-                        <div className="text-xs py-1 pl-3 font-bold text-gray-500">
-                          General Strengths:
+                        <div className="text-xs py-1 font-bold text-gray-500">
+                          General Strengths
                         </div>{" "}
-                        <div className={"pl-3"}>
+                        <div className={"pr-3"}>
                           <RoleSkillFilterVouch
                             value={standOutSkill1}
                             backgroundColour="white"
@@ -341,8 +360,8 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                       </div>
                     </div>
                     <div>
-                      <div className="text-xs pt-1 pl-3 font-bold text-gray-500">
-                        Interview Strengths:
+                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
+                        Interview Strengths
                       </div>{" "}
                       <div className={"pl-3"}>
                         <IntPersonalSkillFilterVouch
@@ -369,7 +388,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     disabled={formValidation()}
                   />
                 </div>
-                <div className={"w-96 text-xs text-gray-300 py-2"}>
+                <div className={"text-xs text-gray-300 py-2"}>
                   By clicking on “Refer Candidate”, you agree to the
                   VouchRecruit Terms and Conditions .To see how we may use the
                   information, please take a look at our Privacey Policy [LINKS
