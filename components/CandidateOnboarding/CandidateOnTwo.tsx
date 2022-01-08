@@ -80,6 +80,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   completeForm,
   formValidation,
 }) => {
+  const email = () => {};
   return (
     <div className={"flex justify-center items-center"}>
       <div
@@ -140,7 +141,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             </div>
           </div>
         </div>
-        <div className={"col-start-2 col-span-2 px-4 py-4"}>
+        <div className={"col-start-2 col-span-2 px-4 py-4 text-gray-700"}>
           <div className={"font-bold text-base"}>
             Tell companies a little bit about yourself
           </div>
@@ -185,7 +186,6 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                   className={"pb-1"}
                 />
               </div>
-              {/* Took out email intentionally. */}
               <input
                 className={
                   "border border-gray-300 text-xs w-full rounded py-1 px-4"
@@ -196,6 +196,20 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
               ></input>
             </div>
             <div className={"text-xs py-4"}>
+              <div>
+                {" "}
+                <MailIcon className={"h-4 w-4 "} />
+              </div>
+              <input
+                className={
+                  "border border-gray-300 text-xs w-full rounded py-1 px-4"
+                }
+                placeholder="Email Address"
+                /*value={email}*/
+                onChange={(e) => e.target.value}
+              ></input>
+            </div>
+            <div className={"text-xs py-2"}>
               <input
                 className={
                   "border border-gray-300 text-xs w-full rounded py-1 px-4"
@@ -205,7 +219,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                 onChange={(e) => setLocationCity(e.target.value)}
               ></input>
             </div>
-            <div className={"text-xs py-4"}>
+            <div className={"text-xs py-2"}>
               <SearchFilterDash
                 backgroundColour={"white"}
                 dropDownArray={stateProvince}
@@ -221,20 +235,23 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
           <div className="py-6">
             <hr className="" />
           </div>
-          <div className={"text-base font-bold"}>Prior Work Experience</div>
+          <div className={"text-base font-bold pt-2"}>
+            Prior Work Experience
+          </div>
           <div className={"py-1 text-xs text-gray-500"}>
             Current or previous role (required){" "}
           </div>
           <div className={"grid grid-cols-2 "}>
-            <div className={"col-start-1  py-1 pb-4"}>
+            <div className={"col-start-1  py-1"}>
               <div className={"pr-1"}>
+                {" "}
                 <input
                   className={
                     "border border-gray-300 text-xs w-full rounded py-1 px-4"
                   }
-                  placeholder="Company Name"
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)} //PROP
+                  placeholder="Position Title"
+                  value={positionTitle}
+                  onChange={(e) => setPositionTitle(e.target.value)} //PROP
                 ></input>
               </div>
               <div className={"pt-4 pr-1"}>
@@ -243,15 +260,15 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                     className={
                       "border border-gray-300 text-xs w-full rounded py-1 px-4"
                     }
-                    placeholder="Position Title"
-                    value={positionTitle}
-                    onChange={(e) => setPositionTitle(e.target.value)} //PROP
+                    placeholder="Company Name"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)} //PROP
                   ></input>
                 </div>
               </div>
             </div>
             <div className={"col-start-2"}>
-              <div className={"pt-1 pl-1"}>
+              <div className={"pt-12 pl-1"}>
                 <input
                   className={
                     "border border-gray-300 text-xs w-full rounded py-1 px-4"
@@ -262,6 +279,12 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                 ></input>
               </div>
             </div>
+          </div>
+          <div className={"text-xs text-gray-400 pt-1 pb-6"}>
+            {" "}
+            Important: Company website is used to ensure profile DOES NOT show
+            up on your current company’s dashboard of candidates if they
+            participate in Vouch
           </div>
           <div className={"grid grid-cols-3 gap-4"}>
             <div>
@@ -315,7 +338,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             {" "}
             <ButtonVouch
               backgroundColour={"VouchGreen"}
-              buttonType={"rounded"}
+              buttonType={"square"}
               textColour={"white"}
               label={"Previous"}
               disabled={false}
@@ -323,7 +346,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             />
             <ButtonVouch
               backgroundColour={"VouchGreen"}
-              buttonType={"rounded"}
+              buttonType={"square"}
               textColour={"white"}
               label={"Submit"}
               disabled={formValidation() ? false : true}

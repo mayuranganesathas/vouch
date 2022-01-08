@@ -45,6 +45,9 @@ export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
         value={value}
         onChange={onChange}
       >
+        <option value="" disabled selected hidden>
+          Select One
+        </option>
         {dropDownArray &&
           dropDownArray
             .filter((v, i, a) => a.indexOf(v) === i)
