@@ -169,10 +169,7 @@ const DashBoard = ({}: DashboardProps) => {
             </div>
             <div className="grid col-start-3 bg-gray-200 py-6 pr-6">
               <div className={"flex items-center justify-end"}>
-                <VouchCTA
-                  numberReferred={dashBoardTest.numberReferred}
-                  numberThanks={dashBoardTest.numberThanks}
-                />
+                <VouchCTA />
               </div>
             </div>
           </div>
@@ -270,7 +267,7 @@ const DashBoard = ({}: DashboardProps) => {
                       "w-full pl-8 font-bold text-sm text-gray-400 grid grid-cols-12"
                     }
                   >
-                    <div className={"col-span-5"}>Salary Range</div>
+                    <div className={"col-span-5"}>Salary Range (USD)</div>
                     <div className={"col-start-6 pl-1"}>
                       <InformationCircleIcon
                         className={

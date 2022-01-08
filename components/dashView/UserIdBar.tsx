@@ -68,10 +68,7 @@ const UserIdBar = ({
           <div className="flex px-2 justify-between">
             <HrCompanyProfile
               userHrCompanyName={hrData.hr_voucher[0].companyName}
-              userHrCompanyImage={hrData.company_data[0].companyLogoAddress}
-              userHrCompanyIndustry={hrData.hr_voucher[0].industry}
               userHrCompanyWebsite={hrData.hr_voucher[0].companyWebsite}
-              userHrCompanyLocation={hrData.hr_voucher[0].location}
             />
           </div>
         </div>

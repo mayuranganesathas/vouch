@@ -4,11 +4,8 @@ import Modal from "react-modal";
 import { useState } from "react";
 import VouchCTAModal from "./VouchCTAModal";
 
-export interface VouchCTAProps {
-  numberReferred: number;
-  numberThanks: number;
-}
-const VouchCTA = ({ numberReferred, numberThanks }: VouchCTAProps) => {
+export interface VouchCTAProps {}
+const VouchCTA = ({}: VouchCTAProps) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -23,7 +20,7 @@ const VouchCTA = ({ numberReferred, numberThanks }: VouchCTAProps) => {
     <div className="">
       <div className="text-center">
         <ButtonVouch
-          label="Vouch For A Candidate"
+          label="Invite A Candidate to Vouch"
           backgroundColour="VouchGreen"
           buttonType="square"
           textColour="white"

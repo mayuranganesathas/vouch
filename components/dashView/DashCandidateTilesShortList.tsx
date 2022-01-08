@@ -29,7 +29,11 @@ const DashCandidateTilesShortList = ({
               }
               positionTitle={e.hr_voucher_metadatum.positionTitle}
               salaryRange={e.hr_voucher_metadatum.salaryRange}
-              jobLocation={e.hr_voucher_metadatum.Company_Data[0].locationCity}
+              jobLocation={
+                e.hr_voucher_metadatum.Vouchee[0].locationCity == "Yes"
+                  ? "Remote"
+                  : e.hr_voucher_metadatum.Vouchee[0].locationCity
+              }
               numEmployees={
                 e.hr_voucher_metadatum.Company_Data[0].rangeOfEmployees
               }
