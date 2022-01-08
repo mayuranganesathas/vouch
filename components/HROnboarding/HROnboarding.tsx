@@ -119,7 +119,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               </div>
             </div>
           </div>
-          <div className={"col-start-2 col-span-2 px-8"}>
+          <div className={"col-start-2 col-span-2 px-8 text-gray-700"}>
             <div className={"pt-4 text-left font-bold text-base"}>
               Set Up Your Company Profile
             </div>
@@ -251,8 +251,6 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               Terms and Conditions .To see how we may use the information,
               please take a look at our Privacey Policy [LINKS TO ADD]{" "}
             </div>
-
-            <div className={"pb-4 border-b border-gray-200 "}></div>
           </div>
         </div>
       </div>
