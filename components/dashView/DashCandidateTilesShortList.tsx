@@ -22,10 +22,6 @@ const DashCandidateTilesShortList = ({
     vouchData.shortlist
       .filter((e) => e.status === filter)
       .map((_, i) => setExistingCandidates(i + 1));
-
-    // if (existingCandidates == 0) {
-    //   setExistingCandidates(0);
-    // }
   };
   return (
     <div className="grid grid-cols-12">
