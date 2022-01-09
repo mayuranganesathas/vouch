@@ -7,6 +7,8 @@ import { ButtonVouch } from "../components/ui/ButtonVouch";
 import { useMutation } from "@apollo/client";
 import { UPSERT_CANDIDATE_METADATA } from "../graphql/UPSERT_CANDIDATE_METADATA";
 import router from "next/router";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CandidateOn(props) {
   enum STAGE {
@@ -83,6 +85,17 @@ export default function CandidateOn(props) {
     return false;
   };
 
+  const toastFeedback = () => {
+    toast.success("Form Submitted!✅ ", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   const onSubmit = () => {
     nextStage();
     initializeCandidateMetaData({
@@ -104,6 +117,7 @@ export default function CandidateOn(props) {
     });
     if (loading) return "Submitting...";
     if (error) return `Submission error! ${error.message}`;
+    toastFeedback();
     clearFormState();
   };
   const previousStage = () => {
@@ -180,6 +194,17 @@ export default function CandidateOn(props) {
         </div>
         <div className={"col-start-12 col-end-13"}></div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

@@ -26,6 +26,8 @@ import {
   InterviewStrengthSkillDropDownArray,
 } from "../../pages/api/dropdownCategories";
 import InformationIconToolTip from "../ui/InformationIconToolTip";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -33,10 +35,6 @@ export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
 }
-//TODO
-
-// **Auth
-//PASSING HRID AUTHENTICATION
 
 //** UX */
 //EMAIL INPUT VALIDATOR
@@ -105,6 +103,17 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     }
   };
 
+  const toastFeedback = () => {
+    toast.success("Vouch Candidate Invited! ✅", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   const submitForm = async () => {
     initializeVouchCandidate({
       variables: {
@@ -120,7 +129,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     });
     if (loading) return "Submitting...";
     if (error) return `Submission error! ${error.message}`;
-
+    toastFeedback();
     sendEmail();
     clearFormState();
     closeModal();
@@ -391,6 +400,18 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
             </div>
           </div>
         </div>
+
+        <ToastContainer
+          position="top-right"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+        />
       </Modal>{" "}
     </div>
   );

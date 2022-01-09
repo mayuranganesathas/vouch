@@ -7,6 +7,8 @@ import { INSERT_HR_VOUCHER } from "../graphql/INSERT_HR_VOUCHER";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import { useAuth } from "../lib/authContext";
 import { auth } from "../lib/firebase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const { user } = useAuth();
@@ -24,6 +26,18 @@ export default function Register() {
   const { data: hrData } = useQuery(QUERY_HRID, {
     variables: { hrId: user.uid },
   });
+
+  const toastFeedback = () => {
+    toast.success("Form Submitted!✅", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   useEffect(() => {
     const hrRegister = () => {
@@ -115,7 +129,7 @@ export default function Register() {
     });
     if (loading) return "Submitting...";
     if (error) return `Submission error! ${error.message}`;
-
+    toastFeedback();
     clearForms();
     location.reload();
   };
@@ -145,6 +159,17 @@ export default function Register() {
           setHrLastName={setHrLastName}
         />
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
