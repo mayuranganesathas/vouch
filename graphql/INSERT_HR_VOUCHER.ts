@@ -11,6 +11,8 @@ export const INSERT_HR_VOUCHER = gql`
     $hrId: String!
     $locationState: String = ""
     $locationCity: String = ""
+    $firstName: String = ""
+    $lastName: String = ""
   ) {
     insert_hr_voucher(
       objects: {
@@ -23,6 +25,8 @@ export const INSERT_HR_VOUCHER = gql`
         hrId: $hrId
         locationState: $locationState
         locationCity: $locationCity
+        firstName: $firstName
+        lastName: $lastName
       }
     ) {
       returning {

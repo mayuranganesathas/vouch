@@ -18,19 +18,21 @@ export default function Register() {
   const [hrCityLocation, setHrCityLocation] = useState("");
   const [hrStateLocation, setHrStateLocation] = useState("");
   const [checkBoxValidation, setCheckBoxValidation] = useState(false);
+  const [hrFirstName, setHrFirstName] = useState("");
+  const [hrLastName, setHrLastName] = useState("");
 
   const { data: hrData } = useQuery(QUERY_HRID, {
     variables: { hrId: user.uid },
   });
 
-  /*useEffect(() => {
+  useEffect(() => {
     const hrRegister = () => {
       if (hrData.hr_voucher.length > 0) {
         router.push("/dashboard");
       }
     };
     hrData && hrRegister();
-  }, [hrData]);*/
+  }, [hrData]);
 
   const [initializeRegisterHr, { data, loading, error }] = useMutation(
     INSERT_HR_VOUCHER,
@@ -46,6 +48,8 @@ export default function Register() {
         hrId: "incompleteField",
         locationState: "incompleteField",
         locationCity: "incompleteField",
+        firstName: "incompleteField",
+        lastName: "incompleteField",
       },
     }
   );
@@ -57,11 +61,14 @@ export default function Register() {
     const hrVoucherCompanyWebsiteValidator = hrVoucherCompanyWebsite;
     const hrCityLocationValidator = hrCityLocation;
     const hrStateLocationValidator = hrStateLocation;
-
+    const hrFirstNameValidator = hrFirstName;
+    const hrLastNameValidator = hrLastName;
     const checkBoxValidationValidator = checkBoxValidation;
 
     if (
       employeeArrayValidator &&
+      hrFirstNameValidator &&
+      hrLastNameValidator &&
       industryArrayValidator &&
       hrVoucherCompanyNameValidator &&
       hrVoucherCompanyWebsiteValidator &&
@@ -82,6 +89,8 @@ export default function Register() {
     setHrCityLocation("");
     setHrStateLocation("");
     setCheckBoxValidation(false);
+    setHrFirstName("");
+    setHrLastName("");
   };
 
   const onSubmit = () => {
@@ -100,6 +109,8 @@ export default function Register() {
         hrId: hrID,
         locationState: hrStateLocation,
         locationCity: hrCityLocation,
+        firstName: hrFirstName,
+        lastName: hrLastName,
       },
     });
     if (loading) return "Submitting...";
@@ -128,6 +139,10 @@ export default function Register() {
           setCheckBoxValidation={setCheckBoxValidation}
           checkBoxValidation={checkBoxValidation}
           formValidation={formValidator}
+          hrFirstName={hrFirstName}
+          setHrFirstName={setHrFirstName}
+          hrLastName={hrLastName}
+          setHrLastName={setHrLastName}
         />
       )}
     </div>
