@@ -13,7 +13,6 @@ import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
 import { DashboardCategoryFilter } from "../components/ui/DashboardCategoryFilter";
-import { InformationCircleIcon } from "@heroicons/react/solid";
 import InformationIconToolTip from "../components/ui/InformationIconToolTip";
 
 import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
@@ -202,7 +201,7 @@ const DashBoard = ({}: DashboardProps) => {
               <div className={"grid grid-cols-10"}>
                 <div className={"col-span-8"}>Candidate Filters</div>
                 <div className={"col-start-10"}>
-                  <InformationIconToolTip toolTipCopy="test" />
+                  <InformationIconToolTip toolTipCopy="Filter by the candidate's background. Information is provided by the candidate directly." />
                 </div>
               </div>
             </div>
@@ -264,11 +263,7 @@ const DashBoard = ({}: DashboardProps) => {
                       Position Interviewed for
                     </div>
                     <div className={"col-start-9"}>
-                      <InformationCircleIcon
-                        className={
-                          "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer"
-                        }
-                      />{" "}
+                      <InformationIconToolTip toolTipCopy="This is the position the candidate interviewed for, as well as the furthest interview stage completed." />
                     </div>
                   </div>
                 </div>
@@ -282,11 +277,7 @@ const DashBoard = ({}: DashboardProps) => {
                   >
                     <div className={"col-span-5"}>Salary Range (USD)</div>
                     <div className={"col-start-6 pl-1"}>
-                      <InformationCircleIcon
-                        className={
-                          "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer"
-                        }
-                      />{" "}
+                      <InformationIconToolTip toolTipCopy="This is the salary range that was budgeted for the *Position Interviewed for* role (as disclosed by the referring recruiter) " />
                     </div>
                   </div>
                   <div
@@ -296,11 +287,7 @@ const DashBoard = ({}: DashboardProps) => {
                   >
                     <div className={"col-span-6"}>Standout Skills</div>
                     <div className={"col-start-7"}>
-                      <InformationCircleIcon
-                        className={
-                          "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer"
-                        }
-                      />{" "}
+                      <InformationIconToolTip toolTipCopy="Top 2 strengths noted by the recruiting team who interviewed the Candidate." />
                     </div>
                   </div>
                 </div>

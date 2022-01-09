@@ -14,7 +14,7 @@ const InformationIconToolTip = ({
         className={"h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer"}
         data-tip={toolTipCopy}
       />{" "}
-      <ReactTooltip />
+      <ReactTooltip place="bottom" />
     </div>
   );
 };
