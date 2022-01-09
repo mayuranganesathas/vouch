@@ -61,6 +61,8 @@ const DashBoard = ({}: DashboardProps) => {
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
   const [existingCandidates, setExistingCandidates] = useState();
+  const [shortListExistingCandidates, setShortListExistingCandidates] =
+    useState(0);
   let {
     loading,
     data: ShortList,
@@ -92,11 +94,15 @@ const DashBoard = ({}: DashboardProps) => {
     } else if (stageStatus == "Favorites") {
       return (
         <div>
+          <CandidateCount candidateCount={shortListExistingCandidates} />
+
           {
             <DashCandidateTilesShortList
               vouchData={ShortList}
               filter="thumbsUp"
               refetchShortList={refetchShortList}
+              setExistingCandidates={setShortListExistingCandidates}
+              existingCandidates={shortListExistingCandidates}
             />
           }
         </div>
@@ -104,11 +110,14 @@ const DashBoard = ({}: DashboardProps) => {
     } else if (stageStatus == "Unfit") {
       return (
         <div>
+          <CandidateCount candidateCount={shortListExistingCandidates} />
           {
             <DashCandidateTilesShortList
               vouchData={ShortList}
               filter="thumbsDown"
               refetchShortList={refetchShortList}
+              setExistingCandidates={setShortListExistingCandidates}
+              existingCandidates={shortListExistingCandidates}
             />
           }
         </div>
@@ -116,11 +125,15 @@ const DashBoard = ({}: DashboardProps) => {
     } else if (stageStatus == "Contacted") {
       return (
         <div>
+          <CandidateCount candidateCount={shortListExistingCandidates} />
+
           {
             <DashCandidateTilesShortList
               vouchData={ShortList}
               filter="contacted"
               refetchShortList={refetchShortList}
+              setExistingCandidates={setShortListExistingCandidates}
+              existingCandidates={shortListExistingCandidates}
             />
           }
         </div>

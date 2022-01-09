@@ -5,20 +5,34 @@ export interface DashCandidateTilesShortListProps {
   vouchData: any;
   filter: string;
   refetchShortList: () => void;
+  setExistingCandidates: (existingCandidates: number) => void;
+  existingCandidates: number;
 }
 
 const DashCandidateTilesShortList = ({
   vouchData,
   filter,
   refetchShortList,
+  setExistingCandidates,
+  existingCandidates,
 }: DashCandidateTilesShortListProps) => {
+  const candidateCounter = () => {
+    setExistingCandidates(0);
+
+    vouchData.shortlist
+      .filter((e) => e.status === filter)
+      .map((_, i) => setExistingCandidates(i + 1));
+
+    // if (existingCandidates == 0) {
+    //   setExistingCandidates(0);
+    // }
+  };
   return (
     <div className="grid grid-cols-12">
       {vouchData &&
         vouchData.shortlist
           .filter((e) => e.status === filter)
           .map((e, i) => (
-            //include job category
             <CandidateTile
               userID={e.candidateId}
               firstName={
@@ -50,6 +64,7 @@ const DashCandidateTilesShortList = ({
               refetchShortList={refetchShortList}
             />
           ))}
+      {vouchData && candidateCounter()}
     </div>
   );
 };
