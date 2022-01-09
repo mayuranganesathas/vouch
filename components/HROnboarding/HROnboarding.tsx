@@ -63,7 +63,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
 }) => {
   return (
     <div className={"flex justify-center items-center"}>
-      <div className={"shadow-lg rounded-xl w-3/6 h-auto bg-white"}>
+      <div className={"shadow-lg rounded-xl w-7/12 h-auto bg-white"}>
         <div className={"grid grid-cols-3"}>
           <div className={"col-start-1 bg-VouchDark rounded-l-lg"}>
             <div>
