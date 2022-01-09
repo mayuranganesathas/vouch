@@ -14,6 +14,7 @@ import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
 import { DashboardCategoryFilter } from "../components/ui/DashboardCategoryFilter";
 import { InformationCircleIcon } from "@heroicons/react/solid";
+import InformationIconToolTip from "../components/ui/InformationIconToolTip";
 
 import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
 import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
@@ -24,6 +25,7 @@ import {
   SeniorityDropDownArray,
   stateProvince,
 } from "./api/dropdownCategories";
+import ReactTooltip from "react-tooltip";
 export interface DashboardProps {}
 
 const dashBoardTest = {
@@ -63,8 +65,6 @@ const DashBoard = ({}: DashboardProps) => {
   const [shortListExistingCandidates, setShortListExistingCandidates] =
     useState(0);
 
-  const [clearFilter, setClearFilter] = useState(false);
-
   let {
     loading,
     data: ShortList,
@@ -79,26 +79,6 @@ const DashBoard = ({}: DashboardProps) => {
       hrId: user.uid,
     },
   });
-
-  const clearFilters = () => {
-    setSeniorityDropdown("empty");
-    setJobCategoryDropdown("empty");
-    setLocationStateDropdown("empty");
-    setClearFilter(false);
-  };
-
-  const filterChangeLocation = (e) => {
-    setLocationStateDropdown(e);
-    setClearFilter(true);
-  };
-  const filterChangeCategory = (e) => {
-    setJobCategoryDropdown(e);
-    setClearFilter(true);
-  };
-  const filterChangeSeniority = (e) => {
-    setSeniorityDropdown(e);
-    setClearFilter(true);
-  };
 
   const getTileComponent = () => {
     if (stageStatus == "Home") {
@@ -202,10 +182,8 @@ const DashBoard = ({}: DashboardProps) => {
                 </div>
                 <div className={"pt-1"}>
                   {" "}
-                  To date, you have referred {
-                    dashBoardTest.numberReferred
-                  }, {dashBoardTest.numberThanks} of your vouchees have landed
-                  new interviews
+                  At Vouch, we believe that we can win the war for talent by
+                  working together.
                 </div>
               </div>
             </div>
@@ -224,11 +202,7 @@ const DashBoard = ({}: DashboardProps) => {
               <div className={"grid grid-cols-10"}>
                 <div className={"col-span-8"}>Candidate Filters</div>
                 <div className={"col-start-10"}>
-                  <InformationCircleIcon
-                    className={
-                      "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer"
-                    }
-                  />{" "}
+                  <InformationIconToolTip toolTipCopy="test" />
                 </div>
               </div>
             </div>
@@ -237,7 +211,7 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={positionCategoryDropDownArray}
                 value={jobCategoryDropdown}
-                onChange={(e) => filterChangeCategory(e)}
+                onChange={(e) => setJobCategoryDropdown(e.target.value)}
               />
             </div>
             <div className={"col-start-5 flex items-center"}>
@@ -245,7 +219,7 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={SeniorityDropDownArray}
                 value={seniorityDropdown}
-                onChange={(e) => filterChangeSeniority(e)}
+                onChange={(e) => setSeniorityDropdown(e.target.value)}
               />
             </div>
             <div className={"col-start-7 flex items-center"}>
@@ -253,16 +227,8 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={stateProvince}
                 value={locationStateDropdown}
-                onChange={(e) => filterChangeLocation(e)}
+                onChange={(e) => setLocationStateDropdown(e.target.value)}
               />
-              <div
-                className={
-                  "px-4 text-xs  cursor-pointer select-none hover:text-red-500"
-                }
-                onClick={clearFilters}
-              >
-                {clearFilter && <div> X Clear </div>}
-              </div>
             </div>
             <div className={"col-start-11 col-span-2 flex items-start pb-12"}>
               <CandidateCount candidateCount={existingCandidates} />
