@@ -25,6 +25,9 @@ import {
   InterviewStageDropDownArray,
   InterviewStrengthSkillDropDownArray,
 } from "../../pages/api/dropdownCategories";
+import InformationIconToolTip from "../ui/InformationIconToolTip";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -32,10 +35,6 @@ export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
 }
-//TODO
-
-// **Auth
-//PASSING HRID AUTHENTICATION
 
 //** UX */
 //EMAIL INPUT VALIDATOR
@@ -104,6 +103,17 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     }
   };
 
+  const toastFeedback = () => {
+    toast.success("Vouch Candidate Invited! ✅", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   const submitForm = async () => {
     initializeVouchCandidate({
       variables: {
@@ -119,7 +129,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
     });
     if (loading) return "Submitting...";
     if (error) return `Submission error! ${error.message}`;
-
+    toastFeedback();
     sendEmail();
     clearFormState();
     closeModal();
@@ -284,11 +294,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     <div className="pb-2">
                       <div className="text-xs py-1 font-bold text-gray-500 flex flex-nowrap">
                         Last Interview Stage
-                        <InformationCircleIcon
-                          className={
-                            "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer pl-0.5"
-                          }
-                        />{" "}
+                        <InformationIconToolTip toolTipCopy="While companies have differing interview stages, please do your best to select the stage that best represents the last interview stage completed by the candidate." />
                       </div>
                       <div className={"pr-3"}>
                         <PositionFilterVouch
@@ -306,11 +312,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   <div>
                     <div className="text-xs py-1 pl-3 font-bold text-gray-500 flex flex-nowrap">
                       Base Salary Range{" "}
-                      <InformationCircleIcon
-                        className={
-                          "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer p,-0.5"
-                        }
-                      />{" "}
+                      <InformationIconToolTip toolTipCopy="Select the closest base salary range that was budgeted for the position. This provides other HR professionals in the platform an idea around salary expectations of the candidate." />
                     </div>{" "}
                     <div className={"pl-3"}>
                       <BaseSalaryFilterVouch
@@ -393,6 +395,18 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
             </div>
           </div>
         </div>
+
+        <ToastContainer
+          position="top-right"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+        />
       </Modal>{" "}
     </div>
   );

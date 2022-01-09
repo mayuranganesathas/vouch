@@ -7,9 +7,11 @@ export const positionCategoryDropDownArray = [
   "Sales/BD",
   "Marketing",
   "Account Mgmt.",
-  "Product Mangement",
+  "Product Management",
   "Data Analysis/Science",
   "Design-UX/UI",
+  "HR/Recruiting",
+  "Operations",
 ];
 
 export const InterviewStageDropDownArray = [
@@ -115,7 +117,6 @@ export const jobCompanySizeDropdownData = [
 ];
 
 export const stateProvince = [
-  "--CANADA--",
   "Alberta",
   "British Columbia",
   "Manitoba",
@@ -129,7 +130,6 @@ export const stateProvince = [
   "Quebec",
   "Saskatchewan",
   "Yukon Territory",
-  "--USA--",
   "Alaska",
   "Alabama",
   "Arkansas",

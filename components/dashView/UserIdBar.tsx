@@ -119,9 +119,8 @@ const UserIdBar = ({
 
         <div className={"col-start-13 col-span-2 flex items-center"}>
           <UserProfile
-            userHrImg={user.photoURL}
-            userHrName={user.displayName}
-            userHrPosition={hrData.hr_voucher[0].position}
+            userHrFirstName={hrData.hr_voucher[0].firstName}
+            userHrLastName={hrData.hr_voucher[0].lastName}
           />
         </div>
       </div>

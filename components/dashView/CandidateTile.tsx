@@ -3,7 +3,6 @@ import { ButtonLinkedin } from "./ButtonLinkedin";
 import { StarIcon } from "@heroicons/react/solid";
 import { EyeOffIcon } from "@heroicons/react/solid";
 import { MailOpenIcon } from "@heroicons/react/solid";
-import { SparklesIcon } from "@heroicons/react/solid";
 import { ButtonEmail } from "./ButtonEmail";
 import { CompTooltip } from "./CompTooltip";
 import ReactTooltip from "react-tooltip";
@@ -21,7 +20,6 @@ export interface CandidateTileProps {
   companyName: string;
   stageInterview: string;
   pastPosition1: string;
-  pastIndustry1: string;
   standOutSkill1: string;
   standOutSkill2: string;
   userLinkedinURL: string;
@@ -29,6 +27,7 @@ export interface CandidateTileProps {
   firstName: string;
   lastName: string;
   refetchShortList: any;
+  pastCompanyName: string;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -42,12 +41,12 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   companyName,
   stageInterview,
   pastPosition1,
-  pastIndustry1,
   standOutSkill1,
   standOutSkill2,
   userLinkedinURL,
   userEmailAction,
   refetchShortList,
+  pastCompanyName,
 }) => {
   const [thumbUpCheck, setthumbUpSetCheck] = useState(false);
   const [thumbDownCheck, setthumbDownSetCheck] = useState(false);
@@ -177,7 +176,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               </div>
               <div>
                 <p className={"w-full pt-1 border-r-4 border-gray-300"}>
-                  in {pastIndustry1}
+                  at {pastCompanyName}
                 </p>
               </div>
             </div>
@@ -209,8 +208,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               <p className={"w-full text-base"}>{salaryRange} </p>
             </div>
             <div className={"col-start-2"}>
-              <p className={"w-full font-gray-500 "}>{standOutSkill1}</p>
-              <p className={"w-full  font-gray-500 pt-1 "}>{standOutSkill2}</p>
+              <p className={"w-full font-gray-500 flex flex-wrap  text-xs"}>
+                <StarIcon className={"h-4 w-4 text-VouchGreen "} />
+                {standOutSkill1}
+              </p>
+              <p className={"w-full  ont-gray-500 pt-1 flex text-xs "}>
+                <StarIcon className={"h-4 w-4 text-VouchGreen"} />
+                {standOutSkill2}
+              </p>
             </div>
           </div>
         </div>

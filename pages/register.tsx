@@ -7,6 +7,8 @@ import { INSERT_HR_VOUCHER } from "../graphql/INSERT_HR_VOUCHER";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import { useAuth } from "../lib/authContext";
 import { auth } from "../lib/firebase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const { user } = useAuth();
@@ -18,10 +20,24 @@ export default function Register() {
   const [hrCityLocation, setHrCityLocation] = useState("");
   const [hrStateLocation, setHrStateLocation] = useState("");
   const [checkBoxValidation, setCheckBoxValidation] = useState(false);
+  const [hrFirstName, setHrFirstName] = useState("");
+  const [hrLastName, setHrLastName] = useState("");
 
   const { data: hrData } = useQuery(QUERY_HRID, {
     variables: { hrId: user.uid },
   });
+
+  const toastFeedback = () => {
+    toast.success("Form Submitted!✅", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   useEffect(() => {
     const hrRegister = () => {
@@ -46,6 +62,8 @@ export default function Register() {
         hrId: "incompleteField",
         locationState: "incompleteField",
         locationCity: "incompleteField",
+        firstName: "incompleteField",
+        lastName: "incompleteField",
       },
     }
   );
@@ -57,11 +75,14 @@ export default function Register() {
     const hrVoucherCompanyWebsiteValidator = hrVoucherCompanyWebsite;
     const hrCityLocationValidator = hrCityLocation;
     const hrStateLocationValidator = hrStateLocation;
-
+    const hrFirstNameValidator = hrFirstName;
+    const hrLastNameValidator = hrLastName;
     const checkBoxValidationValidator = checkBoxValidation;
 
     if (
       employeeArrayValidator &&
+      hrFirstNameValidator &&
+      hrLastNameValidator &&
       industryArrayValidator &&
       hrVoucherCompanyNameValidator &&
       hrVoucherCompanyWebsiteValidator &&
@@ -82,6 +103,8 @@ export default function Register() {
     setHrCityLocation("");
     setHrStateLocation("");
     setCheckBoxValidation(false);
+    setHrFirstName("");
+    setHrLastName("");
   };
 
   const onSubmit = () => {
@@ -100,11 +123,13 @@ export default function Register() {
         hrId: hrID,
         locationState: hrStateLocation,
         locationCity: hrCityLocation,
+        firstName: hrFirstName,
+        lastName: hrLastName,
       },
     });
     if (loading) return "Submitting...";
     if (error) return `Submission error! ${error.message}`;
-
+    toastFeedback();
     clearForms();
     location.reload();
   };
@@ -128,8 +153,23 @@ export default function Register() {
           setCheckBoxValidation={setCheckBoxValidation}
           checkBoxValidation={checkBoxValidation}
           formValidation={formValidator}
+          hrFirstName={hrFirstName}
+          setHrFirstName={setHrFirstName}
+          hrLastName={hrLastName}
+          setHrLastName={setHrLastName}
         />
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
