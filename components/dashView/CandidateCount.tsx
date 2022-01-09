@@ -3,32 +3,32 @@ import { UsersIcon } from "@heroicons/react/solid";
 
 export interface CandidateCountProps {
   candidateCount: any;
-  lastCandidateCount: number;
+  // lastCandidateCount: number;
 }
 
 export const CandidateCount: React.FC<CandidateCountProps> = ({
   candidateCount,
-  lastCandidateCount,
+  // lastCandidateCount,
 }) => {
   return (
     <div className={"grid grid-cols-5 w-64 grid-rows-3"}>
       <div
         className={
-          "flex items-center col-start-2 row-start-2 row-span-2 col-span-3 text-2xl"
+          "flex flex-nowrap items-center col-start-2 row-start-2 row-span-2 col-span-3 text-xl"
         }
       >
         <div className={""}>{candidateCount} Candidates</div>
       </div>
-      <div
+      {/* <div
         className={
           "items-center rounded-full px-0.5 text-white text-xs col-start-4 row-start-1"
         }
-      >
-        {/* <div className={"text-gray-600"}>
+      > */}
+      {/* <div className={"text-gray-600"}>
           {" "}
           {candidateCount - lastCandidateCount} New
         </div> */}
-      </div>
+      {/* </div> */}
     </div>
   );
 };

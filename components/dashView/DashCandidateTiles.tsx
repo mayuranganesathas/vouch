@@ -7,6 +7,8 @@ export interface DashCandidateTilesProps {
   filterJobCategory: any;
   filterJobSeniority: any;
   filterStateLocation: any;
+  existingCandidates: string;
+  setExistingCandidates: (existingCandidates: any) => void;
 }
 
 const DashCandidateTiles = ({
@@ -15,6 +17,8 @@ const DashCandidateTiles = ({
   filterJobCategory,
   filterJobSeniority,
   filterStateLocation,
+  existingCandidates,
+  setExistingCandidates,
 }: DashCandidateTilesProps) => {
   const filterManage = () => {
     if (filterJobCategory != "Category" && filterJobSeniority != "Seniority") {
@@ -78,10 +82,15 @@ const DashCandidateTiles = ({
     return filterManage().filter((e) => !x.includes(e.candidateId));
   };
 
+  const candidateCounter = () => {
+    setExistingCandidates(0);
+    shortListFilter().map((e, i) => setExistingCandidates(i + 1));
+  };
+
   return (
     <div className="grid grid-cols-12">
       {vouchData &&
-        shortListFilter().map((e, i) => (
+        shortListFilter().map((e) => (
           <CandidateTile
             userID={e.candidateId}
             firstName={e.Candidate_Contact[0].candidateFirstName}
@@ -105,6 +114,7 @@ const DashCandidateTiles = ({
             refetchShortList={refetchShortList}
           />
         ))}
+      {vouchData && candidateCounter()}
     </div>
   );
 };

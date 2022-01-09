@@ -60,6 +60,9 @@ const DashBoard = ({}: DashboardProps) => {
   const [jobCategoryDropdown, setJobCategoryDropdown] = useState("Category");
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
+  const [existingCandidates, setExistingCandidates] = useState();
+  const [shortListExistingCandidates, setShortListExistingCandidates] =
+    useState(0);
   let {
     loading,
     data: ShortList,
@@ -84,16 +87,22 @@ const DashBoard = ({}: DashboardProps) => {
           filterJobCategory={jobCategoryDropdown}
           filterJobSeniority={seniorityDropdown}
           filterStateLocation={locationStateDropdown}
+          existingCandidates={existingCandidates}
+          setExistingCandidates={setExistingCandidates}
         />
       );
     } else if (stageStatus == "Favorites") {
       return (
         <div>
+          <CandidateCount candidateCount={shortListExistingCandidates} />
+
           {
             <DashCandidateTilesShortList
               vouchData={ShortList}
               filter="thumbsUp"
               refetchShortList={refetchShortList}
+              setExistingCandidates={setShortListExistingCandidates}
+              existingCandidates={shortListExistingCandidates}
             />
           }
         </div>
@@ -101,11 +110,14 @@ const DashBoard = ({}: DashboardProps) => {
     } else if (stageStatus == "Unfit") {
       return (
         <div>
+          <CandidateCount candidateCount={shortListExistingCandidates} />
           {
             <DashCandidateTilesShortList
               vouchData={ShortList}
               filter="thumbsDown"
               refetchShortList={refetchShortList}
+              setExistingCandidates={setShortListExistingCandidates}
+              existingCandidates={shortListExistingCandidates}
             />
           }
         </div>
@@ -113,11 +125,15 @@ const DashBoard = ({}: DashboardProps) => {
     } else if (stageStatus == "Contacted") {
       return (
         <div>
+          <CandidateCount candidateCount={shortListExistingCandidates} />
+
           {
             <DashCandidateTilesShortList
               vouchData={ShortList}
               filter="contacted"
               refetchShortList={refetchShortList}
+              setExistingCandidates={setShortListExistingCandidates}
+              existingCandidates={shortListExistingCandidates}
             />
           }
         </div>
@@ -215,10 +231,7 @@ const DashBoard = ({}: DashboardProps) => {
               />
             </div>
             <div className={"col-start-11 col-span-2 flex items-start pb-12"}>
-              <CandidateCount
-                candidateCount={dashBoardTest.candidateCount}
-                lastCandidateCount={dashBoardTest.lastCandidateCount}
-              />
+              <CandidateCount candidateCount={existingCandidates} />
             </div>
           </div>
           <div className={"bg-gray-50 px-24"}>
