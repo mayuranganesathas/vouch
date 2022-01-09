@@ -10,6 +10,8 @@ export const positionCategoryDropDownArray = [
   "Product Management",
   "Data Analysis/Science",
   "Design-UX/UI",
+  "HR/Recruiting",
+  "Operations",
 ];
 
 export const InterviewStageDropDownArray = [
