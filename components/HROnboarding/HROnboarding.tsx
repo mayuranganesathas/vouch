@@ -67,51 +67,45 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
         <div className={"grid grid-cols-3"}>
           <div className={"col-start-1 bg-VouchDark rounded-l-lg"}>
             <div>
-              <div className={"py-10 "}>
+              <div className={"py-10 text-xs"}>
                 <div className={"flex justify-center"}>
-                  <FlagIcon className={"w-20 h-auto "} fill="white" />
+                  <FlagIcon className={"w-8 h-auto "} fill="white" />
                 </div>
                 <div
                   className={
-                    "flex justify-center py-2 font-bold text-lg text-white"
+                    "flex justify-center py-2 font-bold text-sm text-white"
                   }
                 >
                   JOIN THE MOVEMENT
                 </div>
-                <div className={"text-sm text-white w-full text-center px-6"}>
+                <div className={" text-white w-full text-center px-6"}>
                   End the war for talent by working together. Gain access to a
                   network of candidates of our very own
                 </div>
                 <div className={"flex justify-center pt-12"}>
-                  <LockOpenIcon className={"w-12 h-auto"} fill="white" />
+                  <LockOpenIcon className={"w-8 h-auto"} fill="white" />
                 </div>
                 <div
-                  className={
-                    "text-sm text-white  w-full px-6 pt-2 pb-12 text-center"
-                  }
+                  className={"text-white  w-full px-6 pt-2 pb-12 text-center"}
                 >
                   Get access to qualified and active candidates and continuously
                   build up your pipeline{" "}
                 </div>
                 <div className={"flex justify-center pt-8"}>
-                  <UserAddIcon className={"w-12 h-auto"} fill="white" />
+                  <UserAddIcon className={"w-8 h-auto"} fill="white" />
                 </div>
                 <div
-                  className={
-                    "text-sm text-white text-center px-6 w-full pt-2 pb-12"
-                  }
+                  className={" text-white text-center px-6 w-full pt-2 pb-12"}
                 >
                   Add late stage candidates from your own pipeline and make it a
                   win-win!
                 </div>
                 <div className={"flex justify-center pt-8"}>
-                  <TagIcon className={"w-12 h-auto"} fill="white" />
+                  <TagIcon className={"w-8 h-auto"} fill="white" />
                 </div>
                 <div>
                   <div
-                    className={
-                      "text-sm text-white py-2 width-full text-center px-6"
-                    }
+                    className={" text-white py-2 width-full text-center px-6"}
                   >
                     Use Vouch to save time and money on your next hire
                   </div>
@@ -119,20 +113,20 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               </div>
             </div>
           </div>
-          <div className={"col-start-2 col-span-2 px-8 text-gray-700"}>
-            <div className={"pt-4 text-left font-bold text-base"}>
+          <div className={"col-start-2 col-span-2 px-8 text-gray-700 text-xs"}>
+            <div className={"pt-4 text-left font-bold text-sm"}>
               Set Up Your Company Profile
             </div>
-            <div className={"text-gray-600 text-sm pt-1"}>
+            <div className={"text-gray-600 pt-1"}>
               Thank you for joining Vouch
             </div>
-            <div className={"text-gray-600 text-sm py-4"}>
+            <div className={"text-gray-600 py-4"}>
               Please take a moment to set up your profile. You and other HR
               Leaders will be able to view candidate details and the company
               details of other organizations who have referred candidates into
               the platform.{" "}
             </div>
-            <div className={"text-gray-600 text-sm py-2"}>
+            <div className={"text-gray-600 py-2"}>
               How your dashboard will look:
             </div>
             <div className={"px-8"}>
@@ -141,13 +135,43 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
             <div className="py-6">
               <hr className="" />
             </div>
-            <div className={"font-bold text-base"}>Company Details</div>
+            <div className={"font-bold text-sm"}>Profile Details</div>
+            <div className={"grid grid-cols-2"}>
+              <div className={"pt-4"}>
+                <input
+                  className={
+                    "border border-gray-300 text-xs rounded py-1 px-4 w-5/6"
+                  }
+                  placeholder="First name"
+                  value={hrVoucherCompanyName}
+                  onChange={(e) =>
+                    setHrVoucherCompanyName(e.target.value)
+                  } /*needs new props*/
+                />
+              </div>
+              <div className={"pt-4"}>
+                <input
+                  className={
+                    "border border-gray-300 text-xs rounded py-1 px-4 w-5/6"
+                  }
+                  placeholder="Last name"
+                  value={hrVoucherCompanyName}
+                  onChange={(e) =>
+                    setHrVoucherCompanyName(e.target.value)
+                  } /*needs new props*/
+                />
+              </div>
+            </div>
+            <div className="py-6">
+              <hr className="" />
+            </div>
+            <div className={"font-bold text-sm"}>Company Details</div>
             <div className={"grid grid-cols-3 "}>
-              <div className={"col-start-1 col-span-2"}>
+              <div className={"col-start-1 col-span-2 pt-1"}>
                 <div className={"pt-4"}>
                   <input
                     className={
-                      "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
+                      "border border-gray-300 text-xs rounded py-1 px-4 w-5/6"
                     }
                     placeholder="Enter company name"
                     value={hrVoucherCompanyName}
@@ -158,7 +182,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 <div className={"py-8"}>
                   <input
                     className={
-                      "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
+                      "border border-gray-300 text-xs rounded py-1 px-4 w-5/6"
                     }
                     placeholder="Website - Paste your company URL"
                     value={hrVoucherCompanyWebsite}
@@ -168,7 +192,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 <div>
                   <input
                     className={
-                      "border border-gray-300 text-xs rounded py-2 px-4 w-4/5"
+                      "border border-gray-300 text-xs rounded py-1 px-4 w-5/6"
                     }
                     placeholder="Location - City of your Corporate HQ"
                     value={hrCityLocation}
@@ -230,7 +254,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
 
               <div className={"text-xs pl-2"}>
                 {" "}
-                We recruit for roles in Canada and USA
+                We recruit for positions in the USA and/or Canada
               </div>
             </div>
             <div className={"col-span-2"}>
