@@ -21,53 +21,50 @@ const DashCandidateTiles = ({
   setExistingCandidates,
 }: DashCandidateTilesProps) => {
   const filterManage = () => {
-    if (filterJobCategory != "Category" && filterJobSeniority != "Seniority") {
+    if (filterJobCategory != "empty" && filterJobSeniority != "empty") {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory)
         .filter((e) => e.Vouchee[0].seniority == filterJobSeniority);
-    } else if (
-      filterJobCategory != "Category" &&
-      filterStateLocation != "--CANADA--"
-    ) {
+    } else if (filterJobCategory != "empty" && filterStateLocation != "empty") {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory)
         .filter((e) => e.Vouchee[0].locationState == filterStateLocation);
     } else if (
-      filterStateLocation != "--CANADA--" &&
-      filterJobSeniority != "Seniority"
+      filterStateLocation != "empty" &&
+      filterJobSeniority != "empty"
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee[0].seniority == filterJobSeniority)
         .filter((e) => e.Vouchee[0].locationState == filterStateLocation);
     } else if (
-      filterStateLocation != "--CANADA--" &&
-      filterJobSeniority != "Seniority" &&
-      filterJobCategory != "Category"
+      filterStateLocation != "empty" &&
+      filterJobSeniority != "empty" &&
+      filterJobCategory != "empty"
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee[0].seniority == filterJobSeniority)
         .filter((e) => e.Vouchee[0].locationState == filterStateLocation)
         .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory);
     } else if (
-      filterStateLocation != "--CANADA--" &&
-      filterJobSeniority == "Seniority" &&
-      filterJobCategory == "Category"
+      filterStateLocation != "empty" &&
+      filterJobSeniority == "empty" &&
+      filterJobCategory == "empty"
     ) {
       return vouchData.hr_voucher_metadata.filter(
         (e) => e.Vouchee[0].locationState == filterStateLocation
       );
     } else if (
-      filterStateLocation == "--CANADA--" &&
-      filterJobSeniority != "Seniority" &&
-      filterJobCategory == "Category"
+      filterStateLocation == "empty" &&
+      filterJobSeniority != "empty" &&
+      filterJobCategory == "empty"
     ) {
       return vouchData.hr_voucher_metadata.filter(
         (e) => e.Vouchee[0].seniority == filterJobSeniority
       );
     } else if (
-      filterStateLocation == "--CANADA--" &&
-      filterJobSeniority == "Seniority" &&
-      filterJobCategory != "Category"
+      filterStateLocation == "empty" &&
+      filterJobSeniority == "empty" &&
+      filterJobCategory != "empty"
     ) {
       return vouchData.hr_voucher_metadata.filter(
         (e) => e.Vouchee[0].jobCategory == filterJobCategory

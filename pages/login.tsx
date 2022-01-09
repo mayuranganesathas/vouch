@@ -1,7 +1,9 @@
-import React from "react";
+import router from "next/router";
+import React, { useEffect } from "react";
 import ButtonGoogleLogin from "../components/ui/ButtonGoogleLogin";
 import ButtonGoolgeLogin from "../components/ui/ButtonGoogleLogin";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
+import { useAuth } from "../lib/authContext";
 import background from "./images/officeHRLogin.png";
 
 export default function RegisterHRLogin(prop) {
@@ -10,6 +12,7 @@ export default function RegisterHRLogin(prop) {
       "https://www.wix.com/feedback-ng/feedback/8cb3ccbe-2f71-4eaa-ac32-3474ed90b853"
     );
   };
+
   return (
     <div
       className={"h-screen bg-cover bg-no-repeat"}

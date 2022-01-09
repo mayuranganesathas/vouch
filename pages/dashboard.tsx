@@ -55,11 +55,10 @@ const DashBoard = ({}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-  const [locationStateDropdown, setLocationStateDropdown] =
-    useState("--CANADA--");
-  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("Category");
+  const [locationStateDropdown, setLocationStateDropdown] = useState("empty");
+  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("empty");
 
-  const [seniorityDropdown, setSeniorityDropdown] = useState("Seniority");
+  const [seniorityDropdown, setSeniorityDropdown] = useState("empty");
   const [existingCandidates, setExistingCandidates] = useState();
   const [shortListExistingCandidates, setShortListExistingCandidates] =
     useState(0);
