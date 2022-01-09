@@ -20,7 +20,7 @@ const UserIdBar = ({
 }: UserIdBarProps) => {
   const { user } = useAuth();
 
-  const [homeCheck, setHomeCheck] = useState(false);
+  const [homeCheck, setHomeCheck] = useState(true);
   const [favoritesCheck, setFavoritesCheck] = useState(false);
   const [unfitCheck, setUnfitCheck] = useState(false);
   const [contactedCheck, setContactedCheck] = useState(false);
