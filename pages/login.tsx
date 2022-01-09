@@ -21,7 +21,7 @@ export default function RegisterHRLogin(prop) {
             "text-white col-start-1 col-span-1 flex justify-start items-center pl-8 pt-8"
           }
         >
-          <img src="./images/VouchLogo1.png" width="125" height="auto" />
+          <img src="./images/VouchLogo1.png" width="100" height="auto" />
         </div>
         <div
           className={
@@ -30,22 +30,26 @@ export default function RegisterHRLogin(prop) {
         >
           <ButtonVouch
             backgroundColour="white"
-            buttonType="rounded"
+            buttonType="square"
             textColour="white"
             label="Vouch Homepage"
             onClick={onClickHomePage}
           />
         </div>
       </div>
-      <div className={"py-4 border-b-2 border-white"}></div>
+      <div className={"py-2 border-b border-white"}></div>
       <div className={"grid grid-cols-3"}>
         <div
-          className={"col-start-1 col-span-2 text-white text-6xl pt-24 px-28"}
+          className={
+            "col-start-1 col-span-2 text-white text-3xl drop-shadow-sm pt-16 px-28"
+          }
         >
           Fill your candidate pipeline faster with pre-vetted referrals from
           fellow HR professionals
         </div>
-        <div className={"col-start-3 flex justify-center items-center"}>
+        <div
+          className={"col-start-3 flex justify-center items-center pt-16 pr-24"}
+        >
           {" "}
           <ButtonGoogleLogin />
         </div>
