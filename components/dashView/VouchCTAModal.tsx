@@ -163,7 +163,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
           describedby: "full_description",
         }}
       >
-        <div className={""}>
+        <div className={"text-xs"}>
           <div className={"grid grid-cols-5"}>
             <div
               className={
@@ -172,16 +172,16 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
             >
               <div className={""}>
                 <div className={"flex justify-center"}>
-                  <UserGroupIcon className={"w-20 h-auto "} fill="white" />
+                  <UserGroupIcon className={"w-8 h-auto "} fill="white" />
                 </div>
                 <div
                   className={
-                    "flex justify-center py-2 font-bold text-lg text-white"
+                    "flex justify-center py-2 font-bold text-sm text-white"
                   }
                 >
                   VOUCHING CANDIDATES
                 </div>
-                <div className={"text-sm text-white"}>
+                <div className={" text-white"}>
                   <div className={"flex justify-center"}>
                     Help other qualified candidates from{" "}
                   </div>
@@ -196,15 +196,15 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   </div>
                 </div>
                 <div className={"flex justify-center pt-8"}>
-                  <MailOpenIcon className={"w-12 h-auto"} fill="white" />
+                  <MailOpenIcon className={"w-8 h-auto"} fill="white" />
                 </div>
-                <div className={"text-sm text-white  py-2 flex justify-center"}>
+                <div className={" text-white  py-2 flex justify-center"}>
                   Candidates get invited to join.
                 </div>
                 <div className={"flex justify-center pt-8"}>
-                  <UserAddIcon className={"w-12 h-auto"} fill="white" />
+                  <UserAddIcon className={"w-8 h-auto"} fill="white" />
                 </div>
-                <div className={"text-sm text-white py-2"}>
+                <div className={" text-white py-2"}>
                   <div className={"flex justify-center"}>
                     Referred candidates match more
                   </div>
@@ -214,10 +214,10 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   <div className={"flex justify-center"}>of recruiters.</div>
                 </div>
                 <div className={"flex justify-center pt-8"}>
-                  <SearchCircleIcon className={"w-12 h-auto"} fill="white" />
+                  <SearchCircleIcon className={"w-8 h-auto"} fill="white" />
                 </div>
                 <div>
-                  <div className={"text-sm text-white py-2"}>
+                  <div className={" text-white py-2"}>
                     <div className={"flex justify-center"}>Pay it forward.</div>
                     <div className={"flex justify-center"}>
                       Find active and qualified
@@ -238,12 +238,12 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     onClick={closeModal}
                   />
                 </div>
-                <div className="pt-4 font-bold flex justify-start text-base ">
+                <div className=" font-bold flex justify-start text-sm ">
                   STEP 1: Invite a Candidate
                 </div>
                 <div className={"flex justify-center py-2"}>
                   <input
-                    className="border-2 w-full py-0.5 pl-1 rounded text-sm"
+                    className="border-2 w-full py-0.5 pl-1 rounded text-xs"
                     id="guess"
                     type="text"
                     placeholder=" Enter Candidate Email"
@@ -251,28 +251,27 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     onChange={(e) => emailChecker(e.target.value)}
                   ></input>
                 </div>
-                <div className="text-gray-300 text-xs font-bold flex justify-start pb-4">
+                <div className="text-gray-300 text-xs flex justify-start pb-2">
                   I have confirmed the candidate consents to being referred into
                   Vouch.
                 </div>
               </div>
-              <div className="py-6">
+              <div className="py-2">
                 <hr className="" />
               </div>
               <div className="	">
                 <div className="pt-2">
-                  <div className="font-bold text-base flex justify-start">
+                  <div className="font-bold text-sm flex justify-start">
                     Step 2: Interview and Position Details
                   </div>
-                  <div className="text-gray-300 text-xs font-bold flex justify-start pb-4">
-                    Provide detail about the role they just interviewed for.{" "}
+                  <div className="text-gray-300 flex justify-start pb-2">
                     This information will ONLY be seen by HR Managers.
                   </div>
                 </div>
 
                 <div className={"flex justify-center py-2"}>
                   <input
-                    className="border-2 w-full py-0.5 pl-1 rounded text-sm"
+                    className="border-2 w-full py-0.5 pl-1 rounded text-xs"
                     id="guess"
                     type="text"
                     placeholder=" Position Title"
@@ -280,11 +279,11 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     onChange={(e) => setPositionTitle(e.target.value)}
                   ></input>
                 </div>
-                <div className={"grid grid-cols-2 pt-4 text-gray-700"}>
+                <div className={"grid grid-cols-2 pt-2 text-gray-700"}>
                   <div className={""}>
-                    <div className="pb-4">
+                    <div className="pb-2">
                       <div className="text-xs py-1 font-bold text-gray-500 flex flex-nowrap">
-                        Furthest Interview Stage
+                        Last Interview Stage
                         <InformationCircleIcon
                           className={
                             "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer pl-0.5"
@@ -325,19 +324,15 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     </div>
                   </div>
                 </div>
-                <div className="py-8">
+                <div className="py-4">
                   <hr className="" />
                 </div>
-                <div className="pb-10 text-gray-700">
-                  <div className="font-bold flex justify-start text-base">
+                <div className="pb-2 text-gray-700">
+                  <div className="font-bold flex justify-start text-sm">
                     Step 3: Stand Out Skills
                   </div>
-                  <div className="text-gray-400 text-xs py-0.5">
-                    <div
-                      className={
-                        "text-gray-300 text-xs font-bold flex justify-start"
-                      }
-                    >
+                  <div className="text-gray-400 py-0.5">
+                    <div className={"text-gray-300 flex justify-start"}>
                       Select skill that impressed you
                     </div>
                   </div>
@@ -384,7 +379,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     textColour="white"
                     onClick={submitForm}
                     buttonType="rounded"
-                    label="Add Candidate!"
+                    label="Invite Candidate!"
                     disabled={formValidation()}
                   />
                 </div>
