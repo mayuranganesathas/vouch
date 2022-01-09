@@ -25,6 +25,7 @@ import {
   InterviewStageDropDownArray,
   InterviewStrengthSkillDropDownArray,
 } from "../../pages/api/dropdownCategories";
+import InformationIconToolTip from "../ui/InformationIconToolTip";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -285,11 +286,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                     <div className="pb-4">
                       <div className="text-xs py-1 font-bold text-gray-500 flex flex-nowrap">
                         Furthest Interview Stage
-                        <InformationCircleIcon
-                          className={
-                            "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer pl-0.5"
-                          }
-                        />{" "}
+                        <InformationIconToolTip toolTipCopy="While companies have differing interview stages, please do your best to select the stage that best represents the last interview stage completed by the candidate." />
                       </div>
                       <div className={"pr-3"}>
                         <PositionFilterVouch
@@ -307,11 +304,7 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
                   <div>
                     <div className="text-xs py-1 pl-3 font-bold text-gray-500 flex flex-nowrap">
                       Base Salary Range{" "}
-                      <InformationCircleIcon
-                        className={
-                          "h-4 w-4 text-gray-400 hover:text-yellow-200 cursor-pointer p,-0.5"
-                        }
-                      />{" "}
+                      <InformationIconToolTip toolTipCopy="Select the closest base salary range that was budgeted for the position. This provides other HR professionals in the platform an idea around salary expectations of the candidate." />
                     </div>{" "}
                     <div className={"pl-3"}>
                       <BaseSalaryFilterVouch
