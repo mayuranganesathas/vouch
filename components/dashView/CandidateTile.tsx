@@ -21,7 +21,6 @@ export interface CandidateTileProps {
   companyName: string;
   stageInterview: string;
   pastPosition1: string;
-  pastIndustry1: string;
   standOutSkill1: string;
   standOutSkill2: string;
   userLinkedinURL: string;
@@ -29,6 +28,7 @@ export interface CandidateTileProps {
   firstName: string;
   lastName: string;
   refetchShortList: any;
+  pastCompanyName: string;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -42,12 +42,12 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   companyName,
   stageInterview,
   pastPosition1,
-  pastIndustry1,
   standOutSkill1,
   standOutSkill2,
   userLinkedinURL,
   userEmailAction,
   refetchShortList,
+  pastCompanyName,
 }) => {
   const [thumbUpCheck, setthumbUpSetCheck] = useState(false);
   const [thumbDownCheck, setthumbDownSetCheck] = useState(false);
@@ -177,7 +177,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               </div>
               <div>
                 <p className={"w-full pt-1 border-r-4 border-gray-300"}>
-                  in {pastIndustry1}
+                  at {pastCompanyName}
                 </p>
               </div>
             </div>
