@@ -11,16 +11,12 @@ export interface UserIdBarProps {
   stageStatus: string;
   setStageStatus: (stageStatus: string) => void;
   queryUpdateOnClick: () => void;
-  menuHidden: boolean;
-  setIsMenuHidden: any;
 }
 const UserIdBar = ({
   hrData,
   stageStatus,
   setStageStatus,
   queryUpdateOnClick,
-  menuHidden,
-  setIsMenuHidden,
 }: UserIdBarProps) => {
   const { user } = useAuth();
 
@@ -122,12 +118,7 @@ const UserIdBar = ({
         </div>
 
         <div className={"col-start-13 col-span-2 flex items-center"}>
-          <UserProfile
-            userHrFirstName={"M"}
-            userHrLastName={"G"}
-            isHidden={menuHidden}
-            setIsHidden={setIsMenuHidden}
-          />
+          <UserProfile userHrFirstName={"M"} userHrLastName={"G"} />
         </div>
       </div>
     )
