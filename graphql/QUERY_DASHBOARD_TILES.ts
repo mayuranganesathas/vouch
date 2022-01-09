@@ -36,6 +36,7 @@ export const QUERY_DASHBOARD_TILES = gql`
         positionTitle
         seniority
         created_at
+        companyName
       }
     }
     shortlist(where: { hrId: { _eq: $hrId } }) {
