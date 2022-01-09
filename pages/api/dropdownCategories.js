@@ -7,7 +7,7 @@ export const positionCategoryDropDownArray = [
   "Sales/BD",
   "Marketing",
   "Account Mgmt.",
-  "Product Mangement",
+  "Product Management",
   "Data Analysis/Science",
   "Design-UX/UI",
 ];
