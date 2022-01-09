@@ -3,7 +3,6 @@ import { ButtonLinkedin } from "./ButtonLinkedin";
 import { StarIcon } from "@heroicons/react/solid";
 import { EyeOffIcon } from "@heroicons/react/solid";
 import { MailOpenIcon } from "@heroicons/react/solid";
-import { SparklesIcon } from "@heroicons/react/solid";
 import { ButtonEmail } from "./ButtonEmail";
 import { CompTooltip } from "./CompTooltip";
 import ReactTooltip from "react-tooltip";
@@ -209,8 +208,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               <p className={"w-full text-base"}>{salaryRange} </p>
             </div>
             <div className={"col-start-2"}>
-              <p className={"w-full font-gray-500 "}>{standOutSkill1}</p>
-              <p className={"w-full  font-gray-500 pt-1 "}>{standOutSkill2}</p>
+              <p className={"w-full font-gray-500 flex flex-wrap  text-xs"}>
+                <StarIcon className={"h-4 w-4 text-VouchGreen "} />
+                {standOutSkill1}
+              </p>
+              <p className={"w-full  ont-gray-500 pt-1 flex text-xs "}>
+                <StarIcon className={"h-4 w-4 text-VouchGreen"} />
+                {standOutSkill2}
+              </p>
             </div>
           </div>
         </div>
