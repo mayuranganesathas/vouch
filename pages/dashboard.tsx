@@ -63,6 +63,8 @@ const DashBoard = ({}: DashboardProps) => {
   const [shortListExistingCandidates, setShortListExistingCandidates] =
     useState(0);
 
+  const [clearFilter, setClearFilter] = useState(false);
+
   let {
     loading,
     data: ShortList,
@@ -77,6 +79,26 @@ const DashBoard = ({}: DashboardProps) => {
       hrId: user.uid,
     },
   });
+
+  const clearFilters = () => {
+    setSeniorityDropdown("empty");
+    setJobCategoryDropdown("empty");
+    setLocationStateDropdown("empty");
+    setClearFilter(false);
+  };
+
+  const filterChangeLocation = (e) => {
+    setLocationStateDropdown(e);
+    setClearFilter(true);
+  };
+  const filterChangeCategory = (e) => {
+    setJobCategoryDropdown(e);
+    setClearFilter(true);
+  };
+  const filterChangeSeniority = (e) => {
+    setSeniorityDropdown(e);
+    setClearFilter(true);
+  };
 
   const getTileComponent = () => {
     if (stageStatus == "Home") {
@@ -215,7 +237,7 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={positionCategoryDropDownArray}
                 value={jobCategoryDropdown}
-                onChange={(e) => setJobCategoryDropdown(e.target.value)}
+                onChange={(e) => filterChangeCategory(e)}
               />
             </div>
             <div className={"col-start-5 flex items-center"}>
@@ -223,7 +245,7 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={SeniorityDropDownArray}
                 value={seniorityDropdown}
-                onChange={(e) => setSeniorityDropdown(e.target.value)}
+                onChange={(e) => filterChangeSeniority(e)}
               />
             </div>
             <div className={"col-start-7 flex items-center"}>
@@ -231,8 +253,16 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={stateProvince}
                 value={locationStateDropdown}
-                onChange={(e) => setLocationStateDropdown(e.target.value)}
+                onChange={(e) => filterChangeLocation(e)}
               />
+              <div
+                className={
+                  "px-4 text-xs  cursor-pointer select-none hover:text-red-500"
+                }
+                onClick={clearFilters}
+              >
+                {clearFilter && <div> X Clear </div>}
+              </div>
             </div>
             <div className={"col-start-11 col-span-2 flex items-start pb-12"}>
               <CandidateCount candidateCount={existingCandidates} />

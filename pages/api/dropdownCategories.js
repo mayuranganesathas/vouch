@@ -115,7 +115,6 @@ export const jobCompanySizeDropdownData = [
 ];
 
 export const stateProvince = [
-  "--CANADA--",
   "Alberta",
   "British Columbia",
   "Manitoba",
@@ -129,7 +128,6 @@ export const stateProvince = [
   "Quebec",
   "Saskatchewan",
   "Yukon Territory",
-  "--USA--",
   "Alaska",
   "Alabama",
   "Arkansas",

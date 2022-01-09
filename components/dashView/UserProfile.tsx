@@ -23,7 +23,7 @@ const UserProfile = ({ userHrFirstName, userHrLastName }: UserProfileProps) => {
     <div className="space-y-2  ">
       <div
         onClick={revealMenu}
-        className="font-bold text-white rounded-full bg-black flex items-center justify-center font-mono p-3 cursor-pointer select-none space-y-4	"
+        className="font-bold text-white rounded-full bg-blue-500 flex items-center justify-center font-mono p-3 cursor-pointer select-none space-y-4	"
       >
         {userHrFirstName.charAt(0)}
         {userHrLastName.charAt(0)}
