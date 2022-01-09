@@ -63,6 +63,7 @@ const DashBoard = ({}: DashboardProps) => {
   const [existingCandidates, setExistingCandidates] = useState();
   const [shortListExistingCandidates, setShortListExistingCandidates] =
     useState(0);
+
   let {
     loading,
     data: ShortList,

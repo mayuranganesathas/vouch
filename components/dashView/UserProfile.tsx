@@ -1,30 +1,45 @@
-import React from "react";
+import router from "next/router";
+import React, { useState } from "react";
+import { useAuth } from "../../lib/authContext";
 
 export interface UserProfileProps {
-  userHrImg: string;
-  userHrName: string;
-  userHrPosition: string;
+  userHrFirstName: string;
+  userHrLastName: string;
 }
 
-const UserProfile = ({
-  userHrImg,
-  userHrName,
-  userHrPosition,
-}: UserProfileProps) => {
+const UserProfile = ({ userHrFirstName, userHrLastName }: UserProfileProps) => {
+  const [isHidden, setIsHidden] = useState(false);
+
+  const { signOut } = useAuth();
+  const revealMenu = () => {
+    setIsHidden(!isHidden);
+  };
+
+  const signOutGoogle = () => {
+    signOut;
+    router.push("/login");
+  };
   return (
-    <div className="flex py-2 px-4 ">
-      <div className=" px-4">
-        {userHrImg && (
-          <img src={userHrImg} className="" width="50" height="50" />
-        )}
+    <div className="">
+      <div
+        onClick={revealMenu}
+        className="font-bold text-white rounded-full bg-black flex items-center justify-center font-mono p-3 cursor-pointer select-none	"
+      >
+        {userHrFirstName}
+        {userHrLastName}
       </div>
-      <div className=" py-1 flex-wrap">
-        <div className="  text-md py-0.5 px-0.5 font-bold"> {userHrName}</div>
-        <div className="text-xs text-gray-500 py-0.5 px-0.5">
-          {" "}
-          {userHrPosition}
+      {isHidden && (
+        <div className="bg-gray-100 absolute space-y-48 	py-1 rounded-md">
+          <div className="">
+            <span
+              className="block text-black cursor-pointer hover:text-red"
+              onClick={signOut}
+            >
+              Sign Out
+            </span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
