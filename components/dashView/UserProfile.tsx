@@ -20,24 +20,25 @@ const UserProfile = ({ userHrFirstName, userHrLastName }: UserProfileProps) => {
     router.push("/login");
   };
   return (
-    <div className="">
+    <div className="space-y-2  ">
       <div
         onClick={revealMenu}
-        className="font-bold text-white rounded-full bg-black flex items-center justify-center font-mono p-3 cursor-pointer select-none	"
+        className="font-bold text-white rounded-full bg-black flex items-center justify-center font-mono p-3 cursor-pointer select-none space-y-4	"
       >
-        {userHrFirstName}
-        {userHrLastName}
+        {userHrFirstName.charAt(0)}
+        {userHrLastName.charAt(0)}
       </div>
       {isHidden && (
-        <div className="bg-gray-100 absolute space-y-48 	py-1 rounded-md">
-          <div className="">
-            <span
-              className="block text-black cursor-pointer hover:text-red"
-              onClick={signOut}
-            >
-              Sign Out
-            </span>
+        <div className="divide-y divide-blue-200 absolute bg-gray-100 p-0.5">
+          <div
+            className="p-1 hover:bg-VouchGreen hover:text-white cursor-pointer shadow-lg rounded-lg"
+            onClick={signOutGoogle}
+          >
+            Sign Out
           </div>
+          {/* <div className="p-1 hover:bg-VouchGreen hover:text-white cursor-pointer">
+            Support
+          </div> */}
         </div>
       )}
     </div>

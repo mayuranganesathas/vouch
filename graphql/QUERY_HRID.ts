@@ -8,6 +8,11 @@ export const QUERY_HRID = gql`
       industry
       companyWebsite
       userName
+      firstName
+      hrEmail
+      hrId
+      lastName
+      rangeOfEmployees
     }
     company_data(where: { hrId: { _eq: $hrId } }) {
       corporateName

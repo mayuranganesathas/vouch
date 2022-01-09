@@ -40,6 +40,12 @@ export interface HROnboardingProps {
   checkBoxValidation: boolean;
   setCheckBoxValidation: (checkBoxValidation: boolean) => void;
 
+  hrFirstName: string;
+  setHrFirstName: (hrFirstName: string) => void;
+
+  hrLastName: string;
+  setHrLastName: (hrLastName: string) => void;
+
   formValidation: () => boolean;
 }
 
@@ -60,6 +66,10 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
   checkBoxValidation,
   setCheckBoxValidation,
   formValidation,
+  hrFirstName,
+  setHrFirstName,
+  hrLastName,
+  setHrLastName,
 }) => {
   return (
     <div className={"flex justify-center items-center"}>
@@ -143,9 +153,9 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                     "border border-gray-300 text-xs rounded py-1 px-4 w-5/6"
                   }
                   placeholder="First name"
-                  value={hrVoucherCompanyName}
+                  value={hrFirstName}
                   onChange={(e) =>
-                    setHrVoucherCompanyName(e.target.value)
+                    setHrFirstName(e.target.value)
                   } /*needs new props*/
                 />
               </div>
@@ -155,9 +165,9 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                     "border border-gray-300 text-xs rounded py-1 px-4 w-5/6"
                   }
                   placeholder="Last name"
-                  value={hrVoucherCompanyName}
+                  value={hrLastName}
                   onChange={(e) =>
-                    setHrVoucherCompanyName(e.target.value)
+                    setHrLastName(e.target.value)
                   } /*needs new props*/
                 />
               </div>
