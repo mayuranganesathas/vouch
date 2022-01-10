@@ -8,6 +8,7 @@ async function sendEmail(req, res) {
       to: `${req.body.email}`, // Your email where you'll receive emails
       from: "mayuran852@gmail.com", // your website email address here
       templateId: "d-26b055cc293b47a8ba272816cad13519",
+      cc: `${req.body.hrEmail}`,
       dynamicTemplateData: {},
     });
   } catch (error) {

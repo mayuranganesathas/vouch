@@ -4,8 +4,10 @@ import Modal from "react-modal";
 import { useState } from "react";
 import VouchCTAModal from "./VouchCTAModal";
 
-export interface VouchCTAProps {}
-const VouchCTA = ({}: VouchCTAProps) => {
+export interface VouchCTAProps {
+  hrData: any;
+}
+const VouchCTA = ({ hrData }: VouchCTAProps) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -29,7 +31,11 @@ const VouchCTA = ({}: VouchCTAProps) => {
         />
       </div>
 
-      <VouchCTAModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <VouchCTAModal
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        hrData={hrData}
+      />
     </div>
   );
 };

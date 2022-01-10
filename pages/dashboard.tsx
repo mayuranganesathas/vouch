@@ -188,7 +188,7 @@ const DashBoard = ({}: DashboardProps) => {
             </div>
             <div className="grid col-start-3 bg-gray-200 py-6 pr-6">
               <div className={"flex items-center justify-end"}>
-                <VouchCTA />
+                <VouchCTA hrData={hrData} />
               </div>
             </div>
           </div>

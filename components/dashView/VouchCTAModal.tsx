@@ -34,12 +34,17 @@ import "react-toastify/dist/ReactToastify.css";
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
+  hrData: any;
 }
 
 //** UX */
 //EMAIL INPUT VALIDATOR
 
-const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
+const VouchCTAModal = ({
+  modalIsOpen,
+  closeModal,
+  hrData,
+}: VouchCTAModalProps) => {
   const { user } = useAuth();
 
   //authentication passes hrID
@@ -89,6 +94,10 @@ const VouchCTAModal = ({ modalIsOpen, closeModal }: VouchCTAModalProps) => {
       body: JSON.stringify({
         email: email,
         hrId: user.uid,
+        hrEmail: user.email,
+        hrFirstName: hrData.hr_voucher[0].firstName,
+        hrLastName: hrData.hr_voucher[0].lastName,
+        companyName: hrData.hr_voucher[0].companyName,
       }),
       headers: {
         "Content-Type": "application/json",

@@ -130,6 +130,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     const res = await fetch("/api/interestEmail", {
       body: JSON.stringify({
         email: userEmailAction,
+        hrEmail: user.email,
       }),
       headers: {
         "Content-Type": "application/json",

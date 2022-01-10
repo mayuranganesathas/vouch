@@ -8,8 +8,12 @@ async function sendEmail(req, res) {
       to: `${req.body.email}`, // Your email where you'll receive emails
       from: "mayuran852@gmail.com", // your website email address here
       templateId: "d-40f048ed85414c7dbef11d9280a4502b",
+      cc: `${req.body.hrEmail}`,
       dynamicTemplateData: {
         link: `www.vouchrecruit.com/candidate-register?hrId=${req.body.hrId}&email=${req.body.email}`,
+        hrFirstName: `${req.body.hrFirstName}`,
+        hrLastName: `${req.body.hrLastName}`,
+        companyName: `${req.body.companyName}`,
       },
     });
   } catch (error) {
