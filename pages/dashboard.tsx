@@ -36,20 +36,19 @@ const DashBoard = ({}: DashboardProps) => {
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("empty");
   const [existingCandidates, setExistingCandidates] = useState();
-  const [
-    shortListExistingCandidates,
-    setShortListExistingCandidates,
-  ] = useState(0);
+  const [shortListExistingCandidates, setShortListExistingCandidates] =
+    useState(0);
   const [clearFilter, setClearFilter] = useState(false);
 
-  let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
-    QUERY_SHORT_LIST,
-    {
-      variables: {
-        hrId: user.uid,
-      },
-    }
-  );
+  let {
+    loading,
+    data: ShortList,
+    refetch: refetchShortList,
+  } = useQuery(QUERY_SHORT_LIST, {
+    variables: {
+      hrId: user.uid,
+    },
+  });
   const { data } = useQuery(QUERY_DASHBOARD_TILES, {
     variables: {
       hrId: user.uid,
@@ -187,6 +186,7 @@ const DashBoard = ({}: DashboardProps) => {
               filterStateLocation={locationStateDropdown}
               existingCandidates={existingCandidates}
               setExistingCandidates={setExistingCandidates}
+              hrData={hrData}
             />
           </div>
         </div>
@@ -262,7 +262,9 @@ const DashBoard = ({}: DashboardProps) => {
                 }
                 onClick={clearFilters}
               >
-                {clearFilter && <div> X Clear </div>}
+                {clearFilter && (
+                  <div className=" flex flex-nowrap text-xs"> X Clear </div>
+                )}
               </div>
             </div>
             <div className={"col-start-10 col-span-3 grid content-start pb-8"}>
@@ -316,6 +318,9 @@ const DashBoard = ({}: DashboardProps) => {
                 existingCandidates={shortListExistingCandidates}
                 hrData={hrData}
                 stageStatus={stageStatus}
+                filterJobCategory={jobCategoryDropdown}
+                filterJobSeniority={seniorityDropdown}
+                filterStateLocation={locationStateDropdown}
               />
             }
           </div>
@@ -446,6 +451,9 @@ const DashBoard = ({}: DashboardProps) => {
                 existingCandidates={shortListExistingCandidates}
                 hrData={hrData}
                 stageStatus={stageStatus}
+                filterJobCategory={jobCategoryDropdown}
+                filterJobSeniority={seniorityDropdown}
+                filterStateLocation={locationStateDropdown}
               />
             }
           </div>
@@ -576,6 +584,9 @@ const DashBoard = ({}: DashboardProps) => {
                 existingCandidates={shortListExistingCandidates}
                 hrData={hrData}
                 stageStatus={stageStatus}
+                filterJobCategory={jobCategoryDropdown}
+                filterJobSeniority={seniorityDropdown}
+                filterStateLocation={locationStateDropdown}
               />
             }
           </div>
@@ -627,6 +638,7 @@ const DashBoard = ({}: DashboardProps) => {
               stageStatus={stageStatus}
               setStageStatus={setStageStatus}
               queryUpdateOnClick={refetchShortList}
+              clearFilters={clearFilters}
             />
           </div>
           <div className={"w-full border-gray-500 border-b-2"}></div>

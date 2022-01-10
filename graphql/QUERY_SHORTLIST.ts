@@ -39,6 +39,8 @@ export const QUERY_SHORT_LIST = gql`
           locationCity
           locationState
           companyName
+          seniority
+          jobCategory
         }
       }
     }

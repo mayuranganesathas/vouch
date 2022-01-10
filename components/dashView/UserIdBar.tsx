@@ -11,12 +11,14 @@ export interface UserIdBarProps {
   stageStatus: string;
   setStageStatus: (stageStatus: string) => void;
   queryUpdateOnClick: () => void;
+  clearFilters: () => void;
 }
 const UserIdBar = ({
   hrData,
   stageStatus,
   setStageStatus,
   queryUpdateOnClick,
+  clearFilters,
 }: UserIdBarProps) => {
   const { user } = useAuth();
 
@@ -32,6 +34,7 @@ const UserIdBar = ({
     setContactedCheck(false);
     setStageStatus("Home");
     queryUpdateOnClick;
+    clearFilters();
   };
 
   const favoritesClick = () => {
@@ -41,6 +44,7 @@ const UserIdBar = ({
     setContactedCheck(false);
     setStageStatus("Favorites");
     queryUpdateOnClick;
+    clearFilters();
   };
 
   const unfitClick = () => {
@@ -50,6 +54,7 @@ const UserIdBar = ({
     setContactedCheck(false);
     setStageStatus("Unfit");
     queryUpdateOnClick;
+    clearFilters();
   };
 
   const contactedClick = () => {
@@ -59,6 +64,7 @@ const UserIdBar = ({
     setFavoritesCheck(false);
     setStageStatus("Contacted");
     queryUpdateOnClick;
+    clearFilters();
   };
 
   return (
