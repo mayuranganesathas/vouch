@@ -9,6 +9,7 @@ export interface DashCandidateTilesProps {
   filterStateLocation: any;
   existingCandidates: string;
   setExistingCandidates: (existingCandidates: any) => void;
+  hrData: any;
 }
 
 const DashCandidateTiles = ({
@@ -17,7 +18,7 @@ const DashCandidateTiles = ({
   filterJobCategory,
   filterJobSeniority,
   filterStateLocation,
-  existingCandidates,
+  hrData,
   setExistingCandidates,
 }: DashCandidateTilesProps) => {
   const filterManage = () => {
@@ -109,6 +110,7 @@ const DashCandidateTiles = ({
             userLinkedinURL={e.Vouchee[0].linkedIn}
             userEmailAction={e.Candidate_Contact[0].candidateEmail}
             refetchShortList={refetchShortList}
+            hrData={hrData}
           />
         ))}
       {vouchData && candidateCounter()}

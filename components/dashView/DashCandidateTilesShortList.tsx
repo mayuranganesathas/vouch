@@ -7,6 +7,7 @@ export interface DashCandidateTilesShortListProps {
   refetchShortList: () => void;
   setExistingCandidates: (existingCandidates: number) => void;
   existingCandidates: number;
+  hrData: any;
 }
 
 const DashCandidateTilesShortList = ({
@@ -14,7 +15,7 @@ const DashCandidateTilesShortList = ({
   filter,
   refetchShortList,
   setExistingCandidates,
-  existingCandidates,
+  hrData,
 }: DashCandidateTilesShortListProps) => {
   const candidateCounter = () => {
     setExistingCandidates(0);
@@ -58,6 +59,7 @@ const DashCandidateTilesShortList = ({
                 e.hr_voucher_metadatum.Candidate_Contact[0].candidateEmail
               }
               refetchShortList={refetchShortList}
+              hrData={hrData}
             />
           ))}
       {vouchData && candidateCounter()}
