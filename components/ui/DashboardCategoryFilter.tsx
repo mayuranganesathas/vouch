@@ -6,6 +6,7 @@ export interface DashboardCategoryFilterProps {
   value?: any;
   onChange?: (e) => void;
   width?: "wide-md" | "wide-lg" | "wide-sm";
+  copy: string;
 }
 
 export const DashboardCategoryFilter: React.FC<DashboardCategoryFilterProps> = ({
@@ -14,6 +15,7 @@ export const DashboardCategoryFilter: React.FC<DashboardCategoryFilterProps> = (
   value,
   onChange,
   width,
+  copy,
 }) => {
   let backgroundStyles;
   switch (backgroundColour) {
@@ -47,7 +49,7 @@ export const DashboardCategoryFilter: React.FC<DashboardCategoryFilterProps> = (
         onChange={onChange}
       >
         <option value="empty" disabled selected hidden>
-          By Position Type
+          {copy}
         </option>
 
         {dropDownArray &&

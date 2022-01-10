@@ -200,7 +200,7 @@ const DashBoard = ({}: DashboardProps) => {
               }
             >
               <div className={"flex flex-wrap"}>
-                <div className={"pr-2"}>Candidate Filters </div>
+                <div className={"pr-2"}>Filters Candidates By: </div>
 
                 <InformationIconToolTip toolTipCopy="Filter by the candidate's background. Information is provided by the candidate directly." />
               </div>
@@ -211,6 +211,7 @@ const DashBoard = ({}: DashboardProps) => {
                 dropDownArray={positionCategoryDropDownArray}
                 value={jobCategoryDropdown}
                 onChange={(e) => setJobCategoryDropdown(e.target.value)}
+                copy="Recent Position"
               />
             </div>
             <div className={"col-start-5 flex items-center"}>
@@ -219,6 +220,7 @@ const DashBoard = ({}: DashboardProps) => {
                 dropDownArray={SeniorityDropDownArray}
                 value={seniorityDropdown}
                 onChange={(e) => setSeniorityDropdown(e.target.value)}
+                copy="Seniority"
               />
             </div>
             <div className={"col-start-7 flex items-center"}>
@@ -227,6 +229,7 @@ const DashBoard = ({}: DashboardProps) => {
                 dropDownArray={stateProvince}
                 value={locationStateDropdown}
                 onChange={(e) => setLocationStateDropdown(e.target.value)}
+                copy="Location"
               />
             </div>
             <div className={"col-start-10 col-span-3 grid content-start pb-8"}>
