@@ -15,7 +15,7 @@ const HrCompanyProfile = ({
           target="_blank"
           href={"https://" + userHrCompanyWebsite}
           rel="noopener noreferrer"
-          className=" flex-nowrap text-2xl font-bold text-gray-500"
+          className=" flex-nowrap text-base font-bold text-gray-700"
         >
           {" "}
           {userHrCompanyName}

@@ -157,37 +157,43 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               <div className={"grid grid-cols-8 pl-2"}>
                 <div
                   className={
-                    "col-start-1 border-2 rounded-t-full rounded-b-full"
+                    "col-start-1 col-span-2 px-2 grid place-content-evenly"
                   }
                 >
-                  <div className={"flex justify-center pt-1"}>
-                    <StarIcon
-                      className={
-                        "h-6 w-6 text-gray-400 hover:text-yellow-200 cursor-pointer"
-                      }
-                      onClick={thumbUpClick}
-                    />
-                  </div>
-                  <div className="py-2 flex justify-center">
-                    <EyeOffIcon
-                      className={
-                        "h-5 w-5 text-gray-400 hover:text-red-500 cursor-pointer"
-                      }
-                      onClick={thumbDownClick}
-                    />
-                  </div>
-                  <div className={"flex justify-center pb-1"}>
-                    <MailOpenIcon
-                      className={`h-5 w-5 text-gray-400 hover:text-blue-500 cursor-pointer`}
-                      onClick={moveToContacted}
-                    />
+                  <div
+                    className={
+                      "border-2 rounded-t-full rounded-b-full grid place-content-evenly"
+                    }
+                  >
+                    <div className={"flex justify-center "}>
+                      <StarIcon
+                        className={
+                          "h-5 w-5 text-gray-400 hover:text-yellow-200 cursor-pointer"
+                        }
+                        onClick={thumbUpClick}
+                      />
+                    </div>
+                    <div className="py-1 flex justify-center">
+                      <EyeOffIcon
+                        className={
+                          "h-4 w-4 text-gray-400 hover:text-red-500 cursor-pointer"
+                        }
+                        onClick={thumbDownClick}
+                      />
+                    </div>
+                    <div className={"flex justify-center pb-0.5"}>
+                      <MailOpenIcon
+                        className={`h-4 w-4 text-gray-400 hover:text-blue-500 cursor-pointer`}
+                        onClick={moveToContacted}
+                      />
+                    </div>
                   </div>
                 </div>
-                <div className={"col-start-3 col-span-5 pt-4 pl-2"}>
-                  <p className={"font-bold text-gray-900 text-base"}>
+                <div className={"col-start-3 col-span-5 pt-2 pl-2"}>
+                  <p className={"font-bold text-gray-900 text-sm"}>
                     {firstName} {lastName}
                   </p>
-                  <div className={""}> {jobLocation}</div>
+                  <div className={"text-xs"}> {jobLocation}</div>
                   <div className={""}>
                     <div className={"grid justify-items-start pt-1"}>
                       <ButtonLinkedin
@@ -200,44 +206,44 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               </div>
             </div>
 
-            <div className={"col-start-2 pt-4 pl-4"}>
+            <div className={"col-start-2 pt-2 pl-4"}>
               <div>
-                <p className={"w-full text-base border-r-4 border-gray-300 "}>
+                <p className={"w-full border-r-4 border-gray-300 "}>
                   {pastPosition1}
                 </p>
               </div>
               <div>
-                <p className={"w-full pt-1 border-r-4 border-gray-300"}>
+                <p className={"w-full pt-1 text-xs border-r-4 border-gray-300"}>
                   at {pastCompanyName}
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div className={"col-start-2 pt-4"}>
+        <div className={"col-start-2 pt-2"}>
           <div className={"grid grid-cols-2 "}>
             <div className={"col-start-1 pl-12"}>
               <div className={""}>
                 <div>
-                  <p className="w-full text-base">{companyName}</p>
-                  <p className="w-full pt-1 ">
+                  <p className="w-full">{companyName}</p>
+                  <p className="w-full pt-1 text-xs">
                     {" "}
-                    # of Employees: {numEmployees}
+                    Employees: {numEmployees}
                   </p>
                 </div>
               </div>
             </div>
-            <div className={"col-start-2 pl-4"}>
-              <p className={"text-base"}> {positionTitle}</p>
+            <div className={"col-start-2"}>
+              <p className={""}> {positionTitle}</p>
 
-              <p className={"w-full pt-1 "}>{stageInterview}</p>
+              <p className={"w-full pt-1 text-xs"}>{stageInterview}</p>
             </div>
           </div>
         </div>
-        <div className={"col-start-3 pt-4 "}>
+        <div className={"col-start-3 pt-2 "}>
           <div className={"grid grid-cols-2"}>
-            <div className={"col-start-1 pl-8"}>
-              <p className={"w-full text-base"}>{salaryRange} </p>
+            <div className={"col-start-1"}>
+              <p className={""}>{salaryRange} </p>
             </div>
             <div className={"col-start-2"}>
               <p className={"w-full font-gray-500 flex flex-wrap  text-xs"}>
