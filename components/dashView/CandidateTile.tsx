@@ -182,6 +182,33 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           </div>
         </div>
       );
+    } else {
+      return (
+        <div>
+          <div className={"flex justify-center "}>
+            <StarIcon
+              className={
+                "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
+              }
+              onClick={thumbUpClick}
+            />
+          </div>
+          <div className="py-1 flex justify-center">
+            <EyeOffIcon
+              className={
+                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+              }
+              onClick={thumbDownClick}
+            />
+          </div>
+          <div className={"flex justify-center pb-0.5"}>
+            <MailOpenIcon
+              className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer`}
+              onClick={moveToContacted}
+            />
+          </div>
+        </div>
+      );
     }
   };
 
