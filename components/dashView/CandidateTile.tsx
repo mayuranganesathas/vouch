@@ -30,6 +30,7 @@ export interface CandidateTileProps {
   refetchShortList: any;
   pastCompanyName: string;
   hrData: any;
+  stageStatus?: any;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -50,6 +51,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   refetchShortList,
   pastCompanyName,
   hrData,
+  stageStatus,
 }) => {
   const [thumbUpCheck, setthumbUpSetCheck] = useState(false);
   const [thumbDownCheck, setthumbDownSetCheck] = useState(false);
@@ -175,7 +177,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                     <div className={"flex justify-center "}>
                       <StarIcon
                         className={
-                          "h-5 w-5 text-gray-400 hover:text-yellow-200 cursor-pointer"
+                          "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
                         }
                         onClick={thumbUpClick}
                       />
@@ -183,14 +185,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                     <div className="py-1 flex justify-center">
                       <EyeOffIcon
                         className={
-                          "h-4 w-4 text-gray-400 hover:text-red-500 cursor-pointer"
+                          "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
                         }
                         onClick={thumbDownClick}
                       />
                     </div>
                     <div className={"flex justify-center pb-0.5"}>
                       <MailOpenIcon
-                        className={`h-4 w-4 text-gray-400 hover:text-blue-500 cursor-pointer`}
+                        className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer`}
                         onClick={moveToContacted}
                       />
                     </div>

@@ -27,31 +27,6 @@ import {
 import ReactTooltip from "react-tooltip";
 export interface DashboardProps {}
 
-const dashBoardTest = {
-  newCandidateNumber: 14,
-  userHrFirstName: "Vivian",
-  moveToCandidate: () => {},
-  numberReferred: 10,
-  numberThanks: 4,
-  candidateCount: [10],
-  lastCandidateCount: 5,
-
-  starStatus: false,
-  userID: 1234,
-  positionTitle: "Sr. Backend Dev",
-  salaryRange: "$110k-140k $/Yr",
-  jobLocation: "Toronto | Ontario",
-  companyLogo: "./images/Google-logo.png",
-  numEmployees: "5000+",
-  companyName: "Google Ltd",
-  stageInterview: "Final Stage",
-  stageNumber: "(5 of 5)",
-  pastPosition1: "Director of Eng.",
-  pastIndustry1: "Finance",
-  standOutSkill1: "Strong Communication",
-  userLinkedinURL: "https://ca.linkedin.com/in/mayuranganesathas",
-};
-
 const DashBoard = ({}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
@@ -63,6 +38,7 @@ const DashBoard = ({}: DashboardProps) => {
   const [existingCandidates, setExistingCandidates] = useState();
   const [shortListExistingCandidates, setShortListExistingCandidates] =
     useState(0);
+  const [clearFilter, setClearFilter] = useState(false);
 
   let {
     loading,
@@ -106,6 +82,7 @@ const DashBoard = ({}: DashboardProps) => {
               setExistingCandidates={setShortListExistingCandidates}
               existingCandidates={shortListExistingCandidates}
               hrData={hrData}
+              stageStatus={stageStatus}
             />
           }
         </div>
@@ -122,6 +99,7 @@ const DashBoard = ({}: DashboardProps) => {
               setExistingCandidates={setShortListExistingCandidates}
               existingCandidates={shortListExistingCandidates}
               hrData={hrData}
+              stageStatus={stageStatus}
             />
           }
         </div>
@@ -139,6 +117,7 @@ const DashBoard = ({}: DashboardProps) => {
               setExistingCandidates={setShortListExistingCandidates}
               existingCandidates={shortListExistingCandidates}
               hrData={hrData}
+              stageStatus={stageStatus}
             />
           }
         </div>
@@ -149,6 +128,26 @@ const DashBoard = ({}: DashboardProps) => {
   const { data: hrData } = useQuery(QUERY_HRID, {
     variables: { hrId: user.uid },
   });
+
+  const clearFilters = () => {
+    setSeniorityDropdown("empty");
+    setJobCategoryDropdown("empty");
+    setLocationStateDropdown("empty");
+    setClearFilter(false);
+  };
+
+  const filterChangeLocation = (e) => {
+    setLocationStateDropdown(e.target.value);
+    setClearFilter(true);
+  };
+  const filterChangeCategory = (e) => {
+    setJobCategoryDropdown(e.target.value);
+    setClearFilter(true);
+  };
+  const filterChangeSeniority = (e) => {
+    setSeniorityDropdown(e.target.value);
+    setClearFilter(true);
+  };
 
   useEffect(() => {
     const hrRegister = () => {
@@ -213,7 +212,7 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={positionCategoryDropDownArray}
                 value={jobCategoryDropdown}
-                onChange={(e) => setJobCategoryDropdown(e.target.value)}
+                onChange={(e) => filterChangeCategory(e)}
                 copy="Recent Position"
               />
             </div>
@@ -222,7 +221,7 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={SeniorityDropDownArray}
                 value={seniorityDropdown}
-                onChange={(e) => setSeniorityDropdown(e.target.value)}
+                onChange={(e) => filterChangeSeniority(e)}
                 copy="Seniority"
               />
             </div>
@@ -231,9 +230,17 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={stateProvince}
                 value={locationStateDropdown}
-                onChange={(e) => setLocationStateDropdown(e.target.value)}
+                onChange={(e) => filterChangeLocation(e)}
                 copy="Location"
               />
+              <div
+                className={
+                  "px-4 text-xs  cursor-pointer select-none hover:text-red-500"
+                }
+                onClick={clearFilters}
+              >
+                {clearFilter && <div> X Clear </div>}
+              </div>
             </div>
             <div className={"col-start-10 col-span-3 grid content-start pb-8"}>
               <CandidateCount candidateCount={existingCandidates} />

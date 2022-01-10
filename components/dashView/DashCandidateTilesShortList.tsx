@@ -8,6 +8,7 @@ export interface DashCandidateTilesShortListProps {
   setExistingCandidates: (existingCandidates: number) => void;
   existingCandidates: number;
   hrData: any;
+  stageStatus: string;
 }
 
 const DashCandidateTilesShortList = ({
@@ -16,6 +17,7 @@ const DashCandidateTilesShortList = ({
   refetchShortList,
   setExistingCandidates,
   hrData,
+  stageStatus,
 }: DashCandidateTilesShortListProps) => {
   const candidateCounter = () => {
     setExistingCandidates(0);
@@ -60,6 +62,7 @@ const DashCandidateTilesShortList = ({
               }
               refetchShortList={refetchShortList}
               hrData={hrData}
+              stageStatus={stageStatus}
             />
           ))}
       {vouchData && candidateCounter()}
