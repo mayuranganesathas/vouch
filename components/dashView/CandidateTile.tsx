@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { ButtonLinkedin } from "./ButtonLinkedin";
 import { StarIcon } from "@heroicons/react/solid";
+import { ReceiptRefundIcon } from "@heroicons/react/solid";
+
 import { EyeOffIcon } from "@heroicons/react/solid";
-import { MailOpenIcon } from "@heroicons/react/solid";
+import { MailOpenIcon, MailIcon } from "@heroicons/react/solid";
 import { ButtonEmail } from "./ButtonEmail";
 import { CompTooltip } from "./CompTooltip";
 import ReactTooltip from "react-tooltip";
@@ -12,6 +14,7 @@ import { INSERT_THUMBS_UP_AND_DOWN } from "../../graphql/INSERT_THUMBS_UP";
 import { useAuth } from "../../lib/authContext";
 import { QUERY_SHORT_LIST } from "../../graphql/QUERY_SHORTLIST";
 import { toast, ToastContainer } from "react-toastify";
+import { DELETE_SHORTLIST_ITEM } from "../../graphql/DELETE_FROM_SHORTLIST";
 export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
@@ -67,6 +70,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     }
   );
 
+  const [removeShortList, { data: RemoveSL }] = useMutation(
+    //Mutation for updating a user emoji value after a practice
+    DELETE_SHORTLIST_ITEM,
+    {
+      onCompleted: refetchShortList,
+    }
+  );
+
   const thumbUpClick = () => {
     setthumbUpSetCheck((prevCheck) => !prevCheck);
     setthumbDownSetCheck(false);
@@ -98,7 +109,81 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       },
     });
   };
+
+  const reverseClick = () => {
+    removeShortList({
+      variables: {
+        hrId: hrId,
+        candidateId: userID,
+      },
+    });
+  };
   //refetch queries.
+  const iconShortList = () => {
+    if (stageStatus == "Favorites") {
+      return (
+        <div>
+          <div className={"flex justify-center "}>
+            <ReceiptRefundIcon
+              className={
+                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+              }
+              onClick={reverseClick}
+            />
+          </div>
+          <div className="py-1.5 flex justify-center">
+            <EyeOffIcon
+              className={
+                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+              }
+              onClick={thumbDownClick}
+            />
+          </div>
+          <div className={"flex justify-center pb-0.5"}>
+            <MailOpenIcon
+              className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer`}
+              onClick={moveToContacted}
+            />
+          </div>
+        </div>
+      );
+    } else if (stageStatus == "Unfit") {
+      return (
+        <div>
+          <div className={"flex justify-center "}>
+            <ReceiptRefundIcon
+              className={
+                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+              }
+              onClick={reverseClick}
+            />
+          </div>
+          <div className={"py-1 flex justify-center "}>
+            <StarIcon
+              className={
+                "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
+              }
+              onClick={thumbUpClick}
+            />
+          </div>
+          <div className={"flex justify-center pb-0.5"}>
+            <MailOpenIcon
+              className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer`}
+              onClick={moveToContacted}
+            />
+          </div>
+        </div>
+      );
+    } else if (stageStatus == "Contacted") {
+      return (
+        <div>
+          <div className={"flex justify-center pb-0.5"}>
+            <MailIcon className={`h-5 w-5 text-blue-500`} />
+          </div>
+        </div>
+      );
+    }
+  };
 
   const moveToContacted = () => {
     setmoveToContactedCheck((prevCheck) => !prevCheck);
@@ -174,28 +259,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                       "border-2 rounded-t-full rounded-b-full grid place-content-evenly"
                     }
                   >
-                    <div className={"flex justify-center "}>
-                      <StarIcon
-                        className={
-                          "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
-                        }
-                        onClick={thumbUpClick}
-                      />
-                    </div>
-                    <div className="py-1 flex justify-center">
-                      <EyeOffIcon
-                        className={
-                          "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
-                        }
-                        onClick={thumbDownClick}
-                      />
-                    </div>
-                    <div className={"flex justify-center pb-0.5"}>
-                      <MailOpenIcon
-                        className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer`}
-                        onClick={moveToContacted}
-                      />
-                    </div>
+                    {iconShortList()}
                   </div>
                 </div>
                 <div className={"col-start-3 col-span-5 pt-2 pl-2"}>
