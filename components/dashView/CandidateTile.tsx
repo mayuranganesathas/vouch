@@ -11,6 +11,7 @@ import { useMutation } from "@apollo/client";
 import { INSERT_THUMBS_UP_AND_DOWN } from "../../graphql/INSERT_THUMBS_UP";
 import { useAuth } from "../../lib/authContext";
 import { QUERY_SHORT_LIST } from "../../graphql/QUERY_SHORTLIST";
+import { toast, ToastContainer } from "react-toastify";
 export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
@@ -53,9 +54,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [moveToContactedCheck, setmoveToContactedCheck] = useState(false);
 
   const { user } = useAuth();
-
   const hrId = user.uid;
-
   const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
     //Mutation for updating a user emoji value after a practice
     INSERT_THUMBS_UP_AND_DOWN,
@@ -110,6 +109,39 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         candidateId: userID,
       },
     });
+    toastFeedback();
+
+    sendEmail();
+  };
+
+  const toastFeedback = () => {
+    toast.success("Interest Email Sent! ✅", {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const sendEmail = async () => {
+    const res = await fetch("/api/interestEmail", {
+      body: JSON.stringify({
+        email: userEmailAction,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      return;
+    }
   };
 
   return (
@@ -220,21 +252,17 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
-
-/*<div className={"grid justify-items-start pl-2"}>
-  <ButtonEmail backgroundColour="white" userEmailAction={userEmailAction} />
-</div>;
-
- <p className={"pt-1 text-base "}>
- Industry: (new prop) </p>
-                  
-                   <div className={"pl-10 pt-4"}>
-                    <img src={companyLogo} width="45" height="auto" />
-                  </div>
-                  
-                  <p className={"w-full text-base  pt-1"}>
-                Role: {positionTitle}
-              </p>*/
