@@ -308,12 +308,16 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
             <div className={"col-start-2 pt-2 pl-4"}>
               <div>
-                <p className={"w-full border-r-4 border-gray-300 "}>
+                <p className={"w-full border-r-4 border-gray-300 truncate "}>
                   {pastPosition1}
                 </p>
               </div>
               <div>
-                <p className={"w-full pt-1 text-xs border-r-4 border-gray-300"}>
+                <p
+                  className={
+                    "w-full pt-1 text-xs border-r-4 border-gray-300 truncate"
+                  }
+                >
                   at {pastCompanyName}
                 </p>
               </div>
@@ -323,10 +327,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"col-start-2 pt-2"}>
           <div className={"grid grid-cols-2 "}>
             <div className={"col-start-1 pl-12"}>
-              <div className={""}>
+              <div className={"pr-4"}>
                 <div>
-                  <p className="w-full">{companyName}</p>
-                  <p className="w-full pt-1 text-xs">
+                  <p className="w-full truncate ">{companyName}</p>
+                  <p className="w-full pt-1 text-xs truncate">
                     {" "}
                     Employees: {numEmployees}
                   </p>
