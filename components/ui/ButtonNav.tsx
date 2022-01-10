@@ -66,16 +66,16 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   let iconStyles;
   switch (icon) {
     case "Home":
-      iconStyles = <ViewListIcon className={"w-6 h-auto"} fill="#d1d5db" />;
+      iconStyles = <ViewListIcon className={"w-4 h-auto"} fill="#d1d5db" />;
       break;
     case "Favorites":
-      iconStyles = <StarIcon className={"w-6 h-auto"} fill="#d1d5db" />;
+      iconStyles = <StarIcon className={"w-4 h-auto"} fill="#d1d5db" />;
       break;
     case "NotNow":
-      iconStyles = <EyeOffIcon className={"w-6 h-auto"} fill="#d1d5db" />;
+      iconStyles = <EyeOffIcon className={"w-4 h-auto"} fill="#d1d5db" />;
       break;
     case "Contacted":
-      iconStyles = <MailOpenIcon className={"w-6 h-auto"} fill="#d1d5db" />;
+      iconStyles = <MailOpenIcon className={"w-4 h-auto"} fill="#d1d5db" />;
       break;
   }
 
@@ -84,7 +84,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       onClick={onClick}
       disabled={disabled}
       type="button"
-      className={`bg-gradient-to-b px-2 py-1 h-full font-bold ${buttonSize}
+      className={`bg-gradient-to-b px-2 py-1 h-full text-xs font-bold ${buttonSize}
       ${disabled ? "bg-gray-400 opacity-25" : backgroundStyles}
       ${disabled ? "rounded" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}
