@@ -61,19 +61,18 @@ const DashBoard = ({}: DashboardProps) => {
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("empty");
   const [existingCandidates, setExistingCandidates] = useState();
-  const [
-    shortListExistingCandidates,
-    setShortListExistingCandidates,
-  ] = useState(0);
+  const [shortListExistingCandidates, setShortListExistingCandidates] =
+    useState(0);
 
-  let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
-    QUERY_SHORT_LIST,
-    {
-      variables: {
-        hrId: user.uid,
-      },
-    }
-  );
+  let {
+    loading,
+    data: ShortList,
+    refetch: refetchShortList,
+  } = useQuery(QUERY_SHORT_LIST, {
+    variables: {
+      hrId: user.uid,
+    },
+  });
   const { data } = useQuery(QUERY_DASHBOARD_TILES, {
     variables: {
       hrId: user.uid,
@@ -91,6 +90,7 @@ const DashBoard = ({}: DashboardProps) => {
           filterStateLocation={locationStateDropdown}
           existingCandidates={existingCandidates}
           setExistingCandidates={setExistingCandidates}
+          hrData={hrData}
         />
       );
     } else if (stageStatus == "Favorites") {
@@ -105,6 +105,7 @@ const DashBoard = ({}: DashboardProps) => {
               refetchShortList={refetchShortList}
               setExistingCandidates={setShortListExistingCandidates}
               existingCandidates={shortListExistingCandidates}
+              hrData={hrData}
             />
           }
         </div>
@@ -120,6 +121,7 @@ const DashBoard = ({}: DashboardProps) => {
               refetchShortList={refetchShortList}
               setExistingCandidates={setShortListExistingCandidates}
               existingCandidates={shortListExistingCandidates}
+              hrData={hrData}
             />
           }
         </div>
@@ -136,6 +138,7 @@ const DashBoard = ({}: DashboardProps) => {
               refetchShortList={refetchShortList}
               setExistingCandidates={setShortListExistingCandidates}
               existingCandidates={shortListExistingCandidates}
+              hrData={hrData}
             />
           }
         </div>

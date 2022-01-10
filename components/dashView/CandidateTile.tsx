@@ -29,6 +29,7 @@ export interface CandidateTileProps {
   lastName: string;
   refetchShortList: any;
   pastCompanyName: string;
+  hrData: any;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -48,6 +49,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   userEmailAction,
   refetchShortList,
   pastCompanyName,
+  hrData,
 }) => {
   const [thumbUpCheck, setthumbUpSetCheck] = useState(false);
   const [thumbDownCheck, setthumbDownSetCheck] = useState(false);
@@ -130,6 +132,11 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     const res = await fetch("/api/interestEmail", {
       body: JSON.stringify({
         email: userEmailAction,
+        hrEmail: user.email,
+        candidateFirstName: firstName,
+        hrFirstName: hrData.hr_voucher[0].firstName,
+        hrLastName: hrData.hr_voucher[0].lastName,
+        companyName: hrData.hr_voucher[0].companyName,
       }),
       headers: {
         "Content-Type": "application/json",
