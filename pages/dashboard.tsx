@@ -61,18 +61,19 @@ const DashBoard = ({}: DashboardProps) => {
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("empty");
   const [existingCandidates, setExistingCandidates] = useState();
-  const [shortListExistingCandidates, setShortListExistingCandidates] =
-    useState(0);
+  const [
+    shortListExistingCandidates,
+    setShortListExistingCandidates,
+  ] = useState(0);
 
-  let {
-    loading,
-    data: ShortList,
-    refetch: refetchShortList,
-  } = useQuery(QUERY_SHORT_LIST, {
-    variables: {
-      hrId: user.uid,
-    },
-  });
+  let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
+    QUERY_SHORT_LIST,
+    {
+      variables: {
+        hrId: user.uid,
+      },
+    }
+  );
   const { data } = useQuery(QUERY_DASHBOARD_TILES, {
     variables: {
       hrId: user.uid,
@@ -158,7 +159,7 @@ const DashBoard = ({}: DashboardProps) => {
   return (
     <div>
       {hrData && (
-        <div>
+        <div className={"text-xs text-gray-700"}>
           <div className={"pt-4 px-20"}>
             <UserIdBar
               hrData={hrData}
@@ -168,10 +169,10 @@ const DashBoard = ({}: DashboardProps) => {
             />
           </div>
           <div className={"w-full border-gray-500 border-b-2"}></div>
-          <div className={"grid grid-cols-3  pt-8 pb-8 px-24 bg-gray-50 "}>
-            <div className={"col-start-1 col-span-2 bg-gray-200 py-6 pl-6"}>
+          <div className={"grid grid-cols-3  pt-6 pb-6 px-24 bg-gray-50 "}>
+            <div className={"col-start-1 col-span-2 bg-gray-200 py-4 pl-6"}>
               <div className={"grid grid-rows-2"}>
-                <div className={"text-xl font-bold"}>
+                <div className={"text-base font-bold"}>
                   {" "}
                   Welcome{" "}
                   {hrData &&
@@ -179,7 +180,7 @@ const DashBoard = ({}: DashboardProps) => {
                       " " +
                       hrData.hr_voucher[0].lastName}
                 </div>
-                <div className={"pt-1"}>
+                <div className={"pt-1 text-sm"}>
                   {" "}
                   At Vouch, we believe that we can win the war for talent by
                   working together.
@@ -192,17 +193,16 @@ const DashBoard = ({}: DashboardProps) => {
               </div>
             </div>
           </div>
-          <div className={"pb-4 px-24 grid grid-cols-12 bg-gray-50"}>
+          <div className={"pb-8 px-24 grid grid-cols-12 bg-gray-50"}>
             <div
               className={
                 "col-start-1 col-span-2 font-bold flex justify-center items-center"
               }
             >
-              <div className={"grid grid-cols-10"}>
-                <div className={"col-span-8"}>Candidate Filters</div>
-                <div className={"col-start-10"}>
-                  <InformationIconToolTip toolTipCopy="Filter by the candidate's background. Information is provided by the candidate directly." />
-                </div>
+              <div className={"flex flex-wrap"}>
+                <div className={"pr-2"}>Candidate Filters </div>
+
+                <InformationIconToolTip toolTipCopy="Filter by the candidate's background. Information is provided by the candidate directly." />
               </div>
             </div>
             <div className={"col-start-3 flex items-center"}>
@@ -229,66 +229,43 @@ const DashBoard = ({}: DashboardProps) => {
                 onChange={(e) => setLocationStateDropdown(e.target.value)}
               />
             </div>
-            <div className={"col-start-11 col-span-2 flex items-start pb-12"}>
+            <div className={"col-start-10 col-span-3 grid content-start pb-8"}>
               <CandidateCount candidateCount={existingCandidates} />
             </div>
           </div>
-          <div className={"bg-gray-50 px-24"}>
+          <div className={"bg-gray-50 px-24 "}>
             <div
-              className={"grid grid-cols-3 grid-flow-col content-center py-1"}
+              className={
+                "grid grid-cols-3 grid-flow-col content-center py-1 text-gray-400 font-bold"
+              }
             >
               <div className={"col-start-1"}>
                 <div className={"grid grid-cols-2"}>
-                  <p
-                    className={
-                      "col-start-2 w-full pl-4 font-bold text-sm text-gray-400"
-                    }
-                  >
+                  <p className={"col-start-2 w-full pl-4"}>
                     Most recent position
                   </p>
                 </div>
               </div>
               <div className={"grid-start-2"}>
                 <div className={"grid grid-cols-2"}>
-                  <p className={"w-full pl-12 font-bold text-sm text-gray-400"}>
-                    Vouched by
-                  </p>
-                  <div
-                    className={
-                      "w-full pl-4 font-bold text-sm text-gray-400 grid grid-cols-10"
-                    }
-                  >
-                    <div className={"col-span-8"}>
-                      {" "}
-                      Position Interviewed for
-                    </div>
-                    <div className={"col-start-9"}>
-                      <InformationIconToolTip toolTipCopy="This is the position the candidate interviewed for, as well as the furthest interview stage completed." />
-                    </div>
+                  <p className={"w-full pl-12"}>Vouched by</p>
+                  <div className={"flex flex-wrap"}>
+                    <div className={"pr-2"}>Position Interviewed for</div>
+                    <InformationIconToolTip toolTipCopy="This is the position the candidate interviewed for, as well as the furthest interview stage completed." />
                   </div>
                 </div>
               </div>
               <div className={"grid-start-3"}>
                 <div className={"grid grid-cols-2"}>
-                  <div
-                    className={
-                      "w-full pl-8 font-bold text-sm text-gray-400 grid grid-cols-12"
-                    }
-                  >
-                    <div className={"col-span-5"}>Salary Range (USD)</div>
-                    <div className={"col-start-6 pl-1"}>
-                      <InformationIconToolTip toolTipCopy="This is the salary range that was budgeted for the *Position Interviewed for* role (as disclosed by the referring recruiter) " />
-                    </div>
+                  <div className={"flex flex-wrap"}>
+                    <div className={"pr-2"}>Salary Range (USD)</div>
+
+                    <InformationIconToolTip toolTipCopy="This is the salary range that was budgeted for the *Position Interviewed for* role (as disclosed by the referring recruiter) " />
                   </div>
-                  <div
-                    className={
-                      "w-full font-bold text-sm text-gray-400 grid grid-cols-12"
-                    }
-                  >
-                    <div className={"col-span-6"}>Standout Skills</div>
-                    <div className={"col-start-7"}>
-                      <InformationIconToolTip toolTipCopy="Top 2 strengths noted by the recruiting team who interviewed the Candidate." />
-                    </div>
+                  <div className={"flex flex-wrap"}>
+                    <div className={"pr-2"}>Standout Skills</div>
+
+                    <InformationIconToolTip toolTipCopy="Top 2 strengths noted by the recruiting team who interviewed the Candidate." />
                   </div>
                 </div>
               </div>

@@ -65,7 +65,7 @@ const UserIdBar = ({
     hrData.hr_voucher.length > 0 && (
       <div className={"grid grid-cols-12"}>
         <div className={"col-start-1 col-span-4"}>
-          <div className="flex px-2 justify-between">
+          <div className="flex px-2 justify-between ">
             <HrCompanyProfile
               userHrCompanyName={hrData.hr_voucher[0].companyName}
               userHrCompanyWebsite={hrData.hr_voucher[0].companyWebsite}

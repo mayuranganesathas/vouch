@@ -11,12 +11,8 @@ export const CandidateCount: React.FC<CandidateCountProps> = ({
   // lastCandidateCount,
 }) => {
   return (
-    <div className={"grid grid-cols-5 w-64 grid-rows-3"}>
-      <div
-        className={
-          "flex flex-nowrap items-center col-start-2 row-start-2 row-span-2 col-span-3 text-xl"
-        }
-      >
+    <div className={"grid justify-items-end"}>
+      <div className={"flex flex-nowrap text-xl"}>
         <div className={""}>{candidateCount} Candidates</div>
       </div>
       {/* <div
