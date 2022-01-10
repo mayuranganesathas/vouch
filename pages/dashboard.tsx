@@ -60,27 +60,34 @@ const DashBoard = ({}: DashboardProps) => {
     if (stageStatus == "Home") {
       return (
         <div>
-          <div className={"grid grid-cols-3  pt-6 pb-6 px-24 bg-gray-50 "}>
-            <div className={"col-start-1 col-span-2 bg-gray-200 py-4 pl-6"}>
-              <div className={"grid grid-rows-2"}>
-                <div className={"text-base font-bold"}>
-                  {" "}
-                  Welcome{" "}
-                  {hrData &&
-                    hrData.hr_voucher[0].firstName +
-                      " " +
-                      hrData.hr_voucher[0].lastName}
-                </div>
-                <div className={"pt-1 text-sm"}>
-                  {" "}
-                  At Vouch, we believe that we can win the war for talent by
-                  working together.
+          <div className={" pt-6 pb-6 px-24 bg-gray-50"}>
+            <div
+              className={"grid grid-cols-3"}
+              style={{
+                backgroundImage: 'url("./images/ombreBackground.jpeg")',
+              }}
+            >
+              <div className={"col-start-1 col-span-2 py-4 pl-6 "}>
+                <div className={"grid grid-rows-2"}>
+                  <div className={"text-base font-bold"}>
+                    {" "}
+                    Welcome{" "}
+                    {hrData &&
+                      hrData.hr_voucher[0].firstName +
+                        " " +
+                        hrData.hr_voucher[0].lastName}
+                  </div>
+                  <div className={"pt-1 text-sm"}>
+                    {" "}
+                    At Vouch, we believe that we can win the war for talent by
+                    working together.
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="grid col-start-3 bg-gray-200 py-6 pr-6">
-              <div className={"flex items-center justify-end"}>
-                <VouchCTA hrData={hrData} />
+              <div className="grid col-start-3 py-6 pr-6">
+                <div className={"flex items-center justify-end"}>
+                  <VouchCTA hrData={hrData} />
+                </div>
               </div>
             </div>
           </div>
@@ -180,7 +187,6 @@ const DashBoard = ({}: DashboardProps) => {
               filterStateLocation={locationStateDropdown}
               existingCandidates={existingCandidates}
               setExistingCandidates={setExistingCandidates}
-              hrData={hrData}
             />
           </div>
         </div>
