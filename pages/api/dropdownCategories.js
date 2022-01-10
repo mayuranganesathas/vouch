@@ -1,17 +1,18 @@
 export const positionCategoryDropDownArray = [
-  "Front-End Dev",
-  "Back-End Dev",
-  "Software Eng",
-  "Quality Assurance",
-  "Customer Success",
-  "Sales/BD",
-  "Marketing",
   "Account Mgmt.",
-  "Product Management",
+  "Back-End Dev",
+  "Customer Success",
   "Data Analysis/Science",
   "Design-UX/UI",
+  "Front-End Dev",
   "HR/Recruiting",
+  "Marketing",
   "Operations",
+  "Product Management",
+  "Quality Assurance",
+  "Sales/BD",
+  "Software Eng",
+  "Other Professional",
 ];
 
 export const InterviewStageDropDownArray = [
