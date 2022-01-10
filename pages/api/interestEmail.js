@@ -7,9 +7,15 @@ async function sendEmail(req, res) {
     await sendgrid.send({
       to: `${req.body.email}`, // Your email where you'll receive emails
       from: "mayuran852@gmail.com", // your website email address here
-      templateId: "d-26b055cc293b47a8ba272816cad13519",
       cc: `${req.body.hrEmail}`,
-      dynamicTemplateData: {},
+      templateId: "d-26b055cc293b47a8ba272816cad13519",
+      dynamicTemplateData: {
+        candidateFirstName: `${req.body.candidateFirstName}`,
+        hrFirstName: `${req.body.hrFirstName}`,
+        hrLastName: `${req.body.hrLastName}`,
+        companyName: `${req.body.companyName}`,
+        hrEmail: `${req.body.hrEmail}`,
+      },
     });
   } catch (error) {
     return res.status(error.statusCode || 500).json({ error: error.message });
