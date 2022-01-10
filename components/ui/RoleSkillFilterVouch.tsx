@@ -26,7 +26,7 @@ export const RoleSkillFilterVouch: React.FC<RoleSkillFilterVouchProps> = ({
   return (
     <form>
       <select
-        className={`${backgroundStyles} w-full rounded text-xs text-gray-400 py-1 `}
+        className={`${backgroundStyles} w-full rounded text-xs text-gray-400 py-0.5 `}
         name="Select From List"
         id="Select From List"
         value={value}
