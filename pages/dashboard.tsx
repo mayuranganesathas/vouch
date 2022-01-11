@@ -187,6 +187,7 @@ const DashBoard = ({}: DashboardProps) => {
               filterStateLocation={locationStateDropdown}
               existingCandidates={existingCandidates}
               setExistingCandidates={setExistingCandidates}
+              hrData={hrData}
             />
           </div>
         </div>
