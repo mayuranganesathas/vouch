@@ -14,7 +14,7 @@ export default function RegisterHRLogin(prop) {
   };
 
   return (
-    <div className={"h-screen bg-VouchBg"}>
+    <div className={"h-screen bg-VouchBg h-full"}>
       <div className={"grid grid-cols-2"}>
         <div
           className={
@@ -37,7 +37,7 @@ export default function RegisterHRLogin(prop) {
           />
         </div>
       </div>
-      <div className={"grid grid-cols-2"}>
+      <div className={"grid grid-cols-2 pl-8"}>
         <div>
           <div
             className={
@@ -58,9 +58,9 @@ export default function RegisterHRLogin(prop) {
         </div>
 
         <div
-          className={"col-start-2 flex justify-center items-center pt-16 pr-24"}
+          className={"col-start-2 flex justify-center items-center pt-10 pr-12"}
         >
-          <div className={"px-8"}>
+          <div className={""}>
             <img
               src="./images/vouchImageLogin.png"
               width="full"
