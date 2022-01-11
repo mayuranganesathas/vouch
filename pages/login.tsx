@@ -14,14 +14,11 @@ export default function RegisterHRLogin(prop) {
   };
 
   return (
-    <div
-      className={"h-screen bg-cover bg-no-repeat"}
-      style={{ backgroundImage: 'url("./images/officeHRLogin.png")' }}
-    >
+    <div className={"h-screen bg-VouchBg h-full"}>
       <div className={"grid grid-cols-2"}>
         <div
           className={
-            "text-white col-start-1 col-span-1 flex justify-start items-center pl-8 pt-8"
+            "text-gray-500 col-start-1 col-span-1 flex justify-start items-center pl-8 pt-8"
           }
         >
           <img src="./images/VouchLogo1.png" width="100" height="auto" />
@@ -40,21 +37,36 @@ export default function RegisterHRLogin(prop) {
           />
         </div>
       </div>
-      <div className={"py-2 border-b border-white"}></div>
-      <div className={"grid grid-cols-3"}>
-        <div
-          className={
-            "col-start-1 col-span-2 text-white text-3xl drop-shadow-sm pt-16 px-28"
-          }
-        >
-          Fill your candidate pipeline faster with pre-vetted referrals from
-          fellow HR professionals
+      <div className={"grid grid-cols-2 pl-8"}>
+        <div>
+          <div
+            className={
+              "col-start-1 text-4xl text-VouchDark pt-16 px-28 font-bold"
+            }
+          >
+            Transform the way your team searches for talent
+          </div>
+          <div className={"col-start-1 px-28"}>
+            <div className={"text-gray-600 text-lg pt-10 pb-10"}>
+              Fill your candidate pipeline faster with pre-vetted referrals from
+              fellow HR professionals
+            </div>
+            <div>
+              <ButtonGoogleLogin />
+            </div>
+          </div>
         </div>
+
         <div
-          className={"col-start-3 flex justify-center items-center pt-16 pr-24"}
+          className={"col-start-2 flex justify-center items-center pt-10 pr-12"}
         >
-          {" "}
-          <ButtonGoogleLogin />
+          <div className={""}>
+            <img
+              src="./images/vouchImageLogin.png"
+              width="full"
+              height="auto"
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -21,15 +21,15 @@ const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
   }, []);
 
   return (
-    <div>
+    <div className={""}>
       <button
         className={
-          "rounded bg-white drop-shadow-md border-white border-1 w-auto h-auto py-1"
+          "rounded bg-white drop-shadow-md  border-2 w-auto h-auto py-1"
         }
         type="button"
         onClick={signIn}
       >
-        <div className={"grid grid-cols-5"}>
+        <div className={"grid grid-cols-5 "}>
           <div className={"col-start-1 col-span-1"}>
             <img
               src="./images/googleG.png"

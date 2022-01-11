@@ -36,19 +36,20 @@ const DashBoard = ({}: DashboardProps) => {
 
   const [seniorityDropdown, setSeniorityDropdown] = useState("empty");
   const [existingCandidates, setExistingCandidates] = useState();
-  const [shortListExistingCandidates, setShortListExistingCandidates] =
-    useState(0);
+  const [
+    shortListExistingCandidates,
+    setShortListExistingCandidates,
+  ] = useState(0);
   const [clearFilter, setClearFilter] = useState(false);
 
-  let {
-    loading,
-    data: ShortList,
-    refetch: refetchShortList,
-  } = useQuery(QUERY_SHORT_LIST, {
-    variables: {
-      hrId: user.uid,
-    },
-  });
+  let { loading, data: ShortList, refetch: refetchShortList } = useQuery(
+    QUERY_SHORT_LIST,
+    {
+      variables: {
+        hrId: user.uid,
+      },
+    }
+  );
   const { data } = useQuery(QUERY_DASHBOARD_TILES, {
     variables: {
       hrId: user.uid,
