@@ -9,88 +9,57 @@ import react from "react";
 export interface TileFeedbackProps {}
 
 const TileFeedback = ({}: TileFeedbackProps) => {
-  const [animationClassTop, setAnimationClassTop] = useState("");
-  const [animationClassMiddle, setAnimationClassMiddle] = useState("");
-  const [animationClassBottom, setAnimationClassBottom] = useState("");
-
-  const [animationBackground, setAnimationBackground] = useState("");
+  const [animationClassTop, setAnimationClassTop] = useState(false);
+  const [animationClassBottom, setAnimationClassBottom] = useState(false);
+  const [animationBg, setAnimationBg] = useState(false);
+  const [hiddenItems, setHiddenItems] = useState(false);
 
   const AnimationChangeTop = () => {
-    setAnimationClassTop(
-      " transition  delay-500 duration-500 ease-linear  -translate-y-12 text-VouchGreen	"
-    );
-    setAnimationClassMiddle(
-      "transition  delay-700 duration-1000 ease-linear invisible	 "
-    );
-    setAnimationClassBottom(
-      "transition  delay-700 duration-1000 ease-linear invisible	 "
-    );
-    setAnimationBackground(
-      " transition  delay-700 duration-1000 ease-linear bg-VouchGreen"
-    );
-  };
-
-  const AnimationChangeMid = () => {
-    setAnimationClassTop(
-      " transition  delay-500 duration-500 ease-linear  -translate-y-12 text-VouchGreen	"
-    );
-    setAnimationClassMiddle(
-      " transition  delay-500 duration-500 ease-linear  -translate-y-12 text-VouchGreen	"
-    );
-    setAnimationClassBottom(
-      "transition  delay-700 duration-1000 ease-linear invisible	 "
-    );
-    setAnimationBackground(
-      " transition  delay-700 duration-1000 ease-linear bg-VouchGreen"
-    );
-  };
-
-  const AnimationChangeBottom = () => {
-    setAnimationClassTop(
-      " transition  delay-500 duration-500 ease-linear  -translate-y-12 text-VouchGreen	"
-    );
-    setAnimationClassMiddle(
-      " transition  delay-500 duration-500 ease-linear  -translate-y-12 text-VouchGreen	"
-    );
-    setAnimationClassBottom(
-      "transition  delay-700 duration-1000 ease-linear invisible	 "
-    );
-    setAnimationBackground(
-      " transition  delay-700 duration-1000 ease-linear bg-VouchGreen"
-    );
+    setAnimationClassTop(true);
+    setAnimationBg(true);
+    setHiddenItems(true);
   };
 
   const reset = () => {
-    setAnimationClassTop("");
-    setAnimationClassMiddle("");
-    setAnimationClassBottom("");
-
-    setAnimationBackground("");
+    setAnimationClassTop(false);
+    setAnimationBg(false);
+    setHiddenItems(false);
   };
   return (
-    <div className={`col-start-1 col-span-2 px-2 grid place-content-evenly `}>
+    <div
+      className={`col-start-1 col-span-2 px-2 grid place-content-evenly py-24 `}
+    >
       <div
-        className={`border-2 rounded-t-full rounded-b-full grid place-content-evenly ${animationBackground}`}
+        className={
+          animationBg
+            ? `border-2 rounded-t-full rounded-b-full grid place-content-evenly transition-colors ease-in-out delay-150 bg-VouchGreen hover:-translate-y-4  duration-1000 `
+            : `border-2 rounded-t-full rounded-b-full grid place-content-evenly   `
+        }
       >
         <div className={"flex justify-center  "}>
           <ReceiptRefundIcon
-            className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${animationClassTop}
-`}
+            className={
+              animationClassTop
+                ? `  transition ease-in-out delay-150  hover:text-VouchGreen    duration-1000 text-VouchGreen py-3  `
+                : `h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer `
+            }
             onClick={AnimationChangeTop}
           />
         </div>
         <div className="py-1.5 flex justify-center">
           <EyeOffIcon
-            className={`            h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer  ${animationClassMiddle}
-`}
-            onClick={AnimationChangeMid}
+            className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${
+              hiddenItems ? "hidden" : ""
+            } `}
           />
         </div>
-        <div className={"flex justify-center pb-0.5"}>
+        <div className={`"flex justify-center pb-0.5" `}>
           <MailOpenIcon
-            className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${animationClassBottom}`}
-            onClick={AnimationChangeBottom}
+            className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${
+              hiddenItems ? "hidden" : ""
+            } `}
           />
+          <div className={"w-4"}> </div>
         </div>
       </div>
       <button

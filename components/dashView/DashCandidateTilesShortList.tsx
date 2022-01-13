@@ -156,6 +156,7 @@ const DashCandidateTilesShortList = ({
               refetchShortList={refetchShortList}
               hrData={hrData}
               stageStatus={stageStatus}
+              key={i}
             />
           ))}
       {vouchData && candidateCounter()}

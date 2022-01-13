@@ -34,6 +34,7 @@ export interface CandidateTileProps {
   pastCompanyName: string;
   hrData: any;
   stageStatus?: any;
+  key: number;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -55,11 +56,8 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   pastCompanyName,
   hrData,
   stageStatus,
+  key,
 }) => {
-  const [thumbUpCheck, setthumbUpSetCheck] = useState(false);
-  const [thumbDownCheck, setthumbDownSetCheck] = useState(false);
-  const [moveToContactedCheck, setmoveToContactedCheck] = useState(false);
-
   const { user } = useAuth();
   const hrId = user.uid;
   const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
@@ -78,10 +76,25 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     }
   );
 
-  const thumbUpClick = () => {
-    setthumbUpSetCheck((prevCheck) => !prevCheck);
-    setthumbDownSetCheck(false);
+  const [reverseSelectedAnimation, setReverseSelectedAnimation] =
+    useState(false);
+  const [homeFavoriteAnimation, setHomeFavoriteAnimation] = useState(false);
+  const [homeHideAnimation, setHomeHideAnimation] = useState(false);
+  const [favoritesHideAnimation, setFavoritesHideAnimation] = useState(false);
+  const [unfitFavoritesAnimation, setUnfitFavoritesAnimation] = useState(false);
+  const [hiddenItems, setHiddenItems] = useState(false);
+  const [animationBg, setAnimationBg] = useState(false);
 
+  useEffect(() => {
+    const x = key;
+
+    const checker = () => {
+      if (key != x) setReverseSelectedAnimation(false);
+    };
+    checker();
+  }, [key]);
+
+  const thumbUpClick = () => {
     ThumbUpAndDownMutation({
       variables: {
         hrId: hrId,
@@ -95,9 +108,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   };
 
   const thumbDownClick = () => {
-    setthumbDownSetCheck((prevCheck) => !prevCheck);
-    setthumbUpSetCheck(false);
-
     ThumbUpAndDownMutation({
       variables: {
         hrId: hrId,
@@ -126,17 +136,24 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center "}>
             <ReceiptRefundIcon
               className={
-                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                reverseSelectedAnimation
+                  ? "h-4 w-4 text-VouchGreen hover:text-VouchGreen cursor-pointer animate-spin duration-200"
+                  : "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
               }
-              onClick={reverseClick}
+              onClick={reverseSelected}
+              onAnimationEnd={() => setReverseSelectedAnimation(false)}
             />
           </div>
           <div className="py-1.5 flex justify-center">
             <EyeOffIcon
               className={
-                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                favoritesHideAnimation
+                  ? "input true"
+                  : `h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${
+                      hiddenItems ? "hidden" : ""
+                    } `
               }
-              onClick={thumbDownClick}
+              onClick={favoritesHide}
             />
           </div>
           <div className={"flex justify-center pb-0.5"}>
@@ -153,17 +170,22 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center "}>
             <ReceiptRefundIcon
               className={
-                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                reverseSelectedAnimation
+                  ? "h-4 w-4 text-VouchGreen hover:text-VouchGreen cursor-pointer animate-spin duration-200"
+                  : "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
               }
-              onClick={reverseClick}
+              onClick={reverseSelected}
+              onAnimationEnd={() => setReverseSelectedAnimation(false)}
             />
           </div>
           <div className={"py-1 flex justify-center "}>
             <StarIcon
               className={
-                "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                unfitFavoritesAnimation
+                  ? "True"
+                  : "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
               }
-              onClick={thumbUpClick}
+              onClick={unfitFavorites}
             />
           </div>
           <div className={"flex justify-center pb-0.5"}>
@@ -188,17 +210,21 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center "}>
             <StarIcon
               className={
-                "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                homeFavoriteAnimation
+                  ? "True"
+                  : "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
               }
-              onClick={thumbUpClick}
+              onClick={homeFavorite}
             />
           </div>
           <div className="py-1 flex justify-center">
             <EyeOffIcon
               className={
-                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                homeHideAnimation
+                  ? "True"
+                  : "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
               }
-              onClick={thumbDownClick}
+              onClick={homeHide}
             />
           </div>
           <div className={"flex justify-center pb-0.5"}>
@@ -213,8 +239,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   };
 
   const moveToContacted = () => {
-    setmoveToContactedCheck((prevCheck) => !prevCheck);
-    setmoveToContactedCheck(false);
     ThumbUpAndDownMutation({
       variables: {
         hrId: hrId,
@@ -228,6 +252,37 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     toastFeedback();
 
     sendEmail();
+  };
+
+  const reverseSelected = () => {
+    //function for animating the  reverse icon on favorites and hidden
+    reverseClick();
+    setTimeout(() => setReverseSelectedAnimation(true), 300);
+  };
+
+  const homeFavorite = () => {
+    //favorite on home, hides middle and mail icon
+    thumbUpClick();
+    setHomeFavoriteAnimation(true);
+  };
+
+  const homeHide = () => {
+    //hides on home, hides favorite icon and mail icon styling
+    //used on Home, Favorites, and Hidden
+    thumbDownClick();
+    setHomeHideAnimation(true);
+  };
+
+  const favoritesHide = () => {
+    //hides hide
+    thumbDownClick();
+    setFavoritesHideAnimation(true);
+  };
+
+  const unfitFavorites = () => {
+    //hides favorites
+    thumbUpClick();
+    setUnfitFavoritesAnimation(true);
   };
 
   const toastFeedback = () => {
@@ -283,7 +338,9 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                 >
                   <div
                     className={
-                      "border-2 rounded-t-full rounded-b-full grid place-content-evenly"
+                      animationBg
+                        ? `border-2 rounded-t-full rounded-b-full grid place-content-evenly transition-colors ease-in-out delay-150 bg-VouchGreen hover:-translate-y-4  duration-1000 `
+                        : `border-2 rounded-t-full rounded-b-full grid place-content-evenly   `
                     }
                   >
                     {iconShortList()}
