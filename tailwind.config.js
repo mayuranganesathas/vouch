@@ -12,6 +12,7 @@ module.exports = {
         fadeIn: "fadeIn 2s ease-in-out",
         myMove: "myMove 3s ",
         myHide: "myHide 0.5s",
+        bgFadeIn: "bgFadeIn 2s ease-in-out",
       },
       keyframes: {
         shake: {
@@ -47,6 +48,13 @@ module.exports = {
           myHide: {
             "0%, 100%": { opacity: "1", color: "white" },
           },
+        },
+        bgFadeIn: {
+          "0%": { color: "red" },
+          "25%": { color: "green" },
+          "50%": { color: "green" },
+          "75%": { color: "green" },
+          "100%": { color: "green" },
         },
       },
 

@@ -32,7 +32,7 @@ const TileFeedback = ({}: TileFeedbackProps) => {
       <div
         className={
           animationBg
-            ? `border-2 rounded-t-full rounded-b-full grid place-content-evenly transition-colors ease-in-out delay-500 bg-VouchGreen hover:-translate-y-4  duration-1000 `
+            ? `border-2 rounded-t-full rounded-b-full grid place-content-evenly transition-colors ease-in-out delay-500  animation-fadeIn  duration-1000 `
             : `border-2 rounded-t-full rounded-b-full grid place-content-evenly   `
         }
       >

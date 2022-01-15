@@ -130,8 +130,8 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <ReceiptRefundIcon
               className={
                 reverseSelectedAnimation
-                  ? "h-4 w-4 text-VouchGreen hover:text-VouchGreen cursor-pointer animate-shake duration-200"
-                  : "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                  ? `  transition ease-in-out   hover:text-VouchGreen animate-myMove text-white scale-125 translate-y-6  `
+                  : `h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer `
               }
               onClick={reverseSelected}
               onAnimationEnd={() => setReverseSelectedAnimation(false)}
@@ -249,14 +249,16 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
   const reverseSelected = () => {
     //function for animating the  reverse icon on favorites and hidden
-    reverseClick();
     setReverseSelectedAnimation(true);
+    setAnimationBg(true);
+    reverseClick();
   };
 
   const homeFavorite = () => {
     //favorite on home, hides middle and mail icon
     thumbUpClick();
     setHomeFavoriteAnimation(true);
+    setAnimationBg(true);
   };
 
   const homeHide = () => {
@@ -264,18 +266,21 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     //used on Home, Favorites, and Hidden
     thumbDownClick();
     setHomeHideAnimation(true);
+    setAnimationBg(true);
   };
 
   const favoritesHide = () => {
     //hides hide
     thumbDownClick();
     setFavoritesHideAnimation(true);
+    setAnimationBg(true);
   };
 
   const unfitFavorites = () => {
     //hides favorites
     thumbUpClick();
     setUnfitFavoritesAnimation(true);
+    setAnimationBg(true);
   };
 
   const toastFeedback = () => {
@@ -332,7 +337,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   <div
                     className={
                       animationBg
-                        ? `border-2 rounded-t-full rounded-b-full grid place-content-evenly transition-colors ease-in-out delay-150 bg-VouchGreen hover:-translate-y-4  duration-1000 `
+                        ? `border-2 rounded-t-full rounded-b-full grid place-content-evenly transition-colors ease-in-out delay-500  animation-bgFadeIn hover:-translate-y-4  duration-1000 `
                         : `border-2 rounded-t-full rounded-b-full grid place-content-evenly   `
                     }
                   >
