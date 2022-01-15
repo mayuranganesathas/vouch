@@ -34,6 +34,7 @@ export interface CandidateTileProps {
   pastCompanyName: string;
   hrData: any;
   stageStatus?: any;
+  key: number;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -55,11 +56,8 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   pastCompanyName,
   hrData,
   stageStatus,
+  key,
 }) => {
-  const [thumbUpCheck, setthumbUpSetCheck] = useState(false);
-  const [thumbDownCheck, setthumbDownSetCheck] = useState(false);
-  const [moveToContactedCheck, setmoveToContactedCheck] = useState(false);
-
   const { user } = useAuth();
   const hrId = user.uid;
   const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
@@ -78,10 +76,18 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     }
   );
 
-  const thumbUpClick = () => {
-    setthumbUpSetCheck((prevCheck) => !prevCheck);
-    setthumbDownSetCheck(false);
+  const [reverseSelectedAnimation, setReverseSelectedAnimation] =
+    useState(false);
+  const [homeFavoriteAnimation, setHomeFavoriteAnimation] = useState(false);
+  const [homeHideAnimation, setHomeHideAnimation] = useState(false);
+  const [favoritesHideAnimation, setFavoritesHideAnimation] = useState(false);
+  const [unfitFavoritesAnimation, setUnfitFavoritesAnimation] = useState(false);
+  const [hideIconsAboveAndBelow, setHideIconsAboveAndBelow] = useState("");
+  const [hideIconsBelow, setHideIconsBelow] = useState("");
 
+  const [animationBg, setAnimationBg] = useState(false);
+
+  const thumbUpClick = () => {
     ThumbUpAndDownMutation({
       variables: {
         hrId: hrId,
@@ -95,9 +101,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   };
 
   const thumbDownClick = () => {
-    setthumbDownSetCheck((prevCheck) => !prevCheck);
-    setthumbUpSetCheck(false);
-
     ThumbUpAndDownMutation({
       variables: {
         hrId: hrId,
@@ -126,22 +129,28 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center "}>
             <ReceiptRefundIcon
               className={
-                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                reverseSelectedAnimation
+                  ? `   transition ease-in-out  hover:text-VouchGreen animate-myMove  scale-125 translate-y-6  `
+                  : `h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer   ${hideIconsAboveAndBelow}`
               }
-              onClick={reverseClick}
+              onClick={reverseSelected}
+              onAnimationEnd={reverseSelectedAnimationEnd}
             />
           </div>
           <div className="py-1.5 flex justify-center">
             <EyeOffIcon
               className={
-                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                favoritesHideAnimation
+                  ? " transition ease-in-out  hover:text-VouchGreen animate-fadeColorIn"
+                  : `h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow} `
               }
-              onClick={thumbDownClick}
+              onClick={favoritesHide}
+              onAnimationEnd={favoritesHideAnimationEnd}
             />
           </div>
           <div className={"flex justify-center pb-0.5"}>
             <MailOpenIcon
-              className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer`}
+              className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow}  ${hideIconsAboveAndBelow}`}
               onClick={moveToContacted}
             />
           </div>
@@ -153,22 +162,28 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center "}>
             <ReceiptRefundIcon
               className={
-                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                reverseSelectedAnimation
+                  ? " transition ease-in-out  hover:text-VouchGreen animate-myMove  scale-125 translate-y-6 "
+                  : `h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer  ${hideIconsAboveAndBelow}`
               }
-              onClick={reverseClick}
+              onClick={reverseSelected}
+              onAnimationEnd={reverseSelectedAnimationEnd}
             />
           </div>
           <div className={"py-1 flex justify-center "}>
             <StarIcon
               className={
-                "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                unfitFavoritesAnimation
+                  ? " transition ease-in-out  hover:text-VouchGreen animate-fadeColorIn"
+                  : `h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow}  `
               }
-              onClick={thumbUpClick}
+              onClick={unfitFavorites}
+              onAnimationEnd={unfitFavoritesAnimationEnd}
             />
           </div>
           <div className={"flex justify-center pb-0.5"}>
             <MailOpenIcon
-              className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer`}
+              className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow}  ${hideIconsAboveAndBelow}`}
               onClick={moveToContacted}
             />
           </div>
@@ -188,22 +203,28 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center "}>
             <StarIcon
               className={
-                "h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                homeFavoriteAnimation
+                  ? " transition ease-in-out  hover:text-VouchGreen animate-myMove  "
+                  : `h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsAboveAndBelow} `
               }
-              onClick={thumbUpClick}
+              onClick={homeFavorite}
+              onAnimationEnd={homeFavoriteAnimationEnd}
             />
           </div>
           <div className="py-1 flex justify-center">
             <EyeOffIcon
               className={
-                "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
+                homeHideAnimation
+                  ? " transition ease-in-out  hover:text-VouchGreen animate-fadeColorIn"
+                  : `h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow} `
               }
-              onClick={thumbDownClick}
+              onClick={homeHide}
+              onAnimationEnd={homeHideAnimationEnd}
             />
           </div>
           <div className={"flex justify-center pb-0.5"}>
             <MailOpenIcon
-              className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer`}
+              className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow} ${hideIconsAboveAndBelow} `}
               onClick={moveToContacted}
             />
           </div>
@@ -213,8 +234,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   };
 
   const moveToContacted = () => {
-    setmoveToContactedCheck((prevCheck) => !prevCheck);
-    setmoveToContactedCheck(false);
     ThumbUpAndDownMutation({
       variables: {
         hrId: hrId,
@@ -228,6 +247,87 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     toastFeedback();
 
     sendEmail();
+  };
+
+  const reverseSelected = () => {
+    //function for animating the  reverse icon on favorites and hidden
+    setReverseSelectedAnimation(true);
+    setAnimationBg(true);
+    setHideIconsBelow(
+      "transition ease-in-out   hover:text-VouchGreen animate-myHide  scale-125 translate-y-6"
+    );
+    reverseClick();
+  };
+
+  const reverseSelectedAnimationEnd = () => {
+    setReverseSelectedAnimation(false);
+    setHideIconsBelow("");
+    setAnimationBg(false);
+  };
+
+  const homeFavorite = () => {
+    //favorite on home, hides middle and mail icon
+    thumbUpClick();
+    setHomeFavoriteAnimation(true);
+    setAnimationBg(true);
+    setHideIconsBelow(
+      "transition ease-in-out   hover:text-VouchGreen animate-myHide  scale-125 translate-y-6"
+    );
+  };
+
+  const homeFavoriteAnimationEnd = () => {
+    setHomeFavoriteAnimation(false);
+    setHideIconsBelow("");
+    setAnimationBg(false);
+  };
+
+  const homeHide = () => {
+    //hides on home, hides favorite icon and mail icon styling
+    //used on Home, Favorites, and Hidden
+    thumbDownClick();
+    setHomeHideAnimation(true);
+    setAnimationBg(true);
+    setHideIconsAboveAndBelow(
+      "transition ease-in-out   hover:text-VouchGreen animate-myHide "
+    );
+  };
+
+  const homeHideAnimationEnd = () => {
+    setHomeHideAnimation(false);
+    setAnimationBg(false);
+    setHideIconsAboveAndBelow("");
+  };
+
+  const favoritesHide = () => {
+    //hides hide
+    thumbDownClick();
+    setFavoritesHideAnimation(true);
+    setAnimationBg(true);
+    setHideIconsAboveAndBelow(
+      "transition ease-in-out   hover:text-VouchGreen animate-myHide "
+    );
+  };
+
+  const favoritesHideAnimationEnd = () => {
+    setFavoritesHideAnimation(false);
+    setAnimationBg(false);
+    setHideIconsAboveAndBelow("");
+  };
+
+  const unfitFavorites = () => {
+    //hides favorites
+    thumbUpClick();
+    setUnfitFavoritesAnimation(true);
+    setAnimationBg(true);
+    setHideIconsAboveAndBelow(
+      "transition ease-in-out   hover:text-VouchGreen animate-myHide "
+    );
+  };
+
+  const unfitFavoritesAnimationEnd = () => {
+    setUnfitFavoritesAnimation(false);
+    setAnimationBg(false);
+    setHideIconsAboveAndBelow("");
   };
 
   const toastFeedback = () => {
@@ -283,9 +383,12 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                 >
                   <div
                     className={
-                      "border-2 rounded-t-full rounded-b-full grid place-content-evenly"
+                      animationBg
+                        ? `border-2 rounded-t-full rounded-b-full grid place-content-evenly transition hover:bg-VouchGreen delay-50 duration-250 ease-in `
+                        : "border-2 rounded-t-full rounded-b-full grid place-content-evenly"
                     }
                   >
+                    {/* get animation of backround to disappear*/}
                     {iconShortList()}
                   </div>
                 </div>

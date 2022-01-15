@@ -88,7 +88,7 @@ const DashCandidateTiles = ({
   return (
     <div className="grid grid-cols-12">
       {vouchData &&
-        shortListFilter().map((e) => (
+        shortListFilter().map((e, i) => (
           <CandidateTile
             userID={e.candidateId}
             firstName={e.Candidate_Contact[0].candidateFirstName}
@@ -111,6 +111,7 @@ const DashCandidateTiles = ({
             userEmailAction={e.Candidate_Contact[0].candidateEmail}
             refetchShortList={refetchShortList}
             hrData={hrData}
+            key={i}
           />
         ))}
       {vouchData && candidateCounter()}
