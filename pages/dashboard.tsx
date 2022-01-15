@@ -97,7 +97,7 @@ const DashBoard = ({}: DashboardProps) => {
               }
             >
               <div className={"flex flex-wrap"}>
-                <div className={"pr-2"}>Filters Candidates By: </div>
+                <div className={"pr-2"}>Filters Candidates by: </div>
 
                 <InformationIconToolTip toolTipCopy="Filter by the candidate's background. Information is provided by the candidate directly." />
               </div>
@@ -232,7 +232,7 @@ const DashBoard = ({}: DashboardProps) => {
               }
             >
               <div className={"flex flex-wrap"}>
-                <div className={"pr-2"}>Filters Candidates By: </div>
+                <div className={"pr-2"}>Filters Candidates by: </div>
 
                 <InformationIconToolTip toolTipCopy="Filter by the candidate's background. Information is provided by the candidate directly." />
               </div>
@@ -372,7 +372,7 @@ const DashBoard = ({}: DashboardProps) => {
               }
             >
               <div className={"flex flex-wrap"}>
-                <div className={"pr-2"}>Filters Candidates By: </div>
+                <div className={"pr-2"}>Filters Candidates by: </div>
 
                 <InformationIconToolTip toolTipCopy="Filter by the candidate's background. Information is provided by the candidate directly." />
               </div>
@@ -512,7 +512,7 @@ const DashBoard = ({}: DashboardProps) => {
               }
             >
               <div className={"flex flex-wrap"}>
-                <div className={"pr-2"}>Filters Candidates By: </div>
+                <div className={"pr-2"}>Filters Candidates by: </div>
 
                 <InformationIconToolTip toolTipCopy="Filter by the candidate's background. Information is provided by the candidate directly." />
               </div>
