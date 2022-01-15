@@ -16,8 +16,8 @@ const TileFeedback = ({}: TileFeedbackProps) => {
 
   const AnimationChangeTop = () => {
     setAnimationClassTop(true);
-    setAnimationBg(true);
     setHiddenItems(true);
+    setAnimationBg(true);
   };
 
   const reset = () => {
@@ -32,7 +32,7 @@ const TileFeedback = ({}: TileFeedbackProps) => {
       <div
         className={
           animationBg
-            ? `border-2 rounded-t-full rounded-b-full grid place-content-evenly transition-colors ease-in-out delay-150 bg-VouchGreen hover:-translate-y-4  duration-1000 `
+            ? `border-2 rounded-t-full rounded-b-full grid place-content-evenly transition-colors ease-in-out delay-500 bg-VouchGreen hover:-translate-y-4  duration-1000 `
             : `border-2 rounded-t-full rounded-b-full grid place-content-evenly   `
         }
       >
@@ -40,7 +40,7 @@ const TileFeedback = ({}: TileFeedbackProps) => {
           <ReceiptRefundIcon
             className={
               animationClassTop
-                ? `  transition ease-in-out delay-150  hover:text-VouchGreen    duration-1000 text-VouchGreen py-3  `
+                ? `  transition ease-in-out   hover:text-VouchGreen animate-myMove text-white scale-125 translate-y-6  `
                 : `h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer `
             }
             onClick={AnimationChangeTop}
@@ -48,16 +48,13 @@ const TileFeedback = ({}: TileFeedbackProps) => {
         </div>
         <div className="py-1.5 flex justify-center">
           <EyeOffIcon
-            className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${
-              hiddenItems ? "hidden" : ""
-            } `}
+            className={`h-4 w-4   text-transparent hover:text-VouchGreen cursor-pointer `}
           />
         </div>
         <div className={`"flex justify-center pb-0.5" `}>
           <MailOpenIcon
-            className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${
-              hiddenItems ? "hidden" : ""
-            } `}
+            className={`h-4 w-4 text-transparent hover:text-VouchGreen cursor-pointer 
+            `}
           />
           <div className={"w-4"}> </div>
         </div>

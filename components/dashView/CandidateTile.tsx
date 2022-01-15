@@ -83,16 +83,9 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [favoritesHideAnimation, setFavoritesHideAnimation] = useState(false);
   const [unfitFavoritesAnimation, setUnfitFavoritesAnimation] = useState(false);
   const [hiddenItems, setHiddenItems] = useState(false);
+  const [hiddenItemsReverse, setHiddenItemsReverse] = useState(false);
+
   const [animationBg, setAnimationBg] = useState(false);
-
-  useEffect(() => {
-    const x = key;
-
-    const checker = () => {
-      if (key != x) setReverseSelectedAnimation(false);
-    };
-    checker();
-  }, [key]);
 
   const thumbUpClick = () => {
     ThumbUpAndDownMutation({
@@ -137,7 +130,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <ReceiptRefundIcon
               className={
                 reverseSelectedAnimation
-                  ? "h-4 w-4 text-VouchGreen hover:text-VouchGreen cursor-pointer animate-spin duration-200"
+                  ? "h-4 w-4 text-VouchGreen hover:text-VouchGreen cursor-pointer animate-shake duration-200"
                   : "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
               }
               onClick={reverseSelected}
@@ -171,7 +164,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <ReceiptRefundIcon
               className={
                 reverseSelectedAnimation
-                  ? "h-4 w-4 text-VouchGreen hover:text-VouchGreen cursor-pointer animate-spin duration-200"
+                  ? "h-4 w-4 text-VouchGreen hover:text-VouchGreen cursor-pointer animate-shake duration-200"
                   : "h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer"
               }
               onClick={reverseSelected}
@@ -257,7 +250,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const reverseSelected = () => {
     //function for animating the  reverse icon on favorites and hidden
     reverseClick();
-    setTimeout(() => setReverseSelectedAnimation(true), 300);
+    setReverseSelectedAnimation(true);
   };
 
   const homeFavorite = () => {
