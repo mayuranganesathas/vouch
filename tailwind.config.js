@@ -10,9 +10,10 @@ module.exports = {
         shake: "shake 0.5s ease-in-out",
         hit: "hit 1s ease-in-out",
         fadeIn: "fadeIn 2s ease-in-out",
-        myMove: "myMove 3s ",
+        myMove: "myMove 0.5s ",
         myHide: "myHide 0.5s",
-        bgFadeIn: "bgFadeIn 2s ease-in-out",
+        bgFadeIn: "backGroundHide 2s ease-in-out",
+        fadeColorIn: "fadeColorIn 0.7s",
       },
       keyframes: {
         shake: {
@@ -33,28 +34,54 @@ module.exports = {
           "75%": { opacity: "0.75" },
           "100%": { opacity: "1" },
         },
+        fadeColorIn: {
+          "0%": { opacity: "0.25", color: "#FFFFFF" },
+          "25%": { opacity: "1", color: "#FFFFFF" },
+          "50%": { opacity: "1", color: "#FFFFFF" },
+          "75%": { opacity: "1", color: "#FFFFFF" },
+          "100%": { opacity: "1", color: "#FFFFFF" },
+        },
         myMove: {
           "0%": {
             transform: "scale(1) translate(0px, 0px)",
+            opacity: "0.25",
+            color: "#78baa0",
           },
-          "25%": { opacity: "0.75", color: "white" },
+          "25%": { opacity: "0.75", color: "#78baa0" },
 
-          "50%": { opacity: "1", color: "white" },
+          "50%": { opacity: "1", color: "#FFFFFF" },
 
           "100%": {
             transform: "scale(1.25) translate(0.4px, 16px)",
-            color: "white",
-          },
-          myHide: {
-            "0%, 100%": { opacity: "1", color: "white" },
+            color: "#FFFFFF",
           },
         },
-        bgFadeIn: {
-          "0%": { color: "red" },
-          "25%": { color: "green" },
-          "50%": { color: "green" },
-          "75%": { color: "green" },
-          "100%": { color: "green" },
+        myHide: {
+          "0%": {
+            transform: "scale(1) translate(0px, 0px)",
+            opacity: "0.25",
+            color: "transparent",
+          },
+          "25%": { opacity: "1", color: "transparent" },
+
+          "50%": { opacity: "1", color: "transparent" },
+
+          "100%": {
+            color: "transparent",
+          },
+        },
+        backGroundHide: {
+          "0%": {
+            opacity: "0.25",
+            bgcolor: "#000000",
+          },
+          "25%": { opacity: "1", bgcolor: "#000000" },
+
+          "50%": { opacity: "1", bgcolor: "#000000" },
+
+          "100%": {
+            bgcolor: "#000000",
+          },
         },
       },
 
