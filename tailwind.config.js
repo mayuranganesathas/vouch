@@ -10,10 +10,10 @@ module.exports = {
         shake: "shake 0.5s ease-in-out",
         hit: "hit 1s ease-in-out",
         fadeIn: "fadeIn 2s ease-in-out",
-        myMove: "myMove 0.5s ",
-        myHide: "myHide 0.5s",
+        myMove: "myMove 0.9s ",
+        myHide: "myHide 0.9s",
         bgFadeIn: "backGroundHide 2s ease-in-out",
-        fadeColorIn: "fadeColorIn 0.7s",
+        fadeColorIn: "fadeColorIn 1s",
       },
       keyframes: {
         shake: {

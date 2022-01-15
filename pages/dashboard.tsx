@@ -130,11 +130,18 @@ const DashBoard = ({}: DashboardProps) => {
               />
               <div
                 className={
-                  "px-4 text-xs  cursor-pointer select-none hover:text-red-500"
+                  " col-start-8 px-4 text-xs  cursor-pointer select-none hover:text-red-500  flex-nowrap "
                 }
                 onClick={clearFilters}
               >
-                {clearFilter && <div> X Clear </div>}
+                {clearFilter && (
+                  <div className="flex flex-nowrap">
+                    {" "}
+                    <span>X</span>
+                    <span>&nbsp;</span>
+                    <span>Clear</span>
+                  </div>
+                )}
               </div>
             </div>
             <div className={"col-start-10 col-span-3 grid content-start pb-8"}>
@@ -258,12 +265,17 @@ const DashBoard = ({}: DashboardProps) => {
               />
               <div
                 className={
-                  "px-4 text-xs  cursor-pointer select-none hover:text-red-500"
+                  "flex flex-nowrap px-4 text-xs  cursor-pointer select-none hover:text-red-500"
                 }
                 onClick={clearFilters}
               >
                 {clearFilter && (
-                  <div className=" flex flex-nowrap text-xs"> X Clear </div>
+                  <div className="flex flex-nowrap">
+                    {" "}
+                    <span>X</span>
+                    <span>&nbsp;</span>
+                    <span>Clear</span>
+                  </div>
                 )}
               </div>
             </div>
@@ -397,7 +409,14 @@ const DashBoard = ({}: DashboardProps) => {
                 }
                 onClick={clearFilters}
               >
-                {clearFilter && <div> X Clear </div>}
+                {clearFilter && (
+                  <div className="flex flex-nowrap">
+                    {" "}
+                    <span>X</span>
+                    <span>&nbsp;</span>
+                    <span>Clear</span>
+                  </div>
+                )}{" "}
               </div>
             </div>
             <div className={"col-start-10 col-span-3 grid content-start pb-8"}>
@@ -530,7 +549,14 @@ const DashBoard = ({}: DashboardProps) => {
                 }
                 onClick={clearFilters}
               >
-                {clearFilter && <div> X Clear </div>}
+                {clearFilter && (
+                  <div className="flex flex-nowrap">
+                    {" "}
+                    <span>X</span>
+                    <span>&nbsp;</span>
+                    <span>Clear</span>
+                  </div>
+                )}{" "}
               </div>
             </div>
             <div className={"col-start-10 col-span-3 grid content-start pb-8"}>
