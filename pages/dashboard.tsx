@@ -108,7 +108,7 @@ const DashBoard = ({}: DashboardProps) => {
                 dropDownArray={positionCategoryDropDownArray}
                 value={jobCategoryDropdown}
                 onChange={(e) => filterChangeCategory(e)}
-                copy="Recent Position"
+                copy="Recent Job Category"
               />
             </div>
             <div className={"col-start-5 flex items-center"}>
