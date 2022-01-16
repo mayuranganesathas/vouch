@@ -130,7 +130,7 @@ const DashBoard = ({}: DashboardProps) => {
               />
               <div
                 className={
-                  " col-start-8 px-4 text-xs  cursor-pointer select-none hover:text-red-500  flex-nowrap "
+                  " col-start-8 px-4 text-xs text-gray-500 cursor-pointer select-none hover:text-red-500  flex-nowrap "
                 }
                 onClick={clearFilters}
               >
@@ -140,6 +140,8 @@ const DashBoard = ({}: DashboardProps) => {
                     <span>X</span>
                     <span>&nbsp;</span>
                     <span>Clear</span>
+                    <span>&nbsp;</span>
+                    <span>Filters</span>
                   </div>
                 )}
               </div>
@@ -265,7 +267,7 @@ const DashBoard = ({}: DashboardProps) => {
               />
               <div
                 className={
-                  "flex flex-nowrap px-4 text-xs  cursor-pointer select-none hover:text-red-500"
+                  "flex flex-nowrap px-4 text-xs text-gray-500 cursor-pointer select-none hover:text-red-500"
                 }
                 onClick={clearFilters}
               >
@@ -275,6 +277,8 @@ const DashBoard = ({}: DashboardProps) => {
                     <span>X</span>
                     <span>&nbsp;</span>
                     <span>Clear</span>
+                    <span>&nbsp;</span>
+                    <span>Filters</span>
                   </div>
                 )}
               </div>
@@ -405,7 +409,7 @@ const DashBoard = ({}: DashboardProps) => {
               />
               <div
                 className={
-                  "px-4 text-xs  cursor-pointer select-none hover:text-red-500"
+                  "px-4 text-xs  cursor-pointer  text-gray-500 select-none hover:text-red-500"
                 }
                 onClick={clearFilters}
               >
@@ -415,6 +419,8 @@ const DashBoard = ({}: DashboardProps) => {
                     <span>X</span>
                     <span>&nbsp;</span>
                     <span>Clear</span>
+                    <span>&nbsp;</span>
+                    <span>Filters</span>
                   </div>
                 )}{" "}
               </div>
@@ -545,7 +551,7 @@ const DashBoard = ({}: DashboardProps) => {
               />
               <div
                 className={
-                  "px-4 text-xs  cursor-pointer select-none hover:text-red-500"
+                  "px-4 text-xs  cursor-pointer text-gray-500 select-none hover:text-red-500"
                 }
                 onClick={clearFilters}
               >
@@ -555,6 +561,8 @@ const DashBoard = ({}: DashboardProps) => {
                     <span>X</span>
                     <span>&nbsp;</span>
                     <span>Clear</span>
+                    <span>&nbsp;</span>
+                    <span>Filters</span>
                   </div>
                 )}{" "}
               </div>
