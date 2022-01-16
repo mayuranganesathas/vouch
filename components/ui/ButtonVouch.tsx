@@ -63,7 +63,7 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
       onClick={onClick}
       disabled={disabled}
       type="button"
-      className={`bg-gradient-to-b px-6 py-2 text-xs drop-shadow-md font-bold bg-VouchGreen  ${buttonSize}
+      className={` px-6 py-2 text-xs drop-shadow-md font-bold bg-VouchGreen  ${buttonSize}
       ${disabled ? "bg-gray-400 opacity-25" : backgroundStyles}
       ${disabled ? "rounded" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}
