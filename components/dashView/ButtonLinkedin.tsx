@@ -14,7 +14,6 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
 }) => {
   const openSite = () => {
     window.open(`https://${userLinkedinURL}`);
-    console.log(userLinkedinURL);
   };
 
   return (
