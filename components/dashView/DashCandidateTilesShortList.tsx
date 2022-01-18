@@ -124,6 +124,7 @@ const DashCandidateTilesShortList = ({
       {vouchData &&
         filterManage()
           .filter((e) => e.status === filter)
+          .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
           .map((e, i) => (
             <CandidateTile
               userID={e.candidateId}
