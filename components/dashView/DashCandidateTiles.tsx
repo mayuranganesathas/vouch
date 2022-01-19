@@ -82,7 +82,9 @@ const DashCandidateTiles = ({
 
   const candidateCounter = () => {
     setExistingCandidates(0);
-    shortListFilter().map((e, i) => setExistingCandidates(i + 1));
+    shortListFilter()
+      .filter((e) => e.Vouchee.length > 0)
+      .map((e, i) => setExistingCandidates(i + 1));
   };
 
   return (

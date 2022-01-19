@@ -20,13 +20,16 @@ export const UPSERT_VOUCH_CANDIDATE = gql`
         standOutSkill1: $standOutSkill1
         standOutSkill2: $standOutSkill2
         standOutSkill3: $standOutSkill3
+        candidateEmail: $candidateEmail
       }
     ) {
       returning {
         hrId
       }
     }
-    insert_candidate_metadata(objects: { hrId: $hrId }) {
+    insert_candidate_metadata(
+      objects: { hrId: $hrId, candidateEmail: $candidateEmail }
+    ) {
       returning {
         created_at
       }

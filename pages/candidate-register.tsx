@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { CandidateOnOne } from "../components/CandidateOnboarding/CandidateOnOne";
 import { CandidateOnTwo } from "../components/CandidateOnboarding/CandidateOnTwo";
 import { CandidateOnThree } from "../components/CandidateOnboarding/CandidateOnThree";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { UPSERT_CANDIDATE_METADATA } from "../graphql/UPSERT_CANDIDATE_METADATA";
 import router from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { QUERY_CANDIDATE_ID } from "../graphql/QUERY_CANDIDATE_ID";
 
 export default function CandidateOn(props) {
   enum STAGE {
@@ -34,8 +35,12 @@ export default function CandidateOn(props) {
   const [jobCategory, setJobCategory] = useState("");
   const [jobSeniority, setJobSeniority] = useState("");
   const [companyName, setCompanyName] = useState("");
+  //query candidateid based on hrid and email -- pass into candidate contact and vouchee
 
-  //filter out the URL and pass into variables
+  const { data: CanId } = useQuery(QUERY_CANDIDATE_ID, {
+    variables: { hrId: hrId, candidateEmail: candidateEmail },
+  });
+
   const clearFormState = () => {
     setPositionTitle("");
     setIndustry("");
@@ -69,6 +74,7 @@ export default function CandidateOn(props) {
         hrId: "incompleteField",
         jobCategory: "incompleteField",
         seniority: "incompleteField",
+        candidateId: "incompleteField",
       },
     }
   );
@@ -106,13 +112,14 @@ export default function CandidateOn(props) {
         linkedIn: linkedIn,
         locationCity: locationCity,
         locationState: locationState,
-        candidateEmail: email,
+        candidateEmail: candidateEmail,
         candidateFirstName: firstName,
         candidateLastName: lastName,
         hrId: hrId,
         seniority: jobSeniority,
         jobCategory: jobCategory,
         companyName: companyName,
+        candidateId: CanId.hr_voucher_metadata[0].candidateId,
       },
     });
     if (loading) return "Submitting...";
