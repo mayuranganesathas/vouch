@@ -9,6 +9,7 @@ import { useAuth } from "../lib/authContext";
 import { auth } from "../lib/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Head from "next/head";
 
 export default function Register() {
   const { user } = useAuth();
@@ -135,6 +136,10 @@ export default function Register() {
   };
   return (
     <div className={"pt-4"}>
+      <Head>
+        <title>Register | Vouch</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       {hrData && (
         <HROnboarding
           onClick={onSubmit}

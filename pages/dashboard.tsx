@@ -24,7 +24,8 @@ import {
   SeniorityDropDownArray,
   stateProvince,
 } from "./api/dropdownCategories";
-import ReactTooltip from "react-tooltip";
+import Head from "next/head";
+
 export interface DashboardProps {}
 
 const DashBoard = ({}: DashboardProps) => {
@@ -656,6 +657,10 @@ const DashBoard = ({}: DashboardProps) => {
 
   return (
     <div>
+      <Head>
+        <title>Dashboard | Vouch</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       {hrData && (
         <div className={"text-xs text-gray-700"}>
           <div className={"pt-4 px-20"}>

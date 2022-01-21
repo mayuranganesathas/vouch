@@ -1,3 +1,4 @@
+import Head from "next/head";
 import router from "next/router";
 import React, { useEffect } from "react";
 import ButtonGoogleLogin from "../components/ui/ButtonGoogleLogin";
@@ -15,6 +16,11 @@ export default function RegisterHRLogin(prop) {
 
   return (
     <div className={"h-screen bg-VouchBg h-full"}>
+      <Head>
+        <title>Login | Vouch</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+
       <div className={"grid grid-cols-2"}>
         <div
           className={

@@ -10,6 +10,7 @@ import router from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { QUERY_CANDIDATE_ID } from "../graphql/QUERY_CANDIDATE_ID";
+import Head from "next/head";
 
 export default function CandidateOn(props) {
   enum STAGE {
@@ -190,6 +191,10 @@ export default function CandidateOn(props) {
 
   return (
     <div className={"bg-white w-full h-screen"}>
+      <Head>
+        <title>Register | Vouch</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div className={"grid grid-cols-12 h-screen"}>
         <div className={"col-start-1 col-end-2"}></div>
         <div
