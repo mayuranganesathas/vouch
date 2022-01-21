@@ -71,11 +71,7 @@ const DashBoard = ({}: DashboardProps) => {
                 <div className={"grid grid-rows-2"}>
                   <div className={"text-base font-bold"}>
                     {" "}
-                    Welcome{" "}
-                    {hrData &&
-                      hrData.hr_voucher[0].firstName +
-                        " " +
-                        hrData.hr_voucher[0].lastName}
+                    Welcome {hrData && hrData.hr_voucher[0].firstName}
                   </div>
                   <div className={"pt-1 text-sm italic"}>
                     {" "}
