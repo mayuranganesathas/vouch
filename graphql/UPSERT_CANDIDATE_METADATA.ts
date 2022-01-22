@@ -16,9 +16,10 @@ export const UPSERT_CANDIDATE_METADATA = gql`
     $seniority: String = ""
     $candidateEmail: String = ""
     $candidateId: Int
+    $privacyId: String = ""
   ) {
     update_candidate_metadata(
-      where: { hrId: { _eq: $hrId }, candidateEmail: { _eq: $candidateEmail } }
+      where: { hrId: { _eq: $hrId }, privacyId: { _eq: $privacyId } }
       _set: {
         industry: $industry
         positionTitle: $positionTitle
@@ -30,6 +31,7 @@ export const UPSERT_CANDIDATE_METADATA = gql`
         companyName: $companyName
         seniority: $seniority
         candidateId: $candidateId
+        candidateEmail: $candidateEmail
       }
     ) {
       returning {
@@ -37,11 +39,12 @@ export const UPSERT_CANDIDATE_METADATA = gql`
       }
     }
     update_candidates(
-      where: { hrId: { _eq: $hrId }, candidateEmail: { _eq: $candidateEmail } }
+      where: { hrId: { _eq: $hrId }, privacyId: { _eq: $privacyId } }
       _set: {
         candidateFirstName: $candidateFirstName
         candidateLastName: $candidateLastName
         candidateId: $candidateId
+        candidateEmail: $candidateEmail
       }
     ) {
       returning {

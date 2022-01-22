@@ -19,7 +19,7 @@ export default function CandidateOn(props) {
     CandidateOnThree,
   }
   const hrId = router.query.hrId.toString();
-  const candidateEmail = router.query.email.toString();
+  const candidateUUID = router.query.privacyId.toString();
 
   const [stage, setStage] = useState(STAGE.CandidateOnOne);
   const [positionTitle, setPositionTitle] = useState("");
@@ -27,7 +27,7 @@ export default function CandidateOn(props) {
   const [industry, setIndustry] = useState("");
 
   const [linkedIn, setLinkedIn] = useState("");
-  const [email, setEmail] = useState(candidateEmail);
+  const [candidateEmail, setCandidateEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [locationCity, setLocationCity] = useState("");
@@ -36,17 +36,16 @@ export default function CandidateOn(props) {
   const [jobCategory, setJobCategory] = useState("");
   const [jobSeniority, setJobSeniority] = useState("");
   const [companyName, setCompanyName] = useState("");
-  //query candidateid based on hrid and email -- pass into candidate contact and vouchee
 
   const { data: CanId } = useQuery(QUERY_CANDIDATE_ID, {
-    variables: { hrId: hrId, candidateEmail: candidateEmail },
+    variables: { hrId: hrId, privacyId: candidateUUID },
   });
 
   const clearFormState = () => {
     setPositionTitle("");
     setIndustry("");
     setLinkedIn("");
-    setEmail("");
+    setCandidateEmail("");
     setFirstName("");
     setLastName("");
     setLocationCity("");
@@ -76,14 +75,13 @@ export default function CandidateOn(props) {
         jobCategory: "incompleteField",
         seniority: "incompleteField",
         candidateId: "incompleteField",
+        privacyId: "incompleteField",
       },
     }
   );
-  //update UPSERT INFORMATION VARIABLES
-  // PARSE URL AND PASS INTO HRID
+
   const formValidator = () => {
     const positionTitleValidator = positionTitle;
-
     const industry1Validator = industry;
 
     if (positionTitleValidator && industry1Validator) {
@@ -121,6 +119,7 @@ export default function CandidateOn(props) {
         jobCategory: jobCategory,
         companyName: companyName,
         candidateId: CanId.hr_voucher_metadata[0].candidateId,
+        privacyId: candidateUUID,
       },
     });
     if (loading) return "Submitting...";
@@ -158,6 +157,8 @@ export default function CandidateOn(props) {
             setPositionTitle={setPositionTitle}
             industry={industry}
             setIndustry={setIndustry}
+            candidateEmail={candidateEmail}
+            setCandidateEmail={setCandidateEmail}
             firstName={firstName}
             setFirstName={setFirstName}
             lastName={lastName}
