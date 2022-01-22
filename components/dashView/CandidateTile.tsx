@@ -5,16 +5,13 @@ import { ReceiptRefundIcon } from "@heroicons/react/solid";
 
 import { EyeOffIcon } from "@heroicons/react/solid";
 import { MailOpenIcon, MailIcon } from "@heroicons/react/solid";
-import { ButtonEmail } from "./ButtonEmail";
-import { CompTooltip } from "./CompTooltip";
-import ReactTooltip from "react-tooltip";
-import { ButtonConnected } from "./ButtonConnected";
+
 import { useMutation } from "@apollo/client";
 import { INSERT_THUMBS_UP_AND_DOWN } from "../../graphql/INSERT_THUMBS_UP";
 import { useAuth } from "../../lib/authContext";
-import { QUERY_SHORT_LIST } from "../../graphql/QUERY_SHORTLIST";
 import { toast, ToastContainer } from "react-toastify";
 import { DELETE_SHORTLIST_ITEM } from "../../graphql/DELETE_FROM_SHORTLIST";
+import CandidateTileModal from "./CandidateTileModal";
 export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
@@ -86,6 +83,15 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [hideIconsBelow, setHideIconsBelow] = useState("");
 
   const [animationBg, setAnimationBg] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   const thumbUpClick = () => {
     ThumbUpAndDownMutation({
@@ -131,7 +137,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               className={
                 reverseSelectedAnimation
                   ? `   transition ease-in-out  hover:text-VouchGreen animate-myMove  scale-125 translate-y-6  `
-                  : `h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer   ${hideIconsAboveAndBelow}`
+                  : `h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer   ${hideIconsAboveAndBelow}`
               }
               onClick={reverseSelected}
               onAnimationEnd={reverseSelectedAnimationEnd}
@@ -151,7 +157,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center pb-0.5"}>
             <MailOpenIcon
               className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow}  ${hideIconsAboveAndBelow}`}
-              onClick={moveToContacted}
+              onClick={openModal}
             />
           </div>
         </div>
@@ -164,7 +170,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               className={
                 reverseSelectedAnimation
                   ? " transition ease-in-out  hover:text-VouchGreen animate-myMove  scale-125 translate-y-6 "
-                  : `h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer  ${hideIconsAboveAndBelow}`
+                  : `h-4.5 w-4.5 text-gray-400 hover:text-VouchGreen cursor-pointer  ${hideIconsAboveAndBelow}`
               }
               onClick={reverseSelected}
               onAnimationEnd={reverseSelectedAnimationEnd}
@@ -184,7 +190,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center pb-0.5"}>
             <MailOpenIcon
               className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow}  ${hideIconsAboveAndBelow}`}
-              onClick={moveToContacted}
+              onClick={openModal}
             />
           </div>
         </div>
@@ -211,12 +217,12 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               onAnimationEnd={homeFavoriteAnimationEnd}
             />
           </div>
-          <div className="py-1 flex justify-center">
+          <div className="py-1.5 flex justify-center">
             <EyeOffIcon
               className={
                 homeHideAnimation
                   ? " transition ease-in-out  hover:text-VouchGreen animate-fadeColorIn"
-                  : `h-5 w-5 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow} `
+                  : `h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow} `
               }
               onClick={homeHide}
               onAnimationEnd={homeHideAnimationEnd}
@@ -225,28 +231,12 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center pb-0.5"}>
             <MailOpenIcon
               className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow} ${hideIconsAboveAndBelow} `}
-              onClick={moveToContacted}
+              onClick={openModal}
             />
           </div>
         </div>
       );
     }
-  };
-
-  const moveToContacted = () => {
-    ThumbUpAndDownMutation({
-      variables: {
-        hrId: hrId,
-        jobName: "",
-        jobSeniority: "",
-        jobType: "",
-        status: "contacted",
-        candidateId: userID,
-      },
-    });
-    toastFeedback();
-
-    sendEmail();
   };
 
   const reverseSelected = () => {
@@ -328,41 +318,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     setUnfitFavoritesAnimation(false);
     setAnimationBg(false);
     setHideIconsAboveAndBelow("");
-  };
-
-  const toastFeedback = () => {
-    toast.success("Interest Email Sent! ✅", {
-      position: "top-center",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
-
-  const sendEmail = async () => {
-    const res = await fetch("/api/interestEmail", {
-      body: JSON.stringify({
-        email: userEmailAction,
-        hrEmail: user.email,
-        candidateFirstName: firstName,
-        hrFirstName: hrData.hr_voucher[0].firstName,
-        hrLastName: hrData.hr_voucher[0].lastName,
-        companyName: hrData.hr_voucher[0].companyName,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-
-    const { error } = await res.json();
-    if (error) {
-      console.log(error);
-      return;
-    }
   };
 
   return (
@@ -475,6 +430,17 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         pauseOnFocusLoss={false}
         draggable
         pauseOnHover
+      />
+      <CandidateTileModal
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        hrData={hrData}
+        userEmailAction={userEmailAction}
+        candidateFirstName={firstName}
+        hrEmail={user.email}
+        userID={userID}
+        refetchShortList={refetchShortList}
+        hrId={user.uid}
       />
     </div>
   );
