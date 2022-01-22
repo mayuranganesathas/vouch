@@ -19,6 +19,9 @@ async function sendEmail(req, res) {
         companyName: `${req.body.companyName}`,
         hrEmail: `${req.body.hrEmail}`,
       },
+      asm: {
+        groupId: 17125,
+      },
     });
   } catch (error) {
     return res.status(error.statusCode || 500).json({ error: error.message });
