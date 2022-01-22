@@ -13,7 +13,7 @@ async function sendEmail(req, res) {
       templateId: "d-40f048ed85414c7dbef11d9280a4502b",
       cc: `${req.body.hrEmail}`,
       dynamicTemplateData: {
-        link: `www.app.vouchrecruit.com/candidate-register?hrId=${req.body.hrId}&id=${req.body.privacyId}`,
+        link: `www.app.vouchrecruit.com/candidate-register?hrId=${req.body.hrId}&privacyId=${req.body.privacyId}`,
         hrFirstName: `${req.body.hrFirstName}`,
         hrLastName: `${req.body.hrLastName}`,
         companyName: `${req.body.companyName}`,
