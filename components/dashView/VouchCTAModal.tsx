@@ -31,6 +31,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
+
+declare global {
+  interface Crypto {
+    randomUUID: () => string;
+  }
+}
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -56,6 +62,8 @@ const VouchCTAModal = ({
   const [standOutSkill2, setStandOutSkill2] = useState(""); // Interpersonal Skill
   const [standOutSkill3, setStandOutSkill3] = useState(""); // Interview Skill
 
+  const candidateUUID = crypto.randomUUID();
+
   const clearFormState = () => {
     setEmail("");
     setPositionTitle("");
@@ -80,7 +88,7 @@ const VouchCTAModal = ({
         standOutSkill1: "incompleteField",
         standOutSkill2: "incompleteField",
         standOutSkill3: "incompleteField",
-        candidateEmail: "incompleteField",
+        privacyId: "incompleteField",
       },
     }
   );
@@ -98,6 +106,7 @@ const VouchCTAModal = ({
         hrFirstName: hrData.hr_voucher[0].firstName,
         hrLastName: hrData.hr_voucher[0].lastName,
         companyName: hrData.hr_voucher[0].companyName,
+        privacyId: candidateUUID,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +142,7 @@ const VouchCTAModal = ({
         standOutSkill1: standOutSkill1,
         standOutSkill2: standOutSkill2,
         standOutSkill3: standOutSkill3,
-        candidateEmail: email,
+        privacyId: candidateUUID,
       },
     });
     if (loading) return "Submitting...";

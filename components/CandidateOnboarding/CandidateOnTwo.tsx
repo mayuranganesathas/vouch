@@ -29,6 +29,8 @@ export interface CandidateOnTwoProps {
   setLocationState: (remoteStatus: string) => void;
   locationCity: string;
   setLocationCity: (locationCity: string) => void;
+  candidateEmail: string;
+  setCandidateEmail: (candidateEmail: string) => void;
   firstName: string;
   setFirstName: (firstName: string) => void;
   lastName: string;
@@ -64,6 +66,8 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   jobSeniority,
   setJobSeniority,
 
+  candidateEmail,
+  setCandidateEmail,
   firstName,
   setFirstName,
   lastName,
@@ -205,8 +209,8 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                   "border border-gray-300 text-xs w-full rounded py-1 px-4"
                 }
                 placeholder="Email Address"
-                /*value={email}*/
-                onChange={(e) => e.target.value}
+                value={candidateEmail}
+                onChange={(e) => setCandidateEmail(e.target.value)}
               ></input>
             </div>
             <div className={"text-xs py-2"}>
