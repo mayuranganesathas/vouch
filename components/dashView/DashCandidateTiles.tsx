@@ -92,6 +92,9 @@ const DashCandidateTiles = ({
       {vouchData &&
         shortListFilter()
           .filter((e) => e.Vouchee.length > 0)
+          .filter(
+            (e) => e.Vouchee[0].companyWebsite == hrData[0].companyWebsite
+          )
           .map((e, i) => (
             <CandidateTile
               userID={e.candidateId}
