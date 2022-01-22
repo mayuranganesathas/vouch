@@ -6,7 +6,10 @@ async function sendEmail(req, res) {
   try {
     await sendgrid.send({
       to: `${req.body.email}`, // Your email where you'll receive emails
-      from: "hello@vouchrecruit.com", // your website email address here
+      from: {
+        email: "hello@vouchrecruit.com",
+        name: "Vouch Recruit",
+      }, // your website email address here
       templateId: "d-40f048ed85414c7dbef11d9280a4502b",
       cc: `${req.body.hrEmail}`,
       dynamicTemplateData: {
