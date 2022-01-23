@@ -7,7 +7,7 @@ import { auth } from "../../lib/firebase";
 export interface ButtonGoogleLoginProps {}
 
 const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
-  const { signIn } = useAuth();
+  const { signInGoogle, signInMicrosoft } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
           "rounded bg-white drop-shadow-md  border-2 w-auto h-auto py-1"
         }
         type="button"
-        onClick={signIn}
+        onClick={signInGoogle}
       >
         <div className={"grid grid-cols-5 "}>
           <div className={"col-start-1 col-span-1"}>
