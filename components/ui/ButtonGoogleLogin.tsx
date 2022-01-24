@@ -27,7 +27,7 @@ const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
           "rounded bg-white drop-shadow-md  border-2 w-auto h-auto py-1"
         }
         type="button"
-        onClick={signInGoogle}
+        onClick={signInMicrosoft}
       >
         <div className={"grid grid-cols-5 "}>
           <div className={"col-start-1 col-span-1"}>
