@@ -29,8 +29,9 @@ const DashCandidateTilesShortList = ({
     setExistingCandidates(0);
 
     vouchData.shortlist
-      .filter((e) => e.status === filter)
       .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
+
+      .filter((e) => e.status === filter)
 
       .map((_, i) => setExistingCandidates(i + 1));
   };
@@ -38,6 +39,8 @@ const DashCandidateTilesShortList = ({
   const filterManage = () => {
     if (filterJobCategory != "empty" && filterJobSeniority != "empty") {
       return vouchData.shortlist
+        .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
+
         .filter(
           (e) =>
             e.hr_voucher_metadatum.Vouchee[0].jobCategory == filterJobCategory
@@ -48,6 +51,8 @@ const DashCandidateTilesShortList = ({
         );
     } else if (filterJobCategory != "empty" && filterStateLocation != "empty") {
       return vouchData.shortlist
+        .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
+
         .filter(
           (e) =>
             e.hr_voucher_metadatum.Vouchee[0].jobCategory == filterJobCategory
@@ -62,6 +67,8 @@ const DashCandidateTilesShortList = ({
       filterJobSeniority != "empty"
     ) {
       return vouchData.shortlist
+        .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
+
         .filter(
           (e) =>
             e.hr_voucher_metadatum.Vouchee[0].seniority == filterJobSeniority
@@ -77,6 +84,8 @@ const DashCandidateTilesShortList = ({
       filterJobCategory != "empty"
     ) {
       return vouchData.shortlist
+        .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
+
         .filter(
           (e) =>
             e.hr_voucher_metadatum.Vouchee[0].seniority == filterJobSeniority
@@ -95,29 +104,39 @@ const DashCandidateTilesShortList = ({
       filterJobSeniority == "empty" &&
       filterJobCategory == "empty"
     ) {
-      return vouchData.shortlist.filter(
-        (e) =>
-          e.hr_voucher_metadatum.Vouchee[0].locationState == filterStateLocation
-      );
+      return vouchData.shortlist
+        .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
+        .filter(
+          (e) =>
+            e.hr_voucher_metadatum.Vouchee[0].locationState ==
+            filterStateLocation
+        );
     } else if (
       filterStateLocation == "empty" &&
       filterJobSeniority != "empty" &&
       filterJobCategory == "empty"
     ) {
-      return vouchData.shortlist.filter(
-        (e) => e.hr_voucher_metadatum.Vouchee[0].seniority == filterJobSeniority
-      );
+      return vouchData.shortlist
+        .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
+        .filter(
+          (e) =>
+            e.hr_voucher_metadatum.Vouchee[0].seniority == filterJobSeniority
+        );
     } else if (
       filterStateLocation == "empty" &&
       filterJobSeniority == "empty" &&
       filterJobCategory != "empty"
     ) {
-      return vouchData.shortlist.filter(
-        (e) =>
-          e.hr_voucher_metadatum.Vouchee[0].jobCategory == filterJobCategory
-      );
+      return vouchData.shortlist
+        .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
+        .filter(
+          (e) =>
+            e.hr_voucher_metadatum.Vouchee[0].jobCategory == filterJobCategory
+        );
     } else {
-      return vouchData.shortlist;
+      return vouchData.shortlist.filter(
+        (e) => e.hr_voucher_metadatum.Vouchee.length > 0
+      );
     }
   };
 
