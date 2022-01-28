@@ -93,7 +93,7 @@ const TileModal = ({
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className=" lg:w-1/6 lg:h-2/6 xl:w-2/6 xl:h-2/6 bg-gray-100 shadow-lg rounded-xl p-2 m-8  overflow-auto absolute "
+        className=" lg:w-1/6 lg:h-2/6 xl:w-2/6 xl:h-3/6 bg-gray-100 shadow-lg rounded-xl p-2 m-8  overflow-auto absolute "
         contentLabel="Test Name"
         ariaHideApp={false}
         aria={{
