@@ -4,6 +4,7 @@ import React from "react";
 import Modal from "react-modal";
 import { toast, ToastContainer } from "react-toastify";
 import { INSERT_THUMBS_UP_AND_DOWN } from "../../graphql/INSERT_THUMBS_UP";
+import { ButtonVouch } from "../ui/ButtonVouch";
 
 export interface TileModalProps {
   modalIsOpen: boolean;
@@ -88,11 +89,11 @@ const TileModal = ({
     closeModal();
   };
   return (
-    <div>
+    <div className="bg-gray-100">
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className=" w-3/6 h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto absolute place-content-center"
+        className=" lg:w-1/6 lg:h-2/6 xl:w-2/6 xl:h-2/6 bg-gray-100 shadow-lg rounded-xl p-2 m-8  overflow-auto absolute "
         contentLabel="Test Name"
         ariaHideApp={false}
         aria={{
@@ -100,19 +101,31 @@ const TileModal = ({
           describedby: "full_description",
         }}
       >
-        <div>
+        <div className="bg-white rounded-t-lg">
           <XIcon
             className="h-5 w-5 text-gray-400 hover:text-red-500 cursor-pointer"
             onClick={closeModal}
           />
-          <div>
-            <button
-              onClick={moveToContacted}
-              className="bg-blue-300 rounded-lg text-bold"
-            >
-              {" "}
-              Email Button{" "}
-            </button>
+          <div className="text-VouchDark bg-white text-center text-xl font-bold py-2">
+            Ready to Connect with {candidateFirstName}?
+          </div>
+          <div className="bg-gray-100 py-2">
+            <div className="bg-gray-100 py-2">
+              Click on the "Contact Candidate" button. An email will be sent to
+              the candidate directly (Don't worry! You're CC'd).
+            </div>
+            <div className="bg-gray-100 py-2">
+              If they are interested, they will get back to you shortly.
+            </div>
+            <div className="bg-gray-100 py-8 px-8">
+              <ButtonVouch
+                onClick={moveToContacted}
+                backgroundColour="VouchGreen"
+                buttonType="rounded"
+                textColour="white"
+                label="Yes, Email Candidate"
+              />
+            </div>
           </div>
         </div>
       </Modal>
