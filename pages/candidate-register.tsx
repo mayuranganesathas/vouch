@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { CandidateOnOne } from "../components/CandidateOnboarding/CandidateOnOne";
-import { CandidateOnTwo } from "../components/CandidateOnboarding/CandidateOnTwo";
-import { CandidateOnThree } from "../components/CandidateOnboarding/CandidateOnThree";
+import { CandidateOnOne } from "../components/forms/CandidateOnOne";
+import { CandidateOnTwo } from "../components/forms/CandidateOnTwo";
+import { CandidateOnThree } from "../components/forms/CandidateOnThree";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
 import { useMutation, useQuery } from "@apollo/client";
 import { UPSERT_CANDIDATE_METADATA } from "../graphql/UPSERT_CANDIDATE_METADATA";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import { HROnboarding, HROnboardingProps } from "../HROnboarding/HROnboarding";
+import { HROnboarding, HROnboardingProps } from "../forms/HROnboarding";
 
 export default {
   title: "Dashboard/HROnboarding",

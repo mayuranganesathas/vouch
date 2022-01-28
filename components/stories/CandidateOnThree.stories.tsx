@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import {
   CandidateOnThree,
   CandidateOnThreeProps,
-} from "../CandidateOnboarding/CandidateOnThree";
+} from "../forms/CandidateOnThree";
 
 export default {
   title: "CandidateOnBoarding/CandidatesOnThree",

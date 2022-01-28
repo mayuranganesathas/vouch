@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { getRedirectResult } from "firebase/auth";
 import router from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import { HROnboarding } from "../components/HROnboarding/HROnboarding";
+import { HROnboarding } from "../components/forms/HROnboarding";
 import { INSERT_HR_VOUCHER } from "../graphql/INSERT_HR_VOUCHER";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import { useAuth } from "../lib/authContext";

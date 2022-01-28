@@ -1,9 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import {
-  CandidateOnTwo,
-  CandidateOnTwoProps,
-} from "../CandidateOnboarding/CandidateOnTwo";
+import { CandidateOnTwo, CandidateOnTwoProps } from "../forms/CandidateOnTwo";
 
 export default {
   title: "CandidateOnBoarding/CandidateOnTwo",

@@ -2,7 +2,6 @@ import React from "react";
 import Modal from "react-modal";
 import { useRouter } from "next/router";
 import { useAuth } from "../lib/authContext";
-import { HROnboarding } from "./HROnboarding/HROnboarding";
 
 export interface RouterListProps {}
 const RouterList = ({}: RouterListProps) => {
