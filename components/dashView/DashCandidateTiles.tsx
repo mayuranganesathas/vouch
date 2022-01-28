@@ -21,12 +21,11 @@ const DashCandidateTiles = ({
   hrData,
   setExistingCandidates,
 }: DashCandidateTilesProps) => {
-  // const hrCompanyUrl = new URL(hrData.companyWebsite, "https://example.com");
-
   const filterManage = () => {
     if (filterJobCategory != "empty" && filterJobSeniority != "empty") {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
+
         .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory)
         .filter((e) => e.Vouchee[0].seniority == filterJobSeniority);
     } else if (filterJobCategory != "empty" && filterStateLocation != "empty") {
@@ -41,6 +40,7 @@ const DashCandidateTiles = ({
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
+
         .filter((e) => e.Vouchee[0].seniority == filterJobSeniority)
         .filter((e) => e.Vouchee[0].locationState == filterStateLocation);
     } else if (
@@ -88,12 +88,6 @@ const DashCandidateTiles = ({
     return filterManage().filter((e) => !x.includes(e.candidateId));
   };
 
-  // const urlCreator = (companyWebsite: string) => {
-  //   const candidateWebsite = new URL(companyWebsite, "https://example.com");
-  //   return candidateWebsite.hostname;
-  // };
-
-  //checks candidate company to filter out from dashview
   const candidateCounter = () => {
     setExistingCandidates(0);
     shortListFilter()
@@ -106,10 +100,6 @@ const DashCandidateTiles = ({
       {vouchData &&
         shortListFilter()
           .filter((e) => e.Vouchee.length > 0)
-          // .filter(
-          //   (e) =>
-          //     urlCreator(e.Vouchee[0].companyWebsite) == hrCompanyUrl.hostname
-          // )
           // .filter(
           //   (e) => e.Vouchee[0].companyWebsite == hrData[0].companyWebsite
           // )
