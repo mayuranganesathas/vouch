@@ -93,7 +93,7 @@ const TileModal = ({
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className=" lg:w-1/6 lg:h-2/6 xl:w-2/6 xl:h-3/6 bg-gray-100 shadow-lg rounded-xl p-2 m-8  overflow-auto absolute "
+        className="  xl:w-2/6 xl:h-5/12 bg-gray-100 shadow-lg rounded-xl p-2 m-8  overflow-auto absolute "
         contentLabel="Test Name"
         ariaHideApp={false}
         aria={{
@@ -101,12 +101,14 @@ const TileModal = ({
           describedby: "full_description",
         }}
       >
-        <div className="bg-white rounded-t-lg">
+        <div>
           <XIcon
-            className="h-5 w-5 text-gray-400 hover:text-red-500 cursor-pointer"
+            className="h-4 w-4 text-gray-400 hover:text-red-500 cursor-pointer bg-gray-100"
             onClick={closeModal}
           />
-          <div className="text-VouchDark bg-white text-center text-xl font-bold py-2">
+        </div>
+        <div className="bg-white rounded-t-lg">
+          <div className="text-VouchDark bg-white text-center text-xl font-bold py-2 rounded-t-lg">
             Ready to Connect with {candidateFirstName}?
           </div>
           <div className="bg-gray-100 py-2">
