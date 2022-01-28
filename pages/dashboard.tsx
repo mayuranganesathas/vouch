@@ -78,7 +78,7 @@ const DashBoard = ({}: DashboardProps) => {
                   </div>
                   <div className={"pt-1 text-sm italic"}>
                     {" "}
-                    We can end the war for talent by working together.
+                    Matt Kusters eat pie yes he does.
                   </div>
                 </div>
               </div>
