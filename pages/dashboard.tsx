@@ -78,7 +78,7 @@ const DashBoard = ({}: DashboardProps) => {
                   </div>
                   <div className={"pt-1 text-sm italic"}>
                     {" "}
-                    Matt Kusters eat pie yes he does.
+                    Matt Kusters eat pie. NO he does.
                   </div>
                 </div>
               </div>
