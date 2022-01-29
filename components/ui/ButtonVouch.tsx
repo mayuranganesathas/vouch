@@ -1,6 +1,6 @@
 import React from "react";
 export interface ButtonVouchProps {
-  backgroundColour: "VouchGreen" | "white" | "empty";
+  backgroundColour: "VouchGreen" | "white" | "empty" | "gray";
   buttonType: "rounded" | "square";
   textColour: "black" | "white";
   label: string;
@@ -28,7 +28,7 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
   let backgroundStyles;
   switch (backgroundColour) {
     case "VouchGreen":
-      backgroundStyles = "";
+      backgroundStyles = "bg-VouchGreen ";
       break;
 
     case "white":
@@ -37,6 +37,10 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
 
     case "empty":
       backgroundStyles = "border-white border-2";
+      break;
+
+    case "gray":
+      backgroundStyles = "bg-gray-300";
       break;
   }
   let buttonStyles;
@@ -63,7 +67,7 @@ export const ButtonVouch: React.FC<ButtonVouchProps> = ({
       onClick={onClick}
       disabled={disabled}
       type="button"
-      className={` px-6 py-2 text-xs drop-shadow-md font-bold bg-VouchGreen  ${buttonSize}
+      className={` px-6 py-2 text-xs drop-shadow-md font-bold  ${buttonSize}
       ${disabled ? "bg-gray-400 opacity-25" : backgroundStyles}
       ${disabled ? "rounded" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}

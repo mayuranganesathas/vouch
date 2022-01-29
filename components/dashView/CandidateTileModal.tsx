@@ -111,30 +111,44 @@ const TileModal = ({
           <div className="text-VouchDark bg-white text-center text-xl font-bold pb-2 rounded-t-lg">
             Ready to Connect with {candidateFirstName}?
           </div>
-          <div className="bg-gray-100 py-2 px-12">
-            <div className="bg-gray-100 py-2">
-              Click on the "Contact Candidate" button.
-            </div>
+          <div className="bg-gray-100 py-4 px-12">
+            <div className="py-2">Click on the "Contact Candidate" button.</div>
             <div className="py-2">
               An email will be sent to the candidate directly (don't worry!
               You're cc-ed).
             </div>
-            <div className="flex py-2">
-              <span className="">Click&nbsp;</span>
-              <InformationCircleIcon className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer" />
-              <span> &nbsp;to review the email</span>
-            </div>
-            <div className="bg-gray-100 py-2">
+
+            <div className=" py-2">
               If they are interested, they will get back to you shortly.
             </div>
-            <div className="bg-gray-100 py-8 px-8">
-              <ButtonVouch
-                onClick={moveToContacted}
-                backgroundColour="VouchGreen"
-                buttonType="rounded"
-                textColour="white"
-                label="Yes, Email Candidate"
-              />
+
+            <div className="grid grid-cols-2 pt-8">
+              <div className="px-2">
+                <ButtonVouch
+                  onClick={moveToContacted}
+                  backgroundColour="VouchGreen"
+                  buttonType="square"
+                  textColour="white"
+                  label="Yes, Email Candidate"
+                />
+              </div>
+              <div className="px-2">
+                <ButtonVouch
+                  onClick={moveToContacted}
+                  backgroundColour="gray"
+                  buttonType="square"
+                  textColour="black"
+                  label="I already reached out"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-2">
+              <div className="flex italic text-VouchDark px-2 pt-1">
+                <span className="">Click&nbsp;</span>
+                <InformationCircleIcon className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer" />
+                <span> &nbsp;to review the email</span>
+              </div>
+              <div></div>
             </div>
           </div>
         </div>
