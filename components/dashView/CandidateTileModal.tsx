@@ -112,17 +112,20 @@ const TileModal = ({
             Ready to Connect with {candidateFirstName}?
           </div>
           <div className="bg-gray-100 py-4 px-12">
-            <div className="py-2">Click on the "Contact Candidate" button.</div>
             <div className="py-2">
-              An email will be sent to the candidate directly (don't worry!
+              1. Click on the "Contact Candidate" button.
+            </div>
+            <div className="py-2">
+              2. An email will be sent to the candidate directly (don't worry!
               You're cc-ed).
             </div>
 
             <div className=" py-2">
-              If they are interested, they will get back to you shortly.
+              3. If they are interested, they will get back to you shortly.
             </div>
-
-            <div className="grid grid-cols-2 pt-8">
+          </div>
+          <div className="bg-white px-12 py-6">
+            <div className="grid grid-cols-2">
               <div className="px-2">
                 <ButtonVouch
                   onClick={moveToContacted}
