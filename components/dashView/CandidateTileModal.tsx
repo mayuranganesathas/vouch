@@ -89,11 +89,11 @@ const TileModal = ({
     closeModal();
   };
   return (
-    <div className="bg-gray-100">
+    <div className="bg-white">
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className="  xl:w-2/6 xl:h-5/12 bg-gray-100 shadow-lg rounded-xl p-2 m-8  overflow-auto absolute "
+        className="  xl:w-auto xl:h-5/12 bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto absolute "
         contentLabel="Test Name"
         ariaHideApp={false}
         aria={{
@@ -101,22 +101,25 @@ const TileModal = ({
           describedby: "full_description",
         }}
       >
-        <div>
+        <div className={"flex justify-end pr-2"}>
           <XIcon
-            className="h-4 w-4 text-gray-400 hover:text-red-500 cursor-pointer bg-gray-100"
+            className="h-4 w-4 text-gray-400 hover:text-red-500 cursor-pointer "
             onClick={closeModal}
           />
         </div>
-        <div className="bg-white rounded-t-lg">
-          <div className="text-VouchDark bg-white text-center text-xl font-bold py-2 rounded-t-lg">
+        <div className="bg-white rounded-t-lg text-xs">
+          <div className="text-VouchDark bg-white text-center text-xl font-bold pb-2 rounded-t-lg">
             Ready to Connect with {candidateFirstName}?
           </div>
-          <div className="bg-gray-100 py-2">
+          <div className="bg-gray-100 py-2 px-12">
             <div className="bg-gray-100 py-2">
-              Click on the "Contact Candidate" button. An email will be sent to
-              the candidate directly (Don't worry! You're CC'd).
+              Click on the "Contact Candidate" button.
             </div>
-            <div className="flex">
+            <div className="py-2">
+              An email will be sent to the candidate directly (don't worry!
+              You're cc-ed).
+            </div>
+            <div className="flex py-2">
               <span className="">Click&nbsp;</span>
               <InformationCircleIcon className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer" />
               <span> &nbsp;to review the email</span>
