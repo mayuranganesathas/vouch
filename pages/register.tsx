@@ -133,6 +133,7 @@ export default function Register() {
     toastFeedback();
     clearForms();
     location.reload();
+    router.push("/dashboard");
   };
   return (
     <div className={"pt-4"}>
