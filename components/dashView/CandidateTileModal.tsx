@@ -73,7 +73,20 @@ const TileModal = ({
       return;
     }
   };
-
+  const movetoContactedNoEmail = () => {
+    ThumbUpAndDownMutation({
+      variables: {
+        hrId: hrId,
+        jobName: "",
+        jobSeniority: "",
+        jobType: "",
+        status: "contacted",
+        candidateId: userID,
+      },
+    });
+    toastFeedback();
+    closeModal();
+  };
   const moveToContacted = () => {
     ThumbUpAndDownMutation({
       variables: {
@@ -143,7 +156,7 @@ const TileModal = ({
               </div>
               <div className="px-2">
                 <ButtonVouch
-                  onClick={moveToContacted}
+                  onClick={movetoContactedNoEmail}
                   backgroundColour="gray"
                   buttonType="square"
                   textColour="black"
