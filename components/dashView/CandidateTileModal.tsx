@@ -128,19 +128,17 @@ const TileModal = ({
           </div>
           <div className="bg-gray-100 py-4 px-12">
             <div className="py-2">
-              1. Click on the "Contact Candidate" button.
+              1. Click on the "Yes, email candidate now" button.
             </div>
-            <div className="flex">
-              <span className="">Click&nbsp;</span>
-              <InformationCircleIcon
-                className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer"
-                onClick={() => setIconModalIsOpen(true)}
-              />
-              <span> &nbsp;to review the email</span>
+
+            <div className="py-2">
+              2. A "Let's Connect" email will be sent to the candidate directly
+              (you will be cc'd)
             </div>
 
             <div className=" py-2">
-              3. If they are interested, they will get back to you shortly.
+              3. If the candidate is interested, they will reply directly to
+              this email.
             </div>
           </div>
           <div className="bg-white px-12 py-6">
@@ -166,8 +164,11 @@ const TileModal = ({
             </div>
             <div className="grid grid-cols-2">
               <div className="flex italic text-VouchDark px-2 pt-1">
-                <span className="">Click&nbsp;</span>
-                <InformationCircleIcon className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer" />
+                <span className="">2. Click&nbsp;</span>
+                <InformationCircleIcon
+                  className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer"
+                  onClick={() => setIconModalIsOpen(true)}
+                />
                 <span> &nbsp;to review the email</span>
               </div>
               <div></div>
