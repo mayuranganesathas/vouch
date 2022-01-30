@@ -1,10 +1,11 @@
 import { useMutation } from "@apollo/client";
 import { InformationCircleIcon, XIcon } from "@heroicons/react/solid";
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import { toast, ToastContainer } from "react-toastify";
 import { INSERT_THUMBS_UP_AND_DOWN } from "../../graphql/INSERT_THUMBS_UP";
 import { ButtonVouch } from "../ui/ButtonVouch";
+import EmailPreviewModal from "./EmailPreviewModal";
 
 export interface TileModalProps {
   modalIsOpen: boolean;
@@ -29,6 +30,7 @@ const TileModal = ({
   userID,
   hrId,
 }: TileModalProps) => {
+  const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
   const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
     //Mutation for updating a user emoji value after a practice
     INSERT_THUMBS_UP_AND_DOWN,
@@ -115,9 +117,13 @@ const TileModal = ({
             <div className="py-2">
               1. Click on the "Contact Candidate" button.
             </div>
-            <div className="py-2">
-              2. An email will be sent to the candidate directly (don't worry!
-              You're cc-ed).
+            <div className="flex">
+              <span className="">Click&nbsp;</span>
+              <InformationCircleIcon
+                className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer"
+                onClick={() => setIconModalIsOpen(true)}
+              />
+              <span> &nbsp;to review the email</span>
             </div>
 
             <div className=" py-2">
@@ -167,6 +173,10 @@ const TileModal = ({
         pauseOnFocusLoss={false}
         draggable
         pauseOnHover
+      />
+      <EmailPreviewModal
+        modalIsOpen={iconModalIsOpen}
+        closeModal={() => setIconModalIsOpen(false)}
       />
     </div>
   );

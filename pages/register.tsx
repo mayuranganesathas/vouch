@@ -24,7 +24,7 @@ export default function Register() {
   const [hrFirstName, setHrFirstName] = useState("");
   const [hrLastName, setHrLastName] = useState("");
 
-  const { data: hrData } = useQuery(QUERY_HRID, {
+  const { data: hrData, refetch } = useQuery(QUERY_HRID, {
     variables: { hrId: user.uid },
   });
 
@@ -108,12 +108,12 @@ export default function Register() {
     setHrLastName("");
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const hrID = user.uid;
     const hrEmail = user.email;
     const userName = user.displayName;
 
-    initializeRegisterHr({
+    await initializeRegisterHr({
       variables: {
         companyName: hrVoucherCompanyName,
         companyWebsite: hrVoucherCompanyWebsite,
@@ -130,10 +130,11 @@ export default function Register() {
     });
     if (loading) return "Submitting...";
     if (error) return `Submission error! ${error.message}`;
-    toastFeedback();
     clearForms();
-    location.reload();
+    toastFeedback();
+    refetch();
   };
+
   return (
     <div className={"pt-4"}>
       <Head>
