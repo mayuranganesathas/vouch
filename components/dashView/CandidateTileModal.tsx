@@ -91,11 +91,11 @@ const TileModal = ({
     closeModal();
   };
   return (
-    <div className="bg-gray-100">
+    <div className="bg-white">
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className="  xl:w-2/6 xl:h-5/12 bg-gray-100 shadow-lg rounded-xl p-2 m-8  overflow-auto absolute "
+        className="  xl:w-auto xl:h-5/12 bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto absolute "
         contentLabel="Test Name"
         ariaHideApp={false}
         aria={{
@@ -103,20 +103,19 @@ const TileModal = ({
           describedby: "full_description",
         }}
       >
-        <div>
+        <div className={"flex justify-end pr-2"}>
           <XIcon
-            className="h-4 w-4 text-gray-400 hover:text-red-500 cursor-pointer bg-gray-100"
+            className="h-4 w-4 text-gray-400 hover:text-red-500 cursor-pointer "
             onClick={closeModal}
           />
         </div>
-        <div className="bg-white rounded-t-lg">
-          <div className="text-VouchDark bg-white text-center text-xl font-bold py-2 rounded-t-lg">
+        <div className="bg-white rounded-t-lg text-xs">
+          <div className="text-VouchDark bg-white text-center text-xl font-bold pb-2 rounded-t-lg">
             Ready to Connect with {candidateFirstName}?
           </div>
-          <div className="bg-gray-100 py-2">
-            <div className="bg-gray-100 py-2">
-              Click on the "Contact Candidate" button. An email will be sent to
-              the candidate directly (Don't worry! You're CC'd).
+          <div className="bg-gray-100 py-4 px-12">
+            <div className="py-2">
+              1. Click on the "Contact Candidate" button.
             </div>
             <div className="flex">
               <span className="">Click&nbsp;</span>
@@ -126,17 +125,39 @@ const TileModal = ({
               />
               <span> &nbsp;to review the email</span>
             </div>
-            <div className="bg-gray-100 py-2">
-              If they are interested, they will get back to you shortly.
+
+            <div className=" py-2">
+              3. If they are interested, they will get back to you shortly.
             </div>
-            <div className="bg-gray-100 py-8 px-8">
-              <ButtonVouch
-                onClick={moveToContacted}
-                backgroundColour="VouchGreen"
-                buttonType="rounded"
-                textColour="white"
-                label="Yes, Email Candidate"
-              />
+          </div>
+          <div className="bg-white px-12 py-6">
+            <div className="grid grid-cols-2">
+              <div className="px-2">
+                <ButtonVouch
+                  onClick={moveToContacted}
+                  backgroundColour="VouchGreen"
+                  buttonType="square"
+                  textColour="white"
+                  label="Yes, Email Candidate"
+                />
+              </div>
+              <div className="px-2">
+                <ButtonVouch
+                  onClick={moveToContacted}
+                  backgroundColour="gray"
+                  buttonType="square"
+                  textColour="black"
+                  label="I already reached out"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-2">
+              <div className="flex italic text-VouchDark px-2 pt-1">
+                <span className="">Click&nbsp;</span>
+                <InformationCircleIcon className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer" />
+                <span> &nbsp;to review the email</span>
+              </div>
+              <div></div>
             </div>
           </div>
         </div>
