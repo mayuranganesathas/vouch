@@ -4,9 +4,9 @@ import React, { useEffect } from "react";
 import { useAuth } from "../../lib/authContext";
 import { auth } from "../../lib/firebase";
 
-export interface ButtonGoogleLoginProps {}
+export interface ButtonExchangeLoginProps {}
 
-const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
+const ButtonExchangeLogin = ({}: ButtonExchangeLoginProps) => {
   const { signInGoogle, signInMicrosoft } = useAuth();
   const router = useRouter();
 
@@ -27,7 +27,7 @@ const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
           "rounded bg-gray-100 drop-shadow-md border  w-auto h-auto py-1"
         }
         type="button"
-        onClick={signInGoogle}
+        onClick={signInMicrosoft}
       >
         <div className={"grid grid-cols-5 "}>
           <div className={"col-start-1 col-span-1"}>
@@ -40,11 +40,11 @@ const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
           </div>
           <div
             className={
-              "col-start-2 col-span-4 flex justify-center items-center px-10 text-sm"
+              "col-start-2 col-span-4 flex justify-center items-center px-8 text-sm"
             }
           >
             {" "}
-            Sign in with Google
+            Sign in with Exchange
           </div>
         </div>
       </button>
@@ -52,4 +52,4 @@ const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
   );
 };
 
-export default ButtonGoogleLogin;
+export default ButtonExchangeLogin;

@@ -6,6 +6,7 @@ import ButtonGoolgeLogin from "../components/ui/ButtonGoogleLogin";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
 import { useAuth } from "../lib/authContext";
 import background from "./images/officeHRLogin.png";
+import ButtonExchangeLogin from "../components/ui/ButtonExchangeLogin";
 
 export default function RegisterHRLogin(prop) {
   const onClickHomePage = () => {
@@ -13,7 +14,7 @@ export default function RegisterHRLogin(prop) {
   };
 
   return (
-    <div className={"h-screen bg-VouchBg h-full"}>
+    <div className={"h-screen bg-VouchBg "}>
       <Head>
         <title>Login | Vouch</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -59,7 +60,11 @@ export default function RegisterHRLogin(prop) {
               <div className="pt-6 pb-2 font-semibold text-sm">
                 Log in to your account
               </div>
-              <ButtonGoogleLogin />
+              <div>
+                <ButtonGoogleLogin />
+                <ButtonExchangeLogin />
+              </div>
+              <div></div>
             </div>
           </div>
         </div>
