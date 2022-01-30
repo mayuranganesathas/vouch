@@ -55,7 +55,10 @@ export default function RegisterHRLogin(prop) {
               Fill your candidate pipeline faster with pre-vetted referrals from
               fellow HR professionals
             </div>
-            <div>
+            <div className="w-4/5 h-auto px-6 bg-white rounded drop-shadow-xl border border-gray-50 grid justify-items-center">
+              <div className="pt-6 pb-2 font-semibold text-sm">
+                Log in to your account
+              </div>
               <ButtonGoogleLogin />
             </div>
           </div>
