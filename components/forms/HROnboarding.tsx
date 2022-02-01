@@ -127,10 +127,8 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
             <div className={"pt-4 text-left font-bold text-sm"}>
               Set Up Your Company Profile
             </div>
-            <div className={"text-gray-600 pt-1"}>
-              Thank you for joining Vouch
-            </div>
-            <div className={"text-gray-600 py-4"}>
+
+            <div className={"text-gray-600 py-4 pt-1"}>
               Please take a moment to set up your profile. You and other HR
               Leaders will be able to view candidate details and the company
               details of other organizations who have referred candidates into

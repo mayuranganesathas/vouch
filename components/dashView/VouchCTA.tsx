@@ -22,7 +22,7 @@ const VouchCTA = ({ hrData }: VouchCTAProps) => {
     <div className="">
       <div className="text-center">
         <ButtonVouch
-          label="Invite A Candidate to Vouch"
+          label="Invite a Candidate to Vouch"
           backgroundColour="VouchGreen"
           buttonType="square"
           textColour="white"
