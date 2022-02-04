@@ -269,7 +269,7 @@ const VouchCTAModal = ({
                 <div className=" font-bold flex justify-start text-sm ">
                   STEP 1: Invite a Candidate
                 </div>
-                <div className={"flex justify-center py-2"}>
+                <div className={"flex justify-center py-2 pb-2"}>
                   <input
                     className="border-2 w-full py-0.5 pl-1 rounded text-xs"
                     id="guess"
@@ -278,10 +278,6 @@ const VouchCTAModal = ({
                     value={email}
                     onChange={(e) => emailChecker(e.target.value)}
                   ></input>
-                </div>
-                <div className="text-gray-300 text-xs flex justify-start pb-2">
-                  I have confirmed the candidate consents to being referred into
-                  Vouch.
                 </div>
               </div>
               <div className="py-2">

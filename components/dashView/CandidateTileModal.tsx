@@ -149,7 +149,7 @@ const TileModal = ({
                   backgroundColour="VouchGreen"
                   buttonType="square"
                   textColour="white"
-                  label="Yes, Email Candidate"
+                  label="Yes, email candidate now"
                 />
               </div>
               <div className="px-2">
@@ -164,7 +164,7 @@ const TileModal = ({
             </div>
             <div className="grid grid-cols-2">
               <div className="flex italic text-VouchDark px-2 pt-1">
-                <span className="">2. Click&nbsp;</span>
+                <span className="">Click&nbsp;</span>
                 <InformationCircleIcon
                   className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer"
                   onClick={() => setIconModalIsOpen(true)}
