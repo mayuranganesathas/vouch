@@ -7,6 +7,7 @@ import { ButtonVouch } from "../components/ui/ButtonVouch";
 import { useAuth } from "../lib/authContext";
 import background from "./images/officeHRLogin.png";
 import ButtonExchangeLogin from "../components/ui/ButtonExchangeLogin";
+import { HyperlinkButton } from "../components/ui/HyperlinkButton";
 
 export default function RegisterHRLogin(prop) {
   const onClickHomePage = () => {
@@ -14,6 +15,7 @@ export default function RegisterHRLogin(prop) {
   };
 
   const helper = () => {};
+  const signUp = () => {};
 
   return (
     <div className={"h-screen bg-VouchBg "}>
@@ -114,9 +116,17 @@ export default function RegisterHRLogin(prop) {
                 Privacy Policy
               </div>
               <div className="py-10 text-xs text-gray-400 text-center">
-                {" "}
                 <span>Don't have an account?</span>{" "}
-                <span className="text-VouchGreen font-bold ">Signup here</span>
+                <span>
+                  <HyperlinkButton
+                    backgroundColour="white"
+                    label="Signup here"
+                    buttonType="square"
+                    textColour="VouchGreen"
+                    onClick={signUp}
+                    buttonWidth="fit"
+                  />
+                </span>
               </div>
             </div>
           </div>
