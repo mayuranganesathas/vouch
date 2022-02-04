@@ -24,6 +24,9 @@ export default function RegisterHRLogin(prop) {
   const logIn = () => {
     setStageStatus("Login");
   };
+  const emailRegister = () => {
+    setStageStatus("email");
+  };
   const getAuthTile = () => {
     if (stageStatus == "Login") {
       return (
@@ -97,16 +100,16 @@ export default function RegisterHRLogin(prop) {
               Get started with Vouch
             </div>
             <div className="text-xs text-gray-500 py-4 px-4">
-              <div>
-                Sign up to discover vetted and actively looking candidates
-              </div>
+              <div>Sign up to discover actively looking candidates</div>
             </div>
-            <div>
+            <div className="w-full pt-6 px-4">
               <div>
-                <ButtonGoogleLogin />
-              </div>
-              <div className="py-4">
-                <ButtonExchangeLogin />
+                <div>
+                  <ButtonGoogleLogin />
+                </div>
+                <div className="py-4">
+                  <ButtonExchangeLogin />
+                </div>
               </div>
             </div>
 
@@ -117,7 +120,7 @@ export default function RegisterHRLogin(prop) {
                   backgroundColour="VouchGreen"
                   buttonType="square"
                   textColour="white"
-                  onClick={helper}
+                  onClick={emailRegister}
                   buttonWidth="wide"
                 />
               </div>
@@ -138,6 +141,40 @@ export default function RegisterHRLogin(prop) {
                     buttonWidth="fit"
                   />
                 </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (stageStatus == "email") {
+      return (
+        <div className={"col-start-2 flex justify-center items-center pr-12 "}>
+          <div className="w-3/5 py-4 h-auto px-6 bg-white rounded drop-shadow-2xl border border-gray-50 grid justify-items-center">
+            <div className="w-full px-4 pt-4">
+              <div className="text-xs font-bold text-gray-700"> Email</div>
+              <input className="border-2 border-blue-100 w-full bg-blue-50"></input>
+            </div>
+
+            <div className="w-full px-4 pt-4">
+              <div className="text-xs font-bold text-gray-700"> Password</div>
+              <input className="border-2 border-blue-100 w-full bg-blue-50"></input>
+            </div>
+
+            <div className="w-full px-4">
+              <div className="pt-6">
+                <ButtonVouch
+                  label="Log In"
+                  backgroundColour="VouchGreen"
+                  buttonType="square"
+                  textColour="white"
+                  onClick={helper}
+                  buttonWidth="wide"
+                />
+              </div>
+              <div className="text-xs text-gray-400 pt-4">
+                {" "}
+                By continuing, you agree to Vouch's Terms of use. Read our
+                Privacy Policy
               </div>
             </div>
           </div>
