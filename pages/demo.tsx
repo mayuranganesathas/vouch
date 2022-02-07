@@ -25,6 +25,8 @@ import {
 import Head from "next/head";
 import { DEMO_QUERY_SHORTLIST } from "../graphql/DEMO_QUERY_SHORTLIST";
 import { DEMO_DASHBOARD_QUERY_TILES } from "../graphql/DEMO_DASHBOARD_TILES";
+import DEMODashCandidateTilesShortList from "../components/demopage/DEMODashCandidateTilesShortList";
+import DEMODashCandidateTiles from "../components/demopage/DEMODashCandidateTiles";
 
 export interface DashboardProps {}
 
@@ -187,7 +189,7 @@ const DashBoard = ({}: DashboardProps) => {
               </div>
             </div>
             {/* CREATE DEMO COMPONENT */}
-            <DashCandidateTiles
+            <DEMODashCandidateTiles
               vouchData={data}
               refetchShortList={refetchShortList}
               filterJobCategory={jobCategoryDropdown}
@@ -330,7 +332,7 @@ const DashBoard = ({}: DashboardProps) => {
 
             {
               // CREATE DEMO VERSION
-              <DashCandidateTilesShortList
+              <DEMODashCandidateTilesShortList
                 vouchData={ShortList}
                 filter="thumbsUp"
                 refetchShortList={refetchShortList}
@@ -467,7 +469,7 @@ const DashBoard = ({}: DashboardProps) => {
             </div>
 
             {
-              <DashCandidateTilesShortList
+              <DEMODashCandidateTilesShortList
                 vouchData={ShortList}
                 filter="thumbsDown"
                 refetchShortList={refetchShortList}
@@ -604,7 +606,7 @@ const DashBoard = ({}: DashboardProps) => {
             </div>
 
             {
-              <DashCandidateTilesShortList
+              <DEMODashCandidateTilesShortList
                 vouchData={ShortList}
                 filter="contacted"
                 refetchShortList={refetchShortList}
