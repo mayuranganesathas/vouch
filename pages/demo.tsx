@@ -1,24 +1,30 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import WelcomeComp from "../components/dashView/WelcomeComp";
 import VouchCTA from "../components/dashView/VouchCTA";
 import { CandidateCount } from "../components/dashView/CandidateCount";
 import DashCandidateTiles from "../components/dashView/DashCandidateTiles";
 import UserIdBar from "../components/dashView/UserIdBar";
-import { useQuery } from "@apollo/client";
+import { GetServerSideProps } from "next";
+import { ApolloClient, InMemoryCache, useQuery } from "@apollo/client";
 import { QUERY_DASHBOARD_TILES } from "../graphql/QUERY_DASHBOARD_TILES";
+import { DatabaseIcon } from "@heroicons/react/solid";
 import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
 import { DashboardCategoryFilter } from "../components/ui/DashboardCategoryFilter";
 import InformationIconToolTip from "../components/ui/InformationIconToolTip";
-import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
+
 import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
+
 import {
   positionCategoryDropDownArray,
   SeniorityDropDownArray,
   stateProvince,
 } from "./api/dropdownCategories";
 import Head from "next/head";
+import { DEMO_QUERY_SHORTLIST } from "../graphql/DEMO_QUERY_SHORTLIST";
+import { DEMO_DASHBOARD_QUERY_TILES } from "../graphql/DEMO_DASHBOARD_TILES";
 
 export interface DashboardProps {}
 
@@ -39,12 +45,12 @@ const DashBoard = ({}: DashboardProps) => {
     loading,
     data: ShortList,
     refetch: refetchShortList,
-  } = useQuery(QUERY_SHORT_LIST, {
+  } = useQuery(DEMO_QUERY_SHORTLIST, {
     variables: {
       hrId: user.uid,
     },
   });
-  const { data } = useQuery(QUERY_DASHBOARD_TILES, {
+  const { data } = useQuery(DEMO_DASHBOARD_QUERY_TILES, {
     variables: {
       hrId: user.uid,
     },
@@ -180,6 +186,7 @@ const DashBoard = ({}: DashboardProps) => {
                 </div>
               </div>
             </div>
+            {/* CREATE DEMO COMPONENT */}
             <DashCandidateTiles
               vouchData={data}
               refetchShortList={refetchShortList}
@@ -322,6 +329,7 @@ const DashBoard = ({}: DashboardProps) => {
             </div>
 
             {
+              // CREATE DEMO VERSION
               <DashCandidateTilesShortList
                 vouchData={ShortList}
                 filter="thumbsUp"
