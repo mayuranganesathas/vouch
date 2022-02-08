@@ -10,14 +10,14 @@ import ButtonExchangeLogin from "../components/ui/ButtonExchangeLogin";
 import { HyperlinkButton } from "../components/ui/HyperlinkButton";
 import { useState } from "react";
 
-export default function RegisterHRLogin(prop) {
+export default function RegisterHRLogin() {
   const [stageStatus, setStageStatus] = useState("Login");
+  const [userName, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailRegistration, setEmailRegistration] = useState("");
+  const [passwordRegistration, setPasswordRegistration] = useState("");
+  const { signInUsernameAndPassword, signUpFunction, auth } = useAuth();
 
-  const onClickHomePage = () => {
-    window.open("https://www.vouchrecruit.com");
-  };
-
-  const helper = () => {};
   const signUp = () => {
     setStageStatus("SignUp");
   };
@@ -55,10 +55,18 @@ export default function RegisterHRLogin(prop) {
             </div>
             <div className="w-full pt-6 px-4">
               <div className="text-xs font-bold text-gray-700"> Email</div>
-              <input className="border-2 border-blue-100 w-full bg-blue-50"></input>
+              <input
+                value={userName}
+                onChange={(e) => setUsername(e.target.value)}
+                className="border-2 border-blue-100 w-full bg-blue-50"
+              ></input>
               <div className="w-full pt-4">
                 <div className="text-xs font-bold text-gray-700"> Password</div>
-                <input className="border-2 border-blue-100 w-full bg-blue-50"></input>
+                <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="border-2 border-blue-100 w-full bg-blue-50"
+                ></input>
               </div>
               <div className="pt-6">
                 <ButtonVouch
@@ -66,7 +74,7 @@ export default function RegisterHRLogin(prop) {
                   backgroundColour="VouchGreen"
                   buttonType="square"
                   textColour="white"
-                  onClick={helper}
+                  onClick={() => signInUsernameAndPassword(userName, password)}
                   buttonWidth="wide"
                 />
               </div>
@@ -152,22 +160,32 @@ export default function RegisterHRLogin(prop) {
           <div className="w-3/5 py-4 h-auto px-6 bg-white rounded drop-shadow-2xl border border-gray-50 grid justify-items-center">
             <div className="w-full px-4 pt-4">
               <div className="text-xs font-bold text-gray-700"> Email</div>
-              <input className="border-2 border-blue-100 w-full bg-blue-50"></input>
+              <input
+                value={emailRegistration}
+                onChange={(e) => setEmailRegistration(e.target.value)}
+                className="border-2 border-blue-100 w-full bg-blue-50"
+              ></input>
             </div>
 
             <div className="w-full px-4 pt-4">
               <div className="text-xs font-bold text-gray-700"> Password</div>
-              <input className="border-2 border-blue-100 w-full bg-blue-50"></input>
+              <input
+                value={passwordRegistration}
+                onChange={(e) => setPasswordRegistration(e.target.value)}
+                className="border-2 border-blue-100 w-full bg-blue-50"
+              ></input>
             </div>
 
             <div className="w-full px-4">
               <div className="pt-6">
                 <ButtonVouch
-                  label="Log In"
+                  label="Create Account"
                   backgroundColour="VouchGreen"
                   buttonType="square"
                   textColour="white"
-                  onClick={helper}
+                  onClick={() => {
+                    signUpFunction(emailRegistration, passwordRegistration);
+                  }}
                   buttonWidth="wide"
                 />
               </div>
@@ -208,7 +226,9 @@ export default function RegisterHRLogin(prop) {
             buttonType="square"
             textColour="white"
             label="Vouch Homepage"
-            onClick={onClickHomePage}
+            onClick={() => {
+              window.open("https://www.vouchrecruit.com");
+            }}
           />
         </div>
       </div>
