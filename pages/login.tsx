@@ -18,15 +18,6 @@ export default function RegisterHRLogin() {
   const [passwordRegistration, setPasswordRegistration] = useState("");
   const { signInUsernameAndPassword, signUpFunction, auth } = useAuth();
 
-  const signUp = () => {
-    setStageStatus("SignUp");
-  };
-  const logIn = () => {
-    setStageStatus("Login");
-  };
-  const emailRegister = () => {
-    setStageStatus("email");
-  };
   const getAuthTile = () => {
     if (stageStatus == "Login") {
       return (
@@ -91,7 +82,9 @@ export default function RegisterHRLogin() {
                     label="Signup here"
                     buttonType="square"
                     textColour="VouchGreen"
-                    onClick={signUp}
+                    onClick={() => {
+                      setStageStatus("SignUp");
+                    }}
                     buttonWidth="fit"
                   />
                 </span>
@@ -128,7 +121,7 @@ export default function RegisterHRLogin() {
                   backgroundColour="VouchGreen"
                   buttonType="square"
                   textColour="white"
-                  onClick={emailRegister}
+                  onClick={() => setStageStatus("email")}
                   buttonWidth="wide"
                 />
               </div>
@@ -145,7 +138,7 @@ export default function RegisterHRLogin() {
                     label="Log in"
                     buttonType="square"
                     textColour="VouchGreen"
-                    onClick={logIn}
+                    onClick={() => setStageStatus("Login")}
                     buttonWidth="fit"
                   />
                 </span>
