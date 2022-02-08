@@ -16,7 +16,13 @@ export default function RegisterHRLogin() {
   const [password, setPassword] = useState("");
   const [emailRegistration, setEmailRegistration] = useState("");
   const [passwordRegistration, setPasswordRegistration] = useState("");
-  const { signInUsernameAndPassword, signUpFunction, auth } = useAuth();
+  const { signInUsernameAndPassword, signUpFunction, auth, user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/dashboard");
+    }
+  }, [user]);
 
   const getAuthTile = () => {
     if (stageStatus == "Login") {
@@ -55,6 +61,7 @@ export default function RegisterHRLogin() {
                 <div className="text-xs font-bold text-gray-700"> Password</div>
                 <input
                   value={password}
+                  type="password"
                   onChange={(e) => setPassword(e.target.value)}
                   className="border-2 border-blue-100 w-full bg-blue-50"
                 ></input>
@@ -65,7 +72,11 @@ export default function RegisterHRLogin() {
                   backgroundColour="VouchGreen"
                   buttonType="square"
                   textColour="white"
-                  onClick={() => signInUsernameAndPassword(userName, password)}
+                  onClick={() =>
+                    signInUsernameAndPassword(userName, password).then(() =>
+                      router.push("/dashboard")
+                    )
+                  }
                   buttonWidth="wide"
                 />
               </div>
@@ -152,6 +163,9 @@ export default function RegisterHRLogin() {
         <div className={"col-start-2 flex justify-center items-center pr-12 "}>
           <div className="w-3/5 py-4 h-auto px-6 bg-white rounded drop-shadow-2xl border border-gray-50 grid justify-items-center">
             <div className="w-full px-4 pt-4">
+              <div className="text-center text-xl font-semibold">
+                Register Today
+              </div>
               <div className="text-xs font-bold text-gray-700"> Email</div>
               <input
                 value={emailRegistration}
@@ -164,6 +178,7 @@ export default function RegisterHRLogin() {
               <div className="text-xs font-bold text-gray-700"> Password</div>
               <input
                 value={passwordRegistration}
+                type="password"
                 onChange={(e) => setPasswordRegistration(e.target.value)}
                 className="border-2 border-blue-100 w-full bg-blue-50"
               ></input>
@@ -177,7 +192,10 @@ export default function RegisterHRLogin() {
                   buttonType="square"
                   textColour="white"
                   onClick={() => {
-                    signUpFunction(emailRegistration, passwordRegistration);
+                    signUpFunction(
+                      emailRegistration,
+                      passwordRegistration
+                    ).then(() => router.push("/dashboard"));
                   }}
                   buttonWidth="wide"
                 />

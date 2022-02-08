@@ -10,14 +10,13 @@ export interface UserProfileProps {
 const UserProfile = ({ userHrFirstName, userHrLastName }: UserProfileProps) => {
   const [isHidden, setIsHidden] = useState(false);
 
-  const { signOut } = useAuth();
+  const { signOut, auth } = useAuth();
   const revealMenu = () => {
     setIsHidden(!isHidden);
   };
 
   const signOutGoogle = () => {
-    signOut;
-    router.push("/login");
+    signOut(auth).then(() => router.push("/login"));
   };
   return (
     <div className="space-y-2  ">
