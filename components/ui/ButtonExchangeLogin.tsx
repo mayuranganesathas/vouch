@@ -32,7 +32,7 @@ const ButtonExchangeLogin = ({}: ButtonExchangeLoginProps) => {
         <div className={"grid grid-cols-5 "}>
           <div className={"col-start-1 col-span-1"}>
             <img
-              src="./images/googleG.png"
+              src="./images/outlooklogo.png"
               width="38"
               height="auto"
               className={"pl-1"}
@@ -40,11 +40,11 @@ const ButtonExchangeLogin = ({}: ButtonExchangeLoginProps) => {
           </div>
           <div
             className={
-              "col-start-2 col-span-4 flex justify-center items-center px-8 text-sm"
+              "col-start-2 col-span-4 flex justify-center items-center px-10 text-sm"
             }
           >
             {" "}
-            Sign in with Exchange
+            Sign in with Outlook
           </div>
         </div>
       </button>

@@ -10,23 +10,20 @@ import ButtonExchangeLogin from "../components/ui/ButtonExchangeLogin";
 import { HyperlinkButton } from "../components/ui/HyperlinkButton";
 import { useState } from "react";
 
-export default function RegisterHRLogin(prop) {
+export default function RegisterHRLogin() {
   const [stageStatus, setStageStatus] = useState("Login");
+  const [userName, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailRegistration, setEmailRegistration] = useState("");
+  const [passwordRegistration, setPasswordRegistration] = useState("");
+  const { signInUsernameAndPassword, signUpFunction, auth, user } = useAuth();
 
-  const onClickHomePage = () => {
-    window.open("https://www.vouchrecruit.com");
-  };
+  useEffect(() => {
+    if (user) {
+      router.push("/dashboard");
+    }
+  }, [user]);
 
-  const helper = () => {};
-  const signUp = () => {
-    setStageStatus("SignUp");
-  };
-  const logIn = () => {
-    setStageStatus("Login");
-  };
-  const emailRegister = () => {
-    setStageStatus("email");
-  };
   const getAuthTile = () => {
     if (stageStatus == "Login") {
       return (
@@ -55,10 +52,19 @@ export default function RegisterHRLogin(prop) {
             </div>
             <div className="w-full pt-6 px-4">
               <div className="text-xs font-bold text-gray-700"> Email</div>
-              <input className="border-2 border-blue-100 w-full bg-blue-50"></input>
+              <input
+                value={userName}
+                onChange={(e) => setUsername(e.target.value)}
+                className="border-2 border-blue-100 w-full bg-blue-50"
+              ></input>
               <div className="w-full pt-4">
                 <div className="text-xs font-bold text-gray-700"> Password</div>
-                <input className="border-2 border-blue-100 w-full bg-blue-50"></input>
+                <input
+                  value={password}
+                  type="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="border-2 border-blue-100 w-full bg-blue-50"
+                ></input>
               </div>
               <div className="pt-6">
                 <ButtonVouch
@@ -66,7 +72,11 @@ export default function RegisterHRLogin(prop) {
                   backgroundColour="VouchGreen"
                   buttonType="square"
                   textColour="white"
-                  onClick={helper}
+                  onClick={() =>
+                    signInUsernameAndPassword(userName, password).then(() =>
+                      router.push("/dashboard")
+                    )
+                  }
                   buttonWidth="wide"
                 />
               </div>
@@ -83,7 +93,9 @@ export default function RegisterHRLogin(prop) {
                     label="Signup here"
                     buttonType="square"
                     textColour="VouchGreen"
-                    onClick={signUp}
+                    onClick={() => {
+                      setStageStatus("SignUp");
+                    }}
                     buttonWidth="fit"
                   />
                 </span>
@@ -120,7 +132,7 @@ export default function RegisterHRLogin(prop) {
                   backgroundColour="VouchGreen"
                   buttonType="square"
                   textColour="white"
-                  onClick={emailRegister}
+                  onClick={() => setStageStatus("email")}
                   buttonWidth="wide"
                 />
               </div>
@@ -137,7 +149,7 @@ export default function RegisterHRLogin(prop) {
                     label="Log in"
                     buttonType="square"
                     textColour="VouchGreen"
-                    onClick={logIn}
+                    onClick={() => setStageStatus("Login")}
                     buttonWidth="fit"
                   />
                 </span>
@@ -151,23 +163,40 @@ export default function RegisterHRLogin(prop) {
         <div className={"col-start-2 flex justify-center items-center pr-12 "}>
           <div className="w-3/5 py-4 h-auto px-6 bg-white rounded drop-shadow-2xl border border-gray-50 grid justify-items-center">
             <div className="w-full px-4 pt-4">
+              <div className="text-center text-xl font-semibold">
+                Register Today
+              </div>
               <div className="text-xs font-bold text-gray-700"> Email</div>
-              <input className="border-2 border-blue-100 w-full bg-blue-50"></input>
+              <input
+                value={emailRegistration}
+                onChange={(e) => setEmailRegistration(e.target.value)}
+                className="border-2 border-blue-100 w-full bg-blue-50"
+              ></input>
             </div>
 
             <div className="w-full px-4 pt-4">
               <div className="text-xs font-bold text-gray-700"> Password</div>
-              <input className="border-2 border-blue-100 w-full bg-blue-50"></input>
+              <input
+                value={passwordRegistration}
+                type="password"
+                onChange={(e) => setPasswordRegistration(e.target.value)}
+                className="border-2 border-blue-100 w-full bg-blue-50"
+              ></input>
             </div>
 
             <div className="w-full px-4">
               <div className="pt-6">
                 <ButtonVouch
-                  label="Log In"
+                  label="Create Account"
                   backgroundColour="VouchGreen"
                   buttonType="square"
                   textColour="white"
-                  onClick={helper}
+                  onClick={() => {
+                    signUpFunction(
+                      emailRegistration,
+                      passwordRegistration
+                    ).then(() => router.push("/dashboard"));
+                  }}
                   buttonWidth="wide"
                 />
               </div>
@@ -208,7 +237,9 @@ export default function RegisterHRLogin(prop) {
             buttonType="square"
             textColour="white"
             label="Vouch Homepage"
-            onClick={onClickHomePage}
+            onClick={() => {
+              window.open("https://www.vouchrecruit.com");
+            }}
           />
         </div>
       </div>
