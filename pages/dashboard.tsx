@@ -83,19 +83,22 @@ const DashBoard = ({}: DashboardProps) => {
               </div>
             </div>
           </div>
-          <div className={"pb-8 px-24 grid grid-cols-12 bg-gray-50"}>
+          <div className={"pb-6 px-24 grid grid-cols-12 bg-gray-50 "}>
             <div
               className={
                 "col-start-1 col-span-2 font-bold flex justify-center items-center"
               }
             >
-              <div className={"flex flex-wrap"}>
+              
+              <div className={"flex flex-wrap pb-8"}>
+                
                 <div className={"pr-2"}>Filters Referrals by: </div>
 
                 <InformationIconToolTip toolTipCopy="Filter through the referrals by candidate location, role and experience." />
               </div>
             </div>
-            <div className={"col-start-3 flex items-center"}>
+            <div className={"flex flex-nowrap justify-between col-start-3 col-span-6"}>
+            
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={positionCategoryDropDownArray}
@@ -103,8 +106,8 @@ const DashBoard = ({}: DashboardProps) => {
                 onChange={(e) => filterChangeCategory(e)} /*Map Props here*/
                 copy="Candidate Location"
               />
-            </div>
-            <div className={"col-start-5 flex items-center"}>
+            
+            
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={SeniorityDropDownArray}
@@ -112,8 +115,7 @@ const DashBoard = ({}: DashboardProps) => {
                 onChange={(e) => filterChangeSeniority(e)} /*Map Props here*/
                 copy="Position Type Interviewed For"
               />
-            </div>
-            <div className={"col-start-7 flex items-center"}>
+            
               <DashboardCategoryFilter
                 backgroundColour="white"
                 dropDownArray={stateProvince}
@@ -121,9 +123,10 @@ const DashBoard = ({}: DashboardProps) => {
                 onChange={(e) => filterChangeLocation(e)} /*Map Props here*/
                 copy="Required Years of Exp"
               />
+              
               <div
                 className={
-                  " col-start-8 px-4 text-xs text-gray-500 cursor-pointer select-none hover:text-red-500  flex-nowrap "
+                  " col-start-9 px-4 text-xs text-gray-500 cursor-pointer select-none hover:text-red-500  flex-nowrap "
                 }
                 onClick={clearFilters}
               >
@@ -138,6 +141,7 @@ const DashBoard = ({}: DashboardProps) => {
                   </div>
                 )}
               </div>
+            
             </div>
             <div className={"col-start-10 col-span-3 grid content-start pb-8"}>
               <CandidateCount candidateCount={existingCandidates} />
