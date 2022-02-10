@@ -197,7 +197,7 @@ const VouchCTAModal = ({
         <div className={"text-xs"}>
           <div className={"grid grid-cols-3"}>
             
-            <div className={"col-span-3 px-8 text-gray-700"}>
+            <div className={"col-span-3 px-4 text-gray-700"}>
               {" "}
               <div>
                 <div className="grid justify-items-end">
@@ -232,7 +232,7 @@ const VouchCTAModal = ({
                     Step 2: Interview and Position Details
                   </div>
                   <div className="text-gray-300 flex justify-start pb-2">
-                    This information will ONLY be seen by HR Managers.
+                  Only HR admins in the platform will be able to view these details
                   </div>
                 </div>
 
@@ -282,56 +282,47 @@ const VouchCTAModal = ({
                       />
                     </div>
                   </div>
-                </div>
-                <div className="py-4">
-                  <hr className="" />
-                </div>
-                <div className="pb-2 text-gray-700">
-                  <div className="font-bold flex justify-start text-sm">
-                    Step 3: Stand Out Skills
-                  </div>
-                  <div className="text-gray-400 py-0.5">
-                    <div className={"text-gray-300 flex justify-start"}>
-                      Select skill that impressed you
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 pt-2">
-                    <div>
-                      <div>
-                        <div className="text-xs py-1 font-bold text-gray-500">
-                          General Strengths
-                        </div>{" "}
-                        <div className={"pr-3"}>
-                          <RoleSkillFilterVouch
-                            value={standOutSkill1}
-                            backgroundColour="white"
-                            onChange={(e) => {
-                              setStandOutSkill1(e.target.value);
-                            }}
-                            RoleSkillDropDownArray={generalStrengths}
-                          />
-                        </div>
+
+                  <div className={""}>
+                    <div className="pb-2">
+                      <div className="text-xs py-1 font-bold text-gray-500 flex flex-nowrap">
+                        Position Type
+                        <InformationIconToolTip toolTipCopy="While companies have differing interview stages, please do your best to select the stage that best represents the last interview stage completed by the candidate." />
                       </div>
-                    </div>
-                    <div>
-                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
-                        Interview Strengths
-                      </div>{" "}
-                      <div className={"pl-3"}>
-                        <IntPersonalSkillFilterVouch
-                          value={standOutSkill2}
+                      <div className={"pr-3"}>
+                        <PositionFilterVouch
+                          value={interviewStage}
                           backgroundColour="white"
                           onChange={(e) => {
-                            setStandOutSkill2(e.target.value);
+                            setInterviewStage(e.target.value);
                           }}
-                          IntPersonalSkillDropDownArray={
-                            InterviewStrengthSkillDropDownArray
-                          }
+                          positionDropDownArray={InterviewStageDropDownArray}
                         />
                       </div>
                     </div>
                   </div>
+
+                  <div>
+                    <div className="text-xs py-1 pl-3 font-bold text-gray-500 flex flex-nowrap">
+                      Required Years of Exp{" "}
+                      <InformationIconToolTip toolTipCopy="Select the closest base salary range that was budgeted for the position. This provides other HR professionals in the platform an idea around salary expectations of the candidate." />
+                    </div>{" "}
+                    <div className={"pl-3"}>
+                      <BaseSalaryFilterVouch
+                        value={salaryRange}
+                        backgroundColour="white"
+                        onChange={(e) => {
+                          setSalaryRange(e.target.value);
+                        }}
+                        BaseSalaryDropDownArray={BaseSalaryDropDownArray}
+                      />
+                    </div>
+                  </div>
                 </div>
+                <div className="py-4">
+                  <hr className="" />
+                </div>
+                
                 <div className="py-2 flex justify-center">
                   <ButtonVouch
                     backgroundColour="VouchGreen"
