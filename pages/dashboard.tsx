@@ -90,9 +90,9 @@ const DashBoard = ({}: DashboardProps) => {
               }
             >
               <div className={"flex flex-wrap"}>
-                <div className={"pr-2"}>Filters Candidates by: </div>
+                <div className={"pr-2"}>Filters Referrals by: </div>
 
-                <InformationIconToolTip toolTipCopy="Filter by the candidate's background. Information is provided by the candidate directly." />
+                <InformationIconToolTip toolTipCopy="Filter through the referrals by candidate location, role and experience." />
               </div>
             </div>
             <div className={"col-start-3 flex items-center"}>
@@ -100,8 +100,8 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={positionCategoryDropDownArray}
                 value={jobCategoryDropdown}
-                onChange={(e) => filterChangeCategory(e)}
-                copy="Recent Job Category"
+                onChange={(e) => filterChangeCategory(e)} /*Map Props here*/
+                copy="Candidate Location"
               />
             </div>
             <div className={"col-start-5 flex items-center"}>
@@ -109,8 +109,8 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={SeniorityDropDownArray}
                 value={seniorityDropdown}
-                onChange={(e) => filterChangeSeniority(e)}
-                copy="Seniority"
+                onChange={(e) => filterChangeSeniority(e)} /*Map Props here*/
+                copy="Position Type Interviewed For"
               />
             </div>
             <div className={"col-start-7 flex items-center"}>
@@ -118,8 +118,8 @@ const DashBoard = ({}: DashboardProps) => {
                 backgroundColour="white"
                 dropDownArray={stateProvince}
                 value={locationStateDropdown}
-                onChange={(e) => filterChangeLocation(e)}
-                copy="Location"
+                onChange={(e) => filterChangeLocation(e)} /*Map Props here*/
+                copy="Required Years of Exp"
               />
               <div
                 className={
