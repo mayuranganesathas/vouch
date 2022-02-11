@@ -28,6 +28,7 @@ import {
 import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CTAinstructionsModal from "./CTAInstructionsModal"
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -52,6 +53,8 @@ const VouchCTAModal = ({
   hrData,
 }: VouchCTAModalProps) => {
   const { user } = useAuth();
+  const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
+
 
   //authentication passes hrID
   const [email, setEmail] = useState("");
@@ -183,7 +186,7 @@ const VouchCTAModal = ({
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className=" w-3/6 h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto absolute right-0"
+        className=" w-1/4 h-min bg-white shadow-lg rounded-xl p-2 m-8  overflow-auto absolute right-0"
         contentLabel="Test Name"
         ariaHideApp={false}
         aria={{
@@ -192,72 +195,9 @@ const VouchCTAModal = ({
         }}
       >
         <div className={"text-xs"}>
-          <div className={"grid grid-cols-5"}>
-            <div
-              className={
-                "col-span-2 grid grid-rows-1 py-8 px-4 bg-VouchDark content-evenly"
-              }
-            >
-              <div className={""}>
-                <div className={"flex justify-center"}>
-                  <UserGroupIcon className={"w-8 h-auto "} fill="white" />
-                </div>
-                <div
-                  className={
-                    "flex justify-center py-2 font-bold text-sm text-white"
-                  }
-                >
-                  VOUCHING CANDIDATES
-                </div>
-                <div className={" text-white"}>
-                  <div className={"flex justify-center"}>
-                    Help other qualified candidates from{" "}
-                  </div>
-                  <div className={"flex justify-center"}>
-                    your recruitment pipeline get noticed!
-                  </div>
-                  <div className={"flex justify-center"}>
-                    They may not have been your final pick,
-                  </div>
-                  <div className={"flex justify-center"}>
-                    but they could be someone elses.
-                  </div>
-                </div>
-                <div className={"flex justify-center pt-8"}>
-                  <MailOpenIcon className={"w-8 h-auto"} fill="white" />
-                </div>
-                <div className={" text-white  py-2 flex justify-center"}>
-                  Candidates get invited to join.
-                </div>
-                <div className={"flex justify-center pt-8"}>
-                  <UserAddIcon className={"w-8 h-auto"} fill="white" />
-                </div>
-                <div className={" text-white py-2"}>
-                  <div className={"flex justify-center"}>
-                    Referred candidates match more
-                  </div>
-                  <div className={"flex justify-center"}>
-                    easily with our community
-                  </div>
-                  <div className={"flex justify-center"}>of recruiters.</div>
-                </div>
-                <div className={"flex justify-center pt-8"}>
-                  <SearchCircleIcon className={"w-8 h-auto"} fill="white" />
-                </div>
-                <div>
-                  <div className={" text-white py-2"}>
-                    <div className={"flex justify-center"}>Pay it forward.</div>
-                    <div className={"flex justify-center"}>
-                      Find active and qualified
-                    </div>
-                    <div className={"flex justify-center"}>
-                      candidates for your next hire.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={"col-span-3 px-8 text-gray-700"}>
+          <div className={"grid grid-cols-3"}>
+            
+            <div className={"col-span-3 px-4 text-gray-700"}>
               {" "}
               <div>
                 <div className="grid justify-items-end">
@@ -266,8 +206,11 @@ const VouchCTAModal = ({
                     onClick={closeModal}
                   />
                 </div>
-                <div className=" font-bold flex justify-start text-sm ">
-                  STEP 1: Invite a Candidate
+                <div className=" font-bold flex-nowrap flex justify-start text-sm ">
+                  STEP 1: Invite a Candidate <InformationCircleIcon
+                  className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer"
+                  onClick={() => setIconModalIsOpen(true)}
+                />
                 </div>
                 <div className={"flex justify-center py-2 pb-2"}>
                   <input
@@ -289,7 +232,7 @@ const VouchCTAModal = ({
                     Step 2: Interview and Position Details
                   </div>
                   <div className="text-gray-300 flex justify-start pb-2">
-                    This information will ONLY be seen by HR Managers.
+                  Only HR admins in the platform will be able to view these details
                   </div>
                 </div>
 
@@ -339,56 +282,47 @@ const VouchCTAModal = ({
                       />
                     </div>
                   </div>
-                </div>
-                <div className="py-4">
-                  <hr className="" />
-                </div>
-                <div className="pb-2 text-gray-700">
-                  <div className="font-bold flex justify-start text-sm">
-                    Step 3: Stand Out Skills
-                  </div>
-                  <div className="text-gray-400 py-0.5">
-                    <div className={"text-gray-300 flex justify-start"}>
-                      Select skill that impressed you
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 pt-2">
-                    <div>
-                      <div>
-                        <div className="text-xs py-1 font-bold text-gray-500">
-                          General Strengths
-                        </div>{" "}
-                        <div className={"pr-3"}>
-                          <RoleSkillFilterVouch
-                            value={standOutSkill1}
-                            backgroundColour="white"
-                            onChange={(e) => {
-                              setStandOutSkill1(e.target.value);
-                            }}
-                            RoleSkillDropDownArray={generalStrengths}
-                          />
-                        </div>
+
+                  <div className={""}>
+                    <div className="pb-2">
+                      <div className="text-xs py-1 font-bold text-gray-500 flex flex-nowrap">
+                        Position Type
+                        <InformationIconToolTip toolTipCopy="While companies have differing interview stages, please do your best to select the stage that best represents the last interview stage completed by the candidate." />
                       </div>
-                    </div>
-                    <div>
-                      <div className="text-xs py-1 pl-3 font-bold text-gray-500">
-                        Interview Strengths
-                      </div>{" "}
-                      <div className={"pl-3"}>
-                        <IntPersonalSkillFilterVouch
-                          value={standOutSkill2}
+                      <div className={"pr-3"}>
+                        <PositionFilterVouch
+                          value={interviewStage}
                           backgroundColour="white"
                           onChange={(e) => {
-                            setStandOutSkill2(e.target.value);
+                            setInterviewStage(e.target.value);
                           }}
-                          IntPersonalSkillDropDownArray={
-                            InterviewStrengthSkillDropDownArray
-                          }
+                          positionDropDownArray={InterviewStageDropDownArray}
                         />
                       </div>
                     </div>
                   </div>
+
+                  <div>
+                    <div className="text-xs py-1 pl-3 font-bold text-gray-500 flex flex-nowrap">
+                      Required Years of Exp{" "}
+                      <InformationIconToolTip toolTipCopy="Select the closest base salary range that was budgeted for the position. This provides other HR professionals in the platform an idea around salary expectations of the candidate." />
+                    </div>{" "}
+                    <div className={"pl-3"}>
+                      <BaseSalaryFilterVouch
+                        value={salaryRange}
+                        backgroundColour="white"
+                        onChange={(e) => {
+                          setSalaryRange(e.target.value);
+                        }}
+                        BaseSalaryDropDownArray={BaseSalaryDropDownArray}
+                      />
+                    </div>
+                  </div>
                 </div>
+                <div className="py-4">
+                  <hr className="" />
+                </div>
+                
                 <div className="py-2 flex justify-center">
                   <ButtonVouch
                     backgroundColour="VouchGreen"
@@ -421,6 +355,10 @@ const VouchCTAModal = ({
           draggable
           pauseOnHover
         />
+        <CTAinstructionsModal
+           modalIsOpen={iconModalIsOpen}
+           closeModal={() => setIconModalIsOpen(false)}
+           />
       </Modal>{" "}
     </div>
   );
