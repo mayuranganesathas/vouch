@@ -21,6 +21,7 @@ const DashCandidateTiles = ({
   hrData,
   setExistingCandidates,
 }: DashCandidateTilesProps) => {
+  // refactor
   const filterManage = () => {
     if (filterJobCategory != "empty" && filterJobSeniority != "empty") {
       return vouchData.hr_voucher_metadata
