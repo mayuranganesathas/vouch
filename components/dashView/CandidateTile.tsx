@@ -347,13 +347,13 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                     {iconShortList()}
                   </div>
                 </div>
-                <div className={"col-start-3 col-span-5 pt-2 pl-2"}>
-                  <p className={"font-bold text-gray-900 text-sm"}>
-                    {firstName} {lastName}
+                <div className={"col-start-3 col-span-5 pt-2 pl-2 "}>
+                  <p className={"font-bold text-gray-900 text-sm border-r-2 border-gray-200"}>
+                    {firstName} 
                   </p>
-                  <div className={"text-xs"}> {jobLocation}</div>
+                  <div className={"text-xs border-r-2 border-gray-200 "}> {jobLocation}</div>
                   <div className={""}>
-                    <div className={"grid justify-items-start pt-1"}>
+                    <div className={"grid justify-items-start pt-1 border-r-2 border-gray-200"}>
                       <ButtonLinkedin
                         backgroundColour="white"
                         userLinkedinURL={userLinkedinURL}
@@ -366,17 +366,17 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
             <div className={"col-start-2 pt-2 pl-4"}>
               <div>
-                <p className={"w-full border-r-4 border-gray-400 truncate "}>
-                  {pastPosition1}
+                <p className={"w-full truncate "}>
+                  {companyName}
                 </p>
               </div>
               <div>
                 <p
                   className={
-                    "w-full pt-1 text-xs border-r-4 border-gray-400 truncate"
+                    "w-full pt-1 text-xs truncate"
                   }
                 >
-                  at {pastCompanyName}
+                  at {numEmployees}
                 </p>
               </div>
             </div>
@@ -384,13 +384,13 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         </div>
         <div className={"col-start-2 pt-2"}>
           <div className={"grid grid-cols-2 "}>
-            <div className={"col-start-1 pl-12"}>
+            <div className={"col-start-1 pl-4"}>
               <div className={"pr-4"}>
                 <div>
-                  <p className="w-full truncate ">{companyName}</p>
+                  <p className="w-full truncate ">[Industry Prop]</p>
                   <p className="w-full pt-1 text-xs truncate">
                     {" "}
-                    Employees: {numEmployees}
+                    HQ in {jobLocation}
                   </p>
                 </div>
               </div>
@@ -405,17 +405,13 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"col-start-3 pt-2 "}>
           <div className={"grid grid-cols-2"}>
             <div className={"col-start-1"}>
-              <p className={""}>{salaryRange} </p>
+              <p className={"pl-4"}>[Years EXP prop] </p>
             </div>
             <div className={"col-start-2"}>
-              <p className={"w-full font-gray-500 flex flex-wrap  text-xs"}>
-                <StarIcon className={"h-4 w-4 text-VouchGreen "} />
-                {standOutSkill1}
+              <p className={"w-full font-gray-500 flex flex-wrap  text-xs pl-4"}>
+                ${salaryRange}K
               </p>
-              <p className={"w-full  ont-gray-500 pt-1 flex text-xs "}>
-                <StarIcon className={"h-4 w-4 text-VouchGreen"} />
-                {standOutSkill2}
-              </p>
+              
             </div>
           </div>
         </div>
