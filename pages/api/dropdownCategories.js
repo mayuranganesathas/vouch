@@ -1,4 +1,4 @@
-export const positionCategoryDropDownArray = [
+export const positionCategoryDropdownArray = [
   "Account Mgmt.",
   "Back-End Dev",
   "Customer Success",
@@ -15,14 +15,23 @@ export const positionCategoryDropDownArray = [
   "Other Professional",
 ];
 
-export const InterviewStageDropDownArray = [
+export const YearsOfExperience = [
+  "1-2 Years",
+  "2-5 Years",
+  "5-8 Years",
+  "8-10 Years",
+  "10-15 Years",
+  "15+ Years",
+];
+
+export const InterviewStageDropdownArray = [
   "Technical Interview",
   "Case Study/Code Review",
   "Panel Interview",
   "Final Interview",
 ];
 
-export const SeniorityDropDownArray = [
+export const SeniorityDropdownArray = [
   "Junior (1-2 Years)",
   "Intermediate (3-5 Years)",
   "Senior (5-8 Years)",
@@ -32,7 +41,7 @@ export const SeniorityDropDownArray = [
   "SVP/Executive",
 ];
 
-export const BaseSalaryDropDownArray = [
+export const BaseSalaryDropdownArray = [
   "<$75k/year",
   "$75k - $90k/year",
   "$90k - $110k/year",
@@ -45,7 +54,7 @@ export const BaseSalaryDropDownArray = [
   "$250k+/year",
 ];
 
-export const RoleSkillDropDownArray = [
+export const RoleSkillDropdownArray = [
   "Industry Expert",
   "International Teams Exp",
   "Strong Technical Chops",
@@ -57,7 +66,7 @@ export const RoleSkillDropDownArray = [
   "Great Design Eye",
 ];
 
-export const IntPersonalSkillDropDownArray = [
+export const IntPersonalSkillDropdownArray = [
   "Confident",
   "Effective Communicator",
   "Positive Personality",
@@ -68,7 +77,7 @@ export const IntPersonalSkillDropDownArray = [
   "Strong Business Acumen",
 ];
 
-export const generalStrengths = [
+export const generalStrengthsDropdownArray = [
   "Experience with international teams ",
   "Clear and effective communicator",
   "Positive energy",
@@ -81,7 +90,7 @@ export const generalStrengths = [
   "Cross functional team experience",
 ];
 
-export const InterviewStrengthSkillDropDownArray = [
+export const InterviewStrengthSkillDropdownArray = [
   "Asked Good Questions",
   "Well Prepared For Interview",
   "Strong Presentation Skills",
@@ -117,7 +126,7 @@ export const jobCompanySizeDropdownData = [
   "500+",
 ];
 
-export const stateProvince = [
+export const stateProvinceDropdownArray = [
   "Alberta",
   "British Columbia",
   "Manitoba",
