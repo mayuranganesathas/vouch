@@ -21,7 +21,7 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
       disabled={disabled}
       onClick={openSite}
       type="button"
-      className={` bg-white w-4 h-auto
+      className={` bg-white w-4 h-auto flex flex-nowrap text-xs 
       ${disabled ? "bg-gray-400 opacity-25" : backgroundColour}
       ${disabled ? "cursor-default" : "cursor-pointer"}
       `}
@@ -29,7 +29,8 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
       <img
         src="./images/linkedInTile.png"
         className={"flex justify-center items-center w-8 h-auto"}
-      />
+      /> <div className={"pl-1"}>Request</div>
     </button>
+    
   );
 };
