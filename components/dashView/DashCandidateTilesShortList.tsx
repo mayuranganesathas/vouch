@@ -30,17 +30,15 @@ const DashCandidateTilesShortList = ({
 
     vouchData.shortlist
       .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
-
       .filter((e) => e.status === filter)
-
       .map((_, i) => setExistingCandidates(i + 1));
   };
 
   const filterManage = () => {
+    // TODO: refactor
     if (filterJobCategory != "empty" && filterJobSeniority != "empty") {
       return vouchData.shortlist
         .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
-
         .filter(
           (e) =>
             e.hr_voucher_metadatum.Vouchee[0].jobCategory == filterJobCategory
@@ -52,7 +50,6 @@ const DashCandidateTilesShortList = ({
     } else if (filterJobCategory != "empty" && filterStateLocation != "empty") {
       return vouchData.shortlist
         .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
-
         .filter(
           (e) =>
             e.hr_voucher_metadatum.Vouchee[0].jobCategory == filterJobCategory
@@ -85,7 +82,6 @@ const DashCandidateTilesShortList = ({
     ) {
       return vouchData.shortlist
         .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
-
         .filter(
           (e) =>
             e.hr_voucher_metadatum.Vouchee[0].seniority == filterJobSeniority
@@ -147,11 +143,6 @@ const DashCandidateTilesShortList = ({
         filterManage()
           .filter((e) => e.status === filter)
           .filter((e) => e.hr_voucher_metadatum.Vouchee.length > 0)
-          // .filter(
-          //   (e) =>
-          //     e.hr_voucher_metadatum.Vouchee[0].companyWebsite ==
-          //     hrData[0].companyWebsite
-          // )
           .map((e, i) => (
             <CandidateTile
               userID={e.candidateId}
