@@ -25,13 +25,11 @@ const DashCandidateTiles = ({
     if (filterJobCategory != "empty" && filterJobSeniority != "empty") {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
-
         .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory)
         .filter((e) => e.Vouchee[0].seniority == filterJobSeniority);
     } else if (filterJobCategory != "empty" && filterStateLocation != "empty") {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
-
         .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory)
         .filter((e) => e.Vouchee[0].locationState == filterStateLocation);
     } else if (
@@ -40,7 +38,6 @@ const DashCandidateTiles = ({
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
-
         .filter((e) => e.Vouchee[0].seniority == filterJobSeniority)
         .filter((e) => e.Vouchee[0].locationState == filterStateLocation);
     } else if (
@@ -50,7 +47,6 @@ const DashCandidateTiles = ({
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
-
         .filter((e) => e.Vouchee[0].seniority == filterJobSeniority)
         .filter((e) => e.Vouchee[0].locationState == filterStateLocation)
         .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory);
@@ -100,9 +96,6 @@ const DashCandidateTiles = ({
       {vouchData &&
         shortListFilter()
           .filter((e) => e.Vouchee.length > 0)
-          // .filter(
-          //   (e) => e.Vouchee[0].companyWebsite == hrData[0].companyWebsite
-          // )
           .map((e, i) => (
             <CandidateTile
               userID={e.candidateId}

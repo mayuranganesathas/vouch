@@ -9,14 +9,9 @@ export interface DashboardCategoryFilterProps {
   copy: string;
 }
 
-export const DashboardCategoryFilter: React.FC<DashboardCategoryFilterProps> = ({
-  backgroundColour,
-  dropDownArray,
-  value,
-  onChange,
-  width,
-  copy,
-}) => {
+export const DashboardCategoryFilter: React.FC<
+  DashboardCategoryFilterProps
+> = ({ backgroundColour, dropDownArray, value, onChange, width, copy }) => {
   let backgroundStyles;
   switch (backgroundColour) {
     case "VouchGreen":
