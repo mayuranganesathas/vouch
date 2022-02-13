@@ -94,7 +94,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
     <div className={"flex justify-center items-center"}>
       <div
         className={
-          "shadow-lg rounded-xl w-3/5 h-auto bg-white grid grid-cols-2"
+          "shadow-lg rounded-xl w-2/4 h-auto bg-white grid grid-cols-2"
         }
       >
         
@@ -106,69 +106,36 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                 />
           </div>
           <div className={"pt-1 text-xs text-gray-500"}>
-            A few details to help standout in our qualified pool of referrals
+            We require minimal information from you to preserve your privacy. Only first anme, location and referring company details will be shared actively with hiring companies.
           </div>
-          <div className={"text-gray-500 text-xs pt-4 pb-1"}>
-            Example of what HR Managers see in their dashboard:{" "}
-          </div>
-          <div className={"px-8"}>
-            <img src="./images/tileExample.png" width="full" height="auto" />
-          </div>
-          <div className="py-6">
-            <hr className="" />
-          </div>
-          <div className={"text-base font-bold"}>Your Profile</div>
-          <div className={"py-1 text-xs text-gray-500"}>
-            All fields are required{" "}
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            <input
-              className={"border border-gray-300 text-xs rounded py-1 px-4"}
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            ></input>
-            <input
-              className={"border border-gray-300 text-xs rounded py-1 px-4"}
-              placeholder="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            ></input>
-          </div>
-          <div className={"grid grid-cols-2 gap-2"}>
-            <div className={"text-xs py-4"}>
-              <div>
-                {" "}
-                <img
-                  src="./images/linkedInTile.png"
-                  width="12"
-                  height="auto"
-                  className={"pb-1"}
-                />
-              </div>
+          
+         
+          
+         
+          <div className={"pt-8 pb-4"}>
               <input
                 className={
-                  "border border-gray-300 text-xs w-full rounded py-1 px-4"
-                }
-                placeholder="LinkedIn Profile URL"
-                value={linkedIn}
-                onChange={(e) => setLinkedIn(e.target.value)}
-              ></input>
-            </div>
-            <div className={"text-xs py-4"}>
-              <div>
-                {" "}
-                <MailIcon className={"h-4 w-4 "} />
-              </div>
-              <input
-                className={
-                  "border border-gray-300 text-xs w-full rounded py-1 px-4"
+                  "border border-gray-300 text-xs w-2/3 rounded py-1 px-4"
                 }
                 placeholder="Email Address"
                 value={candidateEmail}
                 onChange={(e) => setCandidateEmail(e.target.value)}
               ></input>
-            </div>
+          </div>
+          <div className ={"py-4"}>  
+            <input
+              className={"border border-gray-300 w-2/3 text-xs rounded py-1 px-4"}
+              placeholder="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            ></input>
+          </div>
+            
+            
+          
+          <div className={"grid grid-cols-2 gap-2 w-2/3"}>
+           
+            
             <div className={"text-xs py-2"}>
               <input
                 className={
@@ -191,101 +158,30 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
               />
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-2"></div>
-          <div className="py-6">
-            <hr className="" />
-          </div>
-          <div className={"text-base font-bold pt-2"}>
-            Prior Work Experience
-          </div>
-          <div className={"py-1 text-xs text-gray-500"}>
-            Current or previous role (required){" "}
-          </div>
-          <div className={"grid grid-cols-2 "}>
-            <div className={"col-start-1  py-1"}>
-              <div className={"pr-1"}>
+          <div className={"text-xs py-4 w-2/3 flex flex-nowrap"}>
+              <div className="grid content-center pt-1 pr-2">
                 {" "}
-                <input
-                  className={
-                    "border border-gray-300 text-xs w-full rounded py-1 px-4"
-                  }
-                  placeholder="Position Title"
-                  value={positionTitle}
-                  onChange={(e) => setPositionTitle(e.target.value)} //PROP
-                ></input>
+                <img
+                  src="./images/linkedInTile.png"
+                  width="12"
+                  height="auto"
+                  className={"pb-1"}
+                />
               </div>
-              <div className={"pt-4 pr-1"}>
-                <div className={""}>
-                  <input
-                    className={
-                      "border border-gray-300 text-xs w-full rounded py-1 px-4"
-                    }
-                    placeholder="Company Name"
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)} //PROP
-                  ></input>
-                </div>
+              <input
+                className={
+                  "border border-gray-300 text-xs w-full rounded py-1 px-4"
+                }
+                placeholder="LinkedIn Profile URL"
+                value={linkedIn}
+                onChange={(e) => setLinkedIn(e.target.value)}
+              ></input>
+             
+            </div>
+            <div className={"text-xs w-2/3 italic text-gray-400"}>
+                Interested companies will request your LinkedIn. They will ONLY see the URL if you give permission. An email will be sent to notify you of a LinkedIn Request. Your LinkedIn URL will otherwise not appear anywhere on the VOUCH platform without your consent.
               </div>
-            </div>
-            <div className={"col-start-2"}>
-              <div className={"pt-12 pl-1"}>
-                <input
-                  className={
-                    "border border-gray-300 text-xs w-full rounded py-1 px-4"
-                  }
-                  placeholder="Company Website"
-                  value={companyWebsite}
-                  onChange={(e) => setCompanyWebsite(e.target.value)} //PROP
-                ></input>
-              </div>
-            </div>
-          </div>
-          <div className={"text-xs text-gray-400 pt-1 pb-6"}>
-            {" "}
-            Important: Company website is used to ensure profile DOES NOT show
-            up on your current company’s dashboard of candidates if they
-            participate in Vouch
-          </div>
-          <div className={"grid grid-cols-3 gap-4"}>
-            <div>
-              <div className={"text-xs"}>Job Category</div>
-
-              <SearchFilterDash
-                backgroundColour={"white"}
-                dropDownArray={positionCategoryDropDownArray}
-                value={jobCategory}
-                onChange={(e) => {
-                  setJobCategory(e.target.value);
-                }}
-                width={"wide-sm"}
-              />
-            </div>
-
-            <div>
-              <div className={"text-xs"}>Industry</div>
-              <SearchFilterDash
-                backgroundColour={"white"}
-                dropDownArray={industryArrayList}
-                value={industry}
-                onChange={(e) => {
-                  setIndustry(e.target.value);
-                }}
-                width={"wide-lg"}
-              />
-            </div>
-            <div>
-              <div className={"text-xs"}>Seniority</div>
-              <SearchFilterDash
-                backgroundColour={"white"}
-                dropDownArray={SeniorityDropDownArray}
-                value={jobSeniority}
-                onChange={(e) => {
-                  setJobSeniority(e.target.value);
-                }}
-                width={"wide-lg"}
-              />
-            </div>
-          </div>
+          
 
           {/* <div className={"text-xs pt-8"}>
             {" "}
