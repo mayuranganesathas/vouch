@@ -37,27 +37,27 @@ const IconModal = ({ modalIsOpen, closeModal }: IconModalProps) => {
             </div>   
             <div className={"py-4 px-4 col-start-1 bg-VouchDark rounded-l-lg"}>
           <div className={"py-10 "}>
-            <div className={"flex justify-center"}>
-              <UserAddIcon className={"w-12 h-auto "} fill="white" />
+            <div className={"flex justify-start px-6"}>
+              <UserAddIcon className={"w-8 h-auto "} fill="white" />
             </div>
             <div
               className={
-                "flex justify-center py-2 font-bold text-lg text-white"
+                "py-2 px-6 font-bold text-lg text-white"
               }
             >
               JOIN THE NETWORK
             </div>
-            <div className={"text-sm text-white w-full text-center px-6"}>
+            <div className={"text-sm text-white w-full  px-6"}>
               You really impressed in your last interview. That time and
               validation is valuable.
             </div>
            
-            <div className={"flex justify-center pt-8"}>
-              <RewindIcon className={"w-12 h-auto"} fill="white" />
+            <div className={" pt-12 px-6"}>
+              <RewindIcon className={"w-8 h-auto"} fill="white" />
             </div>
             <div
               className={
-                "text-sm text-white text-center px-6 w-full pt-2 pb-12"
+                "text-sm text-white  px-6 w-full pt-2 pb-12"
               }
             >
               Don’t start back from at zero. Get referred to other comparable

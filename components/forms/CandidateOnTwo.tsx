@@ -94,18 +94,18 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
     <div className={"flex justify-center items-center"}>
       <div
         className={
-          "shadow-lg rounded-xl w-2/4 h-auto bg-white grid grid-cols-2"
+          "shadow-lg rounded-xl w-2/5 h-auto bg-white flex justify-center  px-5 "
         }
       >
         
-        <div className={"col-start-1 col-span-2 px-4 py-4 text-gray-700"}>
+        <div className={" py-8 text-gray-700 px-12"}>
           <div className={"font-bold text-base flex flex-nowrap"}>
             VOUCH Referrals - Candidate Info<InformationCircleIcon
-                  className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer"
+                  className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer pl-1"
                   onClick={() => setIconModalIsOpen(true)}
                 />
           </div>
-          <div className={"pt-1 text-xs text-gray-500"}>
+          <div className={"pt-1 text-xs text-gray-500 w-full"}>
             We require minimal information from you to preserve your privacy. Only first anme, location and referring company details will be shared actively with hiring companies.
           </div>
           
@@ -115,7 +115,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
           <div className={"pt-8 pb-4"}>
               <input
                 className={
-                  "border border-gray-300 text-xs w-2/3 rounded py-1 px-4"
+                  "border border-gray-300 text-xs w-full rounded py-1 px-4"
                 }
                 placeholder="Email Address"
                 value={candidateEmail}
@@ -124,7 +124,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
           </div>
           <div className ={"py-4"}>  
             <input
-              className={"border border-gray-300 w-2/3 text-xs rounded py-1 px-4"}
+              className={"border border-gray-300 w-full text-xs rounded py-1 px-4"}
               placeholder="First Name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -133,7 +133,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             
             
           
-          <div className={"grid grid-cols-2 gap-2 w-2/3"}>
+          <div className={"grid grid-cols-2 gap-2 w-full"}>
            
             
             <div className={"text-xs py-2"}>
@@ -158,7 +158,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
               />
             </div>
           </div>
-          <div className={"text-xs py-4 w-2/3 flex flex-nowrap"}>
+          <div className={"text-xs py-4 w-full flex flex-nowrap"}>
               <div className="grid content-center pt-1 pr-2">
                 {" "}
                 <img
@@ -178,7 +178,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
               ></input>
              
             </div>
-            <div className={"text-xs w-2/3 italic text-gray-400"}>
+            <div className={"text-xs w-full italic text-gray-400"}>
                 Interested companies will request your LinkedIn. They will ONLY see the URL if you give permission. An email will be sent to notify you of a LinkedIn Request. Your LinkedIn URL will otherwise not appear anywhere on the VOUCH platform without your consent.
               </div>
           
