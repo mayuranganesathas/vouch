@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { ButtonVouch } from "../ui/ButtonVouch";
 import { SearchFilterDash } from "../ui/searchFilterDash";
 import { FlagIcon } from "@heroicons/react/solid";
@@ -15,6 +15,9 @@ import {
   SeniorityDropDownArray,
   stateProvince,
 } from "../../pages/api/dropdownCategories";
+import Modal from "react-modal"
+import { InformationCircleIcon } from "@heroicons/react/solid";
+import CanRegInstructionModal from "./CanRegInstructionsModal"
 
 export interface CandidateOnTwoProps {
   companyWebsite: string;
@@ -85,69 +88,22 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   formValidation,
 }) => {
   const email = () => {};
+  const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
+
   return (
     <div className={"flex justify-center items-center"}>
       <div
         className={
-          "shadow-lg rounded-xl w-3/5 h-auto bg-white grid grid-cols-3"
+          "shadow-lg rounded-xl w-3/5 h-auto bg-white grid grid-cols-2"
         }
       >
-        <div className={"py-4 px-4 col-start-1 bg-VouchDark rounded-l-lg"}>
-          <div className={"py-10 "}>
-            <div className={"flex justify-center"}>
-              <UserAddIcon className={"w-12 h-auto "} fill="white" />
-            </div>
-            <div
-              className={
-                "flex justify-center py-2 font-bold text-lg text-white"
-              }
-            >
-              JOIN THE NETWORK
-            </div>
-            <div className={"text-sm text-white w-full text-center px-6"}>
-              You really impressed in your last interview. That time and
-              validation is valuable.
-            </div>
-            <div className={"flex justify-center pt-12"}>
-              <LightningBoltIcon className={"w-12 h-auto"} fill="white" />
-            </div>
-            <div
-              className={
-                "text-sm text-white  w-full px-6 pt-2 pb-12 text-center"
-              }
-            >
-              Provide some additional career info to boost your profile in our
-              network of actively hiring companies
-            </div>
-            <div className={"flex justify-center pt-8"}>
-              <RewindIcon className={"w-12 h-auto"} fill="white" />
-            </div>
-            <div
-              className={
-                "text-sm text-white text-center px-6 w-full pt-2 pb-12"
-              }
-            >
-              Don’t start back from at zero. Get referred to other comparable
-              positions.
-            </div>
-            <div className={"flex justify-center pt-8"}>
-              <ChevronDoubleRightIcon className={"w-12 h-auto"} fill="white" />
-            </div>
-            <div>
-              <div
-                className={
-                  "text-sm text-white py-2 width-full text-center px-6"
-                }
-              >
-                Use Vouch to start in the later in the hiring pipeline for your
-                next dream job!{" "}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={"col-start-2 col-span-2 px-4 py-4 text-gray-700"}>
-          <div className={"font-bold text-base"}>
-            Tell companies a little bit about yourself
+        
+        <div className={"col-start-1 col-span-2 px-4 py-4 text-gray-700"}>
+          <div className={"font-bold text-base flex flex-nowrap"}>
+            VOUCH Referrals - Candidate Info<InformationCircleIcon
+                  className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer"
+                  onClick={() => setIconModalIsOpen(true)}
+                />
           </div>
           <div className={"pt-1 text-xs text-gray-500"}>
             A few details to help standout in our qualified pool of referrals
@@ -357,6 +313,10 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
               onClick={completeForm}
             />
           </div>
+          < CanRegInstructionModal
+           modalIsOpen={iconModalIsOpen}
+           closeModal={() => setIconModalIsOpen(false)}
+           />
         </div>
       </div>
     </div>
