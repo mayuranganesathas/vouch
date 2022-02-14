@@ -147,12 +147,12 @@ export const FavoritesDashboard = ({
         >
           <div className={"col-start-1"}>
             <div className={"grid grid-cols-2"}>
-              <p className={"col-start-2 w-full pl-4"}>Most recent position</p>
+              <p className={"col-start-2 w-full pl-4"}>Interviewed By</p>
             </div>
           </div>
           <div className={"grid-start-2"}>
             <div className={"grid grid-cols-2"}>
-              <p className={"w-full pl-12"}>Vouched by</p>
+              <p className={"w-full pl-4"}>Industry</p>
               <div className={"flex flex-wrap"}>
                 <div className={"pr-2"}>Position Interviewed for</div>
                 <InformationIconToolTip toolTipCopy="This is the position the candidate interviewed for, as well as the furthest interview stage completed." />
@@ -162,12 +162,12 @@ export const FavoritesDashboard = ({
           <div className={"grid-start-3"}>
             <div className={"grid grid-cols-2"}>
               <div className={"flex flex-wrap"}>
-                <div className={"pr-2"}>Salary Range (USD)</div>
+                <div className={"pl-4"}>Required Years of Exp</div>
 
                 <InformationIconToolTip toolTipCopy="This is the salary range that was budgeted for the *Position Interviewed for* role (as disclosed by the referring recruiter) " />
               </div>
               <div className={"flex flex-wrap"}>
-                <div className={"pr-2"}>Standout Skills</div>
+                <div className={"pl-4"}> Salary Range</div>
 
                 <InformationIconToolTip toolTipCopy="Top 2 strengths noted by the recruiting team who interviewed the Candidate." />
               </div>
