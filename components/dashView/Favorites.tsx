@@ -7,10 +7,9 @@ import VouchCTA from "./VouchCTA";
 
 export interface FavoritesDashboardProps {
   hrData: any;
-  positionCategoryDropdownArray: string[];
-
-  seniorityDropdownArray: any;
-  stateProvinceDropdownArray: any;
+  positionCategoryDropdownList: string[];
+  yearsOfExperienceDropdownList: string[];
+  stateProvinceDropdownList: string[];
 
   shortListExistingCandidates: any;
   setShortListExistingCandidates: (e) => void;
@@ -18,14 +17,14 @@ export interface FavoritesDashboardProps {
   clearFilter: any;
   clearFilters: () => void;
 
-  jobCategoryDropdown: any;
-  filterChangeCategory: (e) => void;
+  candidateLocationFilterDropdown: any;
+  filterChangeLocationDropdown: (e) => void;
 
-  seniorityDropdown: any;
-  filterChangeSeniority: (e) => void;
+  positionTypeFilterDropdown: any;
+  filterChangePositionType: (e) => void;
 
-  locationStateDropdown: any;
-  filterChangeLocation: (e) => void;
+  yearsOfExperienceFilterDropdown: any;
+  filterChangeYearsOfExperience: (e) => void;
 
   shortListData: any;
   refetchShortList: any;
@@ -34,22 +33,22 @@ export interface FavoritesDashboardProps {
 
 export const FavoritesDashboard = ({
   hrData,
-  positionCategoryDropdownArray,
+  positionCategoryDropdownList,
+  yearsOfExperienceDropdownList,
+  stateProvinceDropdownList,
   shortListExistingCandidates,
   setShortListExistingCandidates,
   clearFilter,
   clearFilters,
-  jobCategoryDropdown,
-  filterChangeCategory,
-  seniorityDropdown,
-  filterChangeSeniority,
-  locationStateDropdown,
-  filterChangeLocation,
+  candidateLocationFilterDropdown,
+  filterChangeLocationDropdown,
+  positionTypeFilterDropdown,
+  filterChangePositionType,
+  yearsOfExperienceFilterDropdown,
+  filterChangeYearsOfExperience,
   stageStatus,
   shortListData,
   refetchShortList,
-  seniorityDropdownArray,
-  stateProvinceDropdownArray,
 }: FavoritesDashboardProps) => {
   return (
     <div>
@@ -95,28 +94,28 @@ export const FavoritesDashboard = ({
         <div className={"col-start-3 flex items-center"}>
           <DashboardCategoryFilter
             backgroundColour="white"
-            dropDownArray={positionCategoryDropdownArray}
-            value={jobCategoryDropdown}
-            onChange={(e) => filterChangeCategory(e)}
-            copy="Recent Job Category"
+            dropDownArray={stateProvinceDropdownList}
+            value={candidateLocationFilterDropdown}
+            onChange={(e) => filterChangeLocationDropdown(e)}
+            copy="Candidate Location"
           />
         </div>
         <div className={"col-start-5 flex items-center"}>
           <DashboardCategoryFilter
             backgroundColour="white"
-            dropDownArray={seniorityDropdownArray}
-            value={seniorityDropdown}
-            onChange={(e) => filterChangeSeniority(e)}
-            copy="Seniority"
+            dropDownArray={positionCategoryDropdownList}
+            value={positionTypeFilterDropdown}
+            onChange={(e) => filterChangePositionType(e)}
+            copy="Position Interviewed For"
           />
         </div>
         <div className={"col-start-7 flex items-center"}>
           <DashboardCategoryFilter
             backgroundColour="white"
-            dropDownArray={stateProvinceDropdownArray}
-            value={locationStateDropdown}
-            onChange={(e) => filterChangeLocation(e)}
-            copy="Location"
+            dropDownArray={yearsOfExperienceDropdownList}
+            value={yearsOfExperienceFilterDropdown}
+            onChange={(e) => filterChangeYearsOfExperience(e)}
+            copy="Required Years of Exp"
           />
           <div
             className={
@@ -185,9 +184,9 @@ export const FavoritesDashboard = ({
             existingCandidates={shortListExistingCandidates}
             hrData={hrData}
             stageStatus={stageStatus}
-            filterJobCategory={jobCategoryDropdown}
-            filterJobSeniority={seniorityDropdown}
-            filterStateLocation={locationStateDropdown}
+            candidateLocationFilterDropdown={candidateLocationFilterDropdown}
+            yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
+            positionTypeFilterDropdown={positionTypeFilterDropdown}
           />
         }
       </div>

@@ -4,9 +4,9 @@ import { CandidateTile } from "./CandidateTile";
 export interface DashCandidateTilesProps {
   vouchData: any;
   refetchShortList: () => void;
-  filterJobCategory: any;
-  filterJobSeniority: any;
-  filterStateLocation: any;
+  candidateLocationFilterDropdown: any;
+  yearsOfExperienceFilterDropdown: any;
+  positionTypeFilterDropdown: any;
   existingCandidates: string;
   setExistingCandidates: (existingCandidates: any) => void;
   hrData: any;
@@ -15,69 +15,91 @@ export interface DashCandidateTilesProps {
 const DashCandidateTiles = ({
   vouchData,
   refetchShortList,
-  filterJobCategory,
-  filterJobSeniority,
-  filterStateLocation,
+  candidateLocationFilterDropdown,
+  yearsOfExperienceFilterDropdown,
+  positionTypeFilterDropdown,
   hrData,
   setExistingCandidates,
 }: DashCandidateTilesProps) => {
   const filterManage = () => {
-    if (filterJobCategory != "empty" && filterJobSeniority != "empty") {
-      return vouchData.hr_voucher_metadata
-        .filter((e) => e.Vouchee.length > 0)
-
-        .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory)
-        .filter((e) => e.Vouchee[0].seniority == filterJobSeniority);
-    } else if (filterJobCategory != "empty" && filterStateLocation != "empty") {
-      return vouchData.hr_voucher_metadata
-        .filter((e) => e.Vouchee.length > 0)
-
-        .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory)
-        .filter((e) => e.Vouchee[0].locationState == filterStateLocation);
-    } else if (
-      filterStateLocation != "empty" &&
-      filterJobSeniority != "empty"
+    if (
+      candidateLocationFilterDropdown != "empty" &&
+      positionTypeFilterDropdown != "empty"
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
 
-        .filter((e) => e.Vouchee[0].seniority == filterJobSeniority)
-        .filter((e) => e.Vouchee[0].locationState == filterStateLocation);
+        .filter(
+          (e) => e.Vouchee[0].jobCategory == candidateLocationFilterDropdown
+        )
+        .filter((e) => e.Vouchee[0].seniority == positionTypeFilterDropdown);
     } else if (
-      filterStateLocation != "empty" &&
-      filterJobSeniority != "empty" &&
-      filterJobCategory != "empty"
+      candidateLocationFilterDropdown != "empty" &&
+      yearsOfExperienceFilterDropdown != "empty"
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
 
-        .filter((e) => e.Vouchee[0].seniority == filterJobSeniority)
-        .filter((e) => e.Vouchee[0].locationState == filterStateLocation)
-        .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory);
+        .filter(
+          (e) => e.Vouchee[0].jobCategory == candidateLocationFilterDropdown
+        )
+        .filter(
+          (e) => e.Vouchee[0].locationState == yearsOfExperienceFilterDropdown
+        );
     } else if (
-      filterStateLocation != "empty" &&
-      filterJobSeniority == "empty" &&
-      filterJobCategory == "empty"
+      yearsOfExperienceFilterDropdown != "empty" &&
+      positionTypeFilterDropdown != "empty"
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
-        .filter((e) => e.Vouchee[0].locationState == filterStateLocation);
+
+        .filter((e) => e.Vouchee[0].seniority == positionTypeFilterDropdown)
+        .filter(
+          (e) => e.Vouchee[0].locationState == yearsOfExperienceFilterDropdown
+        );
     } else if (
-      filterStateLocation == "empty" &&
-      filterJobSeniority != "empty" &&
-      filterJobCategory == "empty"
+      yearsOfExperienceFilterDropdown != "empty" &&
+      positionTypeFilterDropdown != "empty" &&
+      candidateLocationFilterDropdown != "empty"
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
-        .filter((e) => e.Vouchee[0].seniority == filterJobSeniority);
+
+        .filter((e) => e.Vouchee[0].seniority == positionTypeFilterDropdown)
+        .filter(
+          (e) => e.Vouchee[0].locationState == yearsOfExperienceFilterDropdown
+        )
+        .filter(
+          (e) => e.Vouchee[0].jobCategory == candidateLocationFilterDropdown
+        );
     } else if (
-      filterStateLocation == "empty" &&
-      filterJobSeniority == "empty" &&
-      filterJobCategory != "empty"
+      yearsOfExperienceFilterDropdown != "empty" &&
+      positionTypeFilterDropdown == "empty" &&
+      candidateLocationFilterDropdown == "empty"
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
-        .filter((e) => e.Vouchee[0].jobCategory == filterJobCategory);
+        .filter(
+          (e) => e.Vouchee[0].locationState == yearsOfExperienceFilterDropdown
+        );
+    } else if (
+      yearsOfExperienceFilterDropdown == "empty" &&
+      positionTypeFilterDropdown != "empty" &&
+      candidateLocationFilterDropdown == "empty"
+    ) {
+      return vouchData.hr_voucher_metadata
+        .filter((e) => e.Vouchee.length > 0)
+        .filter((e) => e.Vouchee[0].seniority == positionTypeFilterDropdown);
+    } else if (
+      yearsOfExperienceFilterDropdown == "empty" &&
+      positionTypeFilterDropdown == "empty" &&
+      candidateLocationFilterDropdown != "empty"
+    ) {
+      return vouchData.hr_voucher_metadata
+        .filter((e) => e.Vouchee.length > 0)
+        .filter(
+          (e) => e.Vouchee[0].jobCategory == candidateLocationFilterDropdown
+        );
     } else {
       return vouchData.hr_voucher_metadata.filter((e) => e.Vouchee.length > 0);
     }
@@ -100,9 +122,6 @@ const DashCandidateTiles = ({
       {vouchData &&
         shortListFilter()
           .filter((e) => e.Vouchee.length > 0)
-          // .filter(
-          //   (e) => e.Vouchee[0].companyWebsite == hrData[0].companyWebsite
-          // )
           .map((e, i) => (
             <CandidateTile
               userID={e.candidateId}

@@ -7,10 +7,10 @@ import VouchCTA from "./VouchCTA";
 
 export interface HomeDashboardProps {
   hrData: any;
-  positionCategoryDropdownArray: string[];
 
-  seniorityDropdownArray: any;
-  stateProvinceDropdownArray: any;
+  positionCategoryDropdownList: string[];
+  yearsOfExperienceDropdownList: string[];
+  stateProvinceDropdownList: string[];
 
   existingCandidates: any;
   setExistingCandidates: (e) => void;
@@ -18,14 +18,14 @@ export interface HomeDashboardProps {
   clearFilter: any;
   clearFilters: () => void;
 
-  jobCategoryDropdown: any;
-  filterChangeCategory: (e) => void;
+  candidateLocationFilterDropdown: any;
+  filterChangeLocationDropdown: (e) => void;
 
-  seniorityDropdown: any;
-  filterChangeSeniority: (e) => void;
+  positionTypeFilterDropdown: any;
+  filterChangePositionType: (e) => void;
 
-  locationStateDropdown: any;
-  filterChangeLocation: (e) => void;
+  yearsOfExperienceFilterDropdown: any;
+  filterChangeYearsOfExperience: (e) => void;
 
   data: any;
   refetchShortList: any;
@@ -33,21 +33,21 @@ export interface HomeDashboardProps {
 
 export const HomeDashboard = ({
   hrData,
-  positionCategoryDropdownArray,
+  positionCategoryDropdownList,
+  yearsOfExperienceDropdownList,
+  stateProvinceDropdownList,
   existingCandidates,
   setExistingCandidates,
   clearFilter,
   clearFilters,
-  jobCategoryDropdown,
-  filterChangeCategory,
-  seniorityDropdown,
-  filterChangeSeniority,
-  locationStateDropdown,
-  filterChangeLocation,
+  candidateLocationFilterDropdown,
+  filterChangeLocationDropdown,
+  positionTypeFilterDropdown,
+  filterChangePositionType,
+  yearsOfExperienceFilterDropdown,
+  filterChangeYearsOfExperience,
   data,
   refetchShortList,
-  seniorityDropdownArray,
-  stateProvinceDropdownArray,
 }: HomeDashboardProps) => {
   return (
     <div>
@@ -97,25 +97,25 @@ export const HomeDashboard = ({
         >
           <DashboardCategoryFilter
             backgroundColour="white"
-            dropDownArray={positionCategoryDropdownArray}
-            value={jobCategoryDropdown}
-            onChange={(e) => filterChangeCategory(e)} /*Map Props here*/
+            dropDownArray={stateProvinceDropdownList}
+            value={candidateLocationFilterDropdown}
+            onChange={(e) => filterChangeLocationDropdown(e)}
             copy="Candidate Location"
           />
 
           <DashboardCategoryFilter
             backgroundColour="white"
-            dropDownArray={seniorityDropdownArray}
-            value={seniorityDropdown}
-            onChange={(e) => filterChangeSeniority(e)} /*Map Props here*/
-            copy="Position Type Interviewed For"
+            dropDownArray={positionCategoryDropdownList}
+            value={positionTypeFilterDropdown}
+            onChange={(e) => filterChangePositionType(e)}
+            copy="Position Interviewed For"
           />
 
           <DashboardCategoryFilter
             backgroundColour="white"
-            dropDownArray={stateProvinceDropdownArray}
-            value={locationStateDropdown}
-            onChange={(e) => filterChangeLocation(e)} /*Map Props here*/
+            dropDownArray={yearsOfExperienceDropdownList}
+            value={yearsOfExperienceFilterDropdown}
+            onChange={(e) => filterChangeYearsOfExperience(e)}
             copy="Required Years of Exp"
           />
 
@@ -179,9 +179,9 @@ export const HomeDashboard = ({
         <DashCandidateTiles
           vouchData={data}
           refetchShortList={refetchShortList}
-          filterJobCategory={jobCategoryDropdown}
-          filterJobSeniority={seniorityDropdown}
-          filterStateLocation={locationStateDropdown}
+          candidateLocationFilterDropdown={candidateLocationFilterDropdown}
+          yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
+          positionTypeFilterDropdown={positionTypeFilterDropdown}
           existingCandidates={existingCandidates}
           setExistingCandidates={setExistingCandidates}
           hrData={hrData}
