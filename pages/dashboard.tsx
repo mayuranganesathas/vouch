@@ -41,7 +41,7 @@ const DashBoard = ({}: DashboardProps) => {
 
   let {
     loading,
-    data: ShortList,
+    data: ShortListData,
     refetch: refetchShortList,
   } = useQuery(QUERY_SHORT_LIST, {
     variables: {
@@ -94,7 +94,7 @@ const DashBoard = ({}: DashboardProps) => {
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             filterChangeYearsOfExperience={filterChangeYearsOfExperience}
             stageStatus={stageStatus}
-            shortListData={ShortList}
+            shortListData={ShortListData}
             refetchShortList={refetchShortList}
             positionCategoryDropdownList={positionCategoryDropdownArray}
             yearsOfExperienceDropdownList={YearsOfExperience}
@@ -118,7 +118,7 @@ const DashBoard = ({}: DashboardProps) => {
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             filterChangeYearsOfExperience={filterChangeYearsOfExperience}
             stageStatus={stageStatus}
-            shortListData={ShortList}
+            shortListData={ShortListData}
             refetchShortList={refetchShortList}
             positionCategoryDropdownList={positionCategoryDropdownArray}
             yearsOfExperienceDropdownList={YearsOfExperience}
@@ -142,7 +142,7 @@ const DashBoard = ({}: DashboardProps) => {
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             filterChangeYearsOfExperience={filterChangeYearsOfExperience}
             stageStatus={stageStatus}
-            shortListData={ShortList}
+            shortListData={ShortListData}
             refetchShortList={refetchShortList}
             positionCategoryDropdownList={positionCategoryDropdownArray}
             yearsOfExperienceDropdownList={YearsOfExperience}

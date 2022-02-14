@@ -19,6 +19,8 @@ export const QUERY_SHORT_LIST = gql`
         standOutSkill1
         standOutSkill2
         standOutSkill3
+        yearsOfExperience
+        positionType
         Candidate_Contact {
           candidateEmail
           candidateFirstName

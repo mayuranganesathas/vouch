@@ -28,11 +28,10 @@ const DashCandidateTiles = ({
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
-
         .filter(
-          (e) => e.Vouchee[0].jobCategory == candidateLocationFilterDropdown
+          (e) => e.Vouchee[0].locationState == candidateLocationFilterDropdown
         )
-        .filter((e) => e.Vouchee[0].seniority == positionTypeFilterDropdown);
+        .filter((e) => e.positionType == positionTypeFilterDropdown);
     } else if (
       candidateLocationFilterDropdown != "empty" &&
       yearsOfExperienceFilterDropdown != "empty"
@@ -41,11 +40,9 @@ const DashCandidateTiles = ({
         .filter((e) => e.Vouchee.length > 0)
 
         .filter(
-          (e) => e.Vouchee[0].jobCategory == candidateLocationFilterDropdown
+          (e) => e.Vouchee[0].locationState == candidateLocationFilterDropdown
         )
-        .filter(
-          (e) => e.Vouchee[0].locationState == yearsOfExperienceFilterDropdown
-        );
+        .filter((e) => e.yearsOfExperience == yearsOfExperienceFilterDropdown);
     } else if (
       yearsOfExperienceFilterDropdown != "empty" &&
       positionTypeFilterDropdown != "empty"
@@ -53,10 +50,8 @@ const DashCandidateTiles = ({
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
 
-        .filter((e) => e.Vouchee[0].seniority == positionTypeFilterDropdown)
-        .filter(
-          (e) => e.Vouchee[0].locationState == yearsOfExperienceFilterDropdown
-        );
+        .filter((e) => e.positionType == positionTypeFilterDropdown)
+        .filter((e) => e.yearsOfExperience == yearsOfExperienceFilterDropdown);
     } else if (
       yearsOfExperienceFilterDropdown != "empty" &&
       positionTypeFilterDropdown != "empty" &&
@@ -65,12 +60,10 @@ const DashCandidateTiles = ({
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
 
-        .filter((e) => e.Vouchee[0].seniority == positionTypeFilterDropdown)
+        .filter((e) => e.positionType == positionTypeFilterDropdown)
+        .filter((e) => e.yearsOfExperience == yearsOfExperienceFilterDropdown)
         .filter(
-          (e) => e.Vouchee[0].locationState == yearsOfExperienceFilterDropdown
-        )
-        .filter(
-          (e) => e.Vouchee[0].jobCategory == candidateLocationFilterDropdown
+          (e) => e.Vouchee[0].locationState == candidateLocationFilterDropdown
         );
     } else if (
       yearsOfExperienceFilterDropdown != "empty" &&
@@ -79,9 +72,7 @@ const DashCandidateTiles = ({
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
-        .filter(
-          (e) => e.Vouchee[0].locationState == yearsOfExperienceFilterDropdown
-        );
+        .filter((e) => e.yearsOfExperience == yearsOfExperienceFilterDropdown);
     } else if (
       yearsOfExperienceFilterDropdown == "empty" &&
       positionTypeFilterDropdown != "empty" &&
@@ -89,7 +80,7 @@ const DashCandidateTiles = ({
     ) {
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
-        .filter((e) => e.Vouchee[0].seniority == positionTypeFilterDropdown);
+        .filter((e) => e.positionType == positionTypeFilterDropdown);
     } else if (
       yearsOfExperienceFilterDropdown == "empty" &&
       positionTypeFilterDropdown == "empty" &&
@@ -98,7 +89,7 @@ const DashCandidateTiles = ({
       return vouchData.hr_voucher_metadata
         .filter((e) => e.Vouchee.length > 0)
         .filter(
-          (e) => e.Vouchee[0].jobCategory == candidateLocationFilterDropdown
+          (e) => e.Vouchee[0].locationState == candidateLocationFilterDropdown
         );
     } else {
       return vouchData.hr_voucher_metadata.filter((e) => e.Vouchee.length > 0);
