@@ -11,6 +11,8 @@ export const QUERY_DASHBOARD_TILES = gql`
       standOutSkill1
       standOutSkill2
       standOutSkill3
+      yearsOfExperience
+      positionType
       Company_Data {
         hrId
         location
