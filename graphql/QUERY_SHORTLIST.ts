@@ -44,6 +44,12 @@ export const QUERY_SHORT_LIST = gql`
           seniority
           jobCategory
         }
+        Hr_Account {
+          locationState
+          locationCity
+          rangeOfEmployees
+          industry
+        }
       }
     }
   }

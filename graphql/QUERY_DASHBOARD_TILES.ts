@@ -40,6 +40,12 @@ export const QUERY_DASHBOARD_TILES = gql`
         created_at
         companyName
       }
+      Hr_Account {
+        locationState
+        industry
+        locationCity
+        rangeOfEmployees
+      }
     }
     shortlist(where: { hrId: { _eq: $hrId } }) {
       candidateId

@@ -20,40 +20,32 @@ export interface CandidateTileProps {
   numEmployees: string;
   companyName: string;
   stageInterview: string;
-  pastPosition1: string;
-  standOutSkill1: string;
-  standOutSkill2: string;
   userLinkedinURL: string;
   userEmailAction: string;
   firstName: string;
-  lastName: string;
   refetchShortList: any;
-  pastCompanyName: string;
   hrData: any;
   stageStatus?: any;
-  key: number;
+  yearsOfExperience: string;
+  hrManagerIndustry: string;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
   userID,
   firstName,
-  lastName,
   positionTitle,
   salaryRange,
   jobLocation,
   numEmployees,
   companyName,
   stageInterview,
-  pastPosition1,
-  standOutSkill1,
-  standOutSkill2,
   userLinkedinURL,
   userEmailAction,
   refetchShortList,
-  pastCompanyName,
   hrData,
   stageStatus,
-  key,
+  yearsOfExperience,
+  hrManagerIndustry,
 }) => {
   const { user } = useAuth();
   const hrId = user.uid;
@@ -348,12 +340,23 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   </div>
                 </div>
                 <div className={"col-start-3 col-span-5 pt-2 pl-2 "}>
-                  <p className={"font-bold text-gray-900 text-sm border-r-2 border-gray-200"}>
-                    {firstName} 
+                  <p
+                    className={
+                      "font-bold text-gray-900 text-sm border-r-2 border-gray-200"
+                    }
+                  >
+                    {firstName}
                   </p>
-                  <div className={"text-xs border-r-2 border-gray-200 "}> {jobLocation}</div>
+                  <div className={"text-xs border-r-2 border-gray-200 "}>
+                    {" "}
+                    {jobLocation}
+                  </div>
                   <div className={""}>
-                    <div className={"grid justify-items-start pt-1 border-r-2 border-gray-200"}>
+                    <div
+                      className={
+                        "grid justify-items-start pt-1 border-r-2 border-gray-200"
+                      }
+                    >
                       <ButtonLinkedin
                         backgroundColour="white"
                         userLinkedinURL={userLinkedinURL}
@@ -366,16 +369,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
             <div className={"col-start-2 pt-2 pl-4"}>
               <div>
-                <p className={"w-full truncate "}>
-                  {companyName}
-                </p>
+                <p className={"w-full truncate "}>{companyName}</p>
               </div>
               <div>
-                <p
-                  className={
-                    "w-full pt-1 text-xs truncate"
-                  }
-                >
+                <p className={"w-full pt-1 text-xs truncate"}>
                   at {numEmployees}
                 </p>
               </div>
@@ -387,7 +384,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <div className={"col-start-1 pl-4"}>
               <div className={"pr-4"}>
                 <div>
-                  <p className="w-full truncate ">[Industry Prop]</p>
+                  <p className="w-full truncate ">{hrManagerIndustry}</p>
                   <p className="w-full pt-1 text-xs truncate">
                     {" "}
                     HQ in {jobLocation}
@@ -405,13 +402,14 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <div className={"col-start-3 pt-2 "}>
           <div className={"grid grid-cols-2"}>
             <div className={"col-start-1"}>
-              <p className={"pl-4"}>[Years EXP prop] </p>
+              <p className={"pl-4"}>{yearsOfExperience} </p>
             </div>
             <div className={"col-start-2"}>
-              <p className={"w-full font-gray-500 flex flex-wrap  text-xs pl-4"}>
+              <p
+                className={"w-full font-gray-500 flex flex-wrap  text-xs pl-4"}
+              >
                 ${salaryRange}K
               </p>
-              
             </div>
           </div>
         </div>

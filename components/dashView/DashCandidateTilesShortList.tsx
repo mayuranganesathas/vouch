@@ -160,9 +160,6 @@ const DashCandidateTilesShortList = ({
               firstName={
                 e.hr_voucher_metadatum.Candidate_Contact[0].candidateFirstName
               }
-              lastName={
-                e.hr_voucher_metadatum.Candidate_Contact[0].candidateLastName
-              }
               positionTitle={e.hr_voucher_metadatum.positionTitle}
               salaryRange={e.hr_voucher_metadatum.salaryRange}
               jobLocation={
@@ -175,10 +172,6 @@ const DashCandidateTilesShortList = ({
               }
               companyName={e.hr_voucher_metadatum.Company_Data[0].corporateName}
               stageInterview={e.hr_voucher_metadatum.stageOfInterview}
-              pastPosition1={e.hr_voucher_metadatum.Vouchee[0].positionTitle}
-              pastCompanyName={e.hr_voucher_metadatum.Vouchee[0].companyName}
-              standOutSkill1={e.hr_voucher_metadatum.standOutSkill1}
-              standOutSkill2={e.hr_voucher_metadatum.standOutSkill2}
               userLinkedinURL={e.hr_voucher_metadatum.Vouchee[0].linkedIn}
               userEmailAction={
                 e.hr_voucher_metadatum.Candidate_Contact[0].candidateEmail
@@ -187,6 +180,8 @@ const DashCandidateTilesShortList = ({
               hrData={hrData}
               stageStatus={stageStatus}
               key={i}
+              hrManagerIndustry={e.hr_voucher_metadatum.Hr_Account[0].industry}
+              yearsOfExperience={e.hr_voucher_metadatum.yearsOfExperience}
             />
           ))}
       {vouchData && candidateCounter()}
