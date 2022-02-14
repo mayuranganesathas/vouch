@@ -12,7 +12,7 @@ import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
 import {
   positionCategoryDropdownArray,
   stateProvinceDropdownArray,
-  YearsOfExperience,
+  YearsOfExperienceDropdownArray,
 } from "./api/dropdownCategories";
 import Head from "next/head";
 import { HomeDashboard } from "../components/dashView/Home";
@@ -73,7 +73,7 @@ const DashBoard = ({}: DashboardProps) => {
             data={MainDashData}
             refetchShortList={refetchShortList}
             positionCategoryDropdownList={positionCategoryDropdownArray}
-            yearsOfExperienceDropdownList={YearsOfExperience}
+            yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
           />
         </div>
@@ -97,7 +97,7 @@ const DashBoard = ({}: DashboardProps) => {
             shortListData={ShortListData}
             refetchShortList={refetchShortList}
             positionCategoryDropdownList={positionCategoryDropdownArray}
-            yearsOfExperienceDropdownList={YearsOfExperience}
+            yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
           />
         </div>
@@ -121,7 +121,7 @@ const DashBoard = ({}: DashboardProps) => {
             shortListData={ShortListData}
             refetchShortList={refetchShortList}
             positionCategoryDropdownList={positionCategoryDropdownArray}
-            yearsOfExperienceDropdownList={YearsOfExperience}
+            yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
           />
         </div>
@@ -145,7 +145,7 @@ const DashBoard = ({}: DashboardProps) => {
             shortListData={ShortListData}
             refetchShortList={refetchShortList}
             positionCategoryDropdownList={positionCategoryDropdownArray}
-            yearsOfExperienceDropdownList={YearsOfExperience}
+            yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
           />
         </div>

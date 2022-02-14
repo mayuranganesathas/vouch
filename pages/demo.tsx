@@ -18,9 +18,9 @@ import InformationIconToolTip from "../components/ui/InformationIconToolTip";
 import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
 
 import {
-  positionCategoryDropDownArray,
-  SeniorityDropDownArray,
-  stateProvince,
+  positionCategoryDropdownArray,
+  SeniorityDropdownArray,
+  stateProvinceDropdownArray,
 } from "./api/dropdownCategories";
 import Head from "next/head";
 import { DEMO_QUERY_SHORTLIST } from "../graphql/DEMO_QUERY_SHORTLIST";
@@ -106,7 +106,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-3 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={positionCategoryDropDownArray}
+                dropDownArray={positionCategoryDropdownArray}
                 value={jobCategoryDropdown}
                 onChange={(e) => filterChangeCategory(e)}
                 copy="Recent Job Category"
@@ -115,7 +115,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-5 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={SeniorityDropDownArray}
+                dropDownArray={SeniorityDropdownArray}
                 value={seniorityDropdown}
                 onChange={(e) => filterChangeSeniority(e)}
                 copy="Seniority"
@@ -124,7 +124,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-7 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={stateProvince}
+                dropDownArray={stateProvinceDropdownArray}
                 value={locationStateDropdown}
                 onChange={(e) => filterChangeLocation(e)}
                 copy="Location"
@@ -247,7 +247,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-3 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={positionCategoryDropDownArray}
+                dropDownArray={positionCategoryDropdownArray}
                 value={jobCategoryDropdown}
                 onChange={(e) => filterChangeCategory(e)}
                 copy="Recent Job Category"
@@ -256,7 +256,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-5 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={SeniorityDropDownArray}
+                dropDownArray={SeniorityDropdownArray}
                 value={seniorityDropdown}
                 onChange={(e) => filterChangeSeniority(e)}
                 copy="Seniority"
@@ -265,7 +265,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-7 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={stateProvince}
+                dropDownArray={stateProvinceDropdownArray}
                 value={locationStateDropdown}
                 onChange={(e) => filterChangeLocation(e)}
                 copy="Location"
@@ -385,7 +385,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-3 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={positionCategoryDropDownArray}
+                dropDownArray={positionCategoryDropdownArray}
                 value={jobCategoryDropdown}
                 onChange={(e) => filterChangeCategory(e)}
                 copy="Recent Job Category"
@@ -394,7 +394,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-5 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={SeniorityDropDownArray}
+                dropDownArray={SeniorityDropdownArray}
                 value={seniorityDropdown}
                 onChange={(e) => filterChangeSeniority(e)}
                 copy="Seniority"
@@ -403,7 +403,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-7 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={stateProvince}
+                dropDownArray={stateProvinceDropdownArray}
                 value={locationStateDropdown}
                 onChange={(e) => filterChangeLocation(e)}
                 copy="Location"
@@ -522,7 +522,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-3 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={positionCategoryDropDownArray}
+                dropDownArray={positionCategoryDropdownArray}
                 value={jobCategoryDropdown}
                 onChange={(e) => filterChangeCategory(e)}
                 copy="Recent Job Category"
@@ -531,7 +531,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-5 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={SeniorityDropDownArray}
+                dropDownArray={SeniorityDropdownArray}
                 value={seniorityDropdown}
                 onChange={(e) => filterChangeSeniority(e)}
                 copy="Seniority"
@@ -540,7 +540,7 @@ const DashBoard = ({}: DashboardProps) => {
             <div className={"col-start-7 flex items-center"}>
               <DashboardCategoryFilter
                 backgroundColour="white"
-                dropDownArray={stateProvince}
+                dropDownArray={stateProvinceDropdownArray}
                 value={locationStateDropdown}
                 onChange={(e) => filterChangeLocation(e)}
                 copy="Location"
