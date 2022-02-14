@@ -65,8 +65,8 @@ const DashBoard = ({}: DashboardProps) => {
             clearFilter={clearFilter}
             clearFilters={clearFilters}
             candidateLocationFilterDropdown={candidateLocationFilterDropdown}
-            filterChangeLocationDropdown={filterChangeYearsOfExperience}
-            positionTypeFilterDropdown={positionCategoryDropdownArray}
+            filterChangeLocationDropdown={filterChangeLocationDropdown}
+            positionTypeFilterDropdown={positionTypeFilterDropdown}
             filterChangePositionType={filterChangePositionType}
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             filterChangeYearsOfExperience={filterChangeYearsOfExperience}
@@ -88,8 +88,8 @@ const DashBoard = ({}: DashboardProps) => {
             clearFilter={clearFilter}
             clearFilters={clearFilters}
             candidateLocationFilterDropdown={candidateLocationFilterDropdown}
-            filterChangeLocationDropdown={filterChangeYearsOfExperience}
-            positionTypeFilterDropdown={positionCategoryDropdownArray}
+            filterChangeLocationDropdown={filterChangeLocationDropdown}
+            positionTypeFilterDropdown={positionTypeFilterDropdown}
             filterChangePositionType={filterChangePositionType}
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             filterChangeYearsOfExperience={filterChangeYearsOfExperience}
@@ -112,8 +112,8 @@ const DashBoard = ({}: DashboardProps) => {
             clearFilter={clearFilter}
             clearFilters={clearFilters}
             candidateLocationFilterDropdown={candidateLocationFilterDropdown}
-            filterChangeLocationDropdown={filterChangeYearsOfExperience}
-            positionTypeFilterDropdown={positionCategoryDropdownArray}
+            filterChangeLocationDropdown={filterChangeLocationDropdown}
+            positionTypeFilterDropdown={positionTypeFilterDropdown}
             filterChangePositionType={filterChangePositionType}
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             filterChangeYearsOfExperience={filterChangeYearsOfExperience}
@@ -136,8 +136,8 @@ const DashBoard = ({}: DashboardProps) => {
             clearFilter={clearFilter}
             clearFilters={clearFilters}
             candidateLocationFilterDropdown={candidateLocationFilterDropdown}
-            filterChangeLocationDropdown={filterChangeYearsOfExperience}
-            positionTypeFilterDropdown={positionCategoryDropdownArray}
+            filterChangeLocationDropdown={filterChangeLocationDropdown}
+            positionTypeFilterDropdown={positionTypeFilterDropdown}
             filterChangePositionType={filterChangePositionType}
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             filterChangeYearsOfExperience={filterChangeYearsOfExperience}
