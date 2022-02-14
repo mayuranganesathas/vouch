@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { ButtonVouch } from "../ui/ButtonVouch";
 import { SearchFilterDash } from "../ui/searchFilterDash";
 import { FlagIcon } from "@heroicons/react/solid";
@@ -15,6 +15,9 @@ import {
   SeniorityDropDownArray,
   stateProvince,
 } from "../../pages/api/dropdownCategories";
+import Modal from "react-modal"
+import { InformationCircleIcon } from "@heroicons/react/solid";
+import CanRegInstructionModal from "./CanRegInstructionsModal"
 
 export interface CandidateOnTwoProps {
   companyWebsite: string;
@@ -85,125 +88,31 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   formValidation,
 }) => {
   const email = () => {};
+  const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
+
   return (
     <div className={"flex justify-center items-center"}>
       <div
         className={
-          "shadow-lg rounded-xl w-3/5 h-auto bg-white grid grid-cols-3"
+          "shadow-lg rounded-xl w-2/5 h-auto bg-white flex justify-center  px-5 "
         }
       >
-        <div className={"py-4 px-4 col-start-1 bg-VouchDark rounded-l-lg"}>
-          <div className={"py-10 "}>
-            <div className={"flex justify-center"}>
-              <UserAddIcon className={"w-12 h-auto "} fill="white" />
-            </div>
-            <div
-              className={
-                "flex justify-center py-2 font-bold text-lg text-white"
-              }
-            >
-              JOIN THE NETWORK
-            </div>
-            <div className={"text-sm text-white w-full text-center px-6"}>
-              You really impressed in your last interview. That time and
-              validation is valuable.
-            </div>
-            <div className={"flex justify-center pt-12"}>
-              <LightningBoltIcon className={"w-12 h-auto"} fill="white" />
-            </div>
-            <div
-              className={
-                "text-sm text-white  w-full px-6 pt-2 pb-12 text-center"
-              }
-            >
-              Provide some additional career info to boost your profile in our
-              network of actively hiring companies
-            </div>
-            <div className={"flex justify-center pt-8"}>
-              <RewindIcon className={"w-12 h-auto"} fill="white" />
-            </div>
-            <div
-              className={
-                "text-sm text-white text-center px-6 w-full pt-2 pb-12"
-              }
-            >
-              Don’t start back from at zero. Get referred to other comparable
-              positions.
-            </div>
-            <div className={"flex justify-center pt-8"}>
-              <ChevronDoubleRightIcon className={"w-12 h-auto"} fill="white" />
-            </div>
-            <div>
-              <div
-                className={
-                  "text-sm text-white py-2 width-full text-center px-6"
-                }
-              >
-                Use Vouch to start in the later in the hiring pipeline for your
-                next dream job!{" "}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={"col-start-2 col-span-2 px-4 py-4 text-gray-700"}>
-          <div className={"font-bold text-base"}>
-            Tell companies a little bit about yourself
-          </div>
-          <div className={"pt-1 text-xs text-gray-500"}>
-            A few details to help standout in our qualified pool of referrals
-          </div>
-          <div className={"text-gray-500 text-xs pt-4 pb-1"}>
-            Example of what HR Managers see in their dashboard:{" "}
-          </div>
-          <div className={"px-8"}>
-            <img src="./images/tileExample.png" width="full" height="auto" />
-          </div>
-          <div className="py-6">
-            <hr className="" />
-          </div>
-          <div className={"text-base font-bold"}>Your Profile</div>
-          <div className={"py-1 text-xs text-gray-500"}>
-            All fields are required{" "}
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            <input
-              className={"border border-gray-300 text-xs rounded py-1 px-4"}
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            ></input>
-            <input
-              className={"border border-gray-300 text-xs rounded py-1 px-4"}
-              placeholder="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            ></input>
-          </div>
-          <div className={"grid grid-cols-2 gap-2"}>
-            <div className={"text-xs py-4"}>
-              <div>
-                {" "}
-                <img
-                  src="./images/linkedInTile.png"
-                  width="12"
-                  height="auto"
-                  className={"pb-1"}
+        
+        <div className={" py-8 text-gray-700 px-12"}>
+          <div className={"font-bold text-base flex flex-nowrap"}>
+            VOUCH Referrals - Candidate Info<InformationCircleIcon
+                  className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer pl-1"
+                  onClick={() => setIconModalIsOpen(true)}
                 />
-              </div>
-              <input
-                className={
-                  "border border-gray-300 text-xs w-full rounded py-1 px-4"
-                }
-                placeholder="LinkedIn Profile URL"
-                value={linkedIn}
-                onChange={(e) => setLinkedIn(e.target.value)}
-              ></input>
-            </div>
-            <div className={"text-xs py-4"}>
-              <div>
-                {" "}
-                <MailIcon className={"h-4 w-4 "} />
-              </div>
+          </div>
+          <div className={"pt-1 text-xs text-gray-500 w-full"}>
+            We require minimal information from you to preserve your privacy. Only first anme, location and referring company details will be shared actively with hiring companies.
+          </div>
+          
+         
+          
+         
+          <div className={"pt-8 pb-4"}>
               <input
                 className={
                   "border border-gray-300 text-xs w-full rounded py-1 px-4"
@@ -212,7 +121,21 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                 value={candidateEmail}
                 onChange={(e) => setCandidateEmail(e.target.value)}
               ></input>
-            </div>
+          </div>
+          <div className ={"py-4"}>  
+            <input
+              className={"border border-gray-300 w-full text-xs rounded py-1 px-4"}
+              placeholder="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            ></input>
+          </div>
+            
+            
+          
+          <div className={"grid grid-cols-2 gap-2 w-full"}>
+           
+            
             <div className={"text-xs py-2"}>
               <input
                 className={
@@ -235,101 +158,30 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
               />
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-2"></div>
-          <div className="py-6">
-            <hr className="" />
-          </div>
-          <div className={"text-base font-bold pt-2"}>
-            Prior Work Experience
-          </div>
-          <div className={"py-1 text-xs text-gray-500"}>
-            Current or previous role (required){" "}
-          </div>
-          <div className={"grid grid-cols-2 "}>
-            <div className={"col-start-1  py-1"}>
-              <div className={"pr-1"}>
+          <div className={"text-xs py-4 w-full flex flex-nowrap"}>
+              <div className="grid content-center pt-1 pr-2">
                 {" "}
-                <input
-                  className={
-                    "border border-gray-300 text-xs w-full rounded py-1 px-4"
-                  }
-                  placeholder="Position Title"
-                  value={positionTitle}
-                  onChange={(e) => setPositionTitle(e.target.value)} //PROP
-                ></input>
+                <img
+                  src="./images/linkedInTile.png"
+                  width="12"
+                  height="auto"
+                  className={"pb-1"}
+                />
               </div>
-              <div className={"pt-4 pr-1"}>
-                <div className={""}>
-                  <input
-                    className={
-                      "border border-gray-300 text-xs w-full rounded py-1 px-4"
-                    }
-                    placeholder="Company Name"
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)} //PROP
-                  ></input>
-                </div>
+              <input
+                className={
+                  "border border-gray-300 text-xs w-full rounded py-1 px-4"
+                }
+                placeholder="LinkedIn Profile URL"
+                value={linkedIn}
+                onChange={(e) => setLinkedIn(e.target.value)}
+              ></input>
+             
+            </div>
+            <div className={"text-xs w-full italic text-gray-400"}>
+                Interested companies will request your LinkedIn. They will ONLY see the URL if you give permission. An email will be sent to notify you of a LinkedIn Request. Your LinkedIn URL will otherwise not appear anywhere on the VOUCH platform without your consent.
               </div>
-            </div>
-            <div className={"col-start-2"}>
-              <div className={"pt-12 pl-1"}>
-                <input
-                  className={
-                    "border border-gray-300 text-xs w-full rounded py-1 px-4"
-                  }
-                  placeholder="Company Website"
-                  value={companyWebsite}
-                  onChange={(e) => setCompanyWebsite(e.target.value)} //PROP
-                ></input>
-              </div>
-            </div>
-          </div>
-          <div className={"text-xs text-gray-400 pt-1 pb-6"}>
-            {" "}
-            Important: Company website is used to ensure profile DOES NOT show
-            up on your current company’s dashboard of candidates if they
-            participate in Vouch
-          </div>
-          <div className={"grid grid-cols-3 gap-4"}>
-            <div>
-              <div className={"text-xs"}>Job Category</div>
-
-              <SearchFilterDash
-                backgroundColour={"white"}
-                dropDownArray={positionCategoryDropDownArray}
-                value={jobCategory}
-                onChange={(e) => {
-                  setJobCategory(e.target.value);
-                }}
-                width={"wide-sm"}
-              />
-            </div>
-
-            <div>
-              <div className={"text-xs"}>Industry</div>
-              <SearchFilterDash
-                backgroundColour={"white"}
-                dropDownArray={industryArrayList}
-                value={industry}
-                onChange={(e) => {
-                  setIndustry(e.target.value);
-                }}
-                width={"wide-lg"}
-              />
-            </div>
-            <div>
-              <div className={"text-xs"}>Seniority</div>
-              <SearchFilterDash
-                backgroundColour={"white"}
-                dropDownArray={SeniorityDropDownArray}
-                value={jobSeniority}
-                onChange={(e) => {
-                  setJobSeniority(e.target.value);
-                }}
-                width={"wide-lg"}
-              />
-            </div>
-          </div>
+          
 
           {/* <div className={"text-xs pt-8"}>
             {" "}
@@ -357,6 +209,10 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
               onClick={completeForm}
             />
           </div>
+          < CanRegInstructionModal
+           modalIsOpen={iconModalIsOpen}
+           closeModal={() => setIconModalIsOpen(false)}
+           />
         </div>
       </div>
     </div>
