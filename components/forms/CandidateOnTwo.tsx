@@ -20,14 +20,6 @@ import { InformationCircleIcon } from "@heroicons/react/solid";
 import CanRegInstructionModal from "./CanRegInstructionsModal";
 
 export interface CandidateOnTwoProps {
-  companyWebsite: string;
-  setCompanyWebsite: (companyWebsite: string) => void;
-  positionTitle: string;
-  setPositionTitle: (positionTitle: string) => void;
-
-  industry: string;
-  setIndustry: (industry: string) => void;
-
   locationState: string;
   setLocationState: (remoteStatus: string) => void;
   locationCity: string;
@@ -36,18 +28,9 @@ export interface CandidateOnTwoProps {
   setCandidateEmail: (candidateEmail: string) => void;
   firstName: string;
   setFirstName: (firstName: string) => void;
-  lastName: string;
-  setLastName: (lastName: string) => void;
+
   linkedIn: string;
   setLinkedIn: (linkedIn: string) => void;
-
-  companyName: string;
-  setCompanyName: (companyName: string) => void;
-
-  jobCategory: string;
-  setJobCategory: (jobCategory: string) => void;
-  jobSeniority: string;
-  setJobSeniority: (jobSeniority: string) => void;
 
   previousStage: () => void;
   completeForm: () => void;
@@ -55,26 +38,10 @@ export interface CandidateOnTwoProps {
 }
 
 export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
-  companyWebsite,
-  setCompanyWebsite,
-  positionTitle,
-  setPositionTitle,
-  companyName,
-  setCompanyName,
-
-  industry,
-  setIndustry,
-  jobCategory,
-  setJobCategory,
-  jobSeniority,
-  setJobSeniority,
-
   candidateEmail,
   setCandidateEmail,
   firstName,
   setFirstName,
-  lastName,
-  setLastName,
 
   linkedIn,
   setLinkedIn,

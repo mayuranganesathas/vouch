@@ -22,38 +22,22 @@ export default function CandidateOn(props) {
   const candidateUUID = router.query.privacyId.toString();
 
   const [stage, setStage] = useState(STAGE.CandidateOnOne);
-  const [positionTitle, setPositionTitle] = useState("");
-
-  const [industry, setIndustry] = useState("");
-
   const [linkedIn, setLinkedIn] = useState("");
   const [candidateEmail, setCandidateEmail] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [locationCity, setLocationCity] = useState("");
   const [locationState, setLocationState] = useState("");
-  const [companyWebsite, setCompanyWebsite] = useState("");
-  const [jobCategory, setJobCategory] = useState("");
-  const [jobSeniority, setJobSeniority] = useState("");
-  const [companyName, setCompanyName] = useState("");
 
   const { data: CanId } = useQuery(QUERY_CANDIDATE_ID, {
     variables: { hrId: hrId, privacyId: candidateUUID },
   });
 
   const clearFormState = () => {
-    setPositionTitle("");
-    setIndustry("");
     setLinkedIn("");
     setCandidateEmail("");
     setFirstName("");
-    setLastName("");
     setLocationCity("");
     setLocationState("");
-    setCompanyWebsite("");
-    setJobCategory("");
-    setJobSeniority("");
-    setCompanyName("");
   };
 
   const [initializeCandidateMetaData, { data, loading, error }] = useMutation(
@@ -61,19 +45,12 @@ export default function CandidateOn(props) {
 
     {
       variables: {
-        positionTitle: "incompleteField",
-        industry: "incompleteField",
-        companyWebsite: "incompleteField",
-        companyName: "incompleteField",
         linkedIn: "incompleteField",
         locationCity: "incompleteField",
         locationState: "incompleteField",
         candidateEmail: "incompleteField",
         candidateFirstName: "incompleteField",
-        candidateLastName: "incompleteField",
         hrId: "incompleteField",
-        jobCategory: "incompleteField",
-        seniority: "incompleteField",
         candidateId: "incompleteField",
         privacyId: "incompleteField",
       },
@@ -81,10 +58,19 @@ export default function CandidateOn(props) {
   );
 
   const formValidator = () => {
-    const positionTitleValidator = positionTitle;
-    const industry1Validator = industry;
+    const linkedInValidator = linkedIn;
+    const candidateEmailValidator = candidateEmail;
+    const firstNameValidator = firstName;
+    const locationCityValidator = locationCity;
+    const locationStateValidator = locationState;
 
-    if (positionTitleValidator && industry1Validator) {
+    if (
+      linkedInValidator &&
+      candidateEmailValidator &&
+      firstNameValidator &&
+      locationStateValidator &&
+      locationCityValidator
+    ) {
       return true;
     }
     return false;
@@ -105,19 +91,12 @@ export default function CandidateOn(props) {
     nextStage();
     initializeCandidateMetaData({
       variables: {
-        positionTitle: positionTitle,
-        industry: industry,
-        companyWebsite: companyWebsite,
         linkedIn: linkedIn,
         locationCity: locationCity,
         locationState: locationState,
         candidateEmail: candidateEmail,
         candidateFirstName: firstName,
-        candidateLastName: lastName,
         hrId: hrId,
-        seniority: jobSeniority,
-        jobCategory: jobCategory,
-        companyName: companyName,
         candidateId: CanId.hr_voucher_metadata[0].candidateId,
         privacyId: candidateUUID,
       },
@@ -151,30 +130,16 @@ export default function CandidateOn(props) {
       return (
         <div>
           <CandidateOnTwo
-            companyWebsite={companyWebsite}
-            setCompanyWebsite={setCompanyWebsite}
-            positionTitle={positionTitle}
-            setPositionTitle={setPositionTitle}
-            industry={industry}
-            setIndustry={setIndustry}
             candidateEmail={candidateEmail}
             setCandidateEmail={setCandidateEmail}
             firstName={firstName}
             setFirstName={setFirstName}
-            lastName={lastName}
-            setLastName={setLastName}
             linkedIn={linkedIn}
             setLinkedIn={setLinkedIn}
             locationCity={locationCity}
             setLocationCity={setLocationCity}
             locationState={locationState}
             setLocationState={setLocationState}
-            companyName={companyName}
-            setCompanyName={setCompanyName}
-            jobCategory={jobCategory}
-            setJobCategory={setJobCategory}
-            jobSeniority={jobSeniority}
-            setJobSeniority={setJobSeniority}
             previousStage={previousStage}
             completeForm={onSubmit}
             formValidation={formValidator}
