@@ -1,22 +1,18 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import VouchCTA from "../components/dashView/VouchCTA";
-import { CandidateCount } from "../components/dashView/CandidateCount";
-import DashCandidateTiles from "../components/dashView/DashCandidateTiles";
+
 import UserIdBar from "../components/dashView/UserIdBar";
 import { useQuery } from "@apollo/client";
 import { QUERY_DASHBOARD_TILES } from "../graphql/QUERY_DASHBOARD_TILES";
 import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
-import { DashboardCategoryFilter } from "../components/ui/DashboardCategoryFilter";
-import InformationIconToolTip from "../components/ui/InformationIconToolTip";
+
 import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
-import DashCandidateTilesShortList from "../components/dashView/DashCandidateTilesShortList";
 import {
   positionCategoryDropdownArray,
-  SeniorityDropdownArray,
   stateProvinceDropdownArray,
+  YearsOfExperience,
 } from "./api/dropdownCategories";
 import Head from "next/head";
 import { HomeDashboard } from "../components/dashView/Home";
@@ -30,10 +26,14 @@ const DashBoard = ({}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
 
   const { user } = useAuth();
-  const [locationStateDropdown, setLocationStateDropdown] = useState("empty");
-  const [jobCategoryDropdown, setJobCategoryDropdown] = useState("empty");
 
-  const [seniorityDropdown, setSeniorityDropdown] = useState("empty");
+  const [candidateLocationFilterDropdown, setCandidateLocationFilterDropdown] =
+    useState("empty");
+  const [positionTypeFilterDropdown, setPositionTypeFilterDropdown] =
+    useState("empty");
+  const [yearsOfExperienceFilterDropdown, setYearsOfExperienceFilterDropdown] =
+    useState("empty");
+
   const [existingCandidates, setExistingCandidates] = useState();
   const [shortListExistingCandidates, setShortListExistingCandidates] =
     useState(0);
@@ -60,21 +60,21 @@ const DashBoard = ({}: DashboardProps) => {
         <div>
           <HomeDashboard
             hrData={hrData}
-            positionCategoryDropdownArray={positionCategoryDropdownArray}
             existingCandidates={existingCandidates}
             setExistingCandidates={setExistingCandidates}
             clearFilter={clearFilter}
             clearFilters={clearFilters}
-            jobCategoryDropdown={jobCategoryDropdown}
-            filterChangeCategory={filterChangeCategory}
-            seniorityDropdown={seniorityDropdown}
-            filterChangeSeniority={filterChangeSeniority}
-            locationStateDropdown={locationStateDropdown}
-            filterChangeLocation={filterChangeLocation}
+            candidateLocationFilterDropdown={candidateLocationFilterDropdown}
+            filterChangeLocationDropdown={filterChangeYearsOfExperience}
+            positionTypeFilterDropdown={positionCategoryDropdownArray}
+            filterChangePositionType={filterChangePositionType}
+            yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
+            filterChangeYearsOfExperience={filterChangeYearsOfExperience}
             data={MainDashData}
             refetchShortList={refetchShortList}
-            seniorityDropdownArray={SeniorityDropdownArray}
-            stateProvinceDropdownArray={stateProvinceDropdownArray}
+            positionCategoryDropdownList={positionCategoryDropdownArray}
+            yearsOfExperienceDropdownList={YearsOfExperience}
+            stateProvinceDropdownList={stateProvinceDropdownArray}
           />
         </div>
       );
@@ -83,22 +83,22 @@ const DashBoard = ({}: DashboardProps) => {
         <div>
           <FavoritesDashboard
             hrData={hrData}
-            positionCategoryDropdownArray={positionCategoryDropdownArray}
             shortListExistingCandidates={shortListExistingCandidates}
             setShortListExistingCandidates={setShortListExistingCandidates}
             clearFilter={clearFilter}
             clearFilters={clearFilters}
-            jobCategoryDropdown={jobCategoryDropdown}
-            filterChangeCategory={filterChangeCategory}
-            seniorityDropdown={seniorityDropdown}
-            filterChangeSeniority={filterChangeSeniority}
-            locationStateDropdown={locationStateDropdown}
-            filterChangeLocation={filterChangeLocation}
+            candidateLocationFilterDropdown={candidateLocationFilterDropdown}
+            filterChangeLocationDropdown={filterChangeYearsOfExperience}
+            positionTypeFilterDropdown={positionCategoryDropdownArray}
+            filterChangePositionType={filterChangePositionType}
+            yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
+            filterChangeYearsOfExperience={filterChangeYearsOfExperience}
             stageStatus={stageStatus}
             shortListData={ShortList}
             refetchShortList={refetchShortList}
-            seniorityDropdownArray={SeniorityDropdownArray}
-            stateProvinceDropdownArray={stateProvinceDropdownArray}
+            positionCategoryDropdownList={positionCategoryDropdownArray}
+            yearsOfExperienceDropdownList={YearsOfExperience}
+            stateProvinceDropdownList={stateProvinceDropdownArray}
           />
         </div>
       );
@@ -107,22 +107,22 @@ const DashBoard = ({}: DashboardProps) => {
         <div>
           <HiddenDashboard
             hrData={hrData}
-            positionCategoryDropdownArray={positionCategoryDropdownArray}
             shortListExistingCandidates={shortListExistingCandidates}
             setShortListExistingCandidates={setShortListExistingCandidates}
             clearFilter={clearFilter}
             clearFilters={clearFilters}
-            jobCategoryDropdown={jobCategoryDropdown}
-            filterChangeCategory={filterChangeCategory}
-            seniorityDropdown={seniorityDropdown}
-            filterChangeSeniority={filterChangeSeniority}
-            locationStateDropdown={locationStateDropdown}
-            filterChangeLocation={filterChangeLocation}
+            candidateLocationFilterDropdown={candidateLocationFilterDropdown}
+            filterChangeLocationDropdown={filterChangeYearsOfExperience}
+            positionTypeFilterDropdown={positionCategoryDropdownArray}
+            filterChangePositionType={filterChangePositionType}
+            yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
+            filterChangeYearsOfExperience={filterChangeYearsOfExperience}
             stageStatus={stageStatus}
             shortListData={ShortList}
             refetchShortList={refetchShortList}
-            seniorityDropdownArray={SeniorityDropdownArray}
-            stateProvinceDropdownArray={stateProvinceDropdownArray}
+            positionCategoryDropdownList={positionCategoryDropdownArray}
+            yearsOfExperienceDropdownList={YearsOfExperience}
+            stateProvinceDropdownList={stateProvinceDropdownArray}
           />
         </div>
       );
@@ -131,22 +131,22 @@ const DashBoard = ({}: DashboardProps) => {
         <div>
           <ContactedDashboard
             hrData={hrData}
-            positionCategoryDropdownArray={positionCategoryDropdownArray}
             shortListExistingCandidates={shortListExistingCandidates}
             setShortListExistingCandidates={setShortListExistingCandidates}
             clearFilter={clearFilter}
             clearFilters={clearFilters}
-            jobCategoryDropdown={jobCategoryDropdown}
-            filterChangeCategory={filterChangeCategory}
-            seniorityDropdown={seniorityDropdown}
-            filterChangeSeniority={filterChangeSeniority}
-            locationStateDropdown={locationStateDropdown}
-            filterChangeLocation={filterChangeLocation}
+            candidateLocationFilterDropdown={candidateLocationFilterDropdown}
+            filterChangeLocationDropdown={filterChangeYearsOfExperience}
+            positionTypeFilterDropdown={positionCategoryDropdownArray}
+            filterChangePositionType={filterChangePositionType}
+            yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
+            filterChangeYearsOfExperience={filterChangeYearsOfExperience}
             stageStatus={stageStatus}
             shortListData={ShortList}
             refetchShortList={refetchShortList}
-            seniorityDropdownArray={SeniorityDropdownArray}
-            stateProvinceDropdownArray={stateProvinceDropdownArray}
+            positionCategoryDropdownList={positionCategoryDropdownArray}
+            yearsOfExperienceDropdownList={YearsOfExperience}
+            stateProvinceDropdownList={stateProvinceDropdownArray}
           />
         </div>
       );
@@ -158,22 +158,22 @@ const DashBoard = ({}: DashboardProps) => {
   });
 
   const clearFilters = () => {
-    setSeniorityDropdown("empty");
-    setJobCategoryDropdown("empty");
-    setLocationStateDropdown("empty");
+    setCandidateLocationFilterDropdown("empty");
+    setPositionTypeFilterDropdown("empty");
+    setYearsOfExperienceFilterDropdown("empty");
     setClearFilter(false);
   };
 
-  const filterChangeLocation = (e) => {
-    setLocationStateDropdown(e.target.value);
+  const filterChangeLocationDropdown = (e) => {
+    setCandidateLocationFilterDropdown(e.target.value);
     setClearFilter(true);
   };
-  const filterChangeCategory = (e) => {
-    setJobCategoryDropdown(e.target.value);
+  const filterChangePositionType = (e) => {
+    setPositionTypeFilterDropdown(e.target.value);
     setClearFilter(true);
   };
-  const filterChangeSeniority = (e) => {
-    setSeniorityDropdown(e.target.value);
+  const filterChangeYearsOfExperience = (e) => {
+    setYearsOfExperienceFilterDropdown(e.target.value);
     setClearFilter(true);
   };
 
