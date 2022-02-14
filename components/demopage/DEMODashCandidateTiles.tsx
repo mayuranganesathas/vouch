@@ -109,7 +109,6 @@ const DashCandidateTiles = ({
             <CandidateTile
               userID={e.candidateId}
               firstName={e.Candidate_Contact[0].candidateFirstName}
-              lastName={e.Candidate_Contact[0].candidateLastName}
               positionTitle={e.positionTitle}
               salaryRange={e.salaryRange}
               jobLocation={
@@ -120,15 +119,13 @@ const DashCandidateTiles = ({
               numEmployees={e.Company_Data[0].rangeOfEmployees}
               companyName={e.Company_Data[0].corporateName}
               stageInterview={e.stageOfInterview}
-              pastPosition1={e.demoVouchee[0].positionTitle}
-              pastCompanyName={e.demoVouchee[0].companyName}
-              standOutSkill1={e.standOutSkill1}
-              standOutSkill2={e.standOutSkill2}
               userLinkedinURL={e.demoVouchee[0].linkedIn}
               userEmailAction={e.Candidate_Contact[0].candidateEmail}
               refetchShortList={refetchShortList}
               hrData={hrData}
               key={i}
+              hrManagerIndustry={e.Hr_Account[0].industry}
+              yearsOfExperience={e.yearsOfExperience}
             />
           ))}
       {vouchData && candidateCounter()}
