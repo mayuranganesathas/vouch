@@ -15,7 +15,7 @@ export const positionCategoryDropdownArray = [
   "Other Professional",
 ];
 
-export const YearsOfExperience = [
+export const YearsOfExperienceDropdownArray = [
   "1-2 Years",
   "2-5 Years",
   "5-8 Years",

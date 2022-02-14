@@ -7,28 +7,19 @@ import StandOutSkill from "../ui/StandOutSkill";
 import { UPSERT_VOUCH_CANDIDATE } from "../../graphql/UPSERT_VOUCHEE_FORM";
 import { useMutation } from "@apollo/client";
 import { useAuth } from "../../lib/authContext";
-import { UserGroupIcon } from "@heroicons/react/solid";
-import { MailOpenIcon } from "@heroicons/react/solid";
-import { UserAddIcon } from "@heroicons/react/solid";
-import { SearchCircleIcon } from "@heroicons/react/solid";
 import { PositionFilterVouch } from "../ui/PositionFilterVouch";
-import { IntStageFilterVouch } from "../ui/IntStageFilterVouch";
-import { SeniorityFilterVouch } from "../ui/SeniorityFilterVouch";
 import { BaseSalaryFilterVouch } from "../ui/BaseSalaryFilterVouch";
-import { RoleSkillFilterVouch } from "../ui/RoleSkillFilterVouch";
-import { IntPersonalSkillFilterVouch } from "../ui/IntPersonalSkillFilterVouch";
-import { IntStrengthSkillFilterVouch } from "../ui/IntStrengthSkillFilterVouch";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 import {
-  BaseSalaryDropDownArray,
-  generalStrengths,
-  InterviewStageDropDownArray,
-  InterviewStrengthSkillDropDownArray,
+  BaseSalaryDropdownArray,
+  InterviewStageDropdownArray,
+  positionCategoryDropdownArray,
+  YearsOfExperienceDropdownArray,
 } from "../../pages/api/dropdownCategories";
 import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CTAinstructionsModal from "./CTAInstructionsModal"
+import CTAinstructionsModal from "./CTAInstructionsModal";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -55,7 +46,6 @@ const VouchCTAModal = ({
   const { user } = useAuth();
   const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
 
-
   //authentication passes hrID
   const [email, setEmail] = useState("");
   const [positionTitle, setPositionTitle] = useState("");
@@ -64,7 +54,8 @@ const VouchCTAModal = ({
   const [standOutSkill1, setStandOutSkill1] = useState(""); // Industry Skill
   const [standOutSkill2, setStandOutSkill2] = useState(""); // Interpersonal Skill
   const [standOutSkill3, setStandOutSkill3] = useState(""); // Interview Skill
-
+  const [yearsOfExperience, setYearsOfExperience] = useState(""); // Years of Experience Dropdown
+  const [positionType, setPositionType] = useState(""); // position Type
   const candidateUUID = crypto.randomUUID();
 
   const clearFormState = () => {
@@ -75,6 +66,8 @@ const VouchCTAModal = ({
     setStandOutSkill1("");
     setStandOutSkill2("");
     setStandOutSkill3("");
+    setYearsOfExperience("");
+    setPositionType("");
   };
 
   //replace with HR authentication
@@ -92,6 +85,8 @@ const VouchCTAModal = ({
         standOutSkill2: "incompleteField",
         standOutSkill3: "incompleteField",
         privacyId: "incompleteField",
+        positionType: "incompleteField",
+        yearsOfExperience: "incompleteField",
       },
     }
   );
@@ -146,6 +141,8 @@ const VouchCTAModal = ({
         standOutSkill2: standOutSkill2,
         standOutSkill3: standOutSkill3,
         privacyId: candidateUUID,
+        yearsOfExperience: yearsOfExperience,
+        positionType: positionType,
       },
     });
     if (loading) return "Submitting...";
@@ -164,6 +161,8 @@ const VouchCTAModal = ({
     const standOutSkill1Validator = standOutSkill1;
     const standOutSkill2Validator = standOutSkill2;
     const standOutSkill3Validator = standOutSkill3;
+    const yearsOfExperienceValidator = yearsOfExperience;
+    const positionTypeValidator = positionType;
 
     if (
       (standOutSkill1Validator ||
@@ -172,7 +171,9 @@ const VouchCTAModal = ({
       emailValidator &&
       positionTitleValidator &&
       salaryRangeValidator &&
-      stageOfInterviewValidator
+      stageOfInterviewValidator &&
+      positionTypeValidator &&
+      yearsOfExperienceValidator
     ) {
       return false;
     } else if (emailValidator.length <= 0) {
@@ -196,7 +197,6 @@ const VouchCTAModal = ({
       >
         <div className={"text-xs"}>
           <div className={"grid grid-cols-3"}>
-            
             <div className={"col-span-3 px-4 text-gray-700"}>
               {" "}
               <div>
@@ -207,10 +207,11 @@ const VouchCTAModal = ({
                   />
                 </div>
                 <div className=" font-bold flex-nowrap flex justify-start text-sm ">
-                  STEP 1: Invite a Candidate <InformationCircleIcon
-                  className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer"
-                  onClick={() => setIconModalIsOpen(true)}
-                />
+                  STEP 1: Invite a Candidate{" "}
+                  <InformationCircleIcon
+                    className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer"
+                    onClick={() => setIconModalIsOpen(true)}
+                  />
                 </div>
                 <div className={"flex justify-center py-2 pb-2"}>
                   <input
@@ -232,7 +233,8 @@ const VouchCTAModal = ({
                     Step 2: Interview and Position Details
                   </div>
                   <div className="text-gray-300 flex justify-start pb-2">
-                  Only HR admins in the platform will be able to view these details
+                    Only HR admins in the platform will be able to view these
+                    details
                   </div>
                 </div>
 
@@ -260,7 +262,7 @@ const VouchCTAModal = ({
                           onChange={(e) => {
                             setInterviewStage(e.target.value);
                           }}
-                          positionDropDownArray={InterviewStageDropDownArray}
+                          positionDropDownArray={InterviewStageDropdownArray}
                         />
                       </div>
                     </div>
@@ -278,7 +280,7 @@ const VouchCTAModal = ({
                         onChange={(e) => {
                           setSalaryRange(e.target.value);
                         }}
-                        BaseSalaryDropDownArray={BaseSalaryDropDownArray}
+                        BaseSalaryDropDownArray={BaseSalaryDropdownArray}
                       />
                     </div>
                   </div>
@@ -291,12 +293,12 @@ const VouchCTAModal = ({
                       </div>
                       <div className={"pr-3"}>
                         <PositionFilterVouch
-                          value={interviewStage}
+                          value={positionType}
                           backgroundColour="white"
                           onChange={(e) => {
-                            setInterviewStage(e.target.value);
+                            setPositionType(e.target.value);
                           }}
-                          positionDropDownArray={InterviewStageDropDownArray}
+                          positionDropDownArray={positionCategoryDropdownArray}
                         />
                       </div>
                     </div>
@@ -309,12 +311,12 @@ const VouchCTAModal = ({
                     </div>{" "}
                     <div className={"pl-3"}>
                       <BaseSalaryFilterVouch
-                        value={salaryRange}
+                        value={yearsOfExperience}
                         backgroundColour="white"
                         onChange={(e) => {
-                          setSalaryRange(e.target.value);
+                          setYearsOfExperience(e.target.value);
                         }}
-                        BaseSalaryDropDownArray={BaseSalaryDropDownArray}
+                        BaseSalaryDropDownArray={YearsOfExperienceDropdownArray}
                       />
                     </div>
                   </div>
@@ -322,7 +324,7 @@ const VouchCTAModal = ({
                 <div className="py-4">
                   <hr className="" />
                 </div>
-                
+
                 <div className="py-2 flex justify-center">
                   <ButtonVouch
                     backgroundColour="VouchGreen"
@@ -356,9 +358,9 @@ const VouchCTAModal = ({
           pauseOnHover
         />
         <CTAinstructionsModal
-           modalIsOpen={iconModalIsOpen}
-           closeModal={() => setIconModalIsOpen(false)}
-           />
+          modalIsOpen={iconModalIsOpen}
+          closeModal={() => setIconModalIsOpen(false)}
+        />
       </Modal>{" "}
     </div>
   );

@@ -13,7 +13,7 @@ import { TagIcon } from "@heroicons/react/solid";
 import {
   industryArrayList,
   jobCompanySizeDropdownData,
-  stateProvince,
+  stateProvinceDropdownArray,
 } from "../../pages/api/dropdownCategories";
 
 export interface HROnboardingProps {
@@ -240,7 +240,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 </div>
                 <SearchFilterDash
                   backgroundColour={"white"}
-                  dropDownArray={stateProvince}
+                  dropDownArray={stateProvinceDropdownArray}
                   value={hrStateLocation}
                   onChange={(e) => {
                     setHrStateLocation(e.target.value);
