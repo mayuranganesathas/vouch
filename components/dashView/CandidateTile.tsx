@@ -113,6 +113,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               anonymous="Available"
             />{" "}
           </div>
+          //available
         );
       }
     }
@@ -127,7 +128,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       </div>
     );
 
-    //available
+    //resting state
   };
 
   const thumbUpClick = () => {
@@ -359,9 +360,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
   return (
     <div className="py-2  col-span-full">
-      {JSON.stringify(
-        anonData.anonymity.filter((e) => e.candidateId == userID)
-      )}
       <div
         className={
           "w-6/6 max-h-fit filter drop-shadow-sm bg-white grid grid-cols-3 grid-flow-col text-sm text-gray-500 py-2 "
@@ -383,7 +381,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                         : "border-2 rounded-t-full rounded-b-full grid place-content-evenly"
                     }
                   >
-                    {/* get animation of backround to disappear*/}
                     {iconShortList()}
                   </div>
                 </div>
@@ -406,10 +403,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                       }
                     >
                       {anonData && anonymitySelector()}
-                      {/* <ButtonLinkedin
-                        backgroundColour="white"
-                        userLinkedinURL={userLinkedinURL}
-                      />{" "} */}
                     </div>
                   </div>
                 </div>
