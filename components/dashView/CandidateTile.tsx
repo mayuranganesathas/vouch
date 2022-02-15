@@ -113,6 +113,17 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           </div>
           //available
         );
+      } else {
+        return (
+          <div>
+            <ButtonLinkedin
+              backgroundColour="white"
+              userLinkedinURL={userLinkedinURL}
+              anonymous="Request"
+              onClick={insertAnon}
+            />
+          </div>
+        );
       }
     }
 
