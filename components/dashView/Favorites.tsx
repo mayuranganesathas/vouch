@@ -26,6 +26,7 @@ export interface FavoritesDashboardProps {
   yearsOfExperienceFilterDropdown: any;
   filterChangeYearsOfExperience: (e) => void;
 
+  anonData: any;
   shortListData: any;
   refetchShortList: any;
   stageStatus: string;
@@ -46,6 +47,7 @@ export const FavoritesDashboard = ({
   filterChangePositionType,
   yearsOfExperienceFilterDropdown,
   filterChangeYearsOfExperience,
+  anonData,
   stageStatus,
   shortListData,
   refetchShortList,
@@ -187,6 +189,7 @@ export const FavoritesDashboard = ({
             candidateLocationFilterDropdown={candidateLocationFilterDropdown}
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             positionTypeFilterDropdown={positionTypeFilterDropdown}
+            anonData={anonData}
           />
         }
       </div>

@@ -28,6 +28,7 @@ export interface CandidateTileProps {
   stageStatus?: any;
   yearsOfExperience: string;
   hrManagerIndustry: string;
+  anonData: any;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -46,6 +47,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   stageStatus,
   yearsOfExperience,
   hrManagerIndustry,
+  anonData,
 }) => {
   const { user } = useAuth();
   const hrId = user.uid;

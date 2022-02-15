@@ -12,6 +12,7 @@ export interface DashCandidateTilesShortListProps {
   candidateLocationFilterDropdown: any;
   yearsOfExperienceFilterDropdown: any;
   positionTypeFilterDropdown: any;
+  anonData: any;
 }
 
 const DashCandidateTilesShortList = ({
@@ -24,6 +25,7 @@ const DashCandidateTilesShortList = ({
   candidateLocationFilterDropdown,
   yearsOfExperienceFilterDropdown,
   positionTypeFilterDropdown,
+  anonData,
 }: DashCandidateTilesShortListProps) => {
   const candidateCounter = () => {
     setExistingCandidates(0);
@@ -182,6 +184,7 @@ const DashCandidateTilesShortList = ({
               key={i}
               hrManagerIndustry={e.hr_voucher_metadatum.Hr_Account[0].industry}
               yearsOfExperience={e.hr_voucher_metadatum.yearsOfExperience}
+              anonData={anonData}
             />
           ))}
       {vouchData && candidateCounter()}
