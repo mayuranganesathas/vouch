@@ -52,7 +52,7 @@ const TileModal = ({
   };
 
   const sendEmail = async () => {
-    const res = await fetch("/api/interestEmail", {
+    const res = await fetch("/api/email/interestEmail", {
       body: JSON.stringify({
         email: userEmailAction,
         hrEmail: hrEmail,
