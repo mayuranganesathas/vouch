@@ -12,6 +12,7 @@ import { useAuth } from "../../lib/authContext";
 import { toast, ToastContainer } from "react-toastify";
 import { DELETE_SHORTLIST_ITEM } from "../../graphql/DELETE_FROM_SHORTLIST";
 import CandidateTileModal from "./CandidateTileModal";
+import { INSERT_ANON } from "../../graphql/INSERT_ANON";
 export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
@@ -50,15 +51,15 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const { user } = useAuth();
   const hrId = user.uid;
   const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
-    //Mutation for updating a user emoji value after a practice
     INSERT_THUMBS_UP_AND_DOWN,
     {
       onCompleted: refetchShortList,
     }
   );
 
+  const [InsertAnon, { data: AnonCheck }] = useMutation(INSERT_ANON);
+
   const [removeShortList, { data: RemoveSL }] = useMutation(
-    //Mutation for updating a user emoji value after a practice
     DELETE_SHORTLIST_ITEM,
     {
       onCompleted: refetchShortList,
@@ -73,17 +74,8 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [unfitFavoritesAnimation, setUnfitFavoritesAnimation] = useState(false);
   const [hideIconsAboveAndBelow, setHideIconsAboveAndBelow] = useState("");
   const [hideIconsBelow, setHideIconsBelow] = useState("");
-
   const [animationBg, setAnimationBg] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
 
   const thumbUpClick = () => {
     ThumbUpAndDownMutation({
@@ -119,6 +111,18 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       },
     });
   };
+
+  const insertAnon = () => {
+    InsertAnon({
+      variables: {
+        candidateId: userID,
+        hrId: hrId,
+        status: "request",
+      },
+    });
+  };
+  // TODO: request, requested, accepted states of LinkedIN button
+
   //refetch queries.
   const iconShortList = () => {
     if (stageStatus == "Favorites") {
@@ -149,7 +153,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center pb-0.5"}>
             <MailOpenIcon
               className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow}  ${hideIconsAboveAndBelow}`}
-              onClick={openModal}
+              onClick={() => setIsOpen(true)}
             />
           </div>
         </div>
@@ -182,7 +186,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center pb-0.5"}>
             <MailOpenIcon
               className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow}  ${hideIconsAboveAndBelow}`}
-              onClick={openModal}
+              onClick={() => setIsOpen(true)}
             />
           </div>
         </div>
@@ -223,7 +227,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           <div className={"flex justify-center pb-0.5"}>
             <MailOpenIcon
               className={`h-4 w-4 text-gray-400 hover:text-VouchGreen cursor-pointer ${hideIconsBelow} ${hideIconsAboveAndBelow} `}
-              onClick={openModal}
+              onClick={() => setIsOpen(true)}
             />
           </div>
         </div>
@@ -360,6 +364,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                       <ButtonLinkedin
                         backgroundColour="white"
                         userLinkedinURL={userLinkedinURL}
+                        onClick={insertAnon}
                       />{" "}
                     </div>
                   </div>
@@ -427,7 +432,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       />
       <CandidateTileModal
         modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
+        closeModal={() => setIsOpen(false)}
         hrData={hrData}
         userEmailAction={userEmailAction}
         candidateFirstName={firstName}
