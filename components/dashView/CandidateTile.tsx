@@ -87,6 +87,49 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     setIsOpen(false);
   };
 
+  const anonymitySelector = () => {
+    const anonymous = anonData.anonymity.filter((e) => e.candidateId == userID);
+
+    //
+    if (anonymous.length > 0) {
+      if (anonymous[0].status == "requested") {
+        return (
+          <div>
+            <ButtonLinkedin
+              backgroundColour="white"
+              userLinkedinURL={userLinkedinURL}
+              anonymous="Requested"
+            />
+          </div>
+        );
+
+        //requested
+      } else if (anonymous[0].status == "available") {
+        return (
+          <div>
+            <ButtonLinkedin
+              backgroundColour="white"
+              userLinkedinURL={userLinkedinURL}
+              anonymous="Available"
+            />{" "}
+          </div>
+        );
+      }
+    }
+
+    return (
+      <div>
+        <ButtonLinkedin
+          backgroundColour="white"
+          userLinkedinURL={userLinkedinURL}
+          anonymous="Request"
+        />
+      </div>
+    );
+
+    //available
+  };
+
   const thumbUpClick = () => {
     ThumbUpAndDownMutation({
       variables: {
@@ -316,6 +359,9 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
   return (
     <div className="py-2  col-span-full">
+      {JSON.stringify(
+        anonData.anonymity.filter((e) => e.candidateId == userID)
+      )}
       <div
         className={
           "w-6/6 max-h-fit filter drop-shadow-sm bg-white grid grid-cols-3 grid-flow-col text-sm text-gray-500 py-2 "
@@ -359,10 +405,11 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                         "grid justify-items-start pt-1 border-r-2 border-gray-200"
                       }
                     >
-                      <ButtonLinkedin
+                      {anonData && anonymitySelector()}
+                      {/* <ButtonLinkedin
                         backgroundColour="white"
                         userLinkedinURL={userLinkedinURL}
-                      />{" "}
+                      />{" "} */}
                     </div>
                   </div>
                 </div>
