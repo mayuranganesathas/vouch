@@ -79,6 +79,58 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [animationBg, setAnimationBg] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
 
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const anonymitySelector = () => {
+    const anonymous = anonData.anonymity.filter((e) => e.candidateId == userID);
+
+    //
+    if (anonymous.length > 0) {
+      if (anonymous[0].status == "requested") {
+        return (
+          <div>
+            <ButtonLinkedin
+              backgroundColour="white"
+              userLinkedinURL={userLinkedinURL}
+              anonymous="Requested"
+            />
+          </div>
+        );
+
+        //requested
+      } else if (anonymous[0].status == "available") {
+        return (
+          <div>
+            <ButtonLinkedin
+              backgroundColour="white"
+              userLinkedinURL={userLinkedinURL}
+              anonymous="Available"
+            />{" "}
+          </div>
+          //available
+        );
+      }
+    }
+
+    return (
+      <div>
+        <ButtonLinkedin
+          backgroundColour="white"
+          userLinkedinURL={userLinkedinURL}
+          anonymous="Request"
+        />
+      </div>
+    );
+
+    //resting state
+  };
+
   const thumbUpClick = () => {
     ThumbUpAndDownMutation({
       variables: {
@@ -341,7 +393,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                         : "border-2 rounded-t-full rounded-b-full grid place-content-evenly"
                     }
                   >
-                    {/* get animation of backround to disappear*/}
                     {iconShortList()}
                   </div>
                 </div>
@@ -363,11 +414,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                         "grid justify-items-start pt-1 border-r-2 border-gray-200"
                       }
                     >
-                      <ButtonLinkedin
-                        backgroundColour="white"
-                        userLinkedinURL={userLinkedinURL}
-                        onClick={insertAnon}
-                      />{" "}
+                      {anonData && anonymitySelector()}
                     </div>
                   </div>
                 </div>

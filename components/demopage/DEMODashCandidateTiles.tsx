@@ -126,6 +126,7 @@ const DashCandidateTiles = ({
               key={i}
               hrManagerIndustry={e.Hr_Account[0].industry}
               yearsOfExperience={e.yearsOfExperience}
+              anonData={[]}
             />
           ))}
       {vouchData && candidateCounter()}

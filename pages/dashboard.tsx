@@ -7,7 +7,6 @@ import { QUERY_DASHBOARD_TILES } from "../graphql/QUERY_DASHBOARD_TILES";
 import { useAuth } from "../lib/authContext";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import router from "next/router";
-
 import { QUERY_SHORT_LIST } from "../graphql/QUERY_SHORTLIST";
 import {
   positionCategoryDropdownArray,
@@ -19,6 +18,7 @@ import { HomeDashboard } from "../components/dashView/Home";
 import { FavoritesDashboard } from "../components/dashView/Favorites";
 import { HiddenDashboard } from "../components/dashView/Hidden";
 import { ContactedDashboard } from "../components/dashView/Contacted";
+import { QUERY_ANON } from "../graphql/QUERY_ANON_ONHRID";
 
 export interface DashboardProps {}
 
@@ -54,6 +54,16 @@ const DashBoard = ({}: DashboardProps) => {
     },
   });
 
+  const { data: AnonData } = useQuery(QUERY_ANON, {
+    variables: {
+      hrId: user.uid,
+    },
+  });
+
+  const { data: hrData } = useQuery(QUERY_HRID, {
+    variables: { hrId: user.uid },
+  });
+
   const getTileComponent = () => {
     if (stageStatus == "Home") {
       return (
@@ -75,6 +85,7 @@ const DashBoard = ({}: DashboardProps) => {
             positionCategoryDropdownList={positionCategoryDropdownArray}
             yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
+            anonData={AnonData}
           />
         </div>
       );
@@ -99,6 +110,7 @@ const DashBoard = ({}: DashboardProps) => {
             positionCategoryDropdownList={positionCategoryDropdownArray}
             yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
+            anonData={AnonData}
           />
         </div>
       );
@@ -123,6 +135,7 @@ const DashBoard = ({}: DashboardProps) => {
             positionCategoryDropdownList={positionCategoryDropdownArray}
             yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
+            anonData={AnonData}
           />
         </div>
       );
@@ -147,15 +160,12 @@ const DashBoard = ({}: DashboardProps) => {
             positionCategoryDropdownList={positionCategoryDropdownArray}
             yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
+            anonData={AnonData}
           />
         </div>
       );
     }
   };
-
-  const { data: hrData } = useQuery(QUERY_HRID, {
-    variables: { hrId: user.uid },
-  });
 
   const clearFilters = () => {
     setCandidateLocationFilterDropdown("empty");

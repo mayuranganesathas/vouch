@@ -3,18 +3,17 @@ export interface ButtonLinkedinProps {
   backgroundColour: "white";
   disabled?: boolean;
   userLinkedinURL: any;
-  onClick: () => void;
+  anonymous: string;
 }
 
 export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
   backgroundColour,
   disabled = false,
   userLinkedinURL,
-  onClick,
+  anonymous,
 }) => {
   return (
     <button
-      onClick={onClick}
       disabled={disabled}
       type="button"
       className={` bg-white w-4 h-auto flex flex-nowrap text-xs 
@@ -26,7 +25,7 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
         src="./images/linkedInTile.png"
         className={"flex justify-center items-center w-8 h-auto"}
       />{" "}
-      <div className={"pl-1"}>Request</div>
+      <div className={"pl-1"}>{anonymous}</div>
     </button>
   );
 };
