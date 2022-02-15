@@ -113,6 +113,17 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           </div>
           //available
         );
+      } else {
+        return (
+          <div>
+            <ButtonLinkedin
+              backgroundColour="white"
+              userLinkedinURL={userLinkedinURL}
+              anonymous="Request"
+              onClick={insertAnon}
+            />
+          </div>
+        );
       }
     }
 
@@ -173,10 +184,33 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         status: "requested",
       },
     });
+    sendEmail();
   };
-  // TODO: request, requested, accepted states of LinkedIN button
 
-  //refetch queries.
+  const sendEmail = async () => {
+    const res = await fetch("/api/email/requestEmail", {
+      body: JSON.stringify({
+        email: userEmailAction,
+        hrId: user.uid,
+        hrEmail: user.email,
+        hrFirstName: hrData.hr_voucher[0].firstName,
+        hrLastName: hrData.hr_voucher[0].lastName,
+        companyName: hrData.hr_voucher[0].companyName,
+        candidateId: userID,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      return;
+    }
+  };
+
   const iconShortList = () => {
     if (stageStatus == "Favorites") {
       return (

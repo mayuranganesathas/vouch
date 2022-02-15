@@ -96,7 +96,7 @@ const VouchCTAModal = ({
   };
 
   const sendEmail = async () => {
-    const res = await fetch("/api/vouchEmailCandidate", {
+    const res = await fetch("/api/email/vouchEmailCandidate", {
       body: JSON.stringify({
         email: email,
         hrId: user.uid,
