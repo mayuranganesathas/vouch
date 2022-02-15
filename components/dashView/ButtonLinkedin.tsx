@@ -2,26 +2,20 @@ import React from "react";
 export interface ButtonLinkedinProps {
   backgroundColour: "white";
   disabled?: boolean;
-  onClick?: () => void;
   userLinkedinURL: any;
+  onClick: () => void;
 }
 
 export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
   backgroundColour,
   disabled = false,
-  onClick,
   userLinkedinURL,
+  onClick,
 }) => {
-  const openSite = () => {
-    window.open(`https://${userLinkedinURL}`);
-  };
-
   return (
-    
-    
     <button
+      onClick={onClick}
       disabled={disabled}
-      onClick={openSite}
       type="button"
       className={` bg-white w-4 h-auto flex flex-nowrap text-xs 
       ${disabled ? "bg-gray-400 opacity-25" : backgroundColour}
@@ -31,8 +25,8 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
       <img
         src="./images/linkedInTile.png"
         className={"flex justify-center items-center w-8 h-auto"}
-      /> <div className={"pl-1"}>Request</div>
+      />{" "}
+      <div className={"pl-1"}>Request</div>
     </button>
-    
   );
 };
