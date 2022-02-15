@@ -6,7 +6,7 @@ import { ReceiptRefundIcon } from "@heroicons/react/solid";
 import { EyeOffIcon } from "@heroicons/react/solid";
 import { MailOpenIcon, MailIcon } from "@heroicons/react/solid";
 
-import { useMutation } from "@apollo/client";
+import { rewriteURIForGET, useMutation } from "@apollo/client";
 import { INSERT_THUMBS_UP_AND_DOWN } from "../../graphql/INSERT_THUMBS_UP";
 import { useAuth } from "../../lib/authContext";
 import { toast, ToastContainer } from "react-toastify";
@@ -78,6 +78,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [hideIconsBelow, setHideIconsBelow] = useState("");
   const [animationBg, setAnimationBg] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [requested, setRequested] = useState(false);
 
   const anonymitySelector = () => {
     const anonymous = anonData.anonymity.filter((e) => e.candidateId == userID);
@@ -132,7 +133,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <ButtonLinkedin
           backgroundColour="white"
           userLinkedinURL={userLinkedinURL}
-          anonymous="Request"
+          anonymous={requested}
           onClick={insertAnon}
         />
       </div>
@@ -185,6 +186,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       },
     });
     sendEmail();
+    setRequested(true);
   };
 
   const sendEmail = async () => {

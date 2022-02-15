@@ -54,7 +54,7 @@ const DashBoard = ({}: DashboardProps) => {
     },
   });
 
-  const { data: AnonData } = useQuery(QUERY_ANON, {
+  const { data: AnonData, refetch: refetchAnonymity } = useQuery(QUERY_ANON, {
     variables: {
       hrId: user.uid,
     },
