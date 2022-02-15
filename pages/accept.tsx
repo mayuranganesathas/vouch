@@ -3,19 +3,20 @@ import React, { useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import router from "next/router";
 import "react-toastify/dist/ReactToastify.css";
-import { UPSERT_ANON } from "../graphql/UPSERT_ANON";
+import { INSERT_ANON } from "../graphql/INSERT_ANON";
 
 export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
   const candidateId = router.query.candidateId.toString();
 
   const [upsertAnonymity, { data, loading, error }] = useMutation(
-    UPSERT_ANON,
+    INSERT_ANON,
 
     {
       variables: {
         hrId: "incompleteField",
         candidateId: "incompleteField",
+        status: "incompleteField",
       },
     }
   );
@@ -25,6 +26,7 @@ export default function acceptPrivacy() {
       variables: {
         hrId: hrId,
         candidateId: candidateId,
+        status: "available",
       },
     });
   });
