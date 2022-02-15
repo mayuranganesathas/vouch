@@ -79,14 +79,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   const [animationBg, setAnimationBg] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
   const anonymitySelector = () => {
     const anonymous = anonData.anonymity.filter((e) => e.candidateId == userID);
 
@@ -99,6 +91,11 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               backgroundColour="white"
               userLinkedinURL={userLinkedinURL}
               anonymous="Requested"
+              onClick={() =>
+                window.alert(
+                  "You've already requested the candidates information!"
+                )
+              }
             />
           </div>
         );
@@ -111,6 +108,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               backgroundColour="white"
               userLinkedinURL={userLinkedinURL}
               anonymous="Available"
+              onClick={() => window.open(`https://${userLinkedinURL}`)}
             />{" "}
           </div>
           //available
@@ -124,6 +122,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           backgroundColour="white"
           userLinkedinURL={userLinkedinURL}
           anonymous="Request"
+          onClick={insertAnon}
         />
       </div>
     );
@@ -171,7 +170,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       variables: {
         candidateId: userID,
         hrId: hrId,
-        status: "request",
+        status: "requested",
       },
     });
   };

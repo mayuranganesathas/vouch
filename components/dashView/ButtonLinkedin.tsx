@@ -4,6 +4,7 @@ export interface ButtonLinkedinProps {
   disabled?: boolean;
   userLinkedinURL: any;
   anonymous: string;
+  onClick: () => void;
 }
 
 export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
@@ -11,9 +12,11 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
   disabled = false,
   userLinkedinURL,
   anonymous,
+  onClick,
 }) => {
   return (
     <button
+      onClick={onClick}
       disabled={disabled}
       type="button"
       className={` bg-white w-4 h-auto flex flex-nowrap text-xs 
