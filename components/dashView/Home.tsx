@@ -26,7 +26,7 @@ export interface HomeDashboardProps {
 
   yearsOfExperienceFilterDropdown: any;
   filterChangeYearsOfExperience: (e) => void;
-
+  anonData: any;
   data: any;
   refetchShortList: any;
 }
@@ -46,6 +46,7 @@ export const HomeDashboard = ({
   filterChangePositionType,
   yearsOfExperienceFilterDropdown,
   filterChangeYearsOfExperience,
+  anonData,
   data,
   refetchShortList,
 }: HomeDashboardProps) => {
@@ -185,6 +186,7 @@ export const HomeDashboard = ({
           existingCandidates={existingCandidates}
           setExistingCandidates={setExistingCandidates}
           hrData={hrData}
+          anonData={anonData}
         />
       </div>
     </div>

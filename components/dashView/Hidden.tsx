@@ -24,6 +24,7 @@ export interface HiddenDashboardProps {
 
   yearsOfExperienceFilterDropdown: any;
   filterChangeYearsOfExperience: (e) => void;
+  anonData: any;
   shortListData: any;
   refetchShortList: any;
   stageStatus: string;
@@ -44,6 +45,7 @@ export const HiddenDashboard = ({
   filterChangePositionType,
   yearsOfExperienceFilterDropdown,
   filterChangeYearsOfExperience,
+  anonData,
   stageStatus,
   shortListData,
   refetchShortList,
@@ -177,6 +179,7 @@ export const HiddenDashboard = ({
             candidateLocationFilterDropdown={candidateLocationFilterDropdown}
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             positionTypeFilterDropdown={positionTypeFilterDropdown}
+            anonData={anonData}
           />
         }
       </div>
