@@ -74,7 +74,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
           </div>
           <div className={"pt-1 text-xs text-gray-500 w-full"}>
             We require minimal information from you to preserve your privacy.
-            Only first anme, location and referring company details will be
+            Only first name, location and referring company details will be
             shared actively with hiring companies.
           </div>
 
@@ -178,6 +178,14 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             modalIsOpen={iconModalIsOpen}
             closeModal={() => setIconModalIsOpen(false)}
           />
+          <div className="flex justify-center items-center pt-12">
+            <img
+              src="./images/VouchLogo1.png"
+              width="100"
+              height="auto"
+              className={"flex justify-center items-center py-2 px-2"}
+            />
+          </div>
         </div>
       </div>
     </div>
