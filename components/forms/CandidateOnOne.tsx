@@ -51,3 +51,4 @@ export const CandidateOnOne: React.FC<CandidateOnOneProps> = ({ onClick }) => {
     </div>
   );
 };
+/*Image Attribution: vecteezy.com*/
