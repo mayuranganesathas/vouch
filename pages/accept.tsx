@@ -31,5 +31,5 @@ export default function acceptPrivacy() {
     });
   }, []);
 
-  return <div className={"bg-white w-full h-screen"}>TEST IT HAPPENED!</div>;
+  return <div className={"bg-white w-full h-screen"}>You've Accepted.</div>;
 }
