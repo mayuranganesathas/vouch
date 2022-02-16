@@ -14,7 +14,7 @@ async function sendEmail(req, res) {
       cc: `${req.body.hrEmail}`,
       templateId: "d-9e5ab00d24894367bdd292b137d452bb",
       dynamicTemplateData: {
-        candidateFirstName: `${req.body.candidateFirstName}`,
+        candidateFirstName: `${req.body.canFirstName}`,
         hrFirstName: `${req.body.hrFirstName}`,
         hrLastName: `${req.body.hrLastName}`,
         companyName: `${req.body.companyName}`,
