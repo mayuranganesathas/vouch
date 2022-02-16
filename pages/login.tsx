@@ -82,8 +82,23 @@ export default function RegisterHRLogin() {
               </div>
               <div className="text-xs text-gray-400 pt-4">
                 {" "}
-                By continuing, you agree to Vouch's Terms of use. Read our
-                Privacy Policy
+                By continuing, you agree to Vouch's{" "}
+                <a
+                  href={"https://www.vouchrecruit.com/termsandconditions"}
+                  target="_blank"
+                  className="text-VouchGreen"
+                >
+                  Terms of use{" "}
+                </a>
+                and our
+                <a
+                  href="https://www.vouchrecruit.com/privacypolicy"
+                  target="_blank"
+                  className="text-VouchGreen"
+                >
+                  {" "}
+                  Privacy Policy.
+                </a>
               </div>
               <div className="py-10 text-xs text-gray-400 text-center">
                 <span>Don't have an account?</span>{" "}
@@ -138,8 +153,23 @@ export default function RegisterHRLogin() {
               </div>
               <div className="text-xs text-gray-400 pt-4">
                 {" "}
-                By continuing, you agree to Vouch's Terms of use. Read our
-                Privacy Policy
+                By continuing, you agree to Vouch's{" "}
+                <a
+                  href={"https://www.vouchrecruit.com/termsandconditions"}
+                  target="_blank"
+                  className="text-VouchGreen"
+                >
+                  Terms of use{" "}
+                </a>
+                and our
+                <a
+                  href="https://www.vouchrecruit.com/privacypolicy"
+                  target="_blank"
+                  className="text-VouchGreen"
+                >
+                  {" "}
+                  Privacy Policy.
+                </a>
               </div>
               <div className="py-10 text-xs text-gray-400 text-center">
                 <span>Already signed up?</span>{" "}
@@ -202,8 +232,23 @@ export default function RegisterHRLogin() {
               </div>
               <div className="text-xs text-gray-400 pt-4">
                 {" "}
-                By continuing, you agree to Vouch's Terms of use. Read our
-                Privacy Policy
+                By continuing, you agree to Vouch's{" "}
+                <a
+                  href={"https://www.vouchrecruit.com/termsandconditions"}
+                  target="_blank"
+                  className="text-VouchGreen"
+                >
+                  Terms of use{" "}
+                </a>
+                and our
+                <a
+                  href="https://www.vouchrecruit.com/privacypolicy"
+                  target="_blank"
+                  className="text-VouchGreen"
+                >
+                  {" "}
+                  Privacy Policy.
+                </a>
               </div>
             </div>
           </div>
