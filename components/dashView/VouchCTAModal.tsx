@@ -158,16 +158,11 @@ const VouchCTAModal = ({
     const positionTitleValidator = positionTitle;
     const salaryRangeValidator = salaryRange;
     const stageOfInterviewValidator = interviewStage;
-    const standOutSkill1Validator = standOutSkill1;
-    const standOutSkill2Validator = standOutSkill2;
-    const standOutSkill3Validator = standOutSkill3;
+
     const yearsOfExperienceValidator = yearsOfExperience;
     const positionTypeValidator = positionType;
 
     if (
-      (standOutSkill1Validator ||
-        standOutSkill2Validator ||
-        standOutSkill3Validator) &&
       emailValidator &&
       positionTitleValidator &&
       salaryRangeValidator &&
