@@ -232,7 +232,7 @@ export default function RegisterHRLogin() {
             "col-start-2 flex justify-end items-center pr-8 pt-8 text-white"
           }
         >
-          <ButtonVouch
+          {/* <ButtonVouch
             backgroundColour="empty2"
             buttonType="square"
             textColour="VouchGreen"
@@ -240,7 +240,7 @@ export default function RegisterHRLogin() {
             onClick={() => {
               window.open("https://www.vouchrecruit.com");
             }}
-          />
+          /> */}
         </div>
       </div>
       <div className={"grid grid-cols-2 pl-8"}>
