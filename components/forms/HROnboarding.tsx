@@ -77,7 +77,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
 
   return (
     <div className={"flex justify-center items-center"}>
-      <div className={"shadow-lg rounded-xl w-2/5 h-auto bg-white"}>
+      <div className={"shadow-lg rounded-xl w-2/6 h-auto bg-white"}>
         <div className={"grid grid-cols-2"}>
           <div className={"col-start-1 col-span-2 px-8 text-gray-700 text-xs"}>
             <div
@@ -96,12 +96,12 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
               companies in the platform.
             </div>
 
-            <div className="py-6">
+            <div className="">
               <hr className="" />
             </div>
-            <div className={"font-bold text-sm"}>Profile Details</div>
-            <div className={"grid grid-cols-2"}>
-              <div className={"pt-4"}>
+            <div className={"font-bold text-sm pt-6"}>Profile Details</div>
+            <div className={"grid grid-cols-2 pb-6"}>
+              <div className={"pt-1"}>
                 <input
                   className={
                     "border border-gray-300 text-xs rounded py-1 px-4 w-5/6"
@@ -113,7 +113,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   } /*needs new props*/
                 />
               </div>
-              <div className={"pt-4"}>
+              <div className={"pt-1"}>
                 <input
                   className={
                     "border border-gray-300 text-xs rounded py-1 px-4 w-5/6"
@@ -126,9 +126,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 />
               </div>
             </div>
-            <div className="py-4">
-              <hr className="" />
-            </div>
+
             <div className={"font-bold text-sm"}>Company Details</div>
             <div className={"grid grid-cols-3 "}>
               <div className={"col-start-1 col-span-2 pt-1"}>
@@ -143,7 +141,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   />
                 </div>
 
-                <div className={"py-8"}>
+                <div className={"py-5"}>
                   <input
                     className={
                       "border border-gray-300 text-xs rounded py-1 px-4 w-5/6"
@@ -178,7 +176,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                     }}
                   />
                 </div>
-                <div className={"py-4"}>
+                <div className={"py-1"}>
                   <div className={"text-xs font-bold text-gray-500"}>
                     Company Size
                   </div>
@@ -253,6 +251,14 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 {" "}
                 Privacy Policy.
               </a>
+              <div className="flex justify-center items-center pt-12">
+                <img
+                  src="./images/VouchLogo1.png"
+                  width="100"
+                  height="auto"
+                  className={"flex justify-center items-center py-2 px-2"}
+                />
+              </div>
               <HRRegInstrucModal
                 modalIsOpen={iconModalIsOpen}
                 closeModal={() => setIconModalIsOpen(false)}
