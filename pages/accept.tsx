@@ -32,7 +32,9 @@ export default function acceptPrivacy() {
     });
   }, []);
 
-  const onClick = () => {};
+  const onClick = () => {
+    window.open("https://www.vouchrecruit.com/faq-candidate");
+  };
 
   return (
     <div className={"bg-gray-100 w-full h-screen grid content-center"}>
