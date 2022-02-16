@@ -105,7 +105,7 @@ export default function RegisterHRLogin() {
                 <span>
                   <HyperlinkButton
                     backgroundColour="white"
-                    label="Signup here"
+                    label="Sign up here"
                     buttonType="square"
                     textColour="VouchGreen"
                     onClick={() => {
