@@ -29,7 +29,7 @@ export default function acceptPrivacy() {
         status: "available",
       },
     });
-  });
+  }, []);
 
   return <div className={"bg-white w-full h-screen"}>TEST IT HAPPENED!</div>;
 }
