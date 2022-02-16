@@ -143,6 +143,21 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     //resting state
   };
 
+  const toastLinkedInRequest = () => {
+    toast.success(
+      "Great! We sent an email to the candidate. You'll hear back shortly. ✅",
+      {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  };
+
   const thumbUpClick = () => {
     ThumbUpAndDownMutation({
       variables: {
@@ -187,6 +202,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       },
     });
     sendEmail();
+    toastLinkedInRequest();
   };
 
   const sendEmail = async () => {
