@@ -233,9 +233,9 @@ export default function RegisterHRLogin() {
           }
         >
           <ButtonVouch
-            backgroundColour="white"
+            backgroundColour="empty2"
             buttonType="square"
-            textColour="white"
+            textColour="VouchGreen"
             label="Vouch Homepage"
             onClick={() => {
               window.open("https://www.vouchrecruit.com");
@@ -267,7 +267,7 @@ export default function RegisterHRLogin() {
           </div>
         </div>
 
-        <div className="pt-6">{getAuthTile()}</div>
+        <div className="pt-8">{getAuthTile()}</div>
       </div>
     </div>
   );
