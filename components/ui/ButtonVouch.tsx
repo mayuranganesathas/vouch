@@ -1,6 +1,6 @@
 import React from "react";
 export interface ButtonVouchProps {
-  backgroundColour: "VouchGreen" | "white" | "empty" | "empty2" |"gray";
+  backgroundColour: "VouchGreen" | "white" | "empty" | "empty2" | "gray";
   buttonType: "rounded" | "square";
   textColour: "black" | "white" | "VouchGreen";
   label: string;

@@ -156,7 +156,7 @@ export default function CandidateOn(props) {
   };
 
   return (
-    <div className={"bg-white w-full h-screen"}>
+    <div className={"bg-gray-100 w-full h-screen"}>
       <Head>
         <title>Register | Vouch</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
