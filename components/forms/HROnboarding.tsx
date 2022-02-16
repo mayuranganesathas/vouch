@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ButtonVouch } from "../ui/ButtonVouch";
 import { SearchFilterDash } from "../ui/searchFilterDash";
 import { UserGroupIcon } from "@heroicons/react/solid";
@@ -15,6 +15,8 @@ import {
   jobCompanySizeDropdownData,
   stateProvinceDropdownArray,
 } from "../../pages/api/dropdownCategories";
+import { InformationCircleIcon } from "@heroicons/react/solid";
+import HRRegInstrucModal from "./HRRegInstrucModal";
 
 export interface HROnboardingProps {
   onClick: () => void;
@@ -71,75 +73,29 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
   hrLastName,
   setHrLastName,
 }) => {
+  const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
+
   return (
     <div className={"flex justify-center items-center"}>
-      <div className={"shadow-lg rounded-xl w-7/12 h-auto bg-white"}>
-        <div className={"grid grid-cols-3"}>
-          <div className={"col-start-1 bg-VouchDark rounded-l-lg"}>
-            <div>
-              <div className={"py-10 text-xs"}>
-                <div className={"flex justify-center"}>
-                  <FlagIcon className={"w-8 h-auto "} fill="white" />
-                </div>
-                <div
-                  className={
-                    "flex justify-center py-2 font-bold text-sm text-white"
-                  }
-                >
-                  JOIN THE MOVEMENT
-                </div>
-                <div className={" text-white w-full text-center px-6"}>
-                  End the war for talent by working together. Gain access to a
-                  network of candidates of our very own
-                </div>
-                <div className={"flex justify-center pt-12"}>
-                  <LockOpenIcon className={"w-8 h-auto"} fill="white" />
-                </div>
-                <div
-                  className={"text-white  w-full px-6 pt-2 pb-12 text-center"}
-                >
-                  Get access to qualified and active candidates and continuously
-                  build up your pipeline{" "}
-                </div>
-                <div className={"flex justify-center pt-8"}>
-                  <UserAddIcon className={"w-8 h-auto"} fill="white" />
-                </div>
-                <div
-                  className={" text-white text-center px-6 w-full pt-2 pb-12"}
-                >
-                  Add late stage candidates from your own pipeline and make it a
-                  win-win!
-                </div>
-                <div className={"flex justify-center pt-8"}>
-                  <TagIcon className={"w-8 h-auto"} fill="white" />
-                </div>
-                <div>
-                  <div
-                    className={" text-white py-2 width-full text-center px-6"}
-                  >
-                    Use Vouch to save time and money on your next hire
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={"col-start-2 col-span-2 px-8 text-gray-700 text-xs"}>
-            <div className={"pt-4 text-left font-bold text-sm"}>
-              Set Up Your Company Profile
+      <div className={"shadow-lg rounded-xl w-2/5 h-auto bg-white"}>
+        <div className={"grid grid-cols-2"}>
+          <div className={"col-start-1 col-span-2 px-8 text-gray-700 text-xs"}>
+            <div
+              className={"pt-4 text-left font-bold text-sm flex flex-nowrap"}
+            >
+              VOUCH - Set Up Your Company Profile
+              <InformationCircleIcon
+                className=" text-gray-300 w-5 h-5 hover:text-VouchDark cursor-pointer pl-1"
+                onClick={() => setIconModalIsOpen(true)}
+              />
             </div>
 
-            <div className={"text-gray-600 py-4 pt-1"}>
-              Please take a moment to set up your profile. You and other HR
-              Leaders will be able to view candidate details and the company
-              details of other organizations who have referred candidates into
-              the platform.{" "}
+            <div className={"text-gray-500 py-4 pt-1"}>
+              Thank you for joining Vouch. Please take a moment to set up your
+              company profile. This information will be shared with other
+              companies in the platform.
             </div>
-            <div className={"text-gray-600 py-2"}>
-              How your dashboard will look:
-            </div>
-            <div className={"px-8"}>
-              <img src="./images/tileExample.png" width="full" height="auto" />
-            </div>
+
             <div className="py-6">
               <hr className="" />
             </div>
@@ -170,7 +126,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 />
               </div>
             </div>
-            <div className="py-6">
+            <div className="py-4">
               <hr className="" />
             </div>
             <div className={"font-bold text-sm"}>Company Details</div>
@@ -297,6 +253,10 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                 {" "}
                 Privacy Policy.
               </a>
+              <HRRegInstrucModal
+                modalIsOpen={iconModalIsOpen}
+                closeModal={() => setIconModalIsOpen(false)}
+              />
             </div>
           </div>
         </div>
