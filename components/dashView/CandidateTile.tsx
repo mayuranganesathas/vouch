@@ -90,7 +90,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <ButtonLinkedin
               backgroundColour="white"
               userLinkedinURL={userLinkedinURL}
-              anonymous="Requested"
+              anonymous="Pending"
               onClick={() =>
                 window.alert(
                   "You've already requested the candidates information!"
@@ -107,7 +107,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <ButtonLinkedin
               backgroundColour="white"
               userLinkedinURL={userLinkedinURL}
-              anonymous="Available"
+              anonymous="Accepted"
               onClick={() => window.open(`https://${userLinkedinURL}`)}
             />{" "}
           </div>
@@ -123,6 +123,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               onClick={insertAnon}
             />
           </div>
+          //edge case if db data is incorrect
         );
       }
     }
@@ -136,6 +137,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           onClick={insertAnon}
         />
       </div>
+      //default render
     );
 
     //resting state
