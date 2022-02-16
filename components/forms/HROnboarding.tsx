@@ -280,8 +280,23 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
             </div>
             <div className={"w-full text-xs text-gray-300 py-2"}>
               By clicking on “Refer Candidate”, you agree to the VouchRecruit
-              Terms and Conditions .To see how we may use the information,
-              please take a look at our Privacey Policy [LINKS TO ADD]{" "}
+              <a
+                href={"https://www.vouchrecruit.com/termsandconditions"}
+                target="_blank"
+                className="text-VouchGreen"
+              >
+                {" "}
+                Terms and conditions.
+              </a>
+              To see how we may use the information, please take a look at our
+              <a
+                href="https://www.vouchrecruit.com/privacypolicy"
+                target="_blank"
+                className="text-VouchGreen"
+              >
+                {" "}
+                Privacy Policy.
+              </a>
             </div>
           </div>
         </div>

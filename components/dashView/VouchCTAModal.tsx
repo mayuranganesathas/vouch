@@ -331,10 +331,24 @@ const VouchCTAModal = ({
                   />
                 </div>
                 <div className={"text-xs text-gray-300 py-2"}>
-                  By clicking on “Refer Candidate”, you agree to the
-                  VouchRecruit Terms and Conditions .To see how we may use the
-                  information, please take a look at our Privacey Policy [LINKS
-                  TO ADD]{" "}
+                  By clicking on “Invite Candidate”, you agree to the
+                  VouchRecruit{" "}
+                  <a
+                    href={"https://www.vouchrecruit.com/termsandconditions"}
+                    target="_blank"
+                    className="text-VouchGreen"
+                  >
+                    Terms and Conditions.
+                  </a>
+                  {""}To see how we may use the information, please take a look
+                  at our{" "}
+                  <a
+                    href="https://www.vouchrecruit.com/privacypolicy"
+                    target="_blank"
+                    className="text-VouchGreen"
+                  >
+                    Privacy Policy.
+                  </a>
                 </div>
               </div>
             </div>
