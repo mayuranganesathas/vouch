@@ -96,6 +96,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   "You've already requested the candidates information!"
                 )
               }
+              buttonStatus="pending"
             />
           </div>
         );
@@ -109,6 +110,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               userLinkedinURL={userLinkedinURL}
               anonymous="Accepted"
               onClick={() => window.open(`https://${userLinkedinURL}`)}
+              buttonStatus="accepted"
             />{" "}
           </div>
           //available
@@ -121,6 +123,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               userLinkedinURL={userLinkedinURL}
               anonymous="Request"
               onClick={insertAnon}
+              buttonStatus="request"
             />
           </div>
           //edge case if db data is incorrect
@@ -135,6 +138,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           userLinkedinURL={userLinkedinURL}
           anonymous="Request"
           onClick={insertAnon}
+          buttonStatus="request"
         />
       </div>
       //default render
