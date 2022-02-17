@@ -19,15 +19,15 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
   let buttonBorder;
   switch (buttonStatus) {
     case "request":
-      buttonBorder = "px-1 border-2 border-gray-400 rounded-full";
+      buttonBorder = "px-2  bg-gray-300 rounded-full";
       break;
 
     case "accepted":
-      buttonBorder = "px-1 border-2 border-VouchGreen rounded-full";
+      buttonBorder = "px-1 bg-VouchGreen text-green-700 rounded-full";
       break;
 
     case "pending":
-      buttonBorder = "px-1 border-2 border-VouchYellow rounded-full";
+      buttonBorder = "px-1 bg-VouchYellow text-yellow-500 rounded-full";
       break;
   }
 
