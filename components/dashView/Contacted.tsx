@@ -155,7 +155,7 @@ export const ContactedDashboard = ({
               <p className={"w-full pl-4"}>Industry</p>
               <div className={"flex flex-wrap"}>
                 <div className={"pr-1"}>Position Interviewed for</div>
-                <InformationIconToolTip toolTipCopy="This is the position the candidate interviewed for, as well as the furthest interview stage completed." />
+                <InformationIconToolTip toolTipCopy="The position the candidate interviewed for and the furthest interview stage completed." />
               </div>
             </div>
           </div>
@@ -164,12 +164,12 @@ export const ContactedDashboard = ({
               <div className={"flex flex-wrap"}>
                 <div className={"pl-4 pr-1"}>Required Years of Exp</div>
 
-                <InformationIconToolTip toolTipCopy="This is the salary range that was budgeted for the *Position Interviewed for* role (as disclosed by the referring recruiter) " />
+                <InformationIconToolTip toolTipCopy="The required experience of the role the candidate interviewed for (disclosed by referring recruiter).  " />
               </div>
               <div className={"flex flex-wrap"}>
                 <div className={"pl-4 pr-1"}> Salary Range</div>
 
-                <InformationIconToolTip toolTipCopy="Top 2 strengths noted by the recruiting team who interviewed the Candidate." />
+                <InformationIconToolTip toolTipCopy="The salary range budgeted for in the *Position Interviewed for* (disclosed by the referring recruiter). " />
               </div>
             </div>
           </div>
