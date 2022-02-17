@@ -165,7 +165,7 @@ export const HomeDashboard = ({
             <div className={"grid grid-cols-2"}>
               <p className={"w-full pl-4"}>Industry</p>
               <div className={"flex flex-wrap"}>
-                <div className={"pr-2"}>Position Interviewed for</div>
+                <div className={"pr-1"}>Position Interviewed for</div>
                 <InformationIconToolTip toolTipCopy="This is the position the candidate interviewed for, as well as the furthest interview stage completed." />
               </div>
             </div>
@@ -173,12 +173,12 @@ export const HomeDashboard = ({
           <div className={"grid-start-3"}>
             <div className={"grid grid-cols-2"}>
               <div className={"flex flex-wrap"}>
-                <div className={"pl-4"}>Required Years of Exp</div>
+                <div className={"pl-4 pr-1"}>Required Years of Exp</div>
 
                 <InformationIconToolTip toolTipCopy="This is the salary range that was budgeted for the *Position Interviewed for* role (as disclosed by the referring recruiter) " />
               </div>
               <div className={"flex flex-wrap"}>
-                <div className={"pl-4"}> Salary Range</div>
+                <div className={"pl-4 pr-1"}> Salary Range</div>
 
                 <InformationIconToolTip toolTipCopy="Top 2 strengths noted by the recruiting team who interviewed the Candidate." />
               </div>

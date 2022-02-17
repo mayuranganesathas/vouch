@@ -515,11 +515,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               <p className={"pl-4"}>{yearsOfExperience} </p>
             </div>
             <div className={"col-start-2"}>
-              <p
-                className={"w-full font-gray-500 flex flex-wrap  text-xs pl-4"}
-              >
-                {salaryRange}
-              </p>
+              <p className={"w-full flex flex-wrap pl-4"}>{salaryRange}</p>
             </div>
           </div>
         </div>
