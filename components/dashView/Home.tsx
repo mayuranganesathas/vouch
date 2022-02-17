@@ -4,6 +4,7 @@ import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { CandidateCount } from "./CandidateCount";
 import DashCandidateTiles from "./DashCandidateTiles";
 import VouchCTA from "./VouchCTA";
+import { FilterIcon } from "@heroicons/react/solid";
 
 export interface HomeDashboardProps {
   hrData: any;
@@ -96,46 +97,53 @@ export const HomeDashboard = ({
         <div
           className={"flex flex-nowrap justify-between col-start-3 col-span-6"}
         >
-          <DashboardCategoryFilter
-            backgroundColour="white"
-            dropDownArray={stateProvinceDropdownList}
-            value={candidateLocationFilterDropdown}
-            onChange={(e) => filterChangeLocationDropdown(e)}
-            copy="Candidate Location"
-          />
+          <div>
+            <DashboardCategoryFilter
+              backgroundColour="white"
+              dropDownArray={stateProvinceDropdownList}
+              value={candidateLocationFilterDropdown}
+              onChange={(e) => filterChangeLocationDropdown(e)}
+              copy="Candidate Location"
+            />
+            <div
+              className={
+                " pt-4 text-xs text-gray-500 cursor-pointer select-none hover:text-red-500  flex-nowrap "
+              }
+              onClick={clearFilters}
+            >
+              {clearFilter && (
+                <div className="flex flex-nowrap">
+                  {" "}
+                  <span>
+                    <FilterIcon className={"h-4 w-4 hover:text-red-500"} />
+                  </span>
+                  <span>&nbsp;</span>
+                  <span>Clear All</span>
+                  <span>&nbsp;</span>
+                  <span>Filters</span>
+                </div>
+              )}
+            </div>
+          </div>
 
-          <DashboardCategoryFilter
-            backgroundColour="white"
-            dropDownArray={positionCategoryDropdownList}
-            value={positionTypeFilterDropdown}
-            onChange={(e) => filterChangePositionType(e)}
-            copy="Position Interviewed For"
-          />
+          <div>
+            <DashboardCategoryFilter
+              backgroundColour="white"
+              dropDownArray={positionCategoryDropdownList}
+              value={positionTypeFilterDropdown}
+              onChange={(e) => filterChangePositionType(e)}
+              copy="Position Interviewed For"
+            />
+          </div>
 
-          <DashboardCategoryFilter
-            backgroundColour="white"
-            dropDownArray={yearsOfExperienceDropdownList}
-            value={yearsOfExperienceFilterDropdown}
-            onChange={(e) => filterChangeYearsOfExperience(e)}
-            copy="Required Years of Exp"
-          />
-
-          <div
-            className={
-              " col-start-9 px-4 text-xs text-gray-500 cursor-pointer select-none hover:text-red-500  flex-nowrap "
-            }
-            onClick={clearFilters}
-          >
-            {clearFilter && (
-              <div className="flex flex-nowrap">
-                {" "}
-                <span>X</span>
-                <span>&nbsp;</span>
-                <span>Clear</span>
-                <span>&nbsp;</span>
-                <span>Filters</span>
-              </div>
-            )}
+          <div>
+            <DashboardCategoryFilter
+              backgroundColour="white"
+              dropDownArray={yearsOfExperienceDropdownList}
+              value={yearsOfExperienceFilterDropdown}
+              onChange={(e) => filterChangeYearsOfExperience(e)}
+              copy="Required Years of Exp"
+            />
           </div>
         </div>
         <div className={"col-start-10 col-span-3 grid content-start pb-8"}>
