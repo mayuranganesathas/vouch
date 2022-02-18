@@ -4,6 +4,7 @@ import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { CandidateCount } from "./CandidateCount";
 import DashCandidateTiles from "./DashCandidateTiles";
 import VouchCTA from "./VouchCTA";
+import { FilterIcon } from "@heroicons/react/solid";
 
 export interface HomeDashboardProps {
   hrData: any;
@@ -96,46 +97,53 @@ export const HomeDashboard = ({
         <div
           className={"flex flex-nowrap justify-between col-start-3 col-span-6"}
         >
-          <DashboardCategoryFilter
-            backgroundColour="white"
-            dropDownArray={stateProvinceDropdownList}
-            value={candidateLocationFilterDropdown}
-            onChange={(e) => filterChangeLocationDropdown(e)}
-            copy="Candidate Location"
-          />
+          <div>
+            <DashboardCategoryFilter
+              backgroundColour="white"
+              dropDownArray={stateProvinceDropdownList}
+              value={candidateLocationFilterDropdown}
+              onChange={(e) => filterChangeLocationDropdown(e)}
+              copy="Candidate Location"
+            />
+            <div
+              className={
+                " pt-4 text-xs text-gray-500 cursor-pointer select-none hover:text-red-500  flex-nowrap "
+              }
+              onClick={clearFilters}
+            >
+              {clearFilter && (
+                <div className="flex flex-nowrap">
+                  {" "}
+                  <span>
+                    <FilterIcon className={"h-4 w-4 hover:text-red-500"} />
+                  </span>
+                  <span>&nbsp;</span>
+                  <span>Clear All</span>
+                  <span>&nbsp;</span>
+                  <span>Filters</span>
+                </div>
+              )}
+            </div>
+          </div>
 
-          <DashboardCategoryFilter
-            backgroundColour="white"
-            dropDownArray={positionCategoryDropdownList}
-            value={positionTypeFilterDropdown}
-            onChange={(e) => filterChangePositionType(e)}
-            copy="Position Interviewed For"
-          />
+          <div>
+            <DashboardCategoryFilter
+              backgroundColour="white"
+              dropDownArray={positionCategoryDropdownList}
+              value={positionTypeFilterDropdown}
+              onChange={(e) => filterChangePositionType(e)}
+              copy="Position Interviewed For"
+            />
+          </div>
 
-          <DashboardCategoryFilter
-            backgroundColour="white"
-            dropDownArray={yearsOfExperienceDropdownList}
-            value={yearsOfExperienceFilterDropdown}
-            onChange={(e) => filterChangeYearsOfExperience(e)}
-            copy="Required Years of Exp"
-          />
-
-          <div
-            className={
-              " col-start-9 px-4 text-xs text-gray-500 cursor-pointer select-none hover:text-red-500  flex-nowrap "
-            }
-            onClick={clearFilters}
-          >
-            {clearFilter && (
-              <div className="flex flex-nowrap">
-                {" "}
-                <span>X</span>
-                <span>&nbsp;</span>
-                <span>Clear</span>
-                <span>&nbsp;</span>
-                <span>Filters</span>
-              </div>
-            )}
+          <div>
+            <DashboardCategoryFilter
+              backgroundColour="white"
+              dropDownArray={yearsOfExperienceDropdownList}
+              value={yearsOfExperienceFilterDropdown}
+              onChange={(e) => filterChangeYearsOfExperience(e)}
+              copy="Required Years of Exp"
+            />
           </div>
         </div>
         <div className={"col-start-10 col-span-3 grid content-start pb-8"}>
@@ -157,22 +165,22 @@ export const HomeDashboard = ({
             <div className={"grid grid-cols-2"}>
               <p className={"w-full pl-4"}>Industry</p>
               <div className={"flex flex-wrap"}>
-                <div className={"pr-2"}>Position Interviewed for</div>
-                <InformationIconToolTip toolTipCopy="This is the position the candidate interviewed for, as well as the furthest interview stage completed." />
+                <div className={"pr-1"}>Position Interviewed for</div>
+                <InformationIconToolTip toolTipCopy="The position the candidate interviewed for and the furthest interview stage completed." />
               </div>
             </div>
           </div>
           <div className={"grid-start-3"}>
             <div className={"grid grid-cols-2"}>
               <div className={"flex flex-wrap"}>
-                <div className={"pl-4"}>Required Years of Exp</div>
+                <div className={"pl-4 pr-1"}>Required Years of Exp</div>
 
-                <InformationIconToolTip toolTipCopy="This is the salary range that was budgeted for the *Position Interviewed for* role (as disclosed by the referring recruiter) " />
+                <InformationIconToolTip toolTipCopy="The required experience of the role the candidate interviewed for (disclosed by referring recruiter). " />
               </div>
               <div className={"flex flex-wrap"}>
-                <div className={"pl-4"}> Salary Range</div>
+                <div className={"pl-4 pr-1"}> Salary Range</div>
 
-                <InformationIconToolTip toolTipCopy="Top 2 strengths noted by the recruiting team who interviewed the Candidate." />
+                <InformationIconToolTip toolTipCopy="The salary range budgeted for in the *Position Interviewed for* (disclosed by the referring recruiter). " />
               </div>
             </div>
           </div>
