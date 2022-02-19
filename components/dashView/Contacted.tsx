@@ -28,7 +28,9 @@ export interface ContactedDashboardProps {
   filterChangeYearsOfExperience: (e) => void;
   anonData: any;
   shortListData: any;
-  refetchShortList: any;
+  refetchShortList: () => void;
+  refetchAnonData: () => void;
+
   stageStatus: string;
 }
 
@@ -51,6 +53,7 @@ export const ContactedDashboard = ({
   stageStatus,
   shortListData,
   refetchShortList,
+  refetchAnonData,
 }: ContactedDashboardProps) => {
   return (
     <div>
@@ -188,6 +191,7 @@ export const ContactedDashboard = ({
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             positionTypeFilterDropdown={positionTypeFilterDropdown}
             anonData={anonData}
+            refetchAnonData={refetchAnonData}
           />
         }
       </div>

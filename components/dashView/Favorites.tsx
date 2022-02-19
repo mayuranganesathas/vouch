@@ -29,8 +29,9 @@ export interface FavoritesDashboardProps {
 
   anonData: any;
   shortListData: any;
-  refetchShortList: any;
+  refetchShortList: () => void;
   stageStatus: string;
+  refetchAnonData: () => void;
 }
 
 export const FavoritesDashboard = ({
@@ -52,6 +53,7 @@ export const FavoritesDashboard = ({
   stageStatus,
   shortListData,
   refetchShortList,
+  refetchAnonData,
 }: FavoritesDashboardProps) => {
   return (
     <div>
@@ -198,6 +200,7 @@ export const FavoritesDashboard = ({
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             positionTypeFilterDropdown={positionTypeFilterDropdown}
             anonData={anonData}
+            refetchAnonData={refetchAnonData}
           />
         }
       </div>

@@ -54,7 +54,7 @@ const DashBoard = ({}: DashboardProps) => {
     },
   });
 
-  const { data: AnonData } = useQuery(QUERY_ANON, {
+  const { data: AnonData, refetch: refetchAnonData } = useQuery(QUERY_ANON, {
     variables: {
       hrId: user.uid,
     },
@@ -86,6 +86,7 @@ const DashBoard = ({}: DashboardProps) => {
             yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
+            refetchAnonData={refetchAnonData}
           />
         </div>
       );
@@ -111,6 +112,7 @@ const DashBoard = ({}: DashboardProps) => {
             yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
+            refetchAnonData={refetchAnonData}
           />
         </div>
       );
@@ -136,6 +138,7 @@ const DashBoard = ({}: DashboardProps) => {
             yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
+            refetchAnonData={refetchAnonData}
           />
         </div>
       );
@@ -161,6 +164,7 @@ const DashBoard = ({}: DashboardProps) => {
             yearsOfExperienceDropdownList={YearsOfExperienceDropdownArray}
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
+            refetchAnonData={refetchAnonData}
           />
         </div>
       );
