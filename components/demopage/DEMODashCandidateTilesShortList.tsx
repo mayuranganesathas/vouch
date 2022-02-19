@@ -143,6 +143,7 @@ const DashCandidateTilesShortList = ({
               hrManagerIndustry={e.hr_voucher_metadatum.Hr_Account[0].industry}
               yearsOfExperience={e.hr_voucher_metadatum.yearsOfExperience}
               anonData={[]}
+              refetchAnonData={() => null}
             />
           ))}
       {vouchData && candidateCounter()}

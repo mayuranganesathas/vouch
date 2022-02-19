@@ -198,6 +198,7 @@ const DashBoard = ({}: DashboardProps) => {
               existingCandidates={existingCandidates}
               setExistingCandidates={setExistingCandidates}
               hrData={hrData}
+              refetchAnonData={() => console.log("demo")}
             />
           </div>
         </div>
