@@ -270,23 +270,15 @@ export default function RegisterHRLogin() {
             "text-gray-500 col-start-1 col-span-1 flex justify-start items-center pl-8 pt-8"
           }
         >
-          <img src="./images/VouchLogo1.png" width="100" height="auto" />
+          <a href="https://www.vouchrecruit.com" target="_blank">
+            <img src="./images/VouchLogo1.png" width="100" height="auto" />
+          </a>
         </div>
         <div
           className={
             "col-start-2 flex justify-end items-center pr-8 pt-8 text-white"
           }
-        >
-          {/* <ButtonVouch
-            backgroundColour="empty2"
-            buttonType="square"
-            textColour="VouchGreen"
-            label="Vouch Homepage"
-            onClick={() => {
-              window.open("https://www.vouchrecruit.com");
-            }}
-          /> */}
-        </div>
+        ></div>
       </div>
       <div className={"grid grid-cols-2 pl-8"}>
         <div>
