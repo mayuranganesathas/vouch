@@ -13,7 +13,7 @@ export interface DashCandidateTilesShortListProps {
   yearsOfExperienceFilterDropdown: any;
   positionTypeFilterDropdown: any;
   anonData: any;
-  refetchAnonData: any;
+  refetchAnonData: () => void;
 }
 
 const DashCandidateTilesShortList = ({

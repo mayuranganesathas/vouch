@@ -11,7 +11,7 @@ export interface DashCandidateTilesProps {
   setExistingCandidates: (existingCandidates: any) => void;
   anonData: any;
   hrData: any;
-  refetchAnonData: any;
+  refetchAnonData: () => void;
 }
 
 const DashCandidateTiles = ({
