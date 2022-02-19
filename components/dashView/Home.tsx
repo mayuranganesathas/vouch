@@ -29,7 +29,8 @@ export interface HomeDashboardProps {
   filterChangeYearsOfExperience: (e) => void;
   anonData: any;
   data: any;
-  refetchShortList: any;
+  refetchShortList: () => void;
+  refetchAnonData: () => void;
 }
 
 export const HomeDashboard = ({
@@ -50,6 +51,7 @@ export const HomeDashboard = ({
   anonData,
   data,
   refetchShortList,
+  refetchAnonData,
 }: HomeDashboardProps) => {
   return (
     <div>
@@ -195,6 +197,7 @@ export const HomeDashboard = ({
           setExistingCandidates={setExistingCandidates}
           hrData={hrData}
           anonData={anonData}
+          refetchAnonData={refetchAnonData}
         />
       </div>
     </div>

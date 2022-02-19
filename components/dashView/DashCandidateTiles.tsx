@@ -11,6 +11,7 @@ export interface DashCandidateTilesProps {
   setExistingCandidates: (existingCandidates: any) => void;
   anonData: any;
   hrData: any;
+  refetchAnonData: any;
 }
 
 const DashCandidateTiles = ({
@@ -21,6 +22,7 @@ const DashCandidateTiles = ({
   positionTypeFilterDropdown,
   anonData,
   hrData,
+  refetchAnonData,
   setExistingCandidates,
 }: DashCandidateTilesProps) => {
   const filterManage = () => {
@@ -144,6 +146,7 @@ const DashCandidateTiles = ({
             hrManagerIndustry={e.Hr_Account[0].industry}
             yearsOfExperience={e.yearsOfExperience}
             anonData={anonData}
+            refetchAnonData={refetchAnonData}
           />
         ))}
       {vouchData && candidateCounter()}

@@ -24,12 +24,13 @@ export interface CandidateTileProps {
   userLinkedinURL: string;
   userEmailAction: string;
   firstName: string;
-  refetchShortList: any;
+  refetchShortList: () => void;
   hrData: any;
   stageStatus?: any;
   yearsOfExperience: string;
   hrManagerIndustry: string;
   anonData: any;
+  refetchAnonData: () => void;
 }
 
 export const CandidateTile: React.FC<CandidateTileProps> = ({
@@ -49,6 +50,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   yearsOfExperience,
   hrManagerIndustry,
   anonData,
+  refetchAnonData,
 }) => {
   const { user } = useAuth();
   const hrId = user.uid;
@@ -59,7 +61,9 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     }
   );
 
-  const [InsertAnon, { data: AnonCheck }] = useMutation(INSERT_ANON);
+  const [InsertAnon, { data: AnonCheck }] = useMutation(INSERT_ANON, {
+    onCompleted: refetchAnonData,
+  });
 
   const [removeShortList, { data: RemoveSL }] = useMutation(
     DELETE_SHORTLIST_ITEM,
@@ -143,8 +147,6 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       </div>
       //default render
     );
-
-    //resting state
   };
 
   const toastLinkedInRequest = () => {
