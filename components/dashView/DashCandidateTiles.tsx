@@ -24,77 +24,88 @@ const DashCandidateTiles = ({
   setExistingCandidates,
 }: DashCandidateTilesProps) => {
   const filterManage = () => {
+    let availableCandidates = vouchData.hr_voucher_metadata.filter(
+      (e) => e.Vouchee.length > 0
+    );
     if (
       candidateLocationFilterDropdown != "empty" &&
       positionTypeFilterDropdown != "empty"
     ) {
-      return vouchData.hr_voucher_metadata
-        .filter((e) => e.Vouchee.length > 0)
-        .filter(
-          (e) => e.Vouchee[0].locationState == candidateLocationFilterDropdown
-        )
-        .filter((e) => e.positionType == positionTypeFilterDropdown);
+      // Candidate Location and Position Type Interviewed for are entered by user
+      return availableCandidates.filter(
+        (e) =>
+          e.Vouchee[0].locationState == candidateLocationFilterDropdown &&
+          e.positionType == positionTypeFilterDropdown
+      );
     } else if (
       candidateLocationFilterDropdown != "empty" &&
       yearsOfExperienceFilterDropdown != "empty"
     ) {
-      return vouchData.hr_voucher_metadata
-        .filter((e) => e.Vouchee.length > 0)
+      // Candidate Location and Years of Experience are entered by user
 
-        .filter(
-          (e) => e.Vouchee[0].locationState == candidateLocationFilterDropdown
-        )
-        .filter((e) => e.yearsOfExperience == yearsOfExperienceFilterDropdown);
+      return availableCandidates.filter(
+        (e) =>
+          e.Vouchee[0].locationState == candidateLocationFilterDropdown &&
+          e.yearsOfExperience == yearsOfExperienceFilterDropdown
+      );
     } else if (
       yearsOfExperienceFilterDropdown != "empty" &&
       positionTypeFilterDropdown != "empty"
     ) {
-      return vouchData.hr_voucher_metadata
-        .filter((e) => e.Vouchee.length > 0)
+      // Position Type and Years of Experience are entered by user
 
-        .filter((e) => e.positionType == positionTypeFilterDropdown)
-        .filter((e) => e.yearsOfExperience == yearsOfExperienceFilterDropdown);
+      return availableCandidates.filter(
+        (e) =>
+          e.positionType == positionTypeFilterDropdown &&
+          e.yearsOfExperience == yearsOfExperienceFilterDropdown
+      );
     } else if (
       yearsOfExperienceFilterDropdown != "empty" &&
       positionTypeFilterDropdown != "empty" &&
       candidateLocationFilterDropdown != "empty"
     ) {
-      return vouchData.hr_voucher_metadata
-        .filter((e) => e.Vouchee.length > 0)
+      // Position Type, Candidate Location and, Years of Experience are entered by user
 
-        .filter((e) => e.positionType == positionTypeFilterDropdown)
-        .filter((e) => e.yearsOfExperience == yearsOfExperienceFilterDropdown)
-        .filter(
-          (e) => e.Vouchee[0].locationState == candidateLocationFilterDropdown
-        );
+      return availableCandidates.filter(
+        (e) =>
+          e.Vouchee[0].locationState == candidateLocationFilterDropdown &&
+          e.yearsOfExperience == yearsOfExperienceFilterDropdown &&
+          e.positionType == positionTypeFilterDropdown
+      );
     } else if (
       yearsOfExperienceFilterDropdown != "empty" &&
       positionTypeFilterDropdown == "empty" &&
       candidateLocationFilterDropdown == "empty"
     ) {
-      return vouchData.hr_voucher_metadata
-        .filter((e) => e.Vouchee.length > 0)
-        .filter((e) => e.yearsOfExperience == yearsOfExperienceFilterDropdown);
+      //Only Years of Experience are entered by user
+
+      return availableCandidates.filter(
+        (e) => e.yearsOfExperience == yearsOfExperienceFilterDropdown
+      );
     } else if (
       yearsOfExperienceFilterDropdown == "empty" &&
       positionTypeFilterDropdown != "empty" &&
       candidateLocationFilterDropdown == "empty"
     ) {
-      return vouchData.hr_voucher_metadata
-        .filter((e) => e.Vouchee.length > 0)
-        .filter((e) => e.positionType == positionTypeFilterDropdown);
+      //Only Position Type are entered by user
+
+      return availableCandidates.filter(
+        (e) => e.positionType == positionTypeFilterDropdown
+      );
     } else if (
       yearsOfExperienceFilterDropdown == "empty" &&
       positionTypeFilterDropdown == "empty" &&
       candidateLocationFilterDropdown != "empty"
     ) {
-      return vouchData.hr_voucher_metadata
-        .filter((e) => e.Vouchee.length > 0)
-        .filter(
-          (e) => e.Vouchee[0].locationState == candidateLocationFilterDropdown
-        );
+      //Only Candidate Location are entered by user
+
+      return availableCandidates.filter(
+        (e) => e.Vouchee[0].locationState == candidateLocationFilterDropdown
+      );
     } else {
-      return vouchData.hr_voucher_metadata.filter((e) => e.Vouchee.length > 0);
+      // all candidates
+
+      return availableCandidates;
     }
   };
 
@@ -105,40 +116,36 @@ const DashCandidateTiles = ({
 
   const candidateCounter = () => {
     setExistingCandidates(0);
-    shortListFilter()
-      .filter((e) => e.Vouchee.length > 0)
-      .map((e, i) => setExistingCandidates(i + 1));
+    shortListFilter().map((e, i) => setExistingCandidates(i + 1));
   };
 
   return (
     <div className="grid grid-cols-12">
       {vouchData &&
-        shortListFilter()
-          .filter((e) => e.Vouchee.length > 0)
-          .map((e, i) => (
-            <CandidateTile
-              userID={e.candidateId}
-              firstName={e.Candidate_Contact[0].candidateFirstName}
-              positionTitle={e.positionTitle}
-              salaryRange={e.salaryRange}
-              jobLocation={
-                e.Vouchee[0].locationCity == "Yes"
-                  ? "Remote"
-                  : e.Vouchee[0].locationCity
-              }
-              numEmployees={e.Company_Data[0].rangeOfEmployees}
-              companyName={e.Company_Data[0].corporateName}
-              stageInterview={e.stageOfInterview}
-              userLinkedinURL={e.Vouchee[0].linkedIn}
-              userEmailAction={e.Candidate_Contact[0].candidateEmail}
-              refetchShortList={refetchShortList}
-              hrData={hrData}
-              key={i}
-              hrManagerIndustry={e.Hr_Account[0].industry}
-              yearsOfExperience={e.yearsOfExperience}
-              anonData={anonData}
-            />
-          ))}
+        shortListFilter().map((e, i) => (
+          <CandidateTile
+            userID={e.candidateId}
+            firstName={e.Candidate_Contact[0].candidateFirstName}
+            positionTitle={e.positionTitle}
+            salaryRange={e.salaryRange}
+            jobLocation={
+              e.Vouchee[0].locationCity == "Yes"
+                ? "Remote"
+                : e.Vouchee[0].locationCity
+            }
+            numEmployees={e.Company_Data[0].rangeOfEmployees}
+            companyName={e.Company_Data[0].corporateName}
+            stageInterview={e.stageOfInterview}
+            userLinkedinURL={e.Vouchee[0].linkedIn}
+            userEmailAction={e.Candidate_Contact[0].candidateEmail}
+            refetchShortList={refetchShortList}
+            hrData={hrData}
+            key={i}
+            hrManagerIndustry={e.Hr_Account[0].industry}
+            yearsOfExperience={e.yearsOfExperience}
+            anonData={anonData}
+          />
+        ))}
       {vouchData && candidateCounter()}
     </div>
   );
