@@ -32,7 +32,7 @@ export default function RegisterHRLogin() {
             <div className="pt-6 pb-2 font-semibold text-sm">
               Log in to your account
             </div>
-            <div>
+            <div className={"w-3/4"}>
               <div>
                 <ButtonGoogleLogin />
               </div>

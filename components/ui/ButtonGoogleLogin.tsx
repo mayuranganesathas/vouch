@@ -24,7 +24,7 @@ const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
     <div className={""}>
       <button
         className={
-          "rounded bg-gray-100 drop-shadow-md border  w-auto h-auto py-1"
+          "rounded bg-gray-100 drop-shadow-md border  w-full h-auto py-1"
         }
         type="button"
         onClick={signInGoogle}
@@ -40,7 +40,7 @@ const ButtonGoogleLogin = ({}: ButtonGoogleLoginProps) => {
           </div>
           <div
             className={
-              "col-start-2 col-span-4 flex justify-center items-center px-10 text-sm"
+              "col-start-2 col-span-4 flex justify-center items-center text-sm"
             }
           >
             {" "}
