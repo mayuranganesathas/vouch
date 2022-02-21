@@ -301,7 +301,7 @@ const VouchCTAModal = ({
 
                   <div>
                     <div className="text-xs py-1 pl-3 font-bold text-gray-500 flex flex-nowrap">
-                      Required Years of Exp{" "}
+                      Req Years of Exp{" "}
                       <InformationIconToolTip toolTipCopy="Select the closest base salary range that was budgeted for the position. This provides other HR professionals in the platform an idea around salary expectations of the candidate." />
                     </div>{" "}
                     <div className={"pl-3"}>
