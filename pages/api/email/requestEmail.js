@@ -8,7 +8,7 @@ async function sendEmail(req, res) {
       to: "hello@vouchrecruit.com", // Your email where you'll receive emails
       from: {
         email: "hello@vouchrecruit.com",
-        name: "Interviews @ Vouch",
+        name: `Vouch | ${req.body.companyName} wants to learn more`,
       },
       bcc: `${req.body.email}`,
       cc: `${req.body.hrEmail}`,
