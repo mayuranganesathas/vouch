@@ -40,9 +40,9 @@ const TileModal = ({
   );
 
   const toastFeedback = () => {
-    toast.success("Interest Email Sent! ✅", {
+    toast.success("Moved to Contacted! ✅", {
       position: "top-center",
-      autoClose: 1500,
+      autoClose: 1750,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
