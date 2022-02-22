@@ -5,10 +5,43 @@ import router from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 import { INSERT_ANON } from "../graphql/INSERT_ANON";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
+import { QUERY_HRID } from "../graphql/QUERY_HRID";
 
 export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
   const candidateId = router.query.candidateId.toString();
+
+  const sendEmail = async (data) => {
+    const res = await fetch("/api/email/hrPrivacyAcceptance", {
+      body: JSON.stringify({
+        hrEmail: data.hr_voucher[0].hrEmail,
+        hrId: hrId,
+        hrFirstName: data.hr_voucher[0].firstName,
+        hrLastName: data.hr_voucher[0].lastName,
+        companyName: data.hr_voucher[0].companyName,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      return;
+    }
+  };
+
+  useEffect(() => {
+    let { loading, data: hrEmailData } = useQuery(QUERY_HRID, {
+      variables: {
+        hrId: hrId,
+      },
+    });
+
+    sendEmail(hrEmailData);
+  }, []);
 
   const [upsertAnonymity, { data, loading, error }] = useMutation(
     INSERT_ANON,
@@ -31,10 +64,6 @@ export default function acceptPrivacy() {
       },
     });
   }, []);
-
-  const onClick = () => {
-    window.open("https://www.vouchrecruit.com/faq-candidate");
-  };
 
   return (
     <div className={"bg-gray-100 w-full h-screen grid content-center"}>
@@ -64,7 +93,9 @@ export default function acceptPrivacy() {
               textColour={"white"}
               label={"Vouch FAQs"}
               disabled={false}
-              onClick={onClick}
+              onClick={() => {
+                window.open("https://www.vouchrecruit.com/faq-candidate");
+              }}
             />
           </div>
           <div className="flex justify-center items-center pt-12">
