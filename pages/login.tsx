@@ -41,7 +41,7 @@ export default function RegisterHRLogin() {
               </div>
             </div>
 
-            <div className="grid grid-cols-11 w-full">
+            {/* <div className="grid grid-cols-11 w-full">
               <div className="py-2  w-full col-start-1 col-span-5">
                 <hr></hr>
               </div>
@@ -49,9 +49,9 @@ export default function RegisterHRLogin() {
               <div className="py-2 w-full col-start-7 col-span-5">
                 <hr></hr>
               </div>
-            </div>
-            <div className="w-full pt-6 px-4">
-              <div className="text-xs font-bold text-gray-700"> Email</div>
+            </div>*/}
+            <div className="w-full pt-2 px-4 pb-10">
+              {/* <div className="text-xs font-bold text-gray-700"> Email</div>
               <input
                 value={userName}
                 onChange={(e) => setUsername(e.target.value)}
@@ -79,7 +79,7 @@ export default function RegisterHRLogin() {
                   }
                   buttonWidth="wide"
                 />
-              </div>
+              </div> */}
               <div className="text-xs text-gray-400 pt-4">
                 {" "}
                 By continuing, you agree to Vouch's{" "}
@@ -100,7 +100,7 @@ export default function RegisterHRLogin() {
                   Privacy Policy.
                 </a>
               </div>
-              <div className="py-10 text-xs text-gray-400 text-center">
+              {/* <div className="py-10 text-xs text-gray-400 text-center">
                 <span>Don't have an account?</span>{" "}
                 <span>
                   <HyperlinkButton
@@ -114,7 +114,7 @@ export default function RegisterHRLogin() {
                     buttonWidth="fit"
                   />
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

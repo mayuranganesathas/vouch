@@ -87,6 +87,10 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
               value={candidateEmail}
               onChange={(e) => setCandidateEmail(e.target.value)}
             ></input>
+            <div className={"pt-1 text-xs w-full italic text-gray-400"}>
+              *This email will be used to connect you with interested HR
+              Managers with open roles that match your skill set.
+            </div>
           </div>
           <div className={"py-4"}>
             <input
