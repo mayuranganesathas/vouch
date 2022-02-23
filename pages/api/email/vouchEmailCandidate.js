@@ -4,9 +4,7 @@ import { dbUri } from "../../../lib/apollo";
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 const domainValues = dbUri().subDomain;
-const link = encodeURI(
-  `https://www.${domainValues}.vouchrecruit.com/candidate-register?hrId=${req.body.hrId}&privacyId=${req.body.privacyId}`
-);
+const link = `https://www.${domainValues}.vouchrecruit.com/candidate-register?hrId=${req.body.hrId}&privacyId=${req.body.privacyId}`;
 
 async function sendEmail(req, res) {
   try {
