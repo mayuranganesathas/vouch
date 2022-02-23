@@ -19,7 +19,8 @@ export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
   salaryRange: string;
-  jobLocation: string;
+  canLocation: string;
+  hrLocation: string;
   numEmployees: string;
   companyName: string;
   stageInterview: string;
@@ -40,7 +41,8 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   firstName,
   positionTitle,
   salaryRange,
-  jobLocation,
+  canLocation,
+  hrLocation,
   numEmployees,
   companyName,
   stageInterview,
@@ -467,7 +469,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   </p>
                   <div className={"text-xs border-r-2 border-gray-200 "}>
                     {" "}
-                    {jobLocation}
+                    {canLocation}
                   </div>
                   <div className={""}>
                     <div
@@ -502,7 +504,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   <p className="w-full truncate ">{hrManagerIndustry}</p>
                   <p className="w-full pt-1 text-xs truncate">
                     {" "}
-                    HQ in {jobLocation}
+                    HQ in {hrLocation}
                   </p>
                 </div>
               </div>
