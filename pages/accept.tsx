@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { INSERT_ANON } from "../graphql/INSERT_ANON";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
-
+import { dbUri } from "../lib/apollo";
 export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
   const candidateId = router.query.candidateId.toString();
@@ -19,6 +19,7 @@ export default function acceptPrivacy() {
         hrFirstName: data.hr_voucher[0].firstName,
         hrLastName: data.hr_voucher[0].lastName,
         companyName: data.hr_voucher[0].companyName,
+        domainValues: dbUri().subDomain,
       }),
       headers: {
         "Content-Type": "application/json",

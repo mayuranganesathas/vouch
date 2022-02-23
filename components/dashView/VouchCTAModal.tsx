@@ -20,6 +20,7 @@ import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CTAinstructionsModal from "./CTAInstructionsModal";
+import { dbUri } from "../../lib/apollo";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -105,6 +106,7 @@ const VouchCTAModal = ({
         hrLastName: hrData.hr_voucher[0].lastName,
         companyName: hrData.hr_voucher[0].companyName,
         privacyId: candidateUUID,
+        domainValues: dbUri().subDomain,
       }),
       headers: {
         "Content-Type": "application/json",

@@ -13,6 +13,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { DELETE_SHORTLIST_ITEM } from "../../graphql/DELETE_FROM_SHORTLIST";
 import CandidateTileModal from "./CandidateTileModal";
 import { INSERT_ANON } from "../../graphql/INSERT_ANON";
+import { dbUri } from "../../lib/apollo";
+
 export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
@@ -222,6 +224,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         hrLastName: hrData.hr_voucher[0].lastName,
         companyName: hrData.hr_voucher[0].companyName,
         candidateId: userID,
+        domainValues: dbUri().subDomain,
       }),
       headers: {
         "Content-Type": "application/json",
