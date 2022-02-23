@@ -91,22 +91,19 @@ const VouchCTAModal = ({
       },
     }
   );
-  // insert hrID in candidates and
-  const emailChecker = (e) => {
-    setEmail(e);
-  };
+
+  const domainType = dbUri().subDomain;
 
   const sendEmail = async () => {
     const res = await fetch("/api/email/vouchEmailCandidate", {
       body: JSON.stringify({
         email: email,
-        hrId: user.uid,
         hrEmail: user.email,
         hrFirstName: hrData.hr_voucher[0].firstName,
         hrLastName: hrData.hr_voucher[0].lastName,
         companyName: hrData.hr_voucher[0].companyName,
+        hrId: user.uid,
         privacyId: candidateUUID,
-        domainValues: dbUri().subDomain,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -132,6 +129,7 @@ const VouchCTAModal = ({
       progress: undefined,
     });
   };
+
   const submitForm = async () => {
     initializeVouchCandidate({
       variables: {
@@ -217,7 +215,7 @@ const VouchCTAModal = ({
                     type="text"
                     placeholder=" Enter Candidate Email"
                     value={email}
-                    onChange={(e) => emailChecker(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                   ></input>
                 </div>
               </div>

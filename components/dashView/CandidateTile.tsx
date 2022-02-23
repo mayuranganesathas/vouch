@@ -212,19 +212,19 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     sendEmail();
     toastLinkedInRequest();
   };
+  const domainType = dbUri().subDomain;
 
   const sendEmail = async () => {
     const res = await fetch("/api/email/requestEmail", {
       body: JSON.stringify({
         canFirstName: firstName,
         email: userEmailAction,
-        hrId: user.uid,
         hrEmail: user.email,
         hrFirstName: hrData.hr_voucher[0].firstName,
         hrLastName: hrData.hr_voucher[0].lastName,
         companyName: hrData.hr_voucher[0].companyName,
+        hrId: user.uid,
         candidateId: userID,
-        domainValues: dbUri().subDomain,
       }),
       headers: {
         "Content-Type": "application/json",
