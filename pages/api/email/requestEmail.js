@@ -2,7 +2,10 @@ import sendgrid from "@sendgrid/mail";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-const domainValues = encodeURI(dbUri().subDomain);
+const domainValues = dbUri().subDomain;
+const link = encodeURI(
+  `https://www.${domainValues}.vouchrecruit.com/accept?hrId=${req.body.hrId}&candidateId=${req.body.candidateId}`
+);
 
 async function sendEmail(req, res) {
   try {
@@ -20,7 +23,7 @@ async function sendEmail(req, res) {
         hrFirstName: `${req.body.hrFirstName}`,
         hrLastName: `${req.body.hrLastName}`,
         companyName: `${req.body.companyName}`,
-        link: `https://www.${domainValues}.vouchrecruit.com/accept?hrId=${req.body.hrId}&candidateId=${req.body.candidateId}`,
+        link: link,
       },
       asm: {
         groupId: 17125,

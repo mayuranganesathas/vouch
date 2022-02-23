@@ -3,7 +3,11 @@ import { dbUri } from "../../../lib/apollo";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-const domainValues = encodeURI(dbUri().subDomain);
+const domainValues = dbUri().subDomain;
+const link = encodeURI(
+  `https://www.${domainValues}.vouchrecruit.com/candidate-register?hrId=${req.body.hrId}&privacyId=${req.body.privacyId}`
+);
+
 async function sendEmail(req, res) {
   try {
     await sendgrid.send({
@@ -15,7 +19,7 @@ async function sendEmail(req, res) {
       templateId: "d-40f048ed85414c7dbef11d9280a4502b",
       cc: `${req.body.hrEmail}`,
       dynamicTemplateData: {
-        link: `https://www.${domainValues}.vouchrecruit.com/candidate-register?hrId=${req.body.hrId}&privacyId=${req.body.privacyId}`,
+        link: link,
         hrFirstName: `${req.body.hrFirstName}`,
         hrLastName: `${req.body.hrLastName}`,
         companyName: `${req.body.companyName}`,
