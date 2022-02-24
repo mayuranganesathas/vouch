@@ -13,6 +13,10 @@ export interface DashCandidateTilesShortListProps {
   yearsOfExperienceFilterDropdown: any;
   positionTypeFilterDropdown: any;
   anonData: any;
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconHome: any;
+  setBeaconContacted: any;
   refetchAnonData: () => void;
 }
 
@@ -27,6 +31,10 @@ const DashCandidateTilesShortList = ({
   yearsOfExperienceFilterDropdown,
   positionTypeFilterDropdown,
   anonData,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
   refetchAnonData,
 }: DashCandidateTilesShortListProps) => {
   const candidateCounter = () => {
@@ -167,6 +175,10 @@ const DashCandidateTilesShortList = ({
               hrManagerIndustry={e.hr_voucher_metadatum.Hr_Account[0].industry}
               yearsOfExperience={e.hr_voucher_metadatum.yearsOfExperience}
               anonData={anonData}
+              setBeaconHidden={setBeaconHidden}
+              setBeaconFavorites={setBeaconFavorites}
+              setBeaconContacted={setBeaconContacted}
+              setBeaconHome={setBeaconHome}
               refetchAnonData={refetchAnonData}
             />
           ))}

@@ -12,6 +12,10 @@ export interface DashCandidateTilesProps {
   anonData: any;
   hrData: any;
   refetchAnonData: () => void;
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconContacted: any;
+  setBeaconHome: any;
 }
 
 const DashCandidateTiles = ({
@@ -24,6 +28,10 @@ const DashCandidateTiles = ({
   hrData,
   refetchAnonData,
   setExistingCandidates,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
 }: DashCandidateTilesProps) => {
   const filterManage = () => {
     let availableCandidates = vouchData.hr_voucher_metadata.filter(
@@ -146,6 +154,10 @@ const DashCandidateTiles = ({
             yearsOfExperience={e.yearsOfExperience}
             anonData={anonData}
             refetchAnonData={refetchAnonData}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
           />
         ))}
       {vouchData && candidateCounter()}

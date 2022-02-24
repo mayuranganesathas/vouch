@@ -17,6 +17,7 @@ export interface TileModalProps {
   refetchShortList: any;
   userID: any;
   hrId: any;
+  setBeaconContacted: any;
 }
 
 const TileModal = ({
@@ -29,6 +30,7 @@ const TileModal = ({
   refetchShortList,
   userID,
   hrId,
+  setBeaconContacted,
 }: TileModalProps) => {
   const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
   const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
@@ -99,7 +101,7 @@ const TileModal = ({
       },
     });
     toastFeedback();
-
+    setBeaconContacted(true);
     sendEmail();
     closeModal();
   };

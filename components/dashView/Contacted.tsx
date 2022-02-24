@@ -20,8 +20,10 @@ export interface ContactedDashboardProps {
 
   candidateLocationFilterDropdown: any;
   filterChangeLocationDropdown: (e) => void;
-  beacon: boolean;
-  setBeacon: (beacon: boolean) => void;
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconHome: any;
+  setBeaconContacted: any;
   positionTypeFilterDropdown: any;
   filterChangePositionType: (e) => void;
 
@@ -55,8 +57,10 @@ export const ContactedDashboard = ({
   shortListData,
   refetchShortList,
   refetchAnonData,
-  beacon,
-  setBeacon,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
 }: ContactedDashboardProps) => {
   return (
     <div>
@@ -194,6 +198,10 @@ export const ContactedDashboard = ({
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             positionTypeFilterDropdown={positionTypeFilterDropdown}
             anonData={anonData}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
             refetchAnonData={refetchAnonData}
           />
         }

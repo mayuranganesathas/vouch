@@ -30,8 +30,10 @@ export interface HomeDashboardProps {
   filterChangeYearsOfExperience: (e) => void;
   anonData: any;
   data: any;
-  beacon: boolean;
-  setBeacon: (beacon: boolean) => void;
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconHome: any;
+  setBeaconContacted: any;
   refetchShortList: () => void;
   refetchAnonData: () => void;
 }
@@ -53,16 +55,15 @@ export const HomeDashboard = ({
   filterChangeYearsOfExperience,
   anonData,
   data,
-  beacon,
-  setBeacon,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
   refetchShortList,
   refetchAnonData,
 }: HomeDashboardProps) => {
-  let prevCount = usePrevious(existingCandidates);
-
   return (
     <div>
-      {prevCount}
       <div className={" pt-6 pb-6 px-24 bg-gray-50"}>
         <div
           className={"grid grid-cols-3"}
@@ -206,6 +207,10 @@ export const HomeDashboard = ({
           hrData={hrData}
           anonData={anonData}
           refetchAnonData={refetchAnonData}
+          setBeaconHidden={setBeaconHidden}
+          setBeaconFavorites={setBeaconFavorites}
+          setBeaconContacted={setBeaconContacted}
+          setBeaconHome={setBeaconHome}
         />
       </div>
     </div>

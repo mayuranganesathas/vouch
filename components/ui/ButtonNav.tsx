@@ -68,21 +68,48 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   let iconStyles;
   switch (icon) {
     case "Home":
-      iconStyles = <ViewListIcon className={"w-4 h-auto"} fill="#d1d5db" />;
+      iconStyles = (
+        <ViewListIcon
+          className={`w-4 h-auto ${
+            beacon ? "text-VouchGreen" : "text-gray-300"
+          }`}
+        />
+      );
       break;
     case "Favorites":
-      iconStyles = <StarIcon className={"w-4 h-auto"} fill="#d1d5db" />;
+      iconStyles = (
+        <StarIcon
+          className={`w-4 h-auto ${
+            beacon ? "text-VouchGreen" : "text-gray-300"
+          }`}
+          fill="#d1d5db"
+        />
+      );
       break;
     case "NotNow":
-      iconStyles = <EyeOffIcon className={"w-4 h-auto"} fill="#d1d5db" />;
+      iconStyles = (
+        <EyeOffIcon
+          className={`w-4 h-auto ${
+            beacon ? "text-VouchGreen" : "text-gray-300"
+          }`}
+          fill="#d1d5db"
+        />
+      );
       break;
     case "Contacted":
-      iconStyles = <MailOpenIcon className={"w-4 h-auto"} fill="#d1d5db" />;
+      iconStyles = (
+        <MailOpenIcon
+          className={`w-4 h-auto ${
+            beacon ? "text-VouchGreen" : "text-gray-300"
+          }`}
+          fill="#d1d5db"
+        />
+      );
       break;
   }
 
   return (
-    <div>
+    <div className="">
       <button
         onClick={onClick}
         disabled={disabled}
@@ -94,16 +121,10 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       ${disabled ? "cursor-default" : "cursor-pointer"} 
       `}
       >
-        {beacon ? (
-          <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></div>
-        ) : (
-          ""
-        )}
         {/* TO DO: CREATE ANIMATION, ping beside Home, Favoirtes, HIdden and Contacted */}
         <div className={textStyles}>{label} </div>
         <div className={"flex justify-center pt-1"}>{iconStyles}</div>
       </button>
-      {beacon ? "true" : "false"}
       {/* 
       <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 text-VouchDark"></div>
       <div className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></div> */}

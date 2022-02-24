@@ -89,8 +89,10 @@ const DashBoard = ({}: DashboardProps) => {
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
             refetchAnonData={refetchAnonData}
-            beacon={beaconHome}
-            setBeacon={setBeaconHome}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
           />
         </div>
       );
@@ -117,8 +119,10 @@ const DashBoard = ({}: DashboardProps) => {
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
             refetchAnonData={refetchAnonData}
-            beacon={beaconFavorites}
-            setBeacon={setBeaconFavorites}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
           />
         </div>
       );
@@ -145,8 +149,10 @@ const DashBoard = ({}: DashboardProps) => {
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
             refetchAnonData={refetchAnonData}
-            beacon={beaconHidden}
-            setBeacon={setBeaconHidden}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
           />
         </div>
       );
@@ -173,8 +179,10 @@ const DashBoard = ({}: DashboardProps) => {
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
             refetchAnonData={refetchAnonData}
-            beacon={beaconContacted}
-            setBeacon={setBeaconContacted}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
           />
         </div>
       );
