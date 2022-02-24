@@ -27,6 +27,8 @@ export interface FavoritesDashboardProps {
   yearsOfExperienceFilterDropdown: any;
   filterChangeYearsOfExperience: (e) => void;
 
+  beacon: boolean;
+  setBeacon: (beacon: boolean) => void;
   anonData: any;
   shortListData: any;
   refetchShortList: () => void;
@@ -52,6 +54,8 @@ export const FavoritesDashboard = ({
   anonData,
   stageStatus,
   shortListData,
+  beacon,
+  setBeacon,
   refetchShortList,
   refetchAnonData,
 }: FavoritesDashboardProps) => {

@@ -15,6 +15,7 @@ export interface ButtonNavProps {
   onClick: () => void;
   buttonWidth?: "wide";
   icon: string;
+  beacon: boolean;
 }
 
 export const ButtonNav: React.FC<ButtonNavProps> = ({
@@ -26,6 +27,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   onClick,
   buttonWidth,
   icon,
+  beacon,
 }) => {
   let buttonSize;
 
@@ -80,19 +82,31 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   }
 
   return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      type="button"
-      className={`bg-gradient-to-b px-2 py-1 h-full text-xs font-bold ${buttonSize}
+    <div>
+      <button
+        onClick={onClick}
+        disabled={disabled}
+        type="button"
+        className={`bg-gradient-to-b px-2 py-1 h-full text-xs font-bold ${buttonSize}
       ${disabled ? "bg-gray-400 opacity-25" : backgroundStyles}
       ${disabled ? "rounded" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}
-      ${disabled ? "cursor-default" : "cursor-pointer"}
+      ${disabled ? "cursor-default" : "cursor-pointer"} 
       `}
-    >
-      <div className={textStyles}>{label} </div>
-      <div className={"flex justify-center pt-1"}>{iconStyles}</div>
-    </button>
+      >
+        {beacon ? (
+          <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></div>
+        ) : (
+          ""
+        )}
+        {/* TO DO: CREATE ANIMATION, ping beside Home, Favoirtes, HIdden and Contacted */}
+        <div className={textStyles}>{label} </div>
+        <div className={"flex justify-center pt-1"}>{iconStyles}</div>
+      </button>
+      {beacon ? "true" : "false"}
+      {/* 
+      <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 text-VouchDark"></div>
+      <div className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></div> */}
+    </div>
   );
 };

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DashboardCategoryFilter } from "../ui/DashboardCategoryFilter";
 import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { CandidateCount } from "./CandidateCount";
 import DashCandidateTiles from "./DashCandidateTiles";
 import VouchCTA from "./VouchCTA";
 import { FilterIcon } from "@heroicons/react/solid";
+import { usePrevious } from "../../lib/helperHooks";
 
 export interface HomeDashboardProps {
   hrData: any;
@@ -29,6 +30,8 @@ export interface HomeDashboardProps {
   filterChangeYearsOfExperience: (e) => void;
   anonData: any;
   data: any;
+  beacon: boolean;
+  setBeacon: (beacon: boolean) => void;
   refetchShortList: () => void;
   refetchAnonData: () => void;
 }
@@ -50,11 +53,16 @@ export const HomeDashboard = ({
   filterChangeYearsOfExperience,
   anonData,
   data,
+  beacon,
+  setBeacon,
   refetchShortList,
   refetchAnonData,
 }: HomeDashboardProps) => {
+  let prevCount = usePrevious(existingCandidates);
+
   return (
     <div>
+      {prevCount}
       <div className={" pt-6 pb-6 px-24 bg-gray-50"}>
         <div
           className={"grid grid-cols-3"}

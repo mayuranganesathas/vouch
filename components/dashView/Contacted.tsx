@@ -20,7 +20,8 @@ export interface ContactedDashboardProps {
 
   candidateLocationFilterDropdown: any;
   filterChangeLocationDropdown: (e) => void;
-
+  beacon: boolean;
+  setBeacon: (beacon: boolean) => void;
   positionTypeFilterDropdown: any;
   filterChangePositionType: (e) => void;
 
@@ -54,6 +55,8 @@ export const ContactedDashboard = ({
   shortListData,
   refetchShortList,
   refetchAnonData,
+  beacon,
+  setBeacon,
 }: ContactedDashboardProps) => {
   return (
     <div>
