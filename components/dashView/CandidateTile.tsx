@@ -111,7 +111,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <ButtonLinkedin
               backgroundColour="white"
               userLinkedinURL={userLinkedinURL}
-              anonymous="Pending"
+              anonymous="Pending LinkedIn"
               onClick={() =>
                 window.alert(
                   "You've already requested the candidates information!"
@@ -125,11 +125,15 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         //requested
       } else if (anonymous[0].status == "available") {
         return (
-          <div>
+          <div className="flex flex-nowrap hover:underline">
+            <img
+              src="./images/linkedInTile.png"
+              className={"flex justify-center items-center w-4 h-auto mr-1"}
+            />
             <ButtonLinkedin
               backgroundColour="white"
               userLinkedinURL={userLinkedinURL}
-              anonymous="Accepted"
+              anonymous="View Profile"
               onClick={() => window.open(`https://${userLinkedinURL}`)}
               buttonStatus="accepted"
             />{" "}
@@ -157,7 +161,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <ButtonLinkedin
           backgroundColour="white"
           userLinkedinURL={userLinkedinURL}
-          anonymous="Request"
+          anonymous="Request Linkedin"
           onClick={insertAnon}
           buttonStatus="request"
         />
