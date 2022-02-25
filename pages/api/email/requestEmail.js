@@ -1,4 +1,5 @@
 import sendgrid from "@sendgrid/mail";
+import { dbUri } from "../../../lib/apollo";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
