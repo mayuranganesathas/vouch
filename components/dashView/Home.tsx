@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DashboardCategoryFilter } from "../ui/DashboardCategoryFilter";
 import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { CandidateCount } from "./CandidateCount";
 import DashCandidateTiles from "./DashCandidateTiles";
 import VouchCTA from "./VouchCTA";
 import { FilterIcon } from "@heroicons/react/solid";
+import { usePrevious } from "../../lib/helperHooks";
 
 export interface HomeDashboardProps {
   hrData: any;
@@ -29,6 +30,10 @@ export interface HomeDashboardProps {
   filterChangeYearsOfExperience: (e) => void;
   anonData: any;
   data: any;
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconHome: any;
+  setBeaconContacted: any;
   refetchShortList: () => void;
   refetchAnonData: () => void;
 }
@@ -50,6 +55,10 @@ export const HomeDashboard = ({
   filterChangeYearsOfExperience,
   anonData,
   data,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
   refetchShortList,
   refetchAnonData,
 }: HomeDashboardProps) => {
@@ -198,6 +207,10 @@ export const HomeDashboard = ({
           hrData={hrData}
           anonData={anonData}
           refetchAnonData={refetchAnonData}
+          setBeaconHidden={setBeaconHidden}
+          setBeaconFavorites={setBeaconFavorites}
+          setBeaconContacted={setBeaconContacted}
+          setBeaconHome={setBeaconHome}
         />
       </div>
     </div>

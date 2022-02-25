@@ -36,6 +36,10 @@ export interface CandidateTileProps {
   yearsOfExperience: string;
   hrManagerIndustry: string;
   anonData: any;
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconHome: any;
+  setBeaconContacted: any;
   refetchAnonData: () => void;
 }
 
@@ -59,6 +63,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   yearsOfExperience,
   hrManagerIndustry,
   anonData,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
   refetchAnonData,
 }) => {
   const { user } = useAuth();
@@ -365,6 +373,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       "transition ease-in-out   hover:text-VouchGreen animate-myHide  scale-125 translate-y-6"
     );
     reverseClick();
+    setTimeout(() => setBeaconHome(true), 300);
   };
 
   const reverseSelectedAnimationEnd = () => {
@@ -381,6 +390,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     setHideIconsBelow(
       "transition ease-in-out   hover:text-VouchGreen animate-myHide  scale-125 translate-y-6"
     );
+    setTimeout(() => setBeaconFavorites(true), 300);
   };
 
   const homeFavoriteAnimationEnd = () => {
@@ -398,6 +408,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     setHideIconsAboveAndBelow(
       "transition ease-in-out   hover:text-VouchGreen animate-myHide "
     );
+    setTimeout(() => setBeaconHidden(true), 300);
   };
 
   const homeHideAnimationEnd = () => {
@@ -414,6 +425,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     setHideIconsAboveAndBelow(
       "transition ease-in-out   hover:text-VouchGreen animate-myHide "
     );
+    setTimeout(() => setBeaconHidden(true), 300);
   };
 
   const favoritesHideAnimationEnd = () => {
@@ -430,6 +442,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     setHideIconsAboveAndBelow(
       "transition ease-in-out   hover:text-VouchGreen animate-myHide "
     );
+    setTimeout(() => setBeaconFavorites(true), 300);
   };
 
   const unfitFavoritesAnimationEnd = () => {
@@ -553,6 +566,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         userID={userID}
         refetchShortList={refetchShortList}
         hrId={user.uid}
+        setBeaconContacted={setBeaconContacted}
       />
     </div>
   );

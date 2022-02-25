@@ -13,6 +13,10 @@ export interface DashCandidateTilesShortListProps {
   yearsOfExperienceFilterDropdown: any;
   positionTypeFilterDropdown: any;
   anonData: any;
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconHome: any;
+  setBeaconContacted: any;
   refetchAnonData: () => void;
 }
 
@@ -27,6 +31,10 @@ const DashCandidateTilesShortList = ({
   yearsOfExperienceFilterDropdown,
   positionTypeFilterDropdown,
   anonData,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
   refetchAnonData,
 }: DashCandidateTilesShortListProps) => {
   const candidateCounter = () => {
@@ -145,10 +153,12 @@ const DashCandidateTilesShortList = ({
               }
               positionTitle={e.hr_voucher_metadatum.positionTitle}
               salaryRange={e.hr_voucher_metadatum.salaryRange}
-              canLocationState={e.Vouchee[0].locationState}
-              canLocationCity={e.Vouchee[0].locationCity}
-              hrLocationState={e.Hr_Account[0].locationState}
-              hrLocationCity={e.Hr_Account[0].locationCity}
+              canLocationState={e.hr_voucher_metadatum.Vouchee[0].locationState}
+              canLocationCity={e.hr_voucher_metadatum.Vouchee[0].locationCity}
+              hrLocationState={
+                e.hr_voucher_metadatum.Hr_Account[0].locationState
+              }
+              hrLocationCity={e.hr_voucher_metadatum.Hr_Account[0].locationCity}
               numEmployees={
                 e.hr_voucher_metadatum.Company_Data[0].rangeOfEmployees
               }
@@ -165,6 +175,10 @@ const DashCandidateTilesShortList = ({
               hrManagerIndustry={e.hr_voucher_metadatum.Hr_Account[0].industry}
               yearsOfExperience={e.hr_voucher_metadatum.yearsOfExperience}
               anonData={anonData}
+              setBeaconHidden={setBeaconHidden}
+              setBeaconFavorites={setBeaconFavorites}
+              setBeaconContacted={setBeaconContacted}
+              setBeaconHome={setBeaconHome}
               refetchAnonData={refetchAnonData}
             />
           ))}

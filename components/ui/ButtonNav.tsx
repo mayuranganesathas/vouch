@@ -15,6 +15,7 @@ export interface ButtonNavProps {
   onClick: () => void;
   buttonWidth?: "wide";
   icon: string;
+  beacon: boolean;
 }
 
 export const ButtonNav: React.FC<ButtonNavProps> = ({
@@ -26,6 +27,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   onClick,
   buttonWidth,
   icon,
+  beacon,
 }) => {
   let buttonSize;
 
@@ -80,19 +82,31 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   }
 
   return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      type="button"
-      className={`bg-gradient-to-b px-2 py-1 h-full text-xs font-bold ${buttonSize}
+    <div className="bg-blue-400">
+      <button
+        onClick={onClick}
+        disabled={disabled}
+        type="button"
+        className={`bg-gradient-to-b px-2 py-1 h-full text-xs font-bold ${buttonSize}
       ${disabled ? "bg-gray-400 opacity-25" : backgroundStyles}
       ${disabled ? "rounded" : buttonStyles}
       ${disabled ? "" : "active:border-b-2"}
-      ${disabled ? "cursor-default" : "cursor-pointer"}
+      ${disabled ? "cursor-default" : "cursor-pointer"} 
       `}
-    >
-      <div className={textStyles}>{label} </div>
-      <div className={"flex justify-center pt-1"}>{iconStyles}</div>
-    </button>
+      >
+        <div className="flex">
+          <div className={textStyles}>{label} </div>
+          {beacon ? (
+            <span className="flex flex-row ">
+              <span className="animate-ping absolute inline-flex h-1.5 w-1.5  rounded-full bg-VouchGreen opacity-75 text"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-VouchGreen"></span>
+            </span>
+          ) : (
+            " "
+          )}
+        </div>
+        <div className={"flex justify-center pt-1"}>{iconStyles}</div>
+      </button>
+    </div>
   );
 };

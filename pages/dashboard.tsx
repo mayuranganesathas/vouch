@@ -24,20 +24,22 @@ export interface DashboardProps {}
 
 const DashBoard = ({}: DashboardProps) => {
   const [stageStatus, setStageStatus] = useState("Home");
-
   const { user } = useAuth();
-
   const [candidateLocationFilterDropdown, setCandidateLocationFilterDropdown] =
     useState("empty");
   const [positionTypeFilterDropdown, setPositionTypeFilterDropdown] =
     useState("empty");
   const [yearsOfExperienceFilterDropdown, setYearsOfExperienceFilterDropdown] =
     useState("empty");
-
   const [existingCandidates, setExistingCandidates] = useState();
   const [shortListExistingCandidates, setShortListExistingCandidates] =
     useState(0);
   const [clearFilter, setClearFilter] = useState(false);
+
+  const [beaconHome, setBeaconHome] = useState(false);
+  const [beaconFavorites, setBeaconFavorites] = useState(false);
+  const [beaconHidden, setBeaconHidden] = useState(false);
+  const [beaconContacted, setBeaconContacted] = useState(false);
 
   let {
     loading,
@@ -87,6 +89,10 @@ const DashBoard = ({}: DashboardProps) => {
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
             refetchAnonData={refetchAnonData}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
           />
         </div>
       );
@@ -113,6 +119,10 @@ const DashBoard = ({}: DashboardProps) => {
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
             refetchAnonData={refetchAnonData}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
           />
         </div>
       );
@@ -139,6 +149,10 @@ const DashBoard = ({}: DashboardProps) => {
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
             refetchAnonData={refetchAnonData}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
           />
         </div>
       );
@@ -165,6 +179,10 @@ const DashBoard = ({}: DashboardProps) => {
             stateProvinceDropdownList={stateProvinceDropdownArray}
             anonData={AnonData}
             refetchAnonData={refetchAnonData}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
           />
         </div>
       );
@@ -215,6 +233,14 @@ const DashBoard = ({}: DashboardProps) => {
               setStageStatus={setStageStatus}
               queryUpdateOnClick={refetchShortList}
               clearFilters={clearFilters}
+              beaconHome={beaconHome}
+              setBeaconHome={setBeaconHome}
+              beaconFavorites={beaconFavorites}
+              setBeaconFavorites={setBeaconFavorites}
+              beaconHidden={beaconHidden}
+              setBeaconHidden={setBeaconHidden}
+              beaconContacted={beaconContacted}
+              setBeaconContacted={setBeaconContacted}
             />
           </div>
           <div className={"w-full border-gray-500 border-b-2"}></div>

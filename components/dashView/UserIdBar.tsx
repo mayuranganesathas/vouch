@@ -9,6 +9,15 @@ import { ViewListIcon } from "@heroicons/react/solid";
 export interface UserIdBarProps {
   hrData: any;
   stageStatus: string;
+  beaconHome: boolean;
+  setBeaconHome: (beaconHome: boolean) => void;
+
+  beaconFavorites: boolean;
+  setBeaconFavorites: (beaconFavorites: boolean) => void;
+  beaconHidden: boolean;
+  setBeaconHidden: (beaconHidden: boolean) => void;
+  beaconContacted: boolean;
+  setBeaconContacted: (beaconContacted: boolean) => void;
   setStageStatus: (stageStatus: string) => void;
   queryUpdateOnClick: () => void;
   clearFilters: () => void;
@@ -16,6 +25,14 @@ export interface UserIdBarProps {
 const UserIdBar = ({
   hrData,
   stageStatus,
+  beaconHome,
+  setBeaconHome,
+  beaconHidden,
+  setBeaconHidden,
+  beaconFavorites,
+  setBeaconFavorites,
+  beaconContacted,
+  setBeaconContacted,
   setStageStatus,
   queryUpdateOnClick,
   clearFilters,
@@ -35,6 +52,7 @@ const UserIdBar = ({
     setStageStatus("Home");
     queryUpdateOnClick;
     clearFilters();
+    setBeaconHome(false);
   };
 
   const favoritesClick = () => {
@@ -45,6 +63,7 @@ const UserIdBar = ({
     setStageStatus("Favorites");
     queryUpdateOnClick;
     clearFilters();
+    setBeaconFavorites(false);
   };
 
   const unfitClick = () => {
@@ -55,6 +74,7 @@ const UserIdBar = ({
     setStageStatus("Unfit");
     queryUpdateOnClick;
     clearFilters();
+    setBeaconHidden(false);
   };
 
   const contactedClick = () => {
@@ -65,6 +85,7 @@ const UserIdBar = ({
     setStageStatus("Contacted");
     queryUpdateOnClick;
     clearFilters();
+    setBeaconContacted(false);
   };
 
   return (
@@ -87,6 +108,7 @@ const UserIdBar = ({
             onClick={homeClick}
             icon={"Home"}
             buttonWidth={"wide"}
+            beacon={beaconHome}
           />
         </div>
         <div className={"col-start-9 flex justify-center items-center"}>
@@ -98,6 +120,7 @@ const UserIdBar = ({
             onClick={favoritesClick}
             icon={"Favorites"}
             buttonWidth={"wide"}
+            beacon={beaconFavorites}
           />
         </div>
         <div className={"col-start-10 flex justify-center items-center"}>
@@ -109,6 +132,7 @@ const UserIdBar = ({
             onClick={unfitClick}
             icon={"NotNow"}
             buttonWidth={"wide"}
+            beacon={beaconHidden}
           />
         </div>
         <div className={"col-start-11 flex justify-center items-center"}>
@@ -120,6 +144,7 @@ const UserIdBar = ({
             onClick={contactedClick}
             icon={"Contacted"}
             buttonWidth={"wide"}
+            beacon={beaconContacted}
           />
         </div>
 
