@@ -31,7 +31,8 @@ export interface CandidateOnTwoProps {
 
   linkedIn: string;
   setLinkedIn: (linkedIn: string) => void;
-
+  anonCheck: string;
+  setAnonCheck: (anonCheck: string) => void;
   previousStage: () => void;
   completeForm: () => void;
   formValidation: () => boolean;
@@ -49,14 +50,14 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
   setLocationState,
   locationCity,
   setLocationCity,
+  anonCheck,
+  setAnonCheck,
 
   previousStage,
   completeForm,
   formValidation,
 }) => {
-  const email = () => {};
   const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
-
   return (
     <div className={"flex justify-center items-center"}>
       <div
@@ -77,7 +78,6 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             Only first name, location and referring company details will be
             shared actively with hiring companies.
           </div>
-
           <div className={"pt-8 pb-4"}>
             <input
               className={
@@ -98,7 +98,6 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
               onChange={(e) => setFirstName(e.target.value)}
             ></input>
           </div>
-
           <div className={"grid grid-cols-2 gap-2 w-full"}>
             <div className={"text-xs py-2"}>
               <input
@@ -121,6 +120,42 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                 width={"wide-sm"}
               />
             </div>
+            <div className="text-xs flex-nowrap py-0.5">
+              Do you want to remain anonymous?
+              <div className={""}>
+                <div className="form-check form-check-inline flex py-0.5">
+                  <input
+                    className="form-check-input  rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadio1"
+                    value={anonCheck}
+                    onChange={(e) => setAnonCheck("")}
+                  />
+                  <label className="form-check-label inline-block text-gray-800 flex-nowrap">
+                    Anonymous Profile
+                  </label>
+                </div>
+                <div className="form-check form-check-inline flex">
+                  <input
+                    className="form-check-input rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200  align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadio1"
+                    value={anonCheck}
+                    onChange={(e) => setAnonCheck("available")}
+                  />
+                  <label className="form-check-label inline-block text-gray-800">
+                    Public Profile
+                  </label>
+                  {console.log(anonCheck)}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="text-xs text-VouchGreen">
+            Public Profiles are 80% more likely to be hired on the Vouch
+            Platform!
           </div>
           <div className={"text-xs py-4 w-full flex flex-nowrap"}>
             <div className="grid content-center pt-1 pr-2">
@@ -147,7 +182,6 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             of a LinkedIn Request. Your LinkedIn URL will otherwise not appear
             anywhere on the VOUCH platform without your consent.
           </div>
-
           {/* <div className={"text-xs pt-8"}>
             {" "}
             Send a thank you message to thank the HR manager for referring you

@@ -10,6 +10,7 @@ export const UPSERT_CANDIDATE_METADATA = gql`
     $candidateEmail: String = ""
     $candidateId: Int
     $privacyId: String = ""
+    $status: String = ""
   ) {
     update_candidate_metadata(
       where: { hrId: { _eq: $hrId }, privacyId: { _eq: $privacyId } }
@@ -32,6 +33,13 @@ export const UPSERT_CANDIDATE_METADATA = gql`
         candidateId: $candidateId
         candidateEmail: $candidateEmail
       }
+    ) {
+      returning {
+        created_at
+      }
+    }
+    insert_anonymity(
+      objects: { candidateId: $candidateId, hrId: $hrId, status: $status }
     ) {
       returning {
         created_at
