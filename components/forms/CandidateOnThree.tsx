@@ -7,13 +7,21 @@ export const CandidateOnThree: React.FC<CandidateOnThreeProps> = ({}) => {
   return (
     <div className={"flex items-center justify-center"}>
       <div className={"px-8 shadow-lg rounded-xl w-3/5 h-auto bg-white"}>
-        <div className={"pt-8"}>Thank you for your submisssion!</div>
-        <div className={"pt-2 text-xs"}>
-          Thank you for joining Vouch! Your profile is now live in the Vouch
-          platform for companies to view. Recruitment teams or Hiring Managers
-          may reach out to you directly to speak with you.
+        <div className={"pt-8 font-bold text-gray-700"}>
+          Thank you for joining VOUCH!
         </div>
-        <div className={"pb-4 border-b border-gray-200 "}></div>
+        <div className={"pt-2 text-xs text-gray-500"}>
+          Companies may reach out to request access to your LinkedIn Profile or
+          schedule a time to connect.
+        </div>
+        <div className="flex justify-center items-center py-8">
+          <img
+            src="./images/VouchLogo1.png"
+            width="100"
+            height="auto"
+            className={"flex justify-center items-center py-2 px-2"}
+          />
+        </div>
       </div>
     </div>
   );
