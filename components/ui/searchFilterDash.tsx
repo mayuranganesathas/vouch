@@ -6,6 +6,7 @@ export interface SearchFilterDashProps {
   value: any;
   onChange: (e) => void;
   width?: "wide-md" | "wide-lg" | "wide-sm";
+  defaultLabel: string;
 }
 
 export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
@@ -14,6 +15,7 @@ export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
   value,
   onChange,
   width,
+  defaultLabel,
 }) => {
   let backgroundStyles;
   switch (backgroundColour) {
@@ -46,7 +48,7 @@ export const SearchFilterDash: React.FC<SearchFilterDashProps> = ({
         onChange={onChange}
       >
         <option value="" disabled selected hidden>
-          Select One
+          {defaultLabel}
         </option>
         {dropDownArray &&
           dropDownArray

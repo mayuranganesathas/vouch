@@ -75,8 +75,6 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
           </div>
           <div className={"pt-1 text-xs text-gray-500 w-full"}>
             We require minimal information from you to preserve your privacy.
-            Only first name, location and referring company details will be
-            shared actively with hiring companies.
           </div>
           <div className={"pt-8 pb-4"}>
             <input
@@ -114,6 +112,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                 backgroundColour={"white"}
                 dropDownArray={stateProvinceDropdownArray}
                 value={locationState}
+                defaultLabel="State/Province"
                 onChange={(e) => {
                   setLocationState(e.target.value);
                 }}

@@ -53,6 +53,21 @@ const TileModal = ({
     });
   };
 
+  const toastEmail = () => {
+    toast.success(
+      "Awesome! We've sent an email to the candidate. (PS. You're CC'd) ✅",
+      {
+        position: "top-center",
+        autoClose: 1750,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  };
+
   const sendEmail = async () => {
     const res = await fetch("/api/email/interestEmail", {
       body: JSON.stringify({
@@ -100,7 +115,7 @@ const TileModal = ({
         candidateId: userID,
       },
     });
-    toastFeedback();
+    toastEmail();
     setBeaconContacted(true);
     sendEmail();
     closeModal();
