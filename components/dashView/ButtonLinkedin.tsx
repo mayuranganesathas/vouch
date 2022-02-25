@@ -19,15 +19,15 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
   let buttonBorder;
   switch (buttonStatus) {
     case "request":
-      buttonBorder = "px-2  bg-gray-200 rounded-full";
+      buttonBorder = "text-VouchGreen font-bold hover:underline";
       break;
 
     case "accepted":
-      buttonBorder = "px-2 bg-VouchGreen text-green-700 rounded-full";
+      buttonBorder = "text-gray-500";
       break;
 
     case "pending":
-      buttonBorder = "px-2 bg-VouchYellow text-yellow-500 rounded-full";
+      buttonBorder = "text-gray-300";
       break;
   }
 
@@ -36,12 +36,12 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
       onClick={onClick}
       disabled={disabled}
       type="button"
-      className={` bg-white w-4 h-auto flex flex-nowrap text-xs 
+      className={`bg-white w-auto h-auto flex flex-nowrap text-xs 
       ${disabled ? "bg-gray-400 opacity-25" : backgroundColour}
       ${disabled ? "cursor-default" : "cursor-pointer"}
       `}
     >
-      <div className={"pl-2"}>
+      <div className={""}>
         <div className={buttonBorder}>{anonymous}</div>
       </div>
     </button>
