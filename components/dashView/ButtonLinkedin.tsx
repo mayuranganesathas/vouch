@@ -41,10 +41,6 @@ export const ButtonLinkedin: React.FC<ButtonLinkedinProps> = ({
       ${disabled ? "cursor-default" : "cursor-pointer"}
       `}
     >
-      <img
-        src="./images/linkedInTile.png"
-        className={"flex justify-center items-center w-8 h-auto"}
-      />{" "}
       <div className={"pl-2"}>
         <div className={buttonBorder}>{anonymous}</div>
       </div>

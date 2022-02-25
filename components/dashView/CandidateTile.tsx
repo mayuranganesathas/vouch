@@ -557,3 +557,8 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     </div>
   );
 };
+
+/* <img
+        src="./images/linkedInTile.png"
+        className={"flex justify-center items-center w-8 h-auto"}
+      />{" "}*/
