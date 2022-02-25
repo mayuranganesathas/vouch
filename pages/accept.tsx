@@ -11,37 +11,37 @@ export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
   const candidateId = router.query.candidateId.toString();
   //todo fix
-  const sendEmail = async (data) => {
-    const res = await fetch("/api/email/hrPrivacyAcceptance", {
-      body: JSON.stringify({
-        hrEmail: data.hr_voucher[0].hrEmail,
-        hrId: hrId,
-        hrFirstName: data.hr_voucher[0].firstName,
-        hrLastName: data.hr_voucher[0].lastName,
-        companyName: data.hr_voucher[0].companyName,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
+  // const sendEmail = async (data) => {
+  //   const res = await fetch("/api/email/hrPrivacyAcceptance", {
+  //     body: JSON.stringify({
+  //       hrEmail: data.hr_voucher[0].hrEmail,
+  //       hrId: hrId,
+  //       hrFirstName: data.hr_voucher[0].firstName,
+  //       hrLastName: data.hr_voucher[0].lastName,
+  //       companyName: data.hr_voucher[0].companyName,
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     method: "POST",
+  //   });
 
-    const { error } = await res.json();
-    if (error) {
-      console.log(error);
-      return;
-    }
-  };
+  //   const { error } = await res.json();
+  //   if (error) {
+  //     console.log(error);
+  //     return;
+  //   }
+  // };
 
-  useEffect(() => {
-    let { loading, data: hrEmailData } = useQuery(QUERY_HRID, {
-      variables: {
-        hrId: hrId,
-      },
-    });
+  // useEffect(() => {
+  //   let { loading, data: hrEmailData } = useQuery(QUERY_HRID, {
+  //     variables: {
+  //       hrId: hrId,
+  //     },
+  //   });
 
-    sendEmail(hrEmailData);
-  }, []);
+  //   sendEmail(hrEmailData);
+  // }, []);
 
   const [upsertAnonymity, { data, loading, error }] = useMutation(
     INSERT_ANON,

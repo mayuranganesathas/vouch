@@ -82,7 +82,7 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   }
 
   return (
-    <div className="bg-blue-400">
+    <div className="">
       <button
         onClick={onClick}
         disabled={disabled}
