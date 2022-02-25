@@ -68,48 +68,21 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
   let iconStyles;
   switch (icon) {
     case "Home":
-      iconStyles = (
-        <ViewListIcon
-          className={`w-4 h-auto ${
-            beacon ? "text-VouchGreen" : "text-gray-300"
-          }`}
-        />
-      );
+      iconStyles = <ViewListIcon className={"w-4 h-auto"} fill="#d1d5db" />;
       break;
     case "Favorites":
-      iconStyles = (
-        <StarIcon
-          className={`w-4 h-auto ${
-            beacon ? "text-VouchGreen" : "text-gray-300"
-          }`}
-          fill="#d1d5db"
-        />
-      );
+      iconStyles = <StarIcon className={"w-4 h-auto"} fill="#d1d5db" />;
       break;
     case "NotNow":
-      iconStyles = (
-        <EyeOffIcon
-          className={`w-4 h-auto ${
-            beacon ? "text-VouchGreen" : "text-gray-300"
-          }`}
-          fill="#d1d5db"
-        />
-      );
+      iconStyles = <EyeOffIcon className={"w-4 h-auto"} fill="#d1d5db" />;
       break;
     case "Contacted":
-      iconStyles = (
-        <MailOpenIcon
-          className={`w-4 h-auto ${
-            beacon ? "text-VouchGreen" : "text-gray-300"
-          }`}
-          fill="#d1d5db"
-        />
-      );
+      iconStyles = <MailOpenIcon className={"w-4 h-auto"} fill="#d1d5db" />;
       break;
   }
 
   return (
-    <div className="">
+    <div className="bg-blue-400">
       <button
         onClick={onClick}
         disabled={disabled}
@@ -121,13 +94,19 @@ export const ButtonNav: React.FC<ButtonNavProps> = ({
       ${disabled ? "cursor-default" : "cursor-pointer"} 
       `}
       >
-        {/* TO DO: CREATE ANIMATION, ping beside Home, Favoirtes, HIdden and Contacted */}
-        <div className={textStyles}>{label} </div>
+        <div className="flex">
+          <div className={textStyles}>{label} </div>
+          {beacon ? (
+            <span className="flex flex-row ">
+              <span className="animate-ping absolute inline-flex h-1.5 w-1.5  rounded-full bg-VouchGreen opacity-75 text"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-VouchGreen"></span>
+            </span>
+          ) : (
+            " "
+          )}
+        </div>
         <div className={"flex justify-center pt-1"}>{iconStyles}</div>
       </button>
-      {/* 
-      <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 text-VouchDark"></div>
-      <div className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></div> */}
     </div>
   );
 };
