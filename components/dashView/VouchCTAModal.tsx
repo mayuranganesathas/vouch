@@ -284,7 +284,7 @@ const VouchCTAModal = ({
                     <div className="pb-2">
                       <div className="text-xs py-1 font-bold text-gray-500 flex flex-nowrap">
                         Position Type
-                        <InformationIconToolTip toolTipCopy="While companies have differing interview stages, please do your best to select the stage that best represents the last interview stage completed by the candidate." />
+                        <InformationIconToolTip toolTipCopy="Select the position type the candidate interviewed for." />
                       </div>
                       <div className={"pr-3"}>
                         <PositionFilterVouch
@@ -301,8 +301,8 @@ const VouchCTAModal = ({
 
                   <div>
                     <div className="text-xs py-1 pl-3 font-bold text-gray-500 flex flex-nowrap">
-                      Required Years of Exp{" "}
-                      <InformationIconToolTip toolTipCopy="Select the closest base salary range that was budgeted for the position. This provides other HR professionals in the platform an idea around salary expectations of the candidate." />
+                      Req Years of Exp{" "}
+                      <InformationIconToolTip toolTipCopy="Select the years of experience the role requires." />
                     </div>{" "}
                     <div className={"pl-3"}>
                       <BaseSalaryFilterVouch
