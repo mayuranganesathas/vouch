@@ -68,7 +68,11 @@ export default function acceptPrivacy() {
   return (
     <div className={"bg-gray-100 w-full h-screen grid content-center"}>
       <div className={"flex justify-center items-center"}>
-        <div className={"px-8 shadow-lg rounded-xl w-2/5 h-auto bg-white"}>
+        <div
+          className={
+            "px-8 shadow-lg rounded-xl lg:w-2/5 sm:4/5 h-auto bg-white"
+          }
+        >
           <div className="flex justify-center items-center">
             <img
               src="./images/sendRequest.png"

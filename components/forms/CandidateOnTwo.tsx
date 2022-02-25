@@ -62,7 +62,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
     <div className={"flex justify-center items-center"}>
       <div
         className={
-          "shadow-lg rounded-xl w-2/5 h-auto bg-white flex justify-center  px-5 "
+          "shadow-lg rounded-xl lg:w-2/5 sm:4/5 h-auto bg-white flex justify-center  px-5 "
         }
       >
         <div className={" py-8 text-gray-700 px-12"}>
