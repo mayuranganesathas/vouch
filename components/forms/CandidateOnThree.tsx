@@ -6,7 +6,11 @@ export interface CandidateOnThreeProps {}
 export const CandidateOnThree: React.FC<CandidateOnThreeProps> = ({}) => {
   return (
     <div className={"flex items-center justify-center"}>
-      <div className={"px-8 shadow-lg rounded-xl w-3/5 h-auto bg-white"}>
+      <div
+        className={
+          "px-8 shadow-lg rounded-xl lg:w-3/5 sm:4/5 sm:h-full h-auto bg-white"
+        }
+      >
         <div className={"pt-8 font-bold text-gray-700"}>
           Thank you for joining VOUCH!
         </div>

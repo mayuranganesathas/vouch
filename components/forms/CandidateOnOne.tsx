@@ -8,7 +8,9 @@ export interface CandidateOnOneProps {
 export const CandidateOnOne: React.FC<CandidateOnOneProps> = ({ onClick }) => {
   return (
     <div className={"flex justify-center items-center"}>
-      <div className={" shadow-lg rounded-xl w-3/5 h-auto bg-white"}>
+      <div
+        className={" shadow-lg rounded-xl lg:w-3/5 sm:w-4/5 h-auto bg-white"}
+      >
         <div className="flex justify-center items-center">
           <img
             src="./images/JoinUs.png"
@@ -17,8 +19,12 @@ export const CandidateOnOne: React.FC<CandidateOnOneProps> = ({ onClick }) => {
             className={"flex justify-center items-center py-2 px-2"}
           />
         </div>
-        <div className={"px-10"}>
-          <div className={" px-10 font-bold text-lg pt-8 text-center"}>
+        <div className={"px-10 "}>
+          <div
+            className={
+              " px-10 font-bold text-lg pt-8 text-center justify-center"
+            }
+          >
             Welcome to a Network of Premium Candidates
           </div>
           <div className={"pt-4 text-xs text-gray-500 text-center"}>
