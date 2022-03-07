@@ -129,7 +129,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                     name="inlineRadioOptions"
                     id="inlineRadio1"
                     value={anonCheck}
-                    onChange={(e) => setAnonCheck("")}
+                    onChange={(e) => setAnonCheck("anon")}
                   />
                   <label className="form-check-label inline-block text-gray-800 flex-nowrap">
                     Anonymous Profile
@@ -153,8 +153,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             </div>
           </div>
           <div className="text-xs text-VouchGreen">
-            Public Profiles are 80% more likely to be hired on the Vouch
-            Platform!
+            Candidates are 80% more likely to be contacted with a Public Profile
           </div>
           <div className={"text-xs py-4 w-full flex flex-nowrap"}>
             <div className="grid content-center pt-1 pr-2">
@@ -176,10 +175,8 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
             ></input>
           </div>
           <div className={"text-xs w-full italic text-gray-400"}>
-            Interested companies will request your LinkedIn. They will ONLY see
-            the URL if you give permission. An email will be sent to notify you
-            of a LinkedIn Request. Your LinkedIn URL will otherwise not appear
-            anywhere on the VOUCH platform without your consent.
+            If you selected "Anonymous Profile", your Linkedin URL will remain
+            hidden until a company triggers a request AND you approve to share.
           </div>
           {/* <div className={"text-xs pt-8"}>
             {" "}
