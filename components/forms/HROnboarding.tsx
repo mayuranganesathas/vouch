@@ -171,6 +171,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                     backgroundColour={"white"}
                     dropDownArray={industryArrayList}
                     value={industryArray}
+                    defaultLabel="Select Industry"
                     onChange={(e) => {
                       setIndustryArray(e.target.value);
                     }}
@@ -184,6 +185,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                     backgroundColour={"white"}
                     dropDownArray={jobCompanySizeDropdownData}
                     value={employeeArray}
+                    defaultLabel="Select Co. Size"
                     onChange={(e) => {
                       setEmployeeArray(e.target.value);
                     }}
@@ -196,6 +198,7 @@ export const HROnboarding: React.FC<HROnboardingProps> = ({
                   backgroundColour={"white"}
                   dropDownArray={stateProvinceDropdownArray}
                   value={hrStateLocation}
+                  defaultLabel="State/Province"
                   onChange={(e) => {
                     setHrStateLocation(e.target.value);
                   }}

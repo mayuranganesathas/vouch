@@ -13,11 +13,17 @@ import { toast, ToastContainer } from "react-toastify";
 import { DELETE_SHORTLIST_ITEM } from "../../graphql/DELETE_FROM_SHORTLIST";
 import CandidateTileModal from "./CandidateTileModal";
 import { INSERT_ANON } from "../../graphql/INSERT_ANON";
+import { dbUri } from "../../lib/apollo";
+
 export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
   salaryRange: string;
-  jobLocation: string;
+  canLocationCity: string;
+  hrLocationCity: string;
+
+  canLocationState: string;
+  hrLocationState: string;
   numEmployees: string;
   companyName: string;
   stageInterview: string;
@@ -30,6 +36,10 @@ export interface CandidateTileProps {
   yearsOfExperience: string;
   hrManagerIndustry: string;
   anonData: any;
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconHome: any;
+  setBeaconContacted: any;
   refetchAnonData: () => void;
 }
 
@@ -38,7 +48,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   firstName,
   positionTitle,
   salaryRange,
-  jobLocation,
+  canLocationState,
+  canLocationCity,
+  hrLocationState,
+  hrLocationCity,
   numEmployees,
   companyName,
   stageInterview,
@@ -50,6 +63,10 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
   yearsOfExperience,
   hrManagerIndustry,
   anonData,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
   refetchAnonData,
 }) => {
   const { user } = useAuth();
@@ -94,7 +111,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
             <ButtonLinkedin
               backgroundColour="white"
               userLinkedinURL={userLinkedinURL}
-              anonymous="Pending"
+              anonymous="Pending LinkedIn"
               onClick={() =>
                 window.alert(
                   "You've already requested the candidates information!"
@@ -108,11 +125,15 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         //requested
       } else if (anonymous[0].status == "available") {
         return (
-          <div>
+          <div className="flex flex-nowrap hover:underline">
+            <img
+              src="./images/linkedInTile.png"
+              className={"flex justify-center items-center w-4 h-auto mr-1"}
+            />
             <ButtonLinkedin
               backgroundColour="white"
               userLinkedinURL={userLinkedinURL}
-              anonymous="Accepted"
+              anonymous="View Profile"
               onClick={() => window.open(`https://${userLinkedinURL}`)}
               buttonStatus="accepted"
             />{" "}
@@ -140,7 +161,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         <ButtonLinkedin
           backgroundColour="white"
           userLinkedinURL={userLinkedinURL}
-          anonymous="Request"
+          anonymous="Request Linkedin"
           onClick={insertAnon}
           buttonStatus="request"
         />
@@ -210,17 +231,18 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     sendEmail();
     toastLinkedInRequest();
   };
+  const domainType = dbUri().subDomain;
 
   const sendEmail = async () => {
     const res = await fetch("/api/email/requestEmail", {
       body: JSON.stringify({
         canFirstName: firstName,
         email: userEmailAction,
-        hrId: user.uid,
         hrEmail: user.email,
         hrFirstName: hrData.hr_voucher[0].firstName,
         hrLastName: hrData.hr_voucher[0].lastName,
         companyName: hrData.hr_voucher[0].companyName,
+        hrId: user.uid,
         candidateId: userID,
       }),
       headers: {
@@ -355,6 +377,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
       "transition ease-in-out   hover:text-VouchGreen animate-myHide  scale-125 translate-y-6"
     );
     reverseClick();
+    setTimeout(() => setBeaconHome(true), 300);
   };
 
   const reverseSelectedAnimationEnd = () => {
@@ -371,6 +394,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     setHideIconsBelow(
       "transition ease-in-out   hover:text-VouchGreen animate-myHide  scale-125 translate-y-6"
     );
+    setTimeout(() => setBeaconFavorites(true), 300);
   };
 
   const homeFavoriteAnimationEnd = () => {
@@ -388,6 +412,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     setHideIconsAboveAndBelow(
       "transition ease-in-out   hover:text-VouchGreen animate-myHide "
     );
+    setTimeout(() => setBeaconHidden(true), 300);
   };
 
   const homeHideAnimationEnd = () => {
@@ -404,6 +429,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     setHideIconsAboveAndBelow(
       "transition ease-in-out   hover:text-VouchGreen animate-myHide "
     );
+    setTimeout(() => setBeaconHidden(true), 300);
   };
 
   const favoritesHideAnimationEnd = () => {
@@ -420,6 +446,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
     setHideIconsAboveAndBelow(
       "transition ease-in-out   hover:text-VouchGreen animate-myHide "
     );
+    setTimeout(() => setBeaconFavorites(true), 300);
   };
 
   const unfitFavoritesAnimationEnd = () => {
@@ -464,7 +491,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   </p>
                   <div className={"text-xs border-r-2 border-gray-200 "}>
                     {" "}
-                    {jobLocation}
+                    {canLocationCity}, {canLocationState}
                   </div>
                   <div className={""}>
                     <div
@@ -499,7 +526,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
                   <p className="w-full truncate ">{hrManagerIndustry}</p>
                   <p className="w-full pt-1 text-xs truncate">
                     {" "}
-                    HQ in {jobLocation}
+                    HQ in {hrLocationCity}, {hrLocationState}
                   </p>
                 </div>
               </div>
@@ -543,6 +570,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
         userID={userID}
         refetchShortList={refetchShortList}
         hrId={user.uid}
+        setBeaconContacted={setBeaconContacted}
       />
     </div>
   );

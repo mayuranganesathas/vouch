@@ -27,6 +27,7 @@ export default function CandidateOn(props) {
   const [firstName, setFirstName] = useState("");
   const [locationCity, setLocationCity] = useState("");
   const [locationState, setLocationState] = useState("");
+  const [anonCheck, setAnonCheck] = useState("");
 
   const { data: CanId } = useQuery(QUERY_CANDIDATE_ID, {
     variables: { hrId: hrId, privacyId: candidateUUID },
@@ -38,6 +39,7 @@ export default function CandidateOn(props) {
     setFirstName("");
     setLocationCity("");
     setLocationState("");
+    setAnonCheck("");
   };
 
   const [initializeCandidateMetaData, { data, loading, error }] = useMutation(
@@ -53,6 +55,7 @@ export default function CandidateOn(props) {
         hrId: "incompleteField",
         candidateId: "incompleteField",
         privacyId: "incompleteField",
+        status: "incompleteField",
       },
     }
   );
@@ -63,12 +66,14 @@ export default function CandidateOn(props) {
     const firstNameValidator = firstName;
     const locationCityValidator = locationCity;
     const locationStateValidator = locationState;
+    const anonCheckValidator = anonCheck;
 
     if (
       linkedInValidator &&
       candidateEmailValidator &&
       firstNameValidator &&
       locationStateValidator &&
+      anonCheckValidator &&
       locationCityValidator
     ) {
       return true;
@@ -99,6 +104,7 @@ export default function CandidateOn(props) {
         hrId: hrId,
         candidateId: CanId.hr_voucher_metadata[0].candidateId,
         privacyId: candidateUUID,
+        status: anonCheck,
       },
     });
     if (loading) return "Submitting...";
@@ -143,6 +149,8 @@ export default function CandidateOn(props) {
             previousStage={previousStage}
             completeForm={onSubmit}
             formValidation={formValidator}
+            anonCheck={anonCheck}
+            setAnonCheck={setAnonCheck}
           />
         </div>
       );

@@ -20,6 +20,7 @@ import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CTAinstructionsModal from "./CTAInstructionsModal";
+import { dbUri } from "../../lib/apollo";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -90,20 +91,18 @@ const VouchCTAModal = ({
       },
     }
   );
-  // insert hrID in candidates and
-  const emailChecker = (e) => {
-    setEmail(e);
-  };
+
+  const domainType = dbUri().subDomain;
 
   const sendEmail = async () => {
     const res = await fetch("/api/email/vouchEmailCandidate", {
       body: JSON.stringify({
         email: email,
-        hrId: user.uid,
         hrEmail: user.email,
         hrFirstName: hrData.hr_voucher[0].firstName,
         hrLastName: hrData.hr_voucher[0].lastName,
         companyName: hrData.hr_voucher[0].companyName,
+        hrId: user.uid,
         privacyId: candidateUUID,
       }),
       headers: {
@@ -130,6 +129,7 @@ const VouchCTAModal = ({
       progress: undefined,
     });
   };
+
   const submitForm = async () => {
     initializeVouchCandidate({
       variables: {
@@ -215,7 +215,7 @@ const VouchCTAModal = ({
                     type="text"
                     placeholder=" Enter Candidate Email"
                     value={email}
-                    onChange={(e) => emailChecker(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                   ></input>
                 </div>
               </div>
@@ -284,7 +284,7 @@ const VouchCTAModal = ({
                     <div className="pb-2">
                       <div className="text-xs py-1 font-bold text-gray-500 flex flex-nowrap">
                         Position Type
-                        <InformationIconToolTip toolTipCopy="While companies have differing interview stages, please do your best to select the stage that best represents the last interview stage completed by the candidate." />
+                        <InformationIconToolTip toolTipCopy="Select the position type the candidate interviewed for." />
                       </div>
                       <div className={"pr-3"}>
                         <PositionFilterVouch
@@ -302,7 +302,7 @@ const VouchCTAModal = ({
                   <div>
                     <div className="text-xs py-1 pl-3 font-bold text-gray-500 flex flex-nowrap">
                       Req Years of Exp{" "}
-                      <InformationIconToolTip toolTipCopy="Select the closest base salary range that was budgeted for the position. This provides other HR professionals in the platform an idea around salary expectations of the candidate." />
+                      <InformationIconToolTip toolTipCopy="Select the years of experience the role requires." />
                     </div>{" "}
                     <div className={"pl-3"}>
                       <BaseSalaryFilterVouch

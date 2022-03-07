@@ -17,6 +17,7 @@ export interface TileModalProps {
   refetchShortList: any;
   userID: any;
   hrId: any;
+  setBeaconContacted: any;
 }
 
 const TileModal = ({
@@ -29,6 +30,7 @@ const TileModal = ({
   refetchShortList,
   userID,
   hrId,
+  setBeaconContacted,
 }: TileModalProps) => {
   const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
   const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
@@ -49,6 +51,21 @@ const TileModal = ({
       draggable: true,
       progress: undefined,
     });
+  };
+
+  const toastEmail = () => {
+    toast.success(
+      "Awesome! We've sent an email to the candidate. (PS. You're CC'd) ✅",
+      {
+        position: "top-center",
+        autoClose: 1750,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
   };
 
   const sendEmail = async () => {
@@ -98,8 +115,8 @@ const TileModal = ({
         candidateId: userID,
       },
     });
-    toastFeedback();
-
+    toastEmail();
+    setBeaconContacted(true);
     sendEmail();
     closeModal();
   };

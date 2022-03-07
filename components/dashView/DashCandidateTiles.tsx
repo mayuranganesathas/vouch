@@ -12,6 +12,10 @@ export interface DashCandidateTilesProps {
   anonData: any;
   hrData: any;
   refetchAnonData: () => void;
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconContacted: any;
+  setBeaconHome: any;
 }
 
 const DashCandidateTiles = ({
@@ -24,6 +28,10 @@ const DashCandidateTiles = ({
   hrData,
   refetchAnonData,
   setExistingCandidates,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
 }: DashCandidateTilesProps) => {
   const filterManage = () => {
     let availableCandidates = vouchData.hr_voucher_metadata.filter(
@@ -130,11 +138,10 @@ const DashCandidateTiles = ({
             firstName={e.Candidate_Contact[0].candidateFirstName}
             positionTitle={e.positionTitle}
             salaryRange={e.salaryRange}
-            jobLocation={
-              e.Vouchee[0].locationCity == "Yes"
-                ? "Remote"
-                : e.Vouchee[0].locationCity
-            }
+            canLocationState={e.Vouchee[0].locationState}
+            canLocationCity={e.Vouchee[0].locationCity}
+            hrLocationState={e.Hr_Account[0].locationState}
+            hrLocationCity={e.Hr_Account[0].locationCity}
             numEmployees={e.Company_Data[0].rangeOfEmployees}
             companyName={e.Company_Data[0].corporateName}
             stageInterview={e.stageOfInterview}
@@ -147,6 +154,10 @@ const DashCandidateTiles = ({
             yearsOfExperience={e.yearsOfExperience}
             anonData={anonData}
             refetchAnonData={refetchAnonData}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
           />
         ))}
       {vouchData && candidateCounter()}

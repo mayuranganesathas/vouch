@@ -22,7 +22,10 @@ export interface HiddenDashboardProps {
 
   positionTypeFilterDropdown: any;
   filterChangePositionType: (e) => void;
-
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconHome: any;
+  setBeaconContacted: any;
   yearsOfExperienceFilterDropdown: any;
   filterChangeYearsOfExperience: (e) => void;
   anonData: any;
@@ -53,6 +56,10 @@ export const HiddenDashboard = ({
   shortListData,
   refetchShortList,
   refetchAnonData,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
 }: HiddenDashboardProps) => {
   return (
     <div>
@@ -191,6 +198,10 @@ export const HiddenDashboard = ({
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             positionTypeFilterDropdown={positionTypeFilterDropdown}
             anonData={anonData}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
             refetchAnonData={refetchAnonData}
           />
         }

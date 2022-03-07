@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DashboardCategoryFilter } from "../ui/DashboardCategoryFilter";
 import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { CandidateCount } from "./CandidateCount";
 import DashCandidateTilesShortList from "./DashCandidateTilesShortList";
 import VouchCTA from "./VouchCTA";
 import { FilterIcon } from "@heroicons/react/solid";
+import { usePrevious } from "../../lib/helperHooks";
 
 export interface FavoritesDashboardProps {
   hrData: any;
@@ -27,6 +28,10 @@ export interface FavoritesDashboardProps {
   yearsOfExperienceFilterDropdown: any;
   filterChangeYearsOfExperience: (e) => void;
 
+  setBeaconFavorites: any;
+  setBeaconHidden: any;
+  setBeaconHome: any;
+  setBeaconContacted: any;
   anonData: any;
   shortListData: any;
   refetchShortList: () => void;
@@ -52,6 +57,10 @@ export const FavoritesDashboard = ({
   anonData,
   stageStatus,
   shortListData,
+  setBeaconContacted,
+  setBeaconFavorites,
+  setBeaconHidden,
+  setBeaconHome,
   refetchShortList,
   refetchAnonData,
 }: FavoritesDashboardProps) => {
@@ -200,6 +209,10 @@ export const FavoritesDashboard = ({
             yearsOfExperienceFilterDropdown={yearsOfExperienceFilterDropdown}
             positionTypeFilterDropdown={positionTypeFilterDropdown}
             anonData={anonData}
+            setBeaconHidden={setBeaconHidden}
+            setBeaconFavorites={setBeaconFavorites}
+            setBeaconContacted={setBeaconContacted}
+            setBeaconHome={setBeaconHome}
             refetchAnonData={refetchAnonData}
           />
         }
