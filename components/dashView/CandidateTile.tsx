@@ -134,7 +134,7 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               backgroundColour="white"
               userLinkedinURL={userLinkedinURL}
               anonymous="View Profile"
-              onClick={() => window.open(`https://${userLinkedinURL}`)}
+              onClick={() => window.open(`${userLinkedinURL}`)}
               buttonStatus="accepted"
             />{" "}
           </div>
