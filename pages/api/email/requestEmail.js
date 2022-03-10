@@ -8,13 +8,11 @@ const domainType = dbUri().subDomain;
 async function sendEmail(req, res) {
   try {
     await sendgrid.send({
-      to: "hello@vouchrecruit.com", // Your email where you'll receive emails
+      to: `${req.body.email}`, // Your email where you'll receive emails
       from: {
         email: "hello@vouchrecruit.com",
         name: `Vouch | ${req.body.companyName} wants to learn more`,
       },
-      bcc: `${req.body.email}`,
-      cc: `${req.body.hrEmail}`,
       templateId: "d-9e5ab00d24894367bdd292b137d452bb",
       dynamicTemplateData: {
         candidateFirstName: `${req.body.canFirstName}`,
