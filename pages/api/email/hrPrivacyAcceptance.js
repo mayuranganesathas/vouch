@@ -3,7 +3,7 @@ import { dbUri } from "../../../lib/apollo";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-//todo fix
+//TODO PRIVACY ACCEPTANCE EMAIL SENT TO HR MANAGER ONCE CANDIDATE CONFIRMS INFO
 
 async function sendEmail(req, res) {
   try {

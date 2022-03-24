@@ -10,7 +10,9 @@ import { QUERY_HRID } from "../graphql/QUERY_HRID";
 export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
   const candidateId = router.query.candidateId.toString();
-  //todo fix
+
+  //TODO: CHECK IF CAND HAS CONFIRMED PRIVACY AND TRIGGER EMAIL TO HR MANAGER
+  //TODO: ATTACH LINKEDIN PROFILE, CTA TO REACH OUT dIRECTLY
   // const sendEmail = async (data) => {
   //   const res = await fetch("/api/email/hrPrivacyAcceptance", {
   //     body: JSON.stringify({

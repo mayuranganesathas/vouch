@@ -24,7 +24,9 @@ import { dbUri } from "../../lib/apollo";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
-
+//TODO: CHANGE LIBRARY AS CRYPTO LIBRARY NOT COMPATIBLE WITH SAFARI
+// TODO: ADD EMAIL TEMPLATE TO VOUCH CTA MODAL
+// TODO: BULK ADD VERSION
 declare global {
   interface Crypto {
     randomUUID: () => string;
