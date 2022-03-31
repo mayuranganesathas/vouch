@@ -11,7 +11,7 @@ export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
   const candidateId = router.query.candidateId.toString();
 
-  //TODO: CHECK IF CAND HAS CONFIRMED PRIVACY AND TRIGGER EMAIL TO HR MANAGER
+  // TODO: CHECK IF CAND HAS CONFIRMED PRIVACY AND TRIGGER EMAIL TO HR MANAGER
   //TODO: ATTACH LINKEDIN PROFILE, CTA TO REACH OUT dIRECTLY
   // const sendEmail = async (data) => {
   //   const res = await fetch("/api/email/hrPrivacyAcceptance", {
@@ -35,15 +35,13 @@ export default function acceptPrivacy() {
   //   }
   // };
 
-  // useEffect(() => {
-  //   let { loading, data: hrEmailData } = useQuery(QUERY_HRID, {
-  //     variables: {
-  //       hrId: hrId,
-  //     },
-  //   });
-
-  //   sendEmail(hrEmailData);
-  // }, []);
+  useEffect(() => {
+    let { loading, data: hrEmailData } = useQuery(QUERY_HRID, {
+      variables: {
+        hrId: hrId,
+      },
+    });
+  }, []);
 
   const [upsertAnonymity, { data, loading, error }] = useMutation(
     INSERT_ANON,
