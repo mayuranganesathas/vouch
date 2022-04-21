@@ -21,21 +21,6 @@ export default function acceptPrivacy() {
     },
   });
 
-  // //Moved to contacted new page
-  // const [ThumbUpAndDownMutation, {}] = useMutation(INSERT_THUMBS_UP_AND_DOWN);
-  // const moveToContacted = () => {
-  //   ThumbUpAndDownMutation({
-  //     variables: {
-  //       hrId: hrId,
-  //       jobName: "",
-  //       jobSeniority: "",
-  //       jobType: "",
-  //       status: "contacted",
-  //       candidateId: candidateId,
-  //     },
-  //   });
-  // };
-
   //email to send to HR Manager after query for if candidate got accepted
   const sendEmail = async (hrData, candidateData) => {
     const res = await fetch("/api/email/hrPrivacyAcceptance", {
