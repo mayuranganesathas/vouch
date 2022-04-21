@@ -7,7 +7,6 @@ import { INSERT_ANON } from "../graphql/INSERT_ANON";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import { QUERY_CANDIDATE_ON_CANID } from "../graphql/QUERY_SPECIFIC_CANDIDATE_ON_CANID";
-import { INSERT_THUMBS_UP_AND_DOWN } from "../graphql/INSERT_THUMBS_UP";
 
 export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
