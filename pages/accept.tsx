@@ -12,7 +12,6 @@ import { INSERT_THUMBS_UP_AND_DOWN } from "../graphql/INSERT_THUMBS_UP";
 export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
   const candidateId = router.query.candidateId.toString();
-  const [candidateDataHook, setCandidateDataHook] = useState();
 
   const [upsertAnonymity, { data, loading, error }] = useMutation(INSERT_ANON, {
     variables: {
@@ -22,19 +21,21 @@ export default function acceptPrivacy() {
     },
   });
 
-  const [ThumbUpAndDownMutation, {}] = useMutation(INSERT_THUMBS_UP_AND_DOWN);
-  const moveToContacted = () => {
-    ThumbUpAndDownMutation({
-      variables: {
-        hrId: hrId,
-        jobName: "",
-        jobSeniority: "",
-        jobType: "",
-        status: "contacted",
-        candidateId: candidateId,
-      },
-    });
-  };
+  // //Moved to contacted new page
+  // const [ThumbUpAndDownMutation, {}] = useMutation(INSERT_THUMBS_UP_AND_DOWN);
+  // const moveToContacted = () => {
+  //   ThumbUpAndDownMutation({
+  //     variables: {
+  //       hrId: hrId,
+  //       jobName: "",
+  //       jobSeniority: "",
+  //       jobType: "",
+  //       status: "contacted",
+  //       candidateId: candidateId,
+  //     },
+  //   });
+  // };
+
   //email to send to HR Manager after query for if candidate got accepted
   const sendEmail = async (hrData, candidateData) => {
     const res = await fetch("/api/email/hrPrivacyAcceptance", {
@@ -84,7 +85,6 @@ export default function acceptPrivacy() {
     });
 
     sendEmail(hrEmailData, candidateData);
-    moveToContacted();
   }, []);
 
   return (

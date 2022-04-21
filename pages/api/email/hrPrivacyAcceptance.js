@@ -31,4 +31,5 @@ async function sendEmail(req, res) {
   return res.status(200).json({ error: "" });
 }
 //TODO: NEW PAGE THAT ACCEPTS CAND EMAIL, HRID and moves to contacted query executes
+//page will be sent to hr manager: for now, button will be linkedin in email, and contact button to reach out. If they click that, then send them to a confirmation page.
 export default sendEmail;
