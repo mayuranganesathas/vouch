@@ -26,6 +26,7 @@ export default function acceptPrivacy() {
       body: JSON.stringify({
         hrEmail: hrData.hr_voucher[0].hrEmail,
         hrId: hrId,
+        candidateId: candidateId,
         canFirstName: candidateData.candidates[0].candidateFirstName,
         candidatePosition: candidateData.candidate_metadata[0].positionTitle,
         canEmail: candidateData.candidate_metadata[0].candidateEmail,
