@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useMutation, useQuery } from "@apollo/client";
 import router from "next/router";
@@ -6,58 +6,76 @@ import "react-toastify/dist/ReactToastify.css";
 import { INSERT_ANON } from "../graphql/INSERT_ANON";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
+import { QUERY_CANDIDATE_ON_CANID } from "../graphql/QUERY_SPECIFIC_CANDIDATE_ON_CANID";
+import { INSERT_THUMBS_UP_AND_DOWN } from "../graphql/INSERT_THUMBS_UP";
 
 export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
   const candidateId = router.query.candidateId.toString();
 
-  //TODO: CHECK IF CAND HAS CONFIRMED PRIVACY AND TRIGGER EMAIL TO HR MANAGER
-  //TODO: ATTACH LINKEDIN PROFILE, CTA TO REACH OUT dIRECTLY
-  // const sendEmail = async (data) => {
-  //   const res = await fetch("/api/email/hrPrivacyAcceptance", {
-  //     body: JSON.stringify({
-  //       hrEmail: data.hr_voucher[0].hrEmail,
-  //       hrId: hrId,
-  //       hrFirstName: data.hr_voucher[0].firstName,
-  //       hrLastName: data.hr_voucher[0].lastName,
-  //       companyName: data.hr_voucher[0].companyName,
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     method: "POST",
-  //   });
+  const [upsertAnonymity, { data, loading, error }] = useMutation(INSERT_ANON, {
+    variables: {
+      hrId: "incompleteField",
+      candidateId: "incompleteField",
+      status: "incompleteField",
+    },
+  });
 
-  //   const { error } = await res.json();
-  //   if (error) {
-  //     console.log(error);
-  //     return;
-  //   }
-  // };
+  let { data: hrEmailData } = useQuery(QUERY_HRID, {
+    variables: {
+      hrId: hrId,
+    },
+  });
+  let { data: candidateData } = useQuery(QUERY_CANDIDATE_ON_CANID, {
+    variables: {
+      candidateId: candidateId,
+    },
+  });
 
-  // useEffect(() => {
-  //   let { loading, data: hrEmailData } = useQuery(QUERY_HRID, {
+  // //Moved to contacted new page
+  // const [ThumbUpAndDownMutation, {}] = useMutation(INSERT_THUMBS_UP_AND_DOWN);
+  // const moveToContacted = () => {
+  //   ThumbUpAndDownMutation({
   //     variables: {
   //       hrId: hrId,
+  //       jobName: "",
+  //       jobSeniority: "",
+  //       jobType: "",
+  //       status: "contacted",
+  //       candidateId: candidateId,
   //     },
   //   });
+  // };
 
-  //   sendEmail(hrEmailData);
-  // }, []);
-
-  const [upsertAnonymity, { data, loading, error }] = useMutation(
-    INSERT_ANON,
-
-    {
-      variables: {
-        hrId: "incompleteField",
-        candidateId: "incompleteField",
-        status: "incompleteField",
+  //email to send to HR Manager after query for if candidate got accepted
+  const sendEmail = async (hrData, candidateData) => {
+    const res = await fetch("/api/email/hrPrivacyAcceptance", {
+      body: JSON.stringify({
+        hrEmail: hrData.hr_voucher[0].hrEmail,
+        hrId: hrId,
+        canFirstName: candidateData.candidates[0].candidateFirstName,
+        candidatePosition: candidateData.candidate_metadata[0].positionTitle,
+        canEmail: candidateData.candidate_metadata[0].candidateEmail,
+        canLinkedIn: candidateData.candidate_metadata[0].linkedIn,
+        hrFirstName: hrData.hr_voucher[0].firstName,
+        hrLastName: hrData.hr_voucher[0].lastName,
+        companyName: hrData.hr_voucher[0].companyName,
+      }),
+      headers: {
+        "Content-Type": "application/json",
       },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      return;
     }
-  );
+  };
 
   useEffect(() => {
+    // on page load, mutate state of anon table to update to available for HR manager, get candidate data, hr data, and send email to user
     upsertAnonymity({
       variables: {
         hrId: hrId,
@@ -65,6 +83,7 @@ export default function acceptPrivacy() {
         status: "available",
       },
     });
+    hrEmailData && candidateData && sendEmail(hrEmailData, candidateData);
   }, []);
 
   return (

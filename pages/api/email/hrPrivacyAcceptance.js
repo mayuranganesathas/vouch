@@ -3,24 +3,22 @@ import { dbUri } from "../../../lib/apollo";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-//TODO PRIVACY ACCEPTANCE EMAIL SENT TO HR MANAGER ONCE CANDIDATE CONFIRMS INFO
-
 async function sendEmail(req, res) {
   try {
     await sendgrid.send({
-      to: "hello@vouchrecruit.com", // Your email where you'll receive emails
+      to: `${req.body.hrEmail}`, // Your email where you'll receive emails
       from: {
         email: "hello@vouchrecruit.com",
-        name: `Vouch | ${req.body.companyName} wants to learn more`,
+        name: `Vouch | ${req.body.canFirstName} has accepted your request`,
       },
-      bcc: `${req.body.email}`,
-      cc: `${req.body.hrEmail}`,
-      templateId: "d-9e5ab00d24894367bdd292b137d452bb",
+      templateId: "d-9e5ab00d24894367bdd292b137d452bb", // To Add
       dynamicTemplateData: {
-        candidateFirstName: `${req.body.canFirstName}`,
-        hrFirstName: `${req.body.hrFirstName}`,
-        hrLastName: `${req.body.hrLastName}`,
-        companyName: `${req.body.companyName}`,
+        candidateFirstName: `${req.body.canFirstName}`, //HR Manager recognizes Cand
+        candidatePosition: `${req.body.candidatePosition}`, //HR Manager recognizes Position
+        canEmail: `${req.body.candidateEmail}`, //HR Manager can move candidate to contacted via new page, new page
+        hrFirstName: `${req.body.hrFirstName}`, //address HR Manager
+        hrId: `${req.body.hrId}`, // Passes into URL for move to contacted query
+        canLinkedIn: `${req.body.canLinkedIn}`, //Give direct access to HR manager so they dont have to go to profile
       },
       asm: {
         groupId: 17125,
@@ -32,5 +30,6 @@ async function sendEmail(req, res) {
 
   return res.status(200).json({ error: "" });
 }
-
+//TODO: NEW PAGE THAT ACCEPTS CAND EMAIL, HRID and moves to contacted query executes
+//page will be sent to hr manager: for now, button will be linkedin in email, and contact button to reach out. If they click that, then send them to a confirmation page.
 export default sendEmail;

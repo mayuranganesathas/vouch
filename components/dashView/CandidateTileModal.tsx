@@ -34,7 +34,6 @@ const TileModal = ({
 }: TileModalProps) => {
   const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
   const [ThumbUpAndDownMutation, { data, loading, error }] = useMutation(
-    //Mutation for updating a user emoji value after a practice
     INSERT_THUMBS_UP_AND_DOWN,
     {
       onCompleted: refetchShortList,
