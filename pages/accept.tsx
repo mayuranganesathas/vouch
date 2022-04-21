@@ -7,14 +7,12 @@ import { INSERT_ANON } from "../graphql/INSERT_ANON";
 import { ButtonVouch } from "../components/ui/ButtonVouch";
 import { QUERY_HRID } from "../graphql/QUERY_HRID";
 import { QUERY_CANDIDATE_ON_CANID } from "../graphql/QUERY_SPECIFIC_CANDIDATE_ON_CANID";
+import { INSERT_THUMBS_UP_AND_DOWN } from "../graphql/INSERT_THUMBS_UP";
 
 export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
   const candidateId = router.query.candidateId.toString();
   const [candidateDataHook, setCandidateDataHook] = useState();
-
-  // TODO: CHECK IF CAND HAS CONFIRMED PRIVACY AND TRIGGER EMAIL TO HR MANAGER, we already know its available so we need to query the data of the candidate
-  // TODO: ATTACH LINKEDIN PROFILE, CTA TO REACH OUT dIRECTLY
 
   const [upsertAnonymity, { data, loading, error }] = useMutation(INSERT_ANON, {
     variables: {
@@ -24,6 +22,19 @@ export default function acceptPrivacy() {
     },
   });
 
+  const [ThumbUpAndDownMutation, {}] = useMutation(INSERT_THUMBS_UP_AND_DOWN);
+  const moveToContacted = () => {
+    ThumbUpAndDownMutation({
+      variables: {
+        hrId: hrId,
+        jobName: "",
+        jobSeniority: "",
+        jobType: "",
+        status: "contacted",
+        candidateId: candidateId,
+      },
+    });
+  };
   //email to send to HR Manager after query for if candidate got accepted
   const sendEmail = async (hrData, candidateData) => {
     const res = await fetch("/api/email/hrPrivacyAcceptance", {
@@ -73,6 +84,7 @@ export default function acceptPrivacy() {
     });
 
     sendEmail(hrEmailData, candidateData);
+    moveToContacted();
   }, []);
 
   return (
