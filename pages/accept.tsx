@@ -57,19 +57,7 @@ export default function acceptPrivacy() {
         status: "available",
       },
     });
-
-    let { data: hrEmailData } = useQuery(QUERY_HRID, {
-      variables: {
-        hrId: hrId,
-      },
-    });
-    let { data: candidateData } = useQuery(QUERY_CANDIDATE_ON_CANID, {
-      variables: {
-        candidateId: candidateId,
-      },
-    });
-
-    sendEmail(hrEmailData, candidateData);
+    hrEmailData && candidateData && sendEmail(hrEmailData, candidateData);
   }, []);
 
   return (
