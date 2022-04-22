@@ -13,7 +13,7 @@ async function sendEmail(req, res) {
         email: "hello@vouchrecruit.com",
         name: `Vouch | ${req.body.canFirstName} has accepted your request`,
       },
-      templateId: "d-9e5ab00d24894367bdd292b137d452bb", // To Add
+      templateId: "d-bc5faf1a90134528adad3a94a13a74cd", // To Add
       dynamicTemplateData: {
         candidateFirstName: `${req.body.canFirstName}`, //HR Manager recognizes Cand
         candidatePosition: `${req.body.candidatePosition}`, //HR Manager recognizes Position
