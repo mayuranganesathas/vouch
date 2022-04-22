@@ -27,7 +27,7 @@ export default function acceptPrivacy() {
   };
 
   const sendEmail = async () => {
-    const res = await fetch("/api/interestEmail", {
+    const res = await fetch("/api/email/interestEmail", {
       body: JSON.stringify({
         email: candidateEmail,
       }),

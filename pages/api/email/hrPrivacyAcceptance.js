@@ -21,7 +21,7 @@ async function sendEmail(req, res) {
         hrFirstName: `${req.body.hrFirstName}`, //address HR Manager
         hrId: `${req.body.hrId}`, // Passes into URL for move to contacted query
         canLinkedIn: `${req.body.canLinkedIn}`, //Give direct access to HR manager so they dont have to go to profile
-        link: `https://${domainType}.vouchrecruit.com/contact-candidate?hrId=${req.body.hrId}&candidateId=${req.body.candidateId}&canEmail=${req.body.candidateEmail}`,
+        link: `https://${domainType}.vouchrecruit.com/contact-candidate?hrId=${req.body.hrId}&candidateId=${req.body.candidateId}&canEmail=${req.body.canEmail}`,
       },
       asm: {
         groupId: 17125,

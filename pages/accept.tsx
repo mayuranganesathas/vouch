@@ -12,27 +12,31 @@ export default function acceptPrivacy() {
   const hrId = router.query.hrId.toString();
   const candidateId = router.query.candidateId.toString();
 
-  const [upsertAnonymity, { data, loading, error }] = useMutation(INSERT_ANON, {
-    variables: {
-      hrId: "incompleteField",
-      candidateId: "incompleteField",
-      status: "incompleteField",
-    },
-  });
+  const [upsertAnonymity, { data, loading: UpsertLoading, error }] =
+    useMutation(INSERT_ANON, {
+      variables: {
+        hrId: "incompleteField",
+        candidateId: "incompleteField",
+        status: "incompleteField",
+      },
+    });
 
-  let { data: hrEmailData } = useQuery(QUERY_HRID, {
+  let { data: hrData, loading: hrIdLoading } = useQuery(QUERY_HRID, {
     variables: {
       hrId: hrId,
     },
   });
-  let { data: candidateData } = useQuery(QUERY_CANDIDATE_ON_CANID, {
-    variables: {
-      candidateId: candidateId,
-    },
-  });
+  let { data: candidateData, loading: candidateIdLoading } = useQuery(
+    QUERY_CANDIDATE_ON_CANID,
+    {
+      variables: {
+        candidateId: candidateId,
+      },
+    }
+  );
 
   //email to send to HR Manager after query for if candidate got accepted
-  const sendEmail = async (hrData, candidateData) => {
+  const sendEmail = async () => {
     const res = await fetch("/api/email/hrPrivacyAcceptance", {
       body: JSON.stringify({
         hrEmail: hrData.hr_voucher[0].hrEmail,
@@ -68,8 +72,13 @@ export default function acceptPrivacy() {
         status: "available",
       },
     });
-    hrEmailData && candidateData && sendEmail(hrEmailData, candidateData);
-  }, []);
+
+    if (candidateIdLoading && hrIdLoading) {
+      console.log("loading data...");
+    } else {
+      sendEmail();
+    }
+  }, [candidateIdLoading || hrIdLoading]);
 
   return (
     <div className={"bg-gray-100 w-full h-screen grid content-center"}>
