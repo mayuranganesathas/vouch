@@ -21,17 +21,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CTAinstructionsModal from "./CTAInstructionsModal";
 import { dbUri } from "../../lib/apollo";
+import { v4 as uuidv4 } from "uuid";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
 //TODO: CHANGE LIBRARY AS CRYPTO LIBRARY NOT COMPATIBLE WITH SAFARI
 // TODO: ADD EMAIL TEMPLATE TO VOUCH CTA MODAL
 // TODO: BULK ADD VERSION
-declare global {
-  interface Crypto {
-    randomUUID: () => string;
-  }
-}
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -59,7 +55,7 @@ const VouchCTAModal = ({
   const [standOutSkill3, setStandOutSkill3] = useState(""); // Interview Skill
   const [yearsOfExperience, setYearsOfExperience] = useState(""); // Years of Experience Dropdown
   const [positionType, setPositionType] = useState(""); // position Type
-  const candidateUUID = crypto.randomUUID();
+  const candidateUUID = uuidv4();
 
   const clearFormState = () => {
     setEmail("");
