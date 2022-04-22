@@ -77,6 +77,7 @@ export default function acceptPrivacy() {
       console.log("loading data...");
     } else {
       sendEmail();
+      console.log("success :)");
     }
   }, [candidateIdLoading || hrIdLoading]);
 
