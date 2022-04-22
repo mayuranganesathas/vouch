@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 
 import { useMutation, useQuery } from "@apollo/client";
 import router from "next/router";
+import { QUERY_HRID } from "../graphql/QUERY_HRID";
+import { QUERY_CANDIDATE_ON_CANID } from "../graphql/QUERY_SPECIFIC_CANDIDATE_ON_CANID";
 // //Moved to contacted new page
 
 export default function acceptPrivacy() {
@@ -26,10 +28,30 @@ export default function acceptPrivacy() {
     });
   };
 
+  let { data: hrData, loading: hrIdLoading } = useQuery(QUERY_HRID, {
+    variables: {
+      hrId: hrId,
+    },
+  });
+
+  let { data: candidateData, loading: candidateIdLoading } = useQuery(
+    QUERY_CANDIDATE_ON_CANID,
+    {
+      variables: {
+        candidateId: candidateId,
+      },
+    }
+  );
+
   const sendEmail = async () => {
     const res = await fetch("/api/email/interestEmail", {
       body: JSON.stringify({
         email: candidateEmail,
+        hrEmail: hrData.hr_voucher[0].hrEmail,
+        candidateFirstName: candidateData.candidates[0].candidateFirstName,
+        hrFirstName: hrData.hr_voucher[0].firstName,
+        hrLastName: hrData.hr_voucher[0].lastName,
+        companyName: hrData.hr_voucher[0].companyName,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -43,11 +65,15 @@ export default function acceptPrivacy() {
       return;
     }
   };
-
   useEffect(() => {
-    sendEmail();
     moveToContacted();
-  }, []);
+    if (candidateIdLoading && hrIdLoading) {
+      console.log("loading data...");
+    } else {
+      sendEmail();
+      console.log("success :)");
+    }
+  }, [candidateIdLoading || hrIdLoading]);
 
   return (
     <div className={"flex justify-center items-center"}>
