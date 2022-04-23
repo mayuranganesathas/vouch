@@ -19,23 +19,21 @@ import {
 import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CTAinstructionsModal from "./CTAInstructionsModal";
+import CTAinstructionsModal from "./VouchEmailTemplateModal";
 import { dbUri } from "../../lib/apollo";
 import { v4 as uuidv4 } from "uuid";
+import VouchEmailTemplateModal from "./VouchEmailTemplateModal";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
-//TODO: CHANGE LIBRARY AS CRYPTO LIBRARY NOT COMPATIBLE WITH SAFARI
-// TODO: ADD EMAIL TEMPLATE TO VOUCH CTA MODAL
+
+// INPROG: ADD EMAIL TEMPLATE TO VOUCH CTA MODAL -- need to use MODAL
 // TODO: BULK ADD VERSION
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
   hrData: any;
 }
-
-//** UX */
-//EMAIL INPUT VALIDATOR
 
 const VouchCTAModal = ({
   modalIsOpen,
@@ -44,6 +42,8 @@ const VouchCTAModal = ({
 }: VouchCTAModalProps) => {
   const { user } = useAuth();
   const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
+  const [imageTemplateModalIsOpen, setImageTemplateModalIsOpen] =
+    useState(false);
 
   //authentication passes hrID
   const [email, setEmail] = useState("");
@@ -366,6 +366,10 @@ const VouchCTAModal = ({
         />
         <CTAinstructionsModal
           modalIsOpen={iconModalIsOpen}
+          closeModal={() => setIconModalIsOpen(false)}
+        />
+        <VouchEmailTemplateModal
+          modalIsOpen={imageTemplateModalIsOpen}
           closeModal={() => setIconModalIsOpen(false)}
         />
       </Modal>{" "}
