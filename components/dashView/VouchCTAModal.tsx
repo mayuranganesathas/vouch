@@ -25,17 +25,14 @@ import { v4 as uuidv4 } from "uuid";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
-//TODO: CHANGE LIBRARY AS CRYPTO LIBRARY NOT COMPATIBLE WITH SAFARI
-// TODO: ADD EMAIL TEMPLATE TO VOUCH CTA MODAL
+
+// INPROG: ADD EMAIL TEMPLATE TO VOUCH CTA MODAL -- need to use MODAL
 // TODO: BULK ADD VERSION
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
   hrData: any;
 }
-
-//** UX */
-//EMAIL INPUT VALIDATOR
 
 const VouchCTAModal = ({
   modalIsOpen,
@@ -215,6 +212,12 @@ const VouchCTAModal = ({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   ></input>
+                </div>
+                <div
+                  className="flex text-xs px-1"
+                  onClick={() => console.log("modal is open")}
+                >
+                  Click to see the email template.
                 </div>
               </div>
               <div className="py-2">
