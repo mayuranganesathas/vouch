@@ -19,9 +19,10 @@ import {
 import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CTAinstructionsModal from "./CTAInstructionsModal";
+import CTAinstructionsModal from "./VouchEmailTemplateModal";
 import { dbUri } from "../../lib/apollo";
 import { v4 as uuidv4 } from "uuid";
+import VouchEmailTemplateModal from "./VouchEmailTemplateModal";
 
 // ref http://reactcommunity.org/react-modal/
 //ref https://github.com/tailwindlabs/heroicons
@@ -41,6 +42,8 @@ const VouchCTAModal = ({
 }: VouchCTAModalProps) => {
   const { user } = useAuth();
   const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
+  const [imageTemplateModalIsOpen, setImageTemplateModalIsOpen] =
+    useState(false);
 
   //authentication passes hrID
   const [email, setEmail] = useState("");
@@ -213,12 +216,6 @@ const VouchCTAModal = ({
                     onChange={(e) => setEmail(e.target.value)}
                   ></input>
                 </div>
-                <div
-                  className="flex text-xs px-1"
-                  onClick={() => console.log("modal is open")}
-                >
-                  Click to see the email template.
-                </div>
               </div>
               <div className="py-2">
                 <hr className="" />
@@ -369,6 +366,10 @@ const VouchCTAModal = ({
         />
         <CTAinstructionsModal
           modalIsOpen={iconModalIsOpen}
+          closeModal={() => setIconModalIsOpen(false)}
+        />
+        <VouchEmailTemplateModal
+          modalIsOpen={imageTemplateModalIsOpen}
           closeModal={() => setIconModalIsOpen(false)}
         />
       </Modal>{" "}
