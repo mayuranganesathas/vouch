@@ -133,7 +133,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                     name="inlineRadioOptions"
                     id="inlineRadio1"
                     value={anonCheck}
-                    onChange={(e) => setAnonCheck("anon")}
+                    onChange={(e) => setAnonCheck("private")}
                   />
                   <label className="form-check-label inline-block text-gray-800 flex-nowrap">
                     Anonymous Profile
@@ -146,7 +146,7 @@ export const CandidateOnTwo: React.FC<CandidateOnTwoProps> = ({
                     name="inlineRadioOptions"
                     id="inlineRadio1"
                     value={anonCheck}
-                    onChange={(e) => setAnonCheck("available")}
+                    onChange={(e) => setAnonCheck("public")}
                   />
                   <label className="form-check-label inline-block text-gray-800">
                     Public Profile
