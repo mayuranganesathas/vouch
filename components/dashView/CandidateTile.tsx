@@ -16,13 +16,13 @@ import { INSERT_ANON } from "../../graphql/INSERT_ANON";
 import { dbUri } from "../../lib/apollo";
 
 //TODO: CANDIDATE ANONYMITY BUG: ALL HR MANAGERS SEE PRIVATE PROFILES, ONLY REFERRING HR MANAGER SEES ANONYMOUS
+
 export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
   salaryRange: string;
   canLocationCity: string;
   hrLocationCity: string;
-
   canLocationState: string;
   hrLocationState: string;
   numEmployees: string;
