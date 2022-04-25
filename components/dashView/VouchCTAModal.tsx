@@ -25,6 +25,14 @@ import { v4 as uuidv4 } from "uuid";
 import VouchEmailTemplateModal from "./VouchEmailTemplateModal";
 
 // TODO: BULK ADD VERSION
+// Feature Approach
+// Single Add Remains same as now
+// Add possibility to add more input lines (Represented as a + Button)
+// Map to add up to 10 input lines
+// Update query mutation to create multiple vouch candidates
+// verify and test mutation change
+// update email function to send an array of send list
+
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
