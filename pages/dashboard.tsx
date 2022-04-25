@@ -18,7 +18,7 @@ import { HomeDashboard } from "../components/dashView/Home";
 import { FavoritesDashboard } from "../components/dashView/Favorites";
 import { HiddenDashboard } from "../components/dashView/Hidden";
 import { ContactedDashboard } from "../components/dashView/Contacted";
-import { QUERY_ANON } from "../graphql/QUERY_ANON_ONHRID";
+import { QUERY_ANON_DATA } from "../graphql/QUERY_ANON_DATA";
 
 export interface DashboardProps {}
 
@@ -56,11 +56,14 @@ const DashBoard = ({}: DashboardProps) => {
     },
   });
 
-  const { data: AnonData, refetch: refetchAnonData } = useQuery(QUERY_ANON, {
-    variables: {
-      hrId: user.uid,
-    },
-  });
+  const { data: AnonData, refetch: refetchAnonData } = useQuery(
+    QUERY_ANON_DATA,
+    {
+      variables: {
+        hrId: user.uid,
+      },
+    }
+  );
 
   const { data: hrData } = useQuery(QUERY_HRID, {
     variables: { hrId: user.uid },

@@ -16,13 +16,13 @@ import { INSERT_ANON } from "../../graphql/INSERT_ANON";
 import { dbUri } from "../../lib/apollo";
 
 //TODO: CANDIDATE ANONYMITY BUG: ALL HR MANAGERS SEE PRIVATE PROFILES, ONLY REFERRING HR MANAGER SEES ANONYMOUS
+
 export interface CandidateTileProps {
   userID: number;
   positionTitle: string;
   salaryRange: string;
   canLocationCity: string;
   hrLocationCity: string;
-
   canLocationState: string;
   hrLocationState: string;
   numEmployees: string;
@@ -103,28 +103,15 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
 
   const anonymitySelector = () => {
     const anonymous = anonData.anonymity.filter((e) => e.candidateId == userID);
+    const anonMeta = anonData.anon_metadata.filter(
+      (e) => e.candidateId == userID
+    );
 
     //
-    if (anonymous.length > 0) {
-      if (anonymous[0].status == "requested") {
-        return (
-          <div>
-            <ButtonLinkedin
-              backgroundColour="white"
-              userLinkedinURL={userLinkedinURL}
-              anonymous="Pending LinkedIn"
-              onClick={() =>
-                window.alert(
-                  "You've already requested the candidates information!"
-                )
-              }
-              buttonStatus="pending"
-            />
-          </div>
-        );
 
-        //requested
-      } else if (anonymous[0].status == "available") {
+    // if profile is public, showcase profile
+    if (anonymous.length > 0) {
+      if (anonymous[0].status == "public") {
         return (
           <div className="flex flex-nowrap hover:underline">
             <img
@@ -141,6 +128,58 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
           </div>
           //available
         );
+      }
+      // if profile is private, check anon_metadata table to see if its requested, or accepted
+      else if (anonymous[0].status == "private") {
+        if (anonMeta.length > 0) {
+          if (anonMeta[0].status == "requested") {
+            return (
+              <div>
+                <ButtonLinkedin
+                  backgroundColour="white"
+                  userLinkedinURL={userLinkedinURL}
+                  anonymous="Pending"
+                  onClick={() =>
+                    window.alert(
+                      "You've already requested the candidates information!"
+                    )
+                  }
+                  buttonStatus="pending"
+                />
+              </div>
+            );
+          } else if (anonMeta[0].status == "available") {
+            return (
+              <div className="flex flex-nowrap hover:underline">
+                <img
+                  src="./images/linkedInTile.png"
+                  className={"flex justify-center items-center w-4 h-auto mr-1"}
+                />
+                <ButtonLinkedin
+                  backgroundColour="white"
+                  userLinkedinURL={userLinkedinURL}
+                  anonymous="View Profile"
+                  onClick={() => window.open(`${userLinkedinURL}`)}
+                  buttonStatus="accepted"
+                />{" "}
+              </div>
+              //available
+            );
+          }
+        } else {
+          return (
+            <div>
+              <ButtonLinkedin
+                backgroundColour="white"
+                userLinkedinURL={userLinkedinURL}
+                anonymous="Request"
+                onClick={insertAnon}
+                buttonStatus="request"
+              />
+            </div>
+            //if private, and no one has requested info
+          );
+        }
       } else {
         return (
           <div>
@@ -152,23 +191,23 @@ export const CandidateTile: React.FC<CandidateTileProps> = ({
               buttonStatus="request"
             />
           </div>
-          //edge case if db data is incorrect
+          //if private, and no one has requested info
         );
       }
+    } else {
+      return (
+        <div>
+          <ButtonLinkedin
+            backgroundColour="white"
+            userLinkedinURL={userLinkedinURL}
+            anonymous="Request"
+            onClick={insertAnon}
+            buttonStatus="request"
+          />
+        </div>
+        //if private, and no one has requested info
+      );
     }
-
-    return (
-      <div>
-        <ButtonLinkedin
-          backgroundColour="white"
-          userLinkedinURL={userLinkedinURL}
-          anonymous="Request Linkedin"
-          onClick={insertAnon}
-          buttonStatus="request"
-        />
-      </div>
-      //default render
-    );
   };
 
   const toastLinkedInRequest = () => {
