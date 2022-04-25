@@ -24,10 +24,6 @@ import { dbUri } from "../../lib/apollo";
 import { v4 as uuidv4 } from "uuid";
 import VouchEmailTemplateModal from "./VouchEmailTemplateModal";
 
-// ref http://reactcommunity.org/react-modal/
-//ref https://github.com/tailwindlabs/heroicons
-
-// INPROG: ADD EMAIL TEMPLATE TO VOUCH CTA MODAL -- need to use MODAL
 // TODO: BULK ADD VERSION
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
