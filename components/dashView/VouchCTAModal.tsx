@@ -79,6 +79,36 @@ const VouchCTAModal = ({
     setInputLines(0);
   };
 
+  // <div >
+  //             {" "}
+  //             //{" "}
+  //             <div className="">
+  //               <div className="flex py-1">
+  //                 <XIcon
+  //                   className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
+  //                   onClick={() => setInputLines(inputLines - 1)}
+  //                 />
+  //                 <input
+  //                   className="border-2 w-full pl-1 rounded text-xs"
+  //                   id="guess"
+  //                   type="text"
+  //                   placeholder=" Enter Candidate Email"
+  //                   value={email}
+  //                   onChange={(e) => setEmail(e.target.value)}
+  //                 ></input>
+  //               </div>
+  //               <div className={"py-1"}>
+  //                 <div
+  //                   className="flex hover:text-VouchGreen cursor-pointer py-1"
+  //                   onClick={() => setInputLines(inputLines + 1)}
+  //                 >
+  //                   <PlusCircleIcon className={"w-4 h-4 "} />
+  //                   <div className="pl-0.5 "> Add Multiple Candidates</div>
+  //                 </div>
+  //               </div>
+  //               {}
+  //             </div>
+  //           </div>
   const [initializeVouchCandidate, { data, loading, error }] = useMutation(
     UPSERT_VOUCH_CANDIDATE,
 
@@ -98,45 +128,50 @@ const VouchCTAModal = ({
     }
   );
 
-  // // <div className="">
-  //           <div className="flex py-1">
-  //             <XIcon
-  //               className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
-  //               onClick={() => setInputLines(inputLines - 1)}
-  //             />
-  //             <input
-  //               className="border-2 w-full pl-1 rounded text-xs"
-  //               id="guess"
-  //               type="text"
-  //               placeholder=" Enter Candidate Email"
-  //               value={email}
-  //               onChange={(e) => setEmail(e.target.value)}
-  //             ></input>
-  //           </div>
-  //           <div className={"py-1"}>
-  //             <div
-  //               className="flex hover:text-VouchGreen cursor-pointer py-1"
-  //               onClick={() => setInputLines(inputLines + 1)}
-  //             >
-  //               <PlusCircleIcon className={"w-4 h-4 "} />
-  //               <div className="pl-0.5 "> Add Multiple Candidates</div>
-  //             </div>
-  //           </div>
-  //           {}
-  //         </div>
   const domainType = dbUri().subDomain;
 
   //store candidate emails into an array
   const additionalInputs = () => {
     //Default return value
-    if (inputLines > 0) {
+    if (inputLines > 1) {
       const inputList = new Array(inputLines);
+      console.log(inputLines, "inputlines" + inputList.length, "array");
+
+      for (let i = 1; i < inputLines; i++) {
+        inputList.push(
+          <div>
+            <div className="">
+              <div className="flex py-1">
+                <XIcon
+                  className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
+                  onClick={() => setInputLines(inputLines - 1)}
+                />
+                <input
+                  className="border-2 w-full pl-1 rounded text-xs"
+                  key={i}
+                  id="guess"
+                  type="text"
+                  placeholder=" Enter Candidate Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                ></input>
+              </div>
+            </div>
+          </div>
+        );
+      }
       return (
         <div>
-          {" "}
-          {inputList.map((e) => (
-            <div> {e}</div>
-          ))}
+          {inputList}{" "}
+          <div className={"py-1"}>
+            <div
+              className="flex hover:text-VouchGreen cursor-pointer py-1"
+              onClick={() => setInputLines(inputLines + 1)}
+            >
+              <PlusCircleIcon className={"w-4 h-4 "} />
+              <div className="pl-0.5 "> Add Multiple Candidates</div>
+            </div>
+          </div>
         </div>
       );
     } else {
