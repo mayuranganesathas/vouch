@@ -73,8 +73,6 @@ const VouchCTAModal = ({
     setPositionType("");
   };
 
-  //replace with HR authentication
-
   const [initializeVouchCandidate, { data, loading, error }] = useMutation(
     UPSERT_VOUCH_CANDIDATE,
 
