@@ -29,7 +29,6 @@ import VouchEmailTemplateModal from "./VouchEmailTemplateModal";
 TODO: BULK ADD VERSION || Feature Approach
 -Add possibility to add more input lines (Represented as a + Button) 
   Map to add up to 10 input lines
-  Gray out input lines
   store into object
 -Update query mutation to create multiple vouch candidates
     store multiple objects to send as a bulk addition
@@ -79,36 +78,6 @@ const VouchCTAModal = ({
     setInputLines(0);
   };
 
-  // <div >
-  //             {" "}
-  //             //{" "}
-  //             <div className="">
-  //               <div className="flex py-1">
-  //                 <XIcon
-  //                   className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
-  //                   onClick={() => setInputLines(inputLines - 1)}
-  //                 />
-  //                 <input
-  //                   className="border-2 w-full pl-1 rounded text-xs"
-  //                   id="guess"
-  //                   type="text"
-  //                   placeholder=" Enter Candidate Email"
-  //                   value={email}
-  //                   onChange={(e) => setEmail(e.target.value)}
-  //                 ></input>
-  //               </div>
-  //               <div className={"py-1"}>
-  //                 <div
-  //                   className="flex hover:text-VouchGreen cursor-pointer py-1"
-  //                   onClick={() => setInputLines(inputLines + 1)}
-  //                 >
-  //                   <PlusCircleIcon className={"w-4 h-4 "} />
-  //                   <div className="pl-0.5 "> Add Multiple Candidates</div>
-  //                 </div>
-  //               </div>
-  //               {}
-  //             </div>
-  //           </div>
   const [initializeVouchCandidate, { data, loading, error }] = useMutation(
     UPSERT_VOUCH_CANDIDATE,
 
@@ -163,15 +132,19 @@ const VouchCTAModal = ({
       return (
         <div>
           {inputList} {/* Add ternary for max multiple candidates */}
-          <div className={"py-1"}>
-            <div
-              className="flex hover:text-VouchGreen cursor-pointer py-1"
-              onClick={() => setInputLines(inputLines + 1)}
-            >
-              <PlusCircleIcon className={"w-4 h-4 "} />
-              <div className="pl-0.5 "> Add Multiple Candidates</div>
+          {inputLines < 12 ? (
+            <div className={"py-1"}>
+              <div
+                className="flex hover:text-VouchGreen cursor-pointer py-1"
+                onClick={() => setInputLines(inputLines + 1)}
+              >
+                <PlusCircleIcon className={"w-4 h-4 "} />
+                <div className="pl-0.5 "> Add Multiple Candidates</div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="pl-0.5 text-red-300 "> Max Candidates Added</div>
+          )}
         </div>
       );
     } else {
@@ -303,7 +276,7 @@ const VouchCTAModal = ({
                     onClick={() => setIconModalIsOpen(true)}
                   />
                 </div>
-                <div className={"flex justify-center pt-2 "}>
+                <div className={"flex justify-center py-2 "}>
                   <input
                     className="border-2 w-full py-0.5 pl-1 rounded text-xs"
                     id="guess"
