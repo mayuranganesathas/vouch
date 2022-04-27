@@ -99,9 +99,7 @@ const VouchCTAModal = ({
 
   const domainType = dbUri().subDomain;
 
-  //store candidate emails into an array
   const additionalInputs = () => {
-    //Default return value
     if (inputLines > 1) {
       const inputList = new Array(inputLines);
       console.log(inputLines, "inputlines" + inputList.length, "array");
