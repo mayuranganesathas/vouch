@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import { XIcon } from "@heroicons/react/solid";
+import { PlusCircleIcon } from "@heroicons/react/solid";
+import { XCircleIcon, XIcon } from "@heroicons/react/outline";
+
 import { ButtonVouch } from "../ui/ButtonVouch";
 import { SearchFilterDash } from "../ui/searchFilterDash";
 import StandOutSkill from "../ui/StandOutSkill";
@@ -23,16 +25,18 @@ import CTAinstructionsModal from "./VouchEmailTemplateModal";
 import { dbUri } from "../../lib/apollo";
 import { v4 as uuidv4 } from "uuid";
 import VouchEmailTemplateModal from "./VouchEmailTemplateModal";
-
-// TODO: BULK ADD VERSION
-// Feature Approach
-// Single Add Remains same as now
-// Add possibility to add more input lines (Represented as a + Button)
-// Map to add up to 10 input lines
-// Update query mutation to create multiple vouch candidates
-// verify and test mutation change
-// update email function to send an array of send list
-
+/*
+TODO: BULK ADD VERSION || Feature Approach
+-Add possibility to add more input lines (Represented as a + Button) 
+  Map to add up to 10 input lines
+  Gray out input lines
+  store into object
+-Update query mutation to create multiple vouch candidates
+    store multiple objects to send as a bulk addition
+    create 10 different privacy ID's 
+    verify and test mutation change
+-Update email function to send an array of send list
+*/
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -59,6 +63,7 @@ const VouchCTAModal = ({
   const [standOutSkill3, setStandOutSkill3] = useState(""); // Interview Skill
   const [yearsOfExperience, setYearsOfExperience] = useState(""); // Years of Experience Dropdown
   const [positionType, setPositionType] = useState(""); // position Type
+  const [inputLines, setInputLines] = useState(0);
   const candidateUUID = uuidv4();
 
   const clearFormState = () => {
@@ -71,6 +76,7 @@ const VouchCTAModal = ({
     setStandOutSkill3("");
     setYearsOfExperience("");
     setPositionType("");
+    setInputLines(0);
   };
 
   const [initializeVouchCandidate, { data, loading, error }] = useMutation(
@@ -92,7 +98,61 @@ const VouchCTAModal = ({
     }
   );
 
+  // // <div className="">
+  //           <div className="flex py-1">
+  //             <XIcon
+  //               className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
+  //               onClick={() => setInputLines(inputLines - 1)}
+  //             />
+  //             <input
+  //               className="border-2 w-full pl-1 rounded text-xs"
+  //               id="guess"
+  //               type="text"
+  //               placeholder=" Enter Candidate Email"
+  //               value={email}
+  //               onChange={(e) => setEmail(e.target.value)}
+  //             ></input>
+  //           </div>
+  //           <div className={"py-1"}>
+  //             <div
+  //               className="flex hover:text-VouchGreen cursor-pointer py-1"
+  //               onClick={() => setInputLines(inputLines + 1)}
+  //             >
+  //               <PlusCircleIcon className={"w-4 h-4 "} />
+  //               <div className="pl-0.5 "> Add Multiple Candidates</div>
+  //             </div>
+  //           </div>
+  //           {}
+  //         </div>
   const domainType = dbUri().subDomain;
+
+  //store candidate emails into an array
+  const additionalInputs = () => {
+    //Default return value
+    if (inputLines > 0) {
+      const inputList = new Array(inputLines);
+      return (
+        <div>
+          {" "}
+          {inputList.map((e) => (
+            <div> {e}</div>
+          ))}
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className="flex hover:text-VouchGreen cursor-pointer py-1"
+          onClick={() => setInputLines(inputLines + 1)}
+        >
+          <PlusCircleIcon className={"w-4 h-4 "} />
+          <div className="pl-0.5 "> Add Multiple Candidates</div>
+        </div>
+      );
+    }
+
+    //
+  };
 
   const sendEmail = async () => {
     const res = await fetch("/api/email/vouchEmailCandidate", {
@@ -208,7 +268,7 @@ const VouchCTAModal = ({
                     onClick={() => setIconModalIsOpen(true)}
                   />
                 </div>
-                <div className={"flex justify-center py-2 pb-2"}>
+                <div className={"flex justify-center pt-2 "}>
                   <input
                     className="border-2 w-full py-0.5 pl-1 rounded text-xs"
                     id="guess"
@@ -218,6 +278,7 @@ const VouchCTAModal = ({
                     onChange={(e) => setEmail(e.target.value)}
                   ></input>
                 </div>
+                <div>{additionalInputs()}</div>
               </div>
               <div className="py-2">
                 <hr className="" />
