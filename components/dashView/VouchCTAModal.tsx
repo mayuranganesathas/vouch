@@ -137,7 +137,7 @@ const VouchCTAModal = ({
       const inputList = new Array(inputLines);
       console.log(inputLines, "inputlines" + inputList.length, "array");
 
-      for (let i = 1; i < inputLines; i++) {
+      for (let i = 1; i < inputLines && i <= 12; i++) {
         inputList.push(
           <div>
             <div className="">
@@ -162,7 +162,7 @@ const VouchCTAModal = ({
       }
       return (
         <div>
-          {inputList}{" "}
+          {inputList} {/* Add ternary for max multiple candidates */}
           <div className={"py-1"}>
             <div
               className="flex hover:text-VouchGreen cursor-pointer py-1"
