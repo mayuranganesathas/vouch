@@ -52,8 +52,10 @@ const VouchCTAModal = ({
   const [imageTemplateModalIsOpen, setImageTemplateModalIsOpen] =
     useState(false);
   //authentication passes hrID
+
+  const initialList = [{ id: 0, inputLine: 0 }];
   const [email, setEmail] = useState("");
-  const [emailInputList, setEmailInputList] = useState([]);
+  const [emailInputList, setEmailInputList] = useState(initialList);
   const [positionTitle, setPositionTitle] = useState("");
   const [interviewStage, setInterviewStage] = useState("");
   const [salaryRange, setSalaryRange] = useState("");
@@ -97,15 +99,20 @@ const VouchCTAModal = ({
     }
   );
 
-  const setInputLineIncrease = async () => {
+  let nextId = 0;
+
+  const setInputLineIncrease = () => {
     setInputLines(inputLines + 1);
-    setEmailInputList([...emailInputList, inputLines]);
-    console.log(inputLines);
+    setEmailInputList([
+      ...emailInputList,
+      { id: nextId++, inputLine: inputLines },
+    ]);
+    console.log(emailInputList);
   };
 
-  const setInputLineReduction = () => {
+  const setInputLineReduction = (mapElement) => {
     setInputLines(inputLines - 1);
-    setEmailInputList(emailInputList.filter((e) => e.id != emailInputList.id));
+    setEmailInputList(emailInputList.filter((e) => e.id !== mapElement.id));
   };
 
   const additionalInputs = () => {
@@ -114,13 +121,12 @@ const VouchCTAModal = ({
         <div>
           {emailInputList.map((e) => (
             <div>
-              <div className="">
-                <div className="flex py-1" key={e.id}>
+              <ul>
+                <li className="flex py-1" key={e.id}>
                   <XIcon
                     className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
-                    onClick={() => setInputLineReduction()}
+                    onClick={(e) => setInputLineReduction(e)}
                   />
-                  {/* store iterations into an array (These are emails) */}
                   <input
                     className="border-2 w-full pl-1 rounded text-xs"
                     id="guess"
@@ -129,8 +135,8 @@ const VouchCTAModal = ({
                     // value={emailList[i]}
                     // onChange={(e) => (emailList[i] = e.target.value)}
                   ></input>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
           ))}
           {inputLines < 12 ? (
