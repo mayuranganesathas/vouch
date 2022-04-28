@@ -102,7 +102,8 @@ const VouchCTAModal = ({
   const additionalInputs = () => {
     if (inputLines > 1) {
       const inputList = new Array(inputLines);
-      console.log(inputLines, "inputlines" + inputList.length, "array");
+      const emailList = new Array(14);
+      console.log(emailList);
 
       for (let i = 1; i < inputLines && i <= 12; i++) {
         inputList.push(
@@ -113,14 +114,15 @@ const VouchCTAModal = ({
                   className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
                   onClick={() => setInputLines(inputLines - 1)}
                 />
+                {/* store iterations into an array (These are emails) */}
                 <input
                   className="border-2 w-full pl-1 rounded text-xs"
                   key={i}
                   id="guess"
                   type="text"
                   placeholder=" Enter Candidate Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={emailList[i]}
+                  onChange={(e) => (emailList[i] = e.target.value)}
                 ></input>
               </div>
             </div>
