@@ -51,9 +51,9 @@ const VouchCTAModal = ({
   const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
   const [imageTemplateModalIsOpen, setImageTemplateModalIsOpen] =
     useState(false);
-
   //authentication passes hrID
   const [email, setEmail] = useState("");
+  const [emailInputList, setEmailInputList] = useState([]);
   const [positionTitle, setPositionTitle] = useState("");
   const [interviewStage, setInterviewStage] = useState("");
   const [salaryRange, setSalaryRange] = useState("");
@@ -62,7 +62,7 @@ const VouchCTAModal = ({
   const [standOutSkill3, setStandOutSkill3] = useState(""); // Interview Skill
   const [yearsOfExperience, setYearsOfExperience] = useState(""); // Years of Experience Dropdown
   const [positionType, setPositionType] = useState(""); // position Type
-  const [inputLines, setInputLines] = useState(0);
+  const [inputLines, setInputLines] = useState(1);
   const candidateUUID = uuidv4();
 
   const clearFormState = () => {
@@ -97,46 +97,47 @@ const VouchCTAModal = ({
     }
   );
 
-  const domainType = dbUri().subDomain;
+  const setInputLineIncrease = async () => {
+    setInputLines(inputLines + 1);
+    setEmailInputList([...emailInputList, inputLines]);
+    console.log(inputLines);
+  };
+
+  const setInputLineReduction = () => {
+    setInputLines(inputLines - 1);
+    setEmailInputList(emailInputList.filter((e) => e.id != emailInputList.id));
+  };
 
   const additionalInputs = () => {
     if (inputLines > 1) {
-      const inputList = new Array(inputLines);
-      const emailList = new Array(14);
-      console.log(emailList);
-
-      for (let i = 1; i < inputLines && i <= 12; i++) {
-        inputList.push(
-          <div>
-            <div className="">
-              <div className="flex py-1">
-                <XIcon
-                  className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
-                  onClick={() => setInputLines(inputLines - 1)}
-                />
-                {/* store iterations into an array (These are emails) */}
-                <input
-                  className="border-2 w-full pl-1 rounded text-xs"
-                  key={i}
-                  id="guess"
-                  type="text"
-                  placeholder=" Enter Candidate Email"
-                  value={emailList[i]}
-                  onChange={(e) => (emailList[i] = e.target.value)}
-                ></input>
-              </div>
-            </div>
-          </div>
-        );
-      }
       return (
         <div>
-          {inputList} {/* Add ternary for max multiple candidates */}
+          {emailInputList.map((e) => (
+            <div>
+              <div className="">
+                <div className="flex py-1" key={e.id}>
+                  <XIcon
+                    className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
+                    onClick={() => setInputLineReduction()}
+                  />
+                  {/* store iterations into an array (These are emails) */}
+                  <input
+                    className="border-2 w-full pl-1 rounded text-xs"
+                    id="guess"
+                    type="text"
+                    placeholder=" Enter Candidate Email"
+                    // value={emailList[i]}
+                    // onChange={(e) => (emailList[i] = e.target.value)}
+                  ></input>
+                </div>
+              </div>
+            </div>
+          ))}
           {inputLines < 12 ? (
             <div className={"py-1"}>
               <div
                 className="flex hover:text-VouchGreen cursor-pointer py-1"
-                onClick={() => setInputLines(inputLines + 1)}
+                onClick={() => setInputLineIncrease()}
               >
                 <PlusCircleIcon className={"w-4 h-4 "} />
                 <div className="pl-0.5 "> Add Multiple Candidates</div>
@@ -151,16 +152,16 @@ const VouchCTAModal = ({
       return (
         <div
           className="flex hover:text-VouchGreen cursor-pointer py-1"
-          onClick={() => setInputLines(inputLines + 1)}
+          onClick={() => setInputLineIncrease()}
         >
           <PlusCircleIcon className={"w-4 h-4 "} />
           <div className="pl-0.5 "> Add Multiple Candidates</div>
         </div>
       );
     }
-
-    //
   };
+
+  //
 
   const sendEmail = async () => {
     const res = await fetch("/api/email/vouchEmailCandidate", {
