@@ -24,3 +24,5 @@ Meanwhile, referrals have proven to be 5x more effective than other sources of h
 ​
 
 Vouch takes the power of a referral and brings it to scale by tapping into the stream of candidates that HR teams see everyday. As a result, you can access an extensive network of pre-screened candidates referred in by fellow HR professionals.
+
+Tools: React (FE), NextJs, GraphQl, Firebase (auth)
