@@ -53,9 +53,8 @@ const VouchCTAModal = ({
     useState(false);
   //authentication passes hrID
 
-  const initialList = [{ id: 0, inputLine: 0 }];
   const [email, setEmail] = useState("");
-  const [emailInputList, setEmailInputList] = useState(initialList);
+  const [emailInputList, setEmailInputList] = useState([]);
   const [positionTitle, setPositionTitle] = useState("");
   const [interviewStage, setInterviewStage] = useState("");
   const [salaryRange, setSalaryRange] = useState("");
@@ -64,7 +63,7 @@ const VouchCTAModal = ({
   const [standOutSkill3, setStandOutSkill3] = useState(""); // Interview Skill
   const [yearsOfExperience, setYearsOfExperience] = useState(""); // Years of Experience Dropdown
   const [positionType, setPositionType] = useState(""); // position Type
-  const [inputLines, setInputLines] = useState(1);
+  const [inputLines, setInputLines] = useState(0);
   const candidateUUID = uuidv4();
 
   const clearFormState = () => {
@@ -99,13 +98,13 @@ const VouchCTAModal = ({
     }
   );
 
-  let nextId = 0;
-
   const setInputLineIncrease = () => {
+    let nextId = 0;
+
     setInputLines(inputLines + 1);
     setEmailInputList([
       ...emailInputList,
-      { id: nextId++, inputLine: inputLines },
+      { id: inputLines, inputLine: inputLines },
     ]);
     console.log(emailInputList);
   };
@@ -116,16 +115,18 @@ const VouchCTAModal = ({
   };
 
   const additionalInputs = () => {
-    if (inputLines > 1) {
+    if (inputLines >= 1) {
       return (
         <div>
+          {JSON.stringify(emailInputList)}
           {emailInputList.map((e) => (
             <div>
               <ul>
                 <li className="flex py-1" key={e.id}>
+                  {e.id}
                   <XIcon
                     className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
-                    onClick={(e) => setInputLineReduction(e)}
+                    onClick={() => setInputLineReduction(e)}
                   />
                   <input
                     className="border-2 w-full pl-1 rounded text-xs"
@@ -160,6 +161,8 @@ const VouchCTAModal = ({
           className="flex hover:text-VouchGreen cursor-pointer py-1"
           onClick={() => setInputLineIncrease()}
         >
+          {JSON.stringify(emailInputList)}
+
           <PlusCircleIcon className={"w-4 h-4 "} />
           <div className="pl-0.5 "> Add Multiple Candidates</div>
         </div>
