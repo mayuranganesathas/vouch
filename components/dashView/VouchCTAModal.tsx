@@ -104,7 +104,7 @@ const VouchCTAModal = ({
     setInputLines(inputLines + 1);
     setEmailInputList([
       ...emailInputList,
-      { id: inputLines, inputLine: inputLines },
+      { id: inputLines, inputLine: inputLines, email: "" },
     ]);
     console.log(emailInputList);
   };
@@ -114,16 +114,21 @@ const VouchCTAModal = ({
     setEmailInputList(emailInputList.filter((e) => e.id !== mapElement.id));
   };
 
+  const setEmailInputArray = (i, elementTargetValue) => {
+    const emailArrayTemp = emailInputList.slice(); //copy the array
+    emailArrayTemp[i].email = elementTargetValue; //execute the manipulations
+    setEmailInputList(emailArrayTemp); //set the new state
+  };
+
   const additionalInputs = () => {
     if (inputLines >= 1) {
       return (
         <div>
-          {JSON.stringify(emailInputList)}
-          {emailInputList.map((e) => (
+          {JSON.stringify(multipleAddressFunction())}
+          {emailInputList.map((e, i) => (
             <div>
               <ul>
                 <li className="flex py-1" key={e.id}>
-                  {e.id}
                   <XIcon
                     className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
                     onClick={() => setInputLineReduction(e)}
@@ -133,8 +138,8 @@ const VouchCTAModal = ({
                     id="guess"
                     type="text"
                     placeholder=" Enter Candidate Email"
-                    // value={emailList[i]}
-                    // onChange={(e) => (emailList[i] = e.target.value)}
+                    value={e.email}
+                    onChange={(e) => setEmailInputArray(i, e.target.value)}
                   ></input>
                 </li>
               </ul>
@@ -161,8 +166,6 @@ const VouchCTAModal = ({
           className="flex hover:text-VouchGreen cursor-pointer py-1"
           onClick={() => setInputLineIncrease()}
         >
-          {JSON.stringify(emailInputList)}
-
           <PlusCircleIcon className={"w-4 h-4 "} />
           <div className="pl-0.5 "> Add Multiple Candidates</div>
         </div>
@@ -170,12 +173,19 @@ const VouchCTAModal = ({
     }
   };
 
-  //
-
+  const multipleAddressFunction = () => {
+    const emailList = [];
+    emailInputList
+      .filter((e) => delete e.id)
+      .filter((e) => delete e.inputLine) //returns array of emails
+      .map((e) => emailList.push(e.email));
+    return emailList;
+    //create an empty array, use a for loop or .map to iterate through and push to new array
+  };
   const sendEmail = async () => {
     const res = await fetch("/api/email/vouchEmailCandidate", {
       body: JSON.stringify({
-        email: email,
+        email: multipleAddressFunction(),
         hrEmail: user.email,
         hrFirstName: hrData.hr_voucher[0].firstName,
         hrLastName: hrData.hr_voucher[0].lastName,
