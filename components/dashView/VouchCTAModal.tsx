@@ -124,7 +124,6 @@ const VouchCTAModal = ({
     if (inputLines >= 1) {
       return (
         <div>
-          {JSON.stringify(multipleAddressFunction())}
           {emailInputList.map((e, i) => (
             <div>
               <ul>
@@ -174,12 +173,12 @@ const VouchCTAModal = ({
   };
 
   const multipleAddressFunction = () => {
-    const emailList = [];
+    const emailList = [email];
     emailInputList
       .filter((e) => delete e.id)
       .filter((e) => delete e.inputLine) //returns array of emails
       .map((e) => emailList.push(e.email));
-    return emailList;
+    return emailList.filter((e) => e.length > 0);
     //create an empty array, use a for loop or .map to iterate through and push to new array
   };
   const sendEmail = async () => {
