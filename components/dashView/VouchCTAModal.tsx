@@ -25,17 +25,7 @@ import CTAinstructionsModal from "./VouchEmailTemplateModal";
 import { dbUri } from "../../lib/apollo";
 import { v4 as uuidv4 } from "uuid";
 import VouchEmailTemplateModal from "./VouchEmailTemplateModal";
-/*
-TODO: BULK ADD VERSION || Feature Approach
--Add possibility to add more input lines (Represented as a + Button) 
-  Map to add up to 10 input lines
-  store into object
--Update query mutation to create multiple vouch candidates
-    store multiple objects to send as a bulk addition
-    create 10 different privacy ID's 
-    verify and test mutation change
--Update email function to send an array of send list
-*/
+
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -78,25 +68,6 @@ const VouchCTAModal = ({
     setPositionType("");
     setInputLines(0);
   };
-
-  const [initializeVouchCandidate, { data, loading, error }] = useMutation(
-    UPSERT_VOUCH_CANDIDATE,
-
-    {
-      variables: {
-        hrId: "incompleteForm",
-        positionTitle: "incompleteField",
-        salaryRange: "incompleteField",
-        stageOfInterview: "incompleteField",
-        standOutSkill1: "incompleteField",
-        standOutSkill2: "incompleteField",
-        standOutSkill3: "incompleteField",
-        privacyId: "incompleteField",
-        positionType: "incompleteField",
-        yearsOfExperience: "incompleteField",
-      },
-    }
-  );
 
   const setInputLineIncrease = () => {
     let nextId = 0;
@@ -218,8 +189,41 @@ const VouchCTAModal = ({
   };
 
   const submitForm = async () => {
-    initializeVouchCandidate({
+    initializeVouchCandidate_hr_voucher_metadata({
       variables: {
+        objects: dataFactory(),
+      },
+    });
+    if (hrVoucherMetaError)
+      return `Submission error! ${hrVoucherMetaError.message}`;
+
+    initializeVouchCandidate_candidate_metadata({
+      variables: {
+        objects: dataFactory(),
+      },
+    });
+    if (candidatesMetaError)
+      return `Submission error! ${candidatesMetaError.message}`;
+
+    initializeVouchCandidate_candidates({
+      variables: {
+        objects: dataFactory(),
+      },
+    });
+    if (candidatesError) return `Submission error! ${candidatesError.message}`;
+
+    toastFeedback();
+    sendEmail();
+    clearFormState();
+    closeModal();
+  };
+
+  const dataFactory = () => {
+    const upsertData = [];
+
+    multipleAddressFunction().map((e) =>
+      upsertData.push({
+        email: e,
         hrId: user.uid,
         positionTitle: positionTitle,
         salaryRange: salaryRange,
@@ -227,28 +231,59 @@ const VouchCTAModal = ({
         standOutSkill1: standOutSkill1,
         standOutSkill2: standOutSkill2,
         standOutSkill3: standOutSkill3,
-        privacyId: candidateUUID,
+        privacyId: uuidv4(),
         yearsOfExperience: yearsOfExperience,
         positionType: positionType,
-      },
-    });
-    if (loading) return "Submitting...";
-    if (error) return `Submission error! ${error.message}`;
-    toastFeedback();
-    sendEmail();
-    clearFormState();
-    closeModal();
+      })
+    );
+
+    return upsertData;
   };
 
+  const [
+    initializeVouchCandidate_hr_voucher_metadata,
+    { data: hrVoucherMeta, error: hrVoucherMetaError },
+  ] = useMutation(
+    UPSERT_VOUCH_CANDIDATE,
+
+    {
+      variables: {
+        objects: dataFactory(),
+      },
+    }
+  );
+  const [
+    initializeVouchCandidate_candidate_metadata,
+    { data: candidatesMeta, error: candidatesMetaError },
+  ] = useMutation(
+    UPSERT_VOUCH_CANDIDATE,
+
+    {
+      variables: {
+        objects: dataFactory(),
+      },
+    }
+  );
+
+  const [
+    initializeVouchCandidate_candidates,
+    { data: candidatesData, error: candidatesError },
+  ] = useMutation(
+    UPSERT_VOUCH_CANDIDATE,
+
+    {
+      variables: {
+        objects: dataFactory(),
+      },
+    }
+  );
   const formValidation = () => {
     const emailValidator = email;
     const positionTitleValidator = positionTitle;
     const salaryRangeValidator = salaryRange;
     const stageOfInterviewValidator = interviewStage;
-
     const yearsOfExperienceValidator = yearsOfExperience;
     const positionTypeValidator = positionType;
-
     if (
       emailValidator &&
       positionTitleValidator &&
