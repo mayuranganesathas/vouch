@@ -25,6 +25,8 @@ import CTAinstructionsModal from "./VouchEmailTemplateModal";
 import { dbUri } from "../../lib/apollo";
 import { v4 as uuidv4 } from "uuid";
 import VouchEmailTemplateModal from "./VouchEmailTemplateModal";
+import { UPSERT_VOUCH_CANDIDATES } from "../../graphql/INSERT_CANDIDATES_VOUCHEE_FORM";
+import { UPSERT_VOUCH_CANDIDATE_META } from "../../graphql/INSERT_CANDIDATE_METADATA_VOUCHEE_FORM";
 
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
@@ -77,7 +79,6 @@ const VouchCTAModal = ({
       ...emailInputList,
       { id: inputLines, inputLine: inputLines, email: "" },
     ]);
-    console.log(emailInputList);
   };
 
   const setInputLineReduction = (mapElement) => {
@@ -218,12 +219,12 @@ const VouchCTAModal = ({
     closeModal();
   };
 
+  // function object, serve specific data to each mutation
   const dataFactory = () => {
     const upsertData = [];
 
     multipleAddressFunction().map((e) =>
       upsertData.push({
-        email: e,
         hrId: user.uid,
         positionTitle: positionTitle,
         salaryRange: salaryRange,
@@ -256,7 +257,7 @@ const VouchCTAModal = ({
     initializeVouchCandidate_candidate_metadata,
     { data: candidatesMeta, error: candidatesMetaError },
   ] = useMutation(
-    UPSERT_VOUCH_CANDIDATE,
+    UPSERT_VOUCH_CANDIDATE_META,
 
     {
       variables: {
@@ -269,7 +270,7 @@ const VouchCTAModal = ({
     initializeVouchCandidate_candidates,
     { data: candidatesData, error: candidatesError },
   ] = useMutation(
-    UPSERT_VOUCH_CANDIDATE,
+    UPSERT_VOUCH_CANDIDATES,
 
     {
       variables: {
