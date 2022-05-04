@@ -57,6 +57,7 @@ const VouchCTAModal = ({
   const [positionType, setPositionType] = useState(""); // position Type
   const [inputLines, setInputLines] = useState(0);
   const candidateUUID = uuidv4();
+  const [finalData, setFinalData] = useState([]);
 
   const clearFormState = () => {
     setEmail("");
@@ -188,39 +189,7 @@ const VouchCTAModal = ({
       progress: undefined,
     });
   };
-
-  const submitForm = async () => {
-    initializeVouchCandidate_hr_voucher_metadata({
-      variables: {
-        objects: dataFactory(),
-      },
-    });
-    if (hrVoucherMetaError)
-      return `Submission error! ${hrVoucherMetaError.message}`;
-
-    initializeVouchCandidate_candidate_metadata({
-      variables: {
-        objects: dataFactory(),
-      },
-    });
-    if (candidatesMetaError)
-      return `Submission error! ${candidatesMetaError.message}`;
-
-    initializeVouchCandidate_candidates({
-      variables: {
-        objects: dataFactory(),
-      },
-    });
-    if (candidatesError) return `Submission error! ${candidatesError.message}`;
-
-    toastFeedback();
-    sendEmail();
-    clearFormState();
-    closeModal();
-  };
-
-  // function object, serve specific data to each mutation
-  const dataFactory = () => {
+  const hrDataFactory = () => {
     const upsertData = [];
 
     multipleAddressFunction().map((e) =>
@@ -241,6 +210,49 @@ const VouchCTAModal = ({
     return upsertData;
   };
 
+  //take datafactory output in a object -- store into one array. create two values that have filter based off the array
+  const dataState = hrDataFactory();
+
+  const candidateDataFactory = () => {
+    const candidateData = [];
+    dataState.forEach((e) =>
+      candidateData.push({ hrId: e.hrId, privacyId: e.privacyId })
+    );
+    return candidateData;
+  };
+
+  const submitForm = async () => {
+    initializeVouchCandidate_hr_voucher_metadata({
+      variables: {
+        objects: dataState,
+      },
+    });
+    if (hrVoucherMetaError)
+      return `Submission error! ${hrVoucherMetaError.message}`;
+
+    initializeVouchCandidate_candidate_metadata({
+      variables: {
+        objects: candidateDataFactory(),
+      },
+    });
+    if (candidatesMetaError)
+      return `Submission error! ${candidatesMetaError.message}`;
+
+    initializeVouchCandidate_candidates({
+      variables: {
+        objects: candidateDataFactory(),
+      },
+    });
+    if (candidatesError) return `Submission error! ${candidatesError.message}`;
+
+    toastFeedback();
+    sendEmail();
+    clearFormState();
+    closeModal();
+  };
+
+  // function object, serve specific data to each mutation
+
   const [
     initializeVouchCandidate_hr_voucher_metadata,
     { data: hrVoucherMeta, error: hrVoucherMetaError },
@@ -248,8 +260,19 @@ const VouchCTAModal = ({
     UPSERT_VOUCH_CANDIDATE,
 
     {
+      //Data Required for object
+      // hrId: user.uid,
+      // positionTitle: positionTitle,
+      // salaryRange: salaryRange,
+      // stageOfInterview: interviewStage,
+      // standOutSkill1: standOutSkill1,
+      // standOutSkill2: standOutSkill2,
+      // standOutSkill3: standOutSkill3,
+      // privacyId: uuidv4(),
+      // yearsOfExperience: yearsOfExperience,
+      // positionType: positionType,
       variables: {
-        objects: dataFactory(),
+        objects: dataState,
       },
     }
   );
@@ -260,8 +283,12 @@ const VouchCTAModal = ({
     UPSERT_VOUCH_CANDIDATE_META,
 
     {
+      //Data Required for object
+      // hrId: user.uid,
+      // privacyId: uuidv4(),
+
       variables: {
-        objects: dataFactory(),
+        objects: candidateDataFactory(),
       },
     }
   );
@@ -273,8 +300,11 @@ const VouchCTAModal = ({
     UPSERT_VOUCH_CANDIDATES,
 
     {
+      //Data Required for object
+      // hrId: user.uid,
+      // privacyId: uuidv4(),
       variables: {
-        objects: dataFactory(),
+        objects: candidateDataFactory(),
       },
     }
   );
