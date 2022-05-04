@@ -146,13 +146,13 @@ const VouchCTAModal = ({
   };
 
   const multipleAddressFunction = () => {
+    //returns array of emails
     const emailList = [email];
     emailInputList
       .filter((e) => delete e.id)
-      .filter((e) => delete e.inputLine) //returns array of emails
+      .filter((e) => delete e.inputLine)
       .map((e) => emailList.push(e.email));
     return emailList.filter((e) => e.length > 0);
-    //create an empty array, use a for loop or .map to iterate through and push to new array
   };
   const sendEmail = async () => {
     const res = await fetch("/api/email/vouchEmailCandidate", {
@@ -250,8 +250,6 @@ const VouchCTAModal = ({
     clearFormState();
     closeModal();
   };
-
-  // function object, serve specific data to each mutation
 
   const [
     initializeVouchCandidate_hr_voucher_metadata,
