@@ -12,7 +12,7 @@ export const ButtonEmail: React.FC<ButtonEmailProps> = ({
   userEmailAction,
 }) => {
   const sendOpeningEmail = async () => {
-    const res = await fetch("/api/interestEmail", {
+    const res = await fetch("/api/email/interestEmail", {
       body: JSON.stringify({
         email: userEmailAction,
       }),

@@ -3,24 +3,25 @@ import { dbUri } from "../../../lib/apollo";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-//todo fix
+const domainType = dbUri().subDomain;
 
 async function sendEmail(req, res) {
   try {
     await sendgrid.send({
-      to: "hello@vouchrecruit.com", // Your email where you'll receive emails
+      to: `${req.body.hrEmail}`, // Your email where you'll receive emails
       from: {
         email: "hello@vouchrecruit.com",
-        name: `Vouch | ${req.body.companyName} wants to learn more`,
+        name: `Vouch | ${req.body.canFirstName} has accepted your request`,
       },
-      bcc: `${req.body.email}`,
-      cc: `${req.body.hrEmail}`,
-      templateId: "d-9e5ab00d24894367bdd292b137d452bb",
+      templateId: "d-bc5faf1a90134528adad3a94a13a74cd", // To Add
       dynamicTemplateData: {
-        candidateFirstName: `${req.body.canFirstName}`,
-        hrFirstName: `${req.body.hrFirstName}`,
-        hrLastName: `${req.body.hrLastName}`,
-        companyName: `${req.body.companyName}`,
+        candidateFirstName: `${req.body.canFirstName}`, //HR Manager recognizes Cand
+        candidatePosition: `${req.body.candidatePosition}`, //HR Manager recognizes Position
+        canEmail: `${req.body.candidateEmail}`, //HR Manager can move candidate to contacted via new page, new page
+        hrFirstName: `${req.body.hrFirstName}`, //address HR Manager
+        hrId: `${req.body.hrId}`, // Passes into URL for move to contacted query
+        canLinkedIn: `${req.body.canLinkedIn}`, //Give direct access to HR manager so they dont have to go to profile
+        link: `https://${domainType}.vouchrecruit.com/contact-candidate?hrId=${req.body.hrId}&candidateId=${req.body.candidateId}&canEmail=${req.body.canEmail}`,
       },
       asm: {
         groupId: 17125,

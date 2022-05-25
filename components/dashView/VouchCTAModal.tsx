@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import { XIcon } from "@heroicons/react/solid";
+import { PlusCircleIcon } from "@heroicons/react/solid";
+import { XCircleIcon, XIcon } from "@heroicons/react/outline";
+
 import { ButtonVouch } from "../ui/ButtonVouch";
 import { SearchFilterDash } from "../ui/searchFilterDash";
 import StandOutSkill from "../ui/StandOutSkill";
@@ -19,25 +21,18 @@ import {
 import InformationIconToolTip from "../ui/InformationIconToolTip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CTAinstructionsModal from "./CTAInstructionsModal";
+import CTAinstructionsModal from "./VouchEmailTemplateModal";
 import { dbUri } from "../../lib/apollo";
+import { v4 as uuidv4 } from "uuid";
+import VouchEmailTemplateModal from "./VouchEmailTemplateModal";
+import { UPSERT_VOUCH_CANDIDATES } from "../../graphql/INSERT_CANDIDATES_VOUCHEE_FORM";
+import { UPSERT_VOUCH_CANDIDATE_META } from "../../graphql/INSERT_CANDIDATE_METADATA_VOUCHEE_FORM";
 
-// ref http://reactcommunity.org/react-modal/
-//ref https://github.com/tailwindlabs/heroicons
-
-declare global {
-  interface Crypto {
-    randomUUID: () => string;
-  }
-}
 export interface VouchCTAModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
   hrData: any;
 }
-
-//** UX */
-//EMAIL INPUT VALIDATOR
 
 const VouchCTAModal = ({
   modalIsOpen,
@@ -46,9 +41,12 @@ const VouchCTAModal = ({
 }: VouchCTAModalProps) => {
   const { user } = useAuth();
   const [iconModalIsOpen, setIconModalIsOpen] = useState(false);
-
+  const [imageTemplateModalIsOpen, setImageTemplateModalIsOpen] =
+    useState(false);
   //authentication passes hrID
+
   const [email, setEmail] = useState("");
+  const [emailInputList, setEmailInputList] = useState([]);
   const [positionTitle, setPositionTitle] = useState("");
   const [interviewStage, setInterviewStage] = useState("");
   const [salaryRange, setSalaryRange] = useState("");
@@ -57,7 +55,9 @@ const VouchCTAModal = ({
   const [standOutSkill3, setStandOutSkill3] = useState(""); // Interview Skill
   const [yearsOfExperience, setYearsOfExperience] = useState(""); // Years of Experience Dropdown
   const [positionType, setPositionType] = useState(""); // position Type
-  const candidateUUID = crypto.randomUUID();
+  const [inputLines, setInputLines] = useState(0);
+  const candidateUUID = uuidv4();
+  const [finalData, setFinalData] = useState([]);
 
   const clearFormState = () => {
     setEmail("");
@@ -69,35 +69,95 @@ const VouchCTAModal = ({
     setStandOutSkill3("");
     setYearsOfExperience("");
     setPositionType("");
+    setInputLines(0);
   };
 
-  //replace with HR authentication
+  const setInputLineIncrease = () => {
+    let nextId = 0;
 
-  const [initializeVouchCandidate, { data, loading, error }] = useMutation(
-    UPSERT_VOUCH_CANDIDATE,
+    setInputLines(inputLines + 1);
+    setEmailInputList([
+      ...emailInputList,
+      { id: inputLines, inputLine: inputLines, email: "" },
+    ]);
+  };
 
-    {
-      variables: {
-        hrId: "incompleteForm",
-        positionTitle: "incompleteField",
-        salaryRange: "incompleteField",
-        stageOfInterview: "incompleteField",
-        standOutSkill1: "incompleteField",
-        standOutSkill2: "incompleteField",
-        standOutSkill3: "incompleteField",
-        privacyId: "incompleteField",
-        positionType: "incompleteField",
-        yearsOfExperience: "incompleteField",
-      },
+  const setInputLineReduction = (mapElement) => {
+    setInputLines(inputLines - 1);
+    setEmailInputList(emailInputList.filter((e) => e.id !== mapElement.id));
+  };
+
+  const setEmailInputArray = (i, elementTargetValue) => {
+    const emailArrayTemp = emailInputList.slice(); //copy the array
+    emailArrayTemp[i].email = elementTargetValue; //execute the manipulations
+    setEmailInputList(emailArrayTemp); //set the new state
+  };
+
+  const additionalInputs = () => {
+    if (inputLines >= 1) {
+      return (
+        <div>
+          {emailInputList.map((e, i) => (
+            <div>
+              <ul>
+                <li className="flex py-1" key={e.id}>
+                  <XIcon
+                    className={"w-4 h-5 hover:text-red-500 cursor-pointer"}
+                    onClick={() => setInputLineReduction(e)}
+                  />
+                  <input
+                    className="border-2 w-full pl-1 rounded text-xs"
+                    id="guess"
+                    type="text"
+                    placeholder=" Enter Candidate Email"
+                    value={e.email}
+                    onChange={(e) => setEmailInputArray(i, e.target.value)}
+                  ></input>
+                </li>
+              </ul>
+            </div>
+          ))}
+          {inputLines < 12 ? (
+            <div className={"py-1"}>
+              <div
+                className="flex hover:text-VouchGreen cursor-pointer py-1"
+                onClick={() => setInputLineIncrease()}
+              >
+                <PlusCircleIcon className={"w-4 h-4 "} />
+                <div className="pl-0.5 "> Add Multiple Candidates</div>
+              </div>
+            </div>
+          ) : (
+            <div className="pl-0.5 text-red-300 "> Max Candidates Added</div>
+          )}
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className="flex hover:text-VouchGreen cursor-pointer py-1"
+          onClick={() => setInputLineIncrease()}
+        >
+          <PlusCircleIcon className={"w-4 h-4 "} />
+          <div className="pl-0.5 "> Add Multiple Candidates</div>
+        </div>
+      );
     }
-  );
+  };
 
-  const domainType = dbUri().subDomain;
-
+  const multipleAddressFunction = () => {
+    //returns array of emails
+    const emailList = [email];
+    emailInputList
+      .filter((e) => delete e.id)
+      .filter((e) => delete e.inputLine)
+      .map((e) => emailList.push(e.email));
+    return emailList.filter((e) => e.length > 0);
+  };
   const sendEmail = async () => {
     const res = await fetch("/api/email/vouchEmailCandidate", {
       body: JSON.stringify({
-        email: email,
+        email: multipleAddressFunction(),
         hrEmail: user.email,
         hrFirstName: hrData.hr_voucher[0].firstName,
         hrLastName: hrData.hr_voucher[0].lastName,
@@ -129,10 +189,11 @@ const VouchCTAModal = ({
       progress: undefined,
     });
   };
+  const hrDataFactory = () => {
+    const upsertData = [];
 
-  const submitForm = async () => {
-    initializeVouchCandidate({
-      variables: {
+    multipleAddressFunction().map((e) =>
+      upsertData.push({
         hrId: user.uid,
         positionTitle: positionTitle,
         salaryRange: salaryRange,
@@ -140,28 +201,118 @@ const VouchCTAModal = ({
         standOutSkill1: standOutSkill1,
         standOutSkill2: standOutSkill2,
         standOutSkill3: standOutSkill3,
-        privacyId: candidateUUID,
+        privacyId: uuidv4(),
         yearsOfExperience: yearsOfExperience,
         positionType: positionType,
+      })
+    );
+
+    return upsertData;
+  };
+
+  //take datafactory output in a object -- store into one array. create two values that have filter based off the array
+  const dataState = hrDataFactory();
+
+  const candidateDataFactory = () => {
+    const candidateData = [];
+    dataState.forEach((e) =>
+      candidateData.push({ hrId: e.hrId, privacyId: e.privacyId })
+    );
+    return candidateData;
+  };
+
+  const submitForm = async () => {
+    initializeVouchCandidate_hr_voucher_metadata({
+      variables: {
+        objects: dataState,
       },
     });
-    if (loading) return "Submitting...";
-    if (error) return `Submission error! ${error.message}`;
+    if (hrVoucherMetaError)
+      return `Submission error! ${hrVoucherMetaError.message}`;
+
+    initializeVouchCandidate_candidate_metadata({
+      variables: {
+        objects: candidateDataFactory(),
+      },
+    });
+    if (candidatesMetaError)
+      return `Submission error! ${candidatesMetaError.message}`;
+
+    initializeVouchCandidate_candidates({
+      variables: {
+        objects: candidateDataFactory(),
+      },
+    });
+    if (candidatesError) return `Submission error! ${candidatesError.message}`;
+
     toastFeedback();
     sendEmail();
     clearFormState();
     closeModal();
   };
 
+  const [
+    initializeVouchCandidate_hr_voucher_metadata,
+    { data: hrVoucherMeta, error: hrVoucherMetaError },
+  ] = useMutation(
+    UPSERT_VOUCH_CANDIDATE,
+
+    {
+      //Data Required for object
+      // hrId: user.uid,
+      // positionTitle: positionTitle,
+      // salaryRange: salaryRange,
+      // stageOfInterview: interviewStage,
+      // standOutSkill1: standOutSkill1,
+      // standOutSkill2: standOutSkill2,
+      // standOutSkill3: standOutSkill3,
+      // privacyId: uuidv4(),
+      // yearsOfExperience: yearsOfExperience,
+      // positionType: positionType,
+      variables: {
+        objects: dataState,
+      },
+    }
+  );
+  const [
+    initializeVouchCandidate_candidate_metadata,
+    { data: candidatesMeta, error: candidatesMetaError },
+  ] = useMutation(
+    UPSERT_VOUCH_CANDIDATE_META,
+
+    {
+      //Data Required for object
+      // hrId: user.uid,
+      // privacyId: uuidv4(),
+
+      variables: {
+        objects: candidateDataFactory(),
+      },
+    }
+  );
+
+  const [
+    initializeVouchCandidate_candidates,
+    { data: candidatesData, error: candidatesError },
+  ] = useMutation(
+    UPSERT_VOUCH_CANDIDATES,
+
+    {
+      //Data Required for object
+      // hrId: user.uid,
+      // privacyId: uuidv4(),
+      variables: {
+        objects: candidateDataFactory(),
+      },
+    }
+  );
   const formValidation = () => {
     const emailValidator = email;
     const positionTitleValidator = positionTitle;
     const salaryRangeValidator = salaryRange;
     const stageOfInterviewValidator = interviewStage;
-
     const yearsOfExperienceValidator = yearsOfExperience;
     const positionTypeValidator = positionType;
-
     if (
       emailValidator &&
       positionTitleValidator &&
@@ -208,7 +359,7 @@ const VouchCTAModal = ({
                     onClick={() => setIconModalIsOpen(true)}
                   />
                 </div>
-                <div className={"flex justify-center py-2 pb-2"}>
+                <div className={"flex justify-center py-2 "}>
                   <input
                     className="border-2 w-full py-0.5 pl-1 rounded text-xs"
                     id="guess"
@@ -218,6 +369,7 @@ const VouchCTAModal = ({
                     onChange={(e) => setEmail(e.target.value)}
                   ></input>
                 </div>
+                <div>{additionalInputs()}</div>
               </div>
               <div className="py-2">
                 <hr className="" />
@@ -368,6 +520,10 @@ const VouchCTAModal = ({
         />
         <CTAinstructionsModal
           modalIsOpen={iconModalIsOpen}
+          closeModal={() => setIconModalIsOpen(false)}
+        />
+        <VouchEmailTemplateModal
+          modalIsOpen={imageTemplateModalIsOpen}
           closeModal={() => setIconModalIsOpen(false)}
         />
       </Modal>{" "}
