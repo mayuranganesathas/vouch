@@ -213,7 +213,7 @@ export default function RegisterHRLogin() {
                 className="border-2 border-blue-100 w-full bg-blue-50"
               ></input>
             </div>
-
+            {/* TODO ERROR HANDLING FOR SIGN UP FEATURE */}
             <div className="w-full px-4">
               <div className="pt-6">
                 <ButtonVouch
